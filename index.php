@@ -6,7 +6,7 @@ $funciones= new Clases\PublicFunction();
 $template->set("title", "Admin");
 $template->set("description", "Admin");
 $template->set("keywords", "Inicio");
-$template->set("favicon", "url");
+$template->set("favicon", LOGO);
 $template->themeInit();
 ?>
  <!-- CONTENT -->
@@ -23,16 +23,26 @@ $template->themeInit();
                                                 <strong>All categories</strong>
                                             </div>
                                             <ul>
-                                                <li><span>1</span><a href="#">Sofas & Couches</a></li>
-                                                <li><span>2</span><a href="#">Living Room Furniture</a></li>
-                                                <li><span>3</span><a href="#">Television Stands</a></li>
-                                                <li><span>4</span><a href="#">Bedroom Furniture</a></li>
-                                                <li><span>5</span><a href="#">Coffee Tables</a></li>
-                                                <li><span>6</span><a href="#">Kitchen & Dining Room</a></li>
-                                                <li><span>7</span><a href="#">Chests of Drawers</a></li>
-                                                <li><span>8</span><a href="#">Ottomans</a></li>
-                                                <li><span>9</span><a href="#">Kids' Furniture & Decor</a></li>
-                                                <li><span>10</span><a href="#">Media Storage</a></li>
+                                                <?php
+                                                $nro = 1;
+                                                foreach ($variable as $key) {
+                                                ?>
+                                                    <li><span><?=$nro?></span><a href="#">Sofas & Couches</a></li>
+                                                <?php
+                                                    $nro++;
+                                                } 
+                                                //<li><span>1</span><a href="#">Sofas & Couches</a></li>
+                                                //<li><span>2</span><a href="#">Living Room Furniture</a></li>
+                                                //<li><span>3</span><a href="#">Television Stands</a></li>
+                                                //<li><span>4</span><a href="#">Bedroom Furniture</a></li>
+                                                //<li><span>5</span><a href="#">Coffee Tables</a></li>
+                                                //<li><span>6</span><a href="#">Kitchen & Dining Room</a></li>
+                                                //<li><span>7</span><a href="#">Chests of Drawers</a></li>
+                                                //<li><span>8</span><a href="#">Ottomans</a></li>
+                                                //<li><span>9</span><a href="#">Kids' Furniture & Decor</a></li>
+                                                //<li><span>10</span><a href="#">Media Storage</a></li>
+                                                ?>
+                                                
                                             </ul>
                                             <p>
                                                 <span class="title">more categories</span>
@@ -42,9 +52,6 @@ $template->themeInit();
                                         </div>
                                     </div>
                                 </div>
-
-
-
                                 <div id="sns_lider1143" class="block sns-slider sns-deals">
                                     <div class="slider-inner">
                                         <div class="module-title">
@@ -127,7 +134,7 @@ $template->themeInit();
                                     </div>
                                 </div>
 
-
+                                <!-- Banner 270x350 -->
                                 <div class="block banner_left2 block_cat">
                                     <a class="banner5" href="#">
                                         <img src="<?=URL?>/assets/images/page2/banner-left-page2.jpg" alt="">
@@ -659,13 +666,16 @@ $template->themeInit();
                                                     </div>
                                                 </div>
                                             </div>
+                                            <!-- Banner -->
                                             <div class="banner-right col-md-4 col-sm-4">
                                                  <div class="banner6 pdno col-md-12 col-sm-12">
+                                                    <!-- 270x257 -->
                                                     <div class="banner7 banner6  banner5 col-md-12 col-sm-12">
                                                         <a href="#">
                                                             <img src="<?=URL?>/assets/images/sildeshow/banner3.jpg" alt="">
                                                         </a>
                                                     </div>
+                                                    <!-- 270x257 -->
                                                     <div class="banner8 banner6  banner5 col-md-12 col-sm-12">
                                                         <a href="#">
                                                             <img src="<?=URL?>/assets/images/page2/slideshow222.jpg" alt="">
@@ -673,6 +683,7 @@ $template->themeInit();
                                                     </div>
                                                 </div>
                                             </div>
+                                            <!-- End Banner -->
                                         </div>
                                     </div>
                                 </div>
@@ -7556,7 +7567,7 @@ $template->themeInit();
                                   </div>
                                 </div>  
 
-
+                                <!-- Banner 870x110 -->
                                 <div class="sns_banner_page2">
                                     <div class="banner5">
                                         <a href="#">
@@ -7564,6 +7575,7 @@ $template->themeInit();
                                         </a>
                                     </div>
                                 </div>
+                                 <!-- EndBanner -->
 
 
                                 <div id="sns_slider1_page2" class="sns-slider-wraps sns_producttaps_wraps">
@@ -8523,7 +8535,7 @@ $template->themeInit();
                                   </div>
                                 </div>  
 
-
+                                <!-- Banner 425x110 -->
                                 <div class="sns_banner1">
                                     <div class="row">
                                         <div class="col-md-6 col-sm-6">
@@ -8542,7 +8554,7 @@ $template->themeInit();
                                         </div>
                                     </div>
                                 </div>
-
+                                <!-- Banner 870x110 -->
 
 
                                 <div id="sns_slider2_page2" class="sns-slider-wraps sns_producttaps_wraps">
@@ -9502,7 +9514,7 @@ $template->themeInit();
                                   </div>
                                 </div>  
 
-
+                                <!-- Banner 425x110 -->
                                 <div class="sns_banner2">
                                     <div class="row">
                                         <div class="col-md-6 col-sm-6">
@@ -9521,7 +9533,7 @@ $template->themeInit();
                                         </div>
                                     </div>
                                 </div>
-
+                                <!-- Banner 425x110 -->
                                 <div id="sns_slider3_page2" class="sns-slider-wraps sns_producttaps_wraps">
                                     <h3 class="precar">office chair</h3>
                                   <!-- Nav tabs -->
@@ -10486,7 +10498,7 @@ $template->themeInit();
                     <div class="row bottom">
 
                         <div class="col-md-12"> 
-
+                            <!-- Banner 570x110 -->
                             <div class="sns_banner3">
                                 <div class="row">
                                     <div class="col-md-6 col-sm-6">
@@ -10505,7 +10517,7 @@ $template->themeInit();
                                     </div>
                                 </div>
                             </div>  
-
+                            <!-- Banner 570x110 -->
                             <div id="sns_suggest12" class="sns_suggest">
                                 <div class="block-title">
                                     <h3>suggest collection</h3>
