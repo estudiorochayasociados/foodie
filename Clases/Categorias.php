@@ -68,7 +68,7 @@ class Categorias
 
         $sql = "SELECT * FROM `categorias` $filterSql  ORDER BY id DESC";
          $notas = $this->con->sqlReturn($sql);
-
+echo $sql;
         if ($notas) {
             while ($row = mysqli_fetch_assoc($notas)) {
                 $array[] = $row;

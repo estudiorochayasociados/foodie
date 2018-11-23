@@ -81,9 +81,9 @@ class Banner
 
     function listForCategory($cate) {
         $array = array();
-        $sql = "SELECT * FROM `banners` WHERE categoria = '{$this->cate}'  ORDER BY id DESC";
+        $sql = "SELECT * FROM `banners` WHERE categoria = '{$cate}'  ORDER BY id DESC";
         $notas = $this->con->sqlReturn($sql);
-
+        var_dump($sql);
         if ($notas) {
             while ($row = mysqli_fetch_assoc($notas)) {
                 $array[] = $row;

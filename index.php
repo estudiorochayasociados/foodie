@@ -14,8 +14,12 @@ $imagenes = new Clases\Imagenes();
 $categorias = new Clases\Categorias();
 $banners = new Clases\Banner();
 //
-$categoriasData = $categorias->list('');
-$banDataSide = $banners->list("Side");
+$filter = array("area = 'banners'");
+$categoriasData = $categorias->list($filter);
+var_dump($categoriasData);
+//$banDataSide = $banners->listForCategory();
+//$banDataPie = $banners->listForCategory("Pie");
+//$banDataPieDoble = $banners->listForCategory("Pie 1/2");
 //
 ?>
  <!-- CONTENT -->
@@ -7639,17 +7643,29 @@ $banDataSide = $banners->list("Side");
 
                                   </div>
                                 </div>  
-
                                 <!-- Banner 870x110 -->
-                                <div class="sns_banner_page2">
+                                <?php
+                                
+                                if (count($banDataPie)!=''){
+                                    $banRandPie = $banDataPie[array_rand($banDataPie)];
+                                    $imagenes->set("codigo",$banRandPie['cod']);
+                                    $imgRandPie = $imagenes->view();
+                                    $banners->set("id",$banRandPie['id']);
+                                    $valuePie=$banRandPie['vistas']+1;
+                                    $banners->set("vistas",$valuePie);
+                                    $banners->increaseViews();
+                                ?>
+                                    <div class="sns_banner_page2">
                                     <div class="banner5">
-                                        <a href="#">
-                                            <img src="<?=URL?>/assets/images/page2/banner1-page2.jpg" alt="">
+                                        <a href="<?= $banRandPie['link'] ?>">
+                                            <img src="<?=URL. '/' . $imgRandPie['ruta'] ?>" alt="<?= $banRandPie['nombre']?>">
                                         </a>
                                     </div>
                                 </div>
-                                 <!-- EndBanner -->
-
+                                </div>
+                                <?php
+                                }
+                                ?>
 
                                 <div id="sns_slider1_page2" class="sns-slider-wraps sns_producttaps_wraps">
                                     <h3 class="precar">office chair</h3>
