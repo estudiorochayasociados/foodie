@@ -8,6 +8,13 @@ $template->set("description", "Admin");
 $template->set("keywords", "Inicio");
 $template->set("favicon", LOGO);
 $template->themeInit();
+//
+$productos = new Clases\Productos();
+$imagenes = new Clases\Imagenes();
+$categorias = new Clases\Categorias();
+//
+$categoriasData = $categorias->list('');
+//
 ?>
  <!-- CONTENT -->
  <div id="sns_content" class="wrap layout-m">
@@ -20,14 +27,14 @@ $template->themeInit();
                                     <div class="block-content">
                                         <div class="menu-categories">
                                             <div class="block-title">
-                                                <strong>All categories</strong>
+                                                <strong>Todas las categorias</strong>
                                             </div>
                                             <ul>
                                                 <?php
                                                 $nro = 1;
-                                                foreach ($variable as $key) {
+                                                foreach ($categoriasData as $catList) {
                                                 ?>
-                                                    <li><span><?=$nro?></span><a href="#">Sofas & Couches</a></li>
+                                                    <li><span><?=$nro?></span><a href="#"><?=$catList['titulo']?></a></li>
                                                 <?php
                                                     $nro++;
                                                 } 
