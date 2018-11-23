@@ -1,5 +1,5 @@
 <?php
-$pages = ["contenidos", "novedades", "multimedia", "usuarios", "noveades", "productos", "portfolio", "servicios", "configuracion", "categorias"];
+$pages = ["contenidos", "novedades", "multimedia", "usuarios", "banners", "productos", "portfolio", "servicios", "configuracion", "categorias"];
 ?>
 <nav class="navbar navbar-expand-lg navbar-light bg-light mb-30">
     <div class="col-md-12">
@@ -47,6 +47,9 @@ $pages = ["contenidos", "novedades", "multimedia", "usuarios", "noveades", "prod
                         </a>
                         <a class="dropdown-item" href="<?=URL?>/index.php?op=galerias&accion=ver">
                             Galerias
+                        </a>
+                        <a class="dropdown-item" href="<?=URL?>/index.php?op=banners&accion=ver">
+                            Banners
                         </a>
                     </div>
                 </li>

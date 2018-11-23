@@ -12,8 +12,10 @@ $template->themeInit();
 $productos = new Clases\Productos();
 $imagenes = new Clases\Imagenes();
 $categorias = new Clases\Categorias();
+$banners = new Clases\Banner();
 //
 $categoriasData = $categorias->list('');
+$banDataSide = $banners->list("Side");
 //
 ?>
  <!-- CONTENT -->
@@ -142,12 +144,25 @@ $categoriasData = $categorias->list('');
                                 </div>
 
                                 <!-- Banner 270x350 -->
-                                <div class="block banner_left2 block_cat">
-                                    <a class="banner5" href="#">
-                                        <img src="<?=URL?>/assets/images/page2/banner-left-page2.jpg" alt="">
+                                <?php
+                                if (count($banDataSide)!=''){
+                                    $banRandSide = $banDataSide[array_rand($banDataSide)];
+                                    $imagenes->set("codigo",$banRandSide['cod']);
+                                    $imgRandSide = $imagenes->view();
+                                    $banners->set("id",$banRandSide['id']);
+                                    $value=$banRandSide['vistas']+1;
+                                    $banners->set("vistas",$value);
+                                    $banners->increaseViews();
+                                ?>
+                                    <div class="block banner_left2 block_cat">
+                                    <a class="banner5" href="<?= $banRandSide['link'] ?>">
+                                        <img src="<?=URL. '/' . $imgRandSide['ruta'] ?>" alt="<?= $banRandSide['nombre']?>">
                                     </a>
                                 </div>
-
+                                <?php
+                                }
+                                ?>
+                                <!-- EndBanner -->
 
                                 <div class="block bestsale">
                                     <div class="title">
@@ -674,22 +689,73 @@ $categoriasData = $categorias->list('');
                                                 </div>
                                             </div>
                                             <!-- Banner -->
-                                            <div class="banner-right col-md-4 col-sm-4">
+                                            <?php 
+                                            if (count($banDataSide)!='') {
+                                                if (($key = array_search($banRandSide, $banDataSide)) !== false) {
+                                                    unset($banDataSide[$key]);
+                                                }
+                                                if (count($banDataSide)!='') {
+                                                    $banRand2Side = $banDataSide[array_rand($banDataSide)];
+                                                    if (($key = array_search($banRand2Side, $banDataSide)) !== false) {
+                                                        unset($banDataSide[$key]);
+                                                    }
+                                                    $imagenes->set("codigo",$banRand2Side['cod']);
+                                                    $imgRand2Side = $imagenes->view();
+                                                    $banners->set("id",$banRand2Side['id']);
+                                                    $value2=$banRand2Side['vistas']+1;
+                                                    $banners->set("vistas",$value2);
+                                                    $banners->increaseViews(); 
+                                                ?>
+                                                <div class="banner-right col-md-4 col-sm-4">
                                                  <div class="banner6 pdno col-md-12 col-sm-12">
-                                                    <!-- 270x257 -->
-                                                    <div class="banner7 banner6  banner5 col-md-12 col-sm-12">
-                                                        <a href="#">
-                                                            <img src="<?=URL?>/assets/images/sildeshow/banner3.jpg" alt="">
-                                                        </a>
-                                                    </div>
-                                                    <!-- 270x257 -->
-                                                    <div class="banner8 banner6  banner5 col-md-12 col-sm-12">
-                                                        <a href="#">
-                                                            <img src="<?=URL?>/assets/images/page2/slideshow222.jpg" alt="">
-                                                        </a>
+                                                        <!-- 270x257 -->
+                                                        <div class="banner7 banner6  banner5 col-md-12 col-sm-12">
+                                                            <a href="<?= $banRand2Side['link'] ?>">
+                                                                <img src="<?=URL. '/' . $imgRand2Side['ruta'] ?>" alt="<?= $banRand2Side['nombre']?>">
+                                                            </a>
+                                                        </div>
+                                                        <?php
+                                                         if (count($banDataSide)!='') {
+                                                            $banRand3Side = $banDataSide[array_rand($banDataSide)];
+                                                            $imagenes->set("codigo",$banRand3Side['cod']);
+                                                            $imgRand3Side = $imagenes->view();
+                                                            $banners->set("id",$banRand3Side['id']);
+                                                            $value3=$banRand3Side['vistas']+1;
+                                                            $banners->set("vistas",$value3);
+                                                            $banners->increaseViews(); 
+                                                        ?><!-- 270x257 -->
+                                                            <div class="banner8 banner6  banner5 col-md-12 col-sm-12">
+                                                            <a href="<?= $banRand3Side['link'] ?>">
+                                                                <img src="<?=URL. '/' . $imgRand3Side['ruta'] ?>" alt="<?= $banRand3Side['nombre']?>">
+                                                            </a>
+                                                        </div>
+                                                        <?php
+                                                        }
+                                                        ?>
                                                     </div>
                                                 </div>
-                                            </div>
+                                                <?php 
+                                                }
+                                                ?>
+                                                <?php   
+                                            }
+                                            ?>
+                                            <?php /* <div class="banner-right col-md-4 col-sm-4">
+                                                 <div class="banner6 pdno col-md-12 col-sm-12">
+                                                         <!-- 270x257 -->
+                                                         <div class="banner7 banner6  banner5 col-md-12 col-sm-12">
+                                                             <a href="#">
+                                                                 <img src="<?=URL?>/assets/images/sildeshow/banner3.jpg" alt="">
+                                                             </a>
+                                                         </div>
+                                                         <!-- 270x257 -->
+                                                         <div class="banner8 banner6  banner5 col-md-12 col-sm-12">
+                                                             <a href="#">
+                                                                 <img src="<?=URL?>/assets/images/page2/slideshow222.jpg" alt="">
+                                                             </a>
+                                                         </div>
+                                                     </div>
+                                                </div>*/?>
                                             <!-- End Banner -->
                                         </div>
                                     </div>
