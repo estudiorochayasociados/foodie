@@ -8,18 +8,29 @@ $template->set("description", "Admin");
 $template->set("keywords", "Inicio");
 $template->set("favicon", LOGO);
 $template->themeInit();
-//
+//Clases
 $productos = new Clases\Productos();
 $imagenes = new Clases\Imagenes();
 $categorias = new Clases\Categorias();
 $banners = new Clases\Banner();
-//
-$filter = array("area = 'banners'");
-$categoriasData = $categorias->list($filter);
-var_dump($categoriasData);
-//$banDataSide = $banners->listForCategory();
-//$banDataPie = $banners->listForCategory("Pie");
-//$banDataPieDoble = $banners->listForCategory("Pie 1/2");
+//Banners
+$categoriasData = $categorias->list('');
+foreach($categoriasData as $valor){
+    if($valor['titulo']=='Pie' && $valor['area']=='banners'){ 
+        $banners->set("categoria",$valor['cod']);
+        $banDataPie = $banners->listForCategory();
+    }
+    
+    if($valor['titulo']=='Pie 1/2' && $valor['area']=='banners'){ 
+        $banners->set("categoria",$valor['cod']);
+        $banDataPieMedio = $banners->listForCategory();
+    }
+    
+    if($valor['titulo']=='Side' && $valor['area']=='banners'){
+        $banners->set("categoria",$valor['cod']);
+        $banDataSide = $banners->listForCategory();  
+    }
+}
 //
 ?>
  <!-- CONTENT -->
@@ -43,25 +54,16 @@ var_dump($categoriasData);
                                                     <li><span><?=$nro?></span><a href="#"><?=$catList['titulo']?></a></li>
                                                 <?php
                                                     $nro++;
+                                                    if ($nro>12) {
+                                                       break;
+                                                    }
                                                 } 
-                                                //<li><span>1</span><a href="#">Sofas & Couches</a></li>
-                                                //<li><span>2</span><a href="#">Living Room Furniture</a></li>
-                                                //<li><span>3</span><a href="#">Television Stands</a></li>
-                                                //<li><span>4</span><a href="#">Bedroom Furniture</a></li>
-                                                //<li><span>5</span><a href="#">Coffee Tables</a></li>
-                                                //<li><span>6</span><a href="#">Kitchen & Dining Room</a></li>
-                                                //<li><span>7</span><a href="#">Chests of Drawers</a></li>
-                                                //<li><span>8</span><a href="#">Ottomans</a></li>
-                                                //<li><span>9</span><a href="#">Kids' Furniture & Decor</a></li>
-                                                //<li><span>10</span><a href="#">Media Storage</a></li>
                                                 ?>
-                                                
                                             </ul>
                                             <p>
                                                 <span class="title">more categories</span>
                                                 <i class="fa fa-angle-down"></i>
                                             </p>
-                                        
                                         </div>
                                     </div>
                                 </div>
@@ -8625,6 +8627,53 @@ var_dump($categoriasData);
                                 </div>  
 
                                 <!-- Banner 425x110 -->
+                                <?php 
+                                    if (count($banDataPieMedio)>=2) {
+                                        $banRandPieMedio = $banDataPieMedio[array_rand($banDataPieMedio)];
+                                        $imagenes->set("codigo",$banRandPieMedio['cod']);
+                                        $imgRandPieMedio = $imagenes->view();
+                                        $banners->set("id",$banRandPieMedio['id']);
+                                        $value=$banRandPieMedio['vistas']+1;
+                                        $banners->set("vistas",$value);
+                                        $banners->increaseViews();
+                                        ?>
+                                        <div class="sns_banner1">
+                                            <div class="row">
+                                                <div class="col-md-6 col-sm-6">
+                                                    <div class="banner-content banner5">
+                                                        <a href="<?= $banRandPieMedio['link']?>">
+                                                            <img src="<?=URL. '/' . $imgRandPieMedio['ruta'] ?>" alt="<?= $banRandPieMedio['nombre']?>">
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                         <?php
+                                         if (($key = array_search($banRandPieMedio, $banDataPieMedio)) !== false) {
+                                             unset($banDataPieMedio[$key]);
+                                         }
+                                         $banRandPieMedio2 = $banDataPieMedio[array_rand($banDataPieMedio)];
+                                         $imagenes->set("codigo",$banRandPieMedio2['cod']);
+                                         $imgRandPieMedio2 = $imagenes->view();
+                                         $banners->set("id",$banRandPieMedio2['id']);
+                                         $value=$banRandPieMedio2['vistas']+1;
+                                         $banners->set("vistas",$value);
+                                         $banners->increaseViews();
+                                         ?>
+                                                <div class="col-md-6 col-sm-6">
+                                                     <div class="banner-content banner5 style-banner2">
+                                                        <a href="<?= $banRandPieMedio2['link']?>">
+                                                            <img src="<?=URL. '/' . $imgRandPieMedio2['ruta'] ?>" alt="<?= $banRandPieMedio2['nombre']?>">
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <?php   
+                                        if (($key = array_search($banRandPieMedio2, $banDataPieMedio)) !== false) {
+                                            unset($banDataPieMedio[$key]);
+                                        }
+                                    }
+                                    ?>
+                                <!--
                                 <div class="sns_banner1">
                                     <div class="row">
                                         <div class="col-md-6 col-sm-6">
@@ -8643,6 +8692,7 @@ var_dump($categoriasData);
                                         </div>
                                     </div>
                                 </div>
+                                -->
                                 <!-- Banner 870x110 -->
 
 
@@ -9604,24 +9654,52 @@ var_dump($categoriasData);
                                 </div>  
 
                                 <!-- Banner 425x110 -->
-                                <div class="sns_banner2">
-                                    <div class="row">
-                                        <div class="col-md-6 col-sm-6">
-                                            <div class="banner-content banner5">
-                                                <a href="#">
-                                                    <img src="<?=URL?>/assets/images/page2/banner4-page2.jpg" alt="">
-                                                </a>
+                                <?php 
+                                    if (count($banDataPieMedio)>=2) {
+                                        $banRandPieMedio3 = $banDataPieMedio[array_rand($banDataPieMedio)];
+                                        $imagenes->set("codigo",$banRandPieMedio3['cod']);
+                                        $imgRandPieMedio3 = $imagenes->view();
+                                        $banners->set("id",$banRandPieMedio3['id']);
+                                        $value=$banRandPieMedio3['vistas']+1;
+                                        $banners->set("vistas",$value);
+                                        $banners->increaseViews();
+                                        ?>
+                                        <div class="sns_banner2">
+                                            <div class="row">
+                                            <div class="col-md-6 col-sm-6">
+                                                <div class="banner-content banner5">
+                                                    <a href="<?= $banRandPieMedio3['link']?>">
+                                                                <img src="<?=URL. '/' . $imgRandPieMedio3['ruta'] ?>" alt="<?= $banRandPieMedio3['nombre']?>">
+                                                    </a>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-md-6 col-sm-6">
-                                             <div class="banner-content banner5 style-banner2">
-                                                <a href="#">
-                                                    <img src="<?=URL?>/assets/images/page2/banner5-page2.jpg" alt="">
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                         <?php
+                                         if (($key = array_search($banRandPieMedio3, $banDataPieMedio)) !== false) {
+                                             unset($banDataPieMedio[$key]);
+                                         }
+                                         $banRandPieMedio4 = $banDataPieMedio[array_rand($banDataPieMedio)];
+                                         $imagenes->set("codigo",$banRandPieMedio4['cod']);
+                                         $imgRandPieMedio4 = $imagenes->view();
+                                         $banners->set("id",$banRandPieMedio4['id']);
+                                         $value=$banRandPieMedio4['vistas']+1;
+                                         $banners->set("vistas",$value);
+                                         $banners->increaseViews();
+                                         ?>
+                                                     <div class="col-md-6 col-sm-6">
+                                                          <div class="banner-content banner5 style-banner2">
+                                                             <a href="<?= $banRandPieMedio4['link']?>">
+                                                                         <img src="<?=URL. '/' . $imgRandPieMedio4['ruta'] ?>" alt="<?= $banRandPieMedio4['nombre']?>">
+                                                             </a>
+                                                         </div>
+                                                     </div>
+                                                 </div>
+                                             </div>
+                                        <?php   
+                                    if (($key = array_search($banRandPieMedio4, $banDataPieMedio)) !== false) {
+                                        unset($banDataPieMedio[$key]);
+                                    }
+                                }
+                                ?>
                                 <!-- Banner 425x110 -->
                                 <div id="sns_slider3_page2" class="sns-slider-wraps sns_producttaps_wraps">
                                     <h3 class="precar">office chair</h3>
@@ -10588,24 +10666,52 @@ var_dump($categoriasData);
 
                         <div class="col-md-12"> 
                             <!-- Banner 570x110 -->
-                            <div class="sns_banner3">
-                                <div class="row">
-                                    <div class="col-md-6 col-sm-6">
-                                        <div class="banner-content banner5">
-                                            <a href="#">
-                                                <img src="<?=URL?>/assets/images/page2/banner6-page2.jpg" alt="">
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-sm-6">
-                                         <div class="banner-content banner5 style-banner2">
-                                            <a href="#">
-                                                <img src="<?=URL?>/assets/images/page2/banner6-page7.jpg" alt="">
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>  
+                            <?php 
+                                    if (count($banDataPieMedio)>=2) {
+                                        $banRandPieMedio5 = $banDataPieMedio[array_rand($banDataPieMedio)];
+                                        $imagenes->set("codigo",$banRandPieMedio5['cod']);
+                                        $imgRandPieMedio5 = $imagenes->view();
+                                        $banners->set("id",$banRandPieMedio5['id']);
+                                        $value=$banRandPieMedio5['vistas']+1;
+                                        $banners->set("vistas",$value);
+                                        $banners->increaseViews();
+                                        ?>
+                                        <div class="sns_banner3">
+                                            <div class="row">
+                                            <div class="col-md-6 col-sm-6">
+                                                <div class="banner-content banner5">
+                                                    <a href="<?= $banRandPieMedio5['link']?>">
+                                                        <img src="<?=URL. '/' . $imgRandPieMedio5['ruta'] ?>" alt="<?= $banRandPieMedio5['nombre']?>">
+                                                    </a>
+                                                </div>
+                                            </div>
+                                         <?php
+                                         if (($key = array_search($banRandPieMedio5, $banDataPieMedio)) !== false) {
+                                             unset($banDataPieMedio[$key]);
+                                         }
+                                         $banRandPieMedio6 = $banDataPieMedio[array_rand($banDataPieMedio)];
+                                         $imagenes->set("codigo",$banRandPieMedio6['cod']);
+                                         $imgRandPieMedio6 = $imagenes->view();
+                                         $banners->set("id",$banRandPieMedio6['id']);
+                                         $value=$banRandPieMedio6['vistas']+1;
+                                         $banners->set("vistas",$value);
+                                         $banners->increaseViews();
+                                         ?>
+                                                     <div class="col-md-6 col-sm-6">
+                                                          <div class="banner-content banner5 style-banner2">
+                                                             <a href="<?= $banRandPieMedio6['link']?>">
+                                                                <img src="<?=URL. '/' . $imgRandPieMedio6['ruta'] ?>" alt="<?= $banRandPieMedio6['nombre']?>">
+                                                             </a>
+                                                         </div>
+                                                     </div>
+                                                 </div>
+                                             </div>
+                                        <?php   
+                                    if (($key = array_search($banRandPieMedio6, $banDataPieMedio)) !== false) {
+                                        unset($banDataPieMedio[$key]);
+                                    }
+                                }
+                            ?>
                             <!-- Banner 570x110 -->
                             <div id="sns_suggest12" class="sns_suggest">
                                 <div class="block-title">
