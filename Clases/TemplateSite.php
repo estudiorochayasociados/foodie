@@ -18,20 +18,21 @@ class TemplateSite
         <html lang="es">
         <head>
            <link rel="stylesheet" href="<?=URL?>/assets/css/style.css" />
-            <link rel="stylesheet" href="<?=URL?>/assets/font/font-awesome/css/font-awesome.css">
-            <link rel="stylesheet" href="<?=URL?>/assets/css/bootstrap.min.css">
-            <link rel="stylesheet" href="<?=URL?>/assets/css/bootstrap.css">
-            <link rel="stylesheet" href="<?=URL?>/assets/js/owl-carousel/owl.carousel.css">
-            <link rel="stylesheet" href="<?=URL?>/assets/js/owl-carousel/owl.theme.css">
-            <!-- favicon -->
-            <link rel="shortcut icon" href="<?=URL?>/assets/images/favicon.ico">
-            <!-- META TAGS -->
-            <meta name="viewport" content="width=device-width" />
+           <link rel="stylesheet" href="<?=URL?>/assets/font/estilos.css">
+           <link rel="stylesheet" href="<?=URL?>/assets/font/font-awesome/css/font-awesome.css">
+           <link rel="stylesheet" href="<?=URL?>/assets/css/bootstrap.min.css">
+           <link rel="stylesheet" href="<?=URL?>/assets/css/bootstrap.css">
+           <link rel="stylesheet" href="<?=URL?>/assets/js/owl-carousel/owl.carousel.css">
+           <link rel="stylesheet" href="<?=URL?>/assets/js/owl-carousel/owl.theme.css">
+           <!-- favicon -->
+           <link rel="shortcut icon" href="<?=URL?>/assets/images/favicon.ico">
+           <!-- META TAGS -->
+           <meta name="viewport" content="width=device-width" />
 
-            <meta charset="UTF-8">
-            <title><?=$this->title?></title>
-            <meta name="description" content="<?=$this->description?>">
-            <meta name="keywords" content="<?=$this->keywords?>">
+           <meta charset="UTF-8">
+           <title><?=$this->title?></title>
+           <meta name="description" content="<?=$this->description?>">
+           <meta name="keywords" content="<?=$this->keywords?>">
         </head>
         <?php include 'assets/inc/nav.inc.php'; ?>
         <body>
