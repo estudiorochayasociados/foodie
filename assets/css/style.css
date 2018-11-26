@@ -1,6 +1,18 @@
 .cms-index-index2 h3 {
     text-transform: uppercase
 }
+.button {
+    background-color: #0000ff;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
 a:focus {
   outline: none!important;
   outline-offset: 0px!important;
@@ -12462,7 +12474,7 @@ body.eimg-translatey .products-list>li.item .col-left .item-img.have-additional:
     width: 90px!important;
     left: -1px!important;
     border: 1px solid #ddd;
-    bolder-top: 0
+  
 }
 .toolbar .limiter .select-new .select-inner .jqTransformSelectWrapper ul a {
     padding: 5px 10px;
@@ -12573,7 +12585,7 @@ body.eimg-translatey .products-list>li.item .col-left .item-img.have-additional:
     top: 100%;
     left: -1px!important;
     border: 1px solid #ddd;
-    bolder-top: 0
+   
 }
 .toolbar .sort-by .select-new .select-inner .jqTransformSelectWrapper ul a {
     padding: 5px 10px;

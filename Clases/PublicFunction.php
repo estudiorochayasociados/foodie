@@ -33,4 +33,33 @@ class PublicFunction
         var_dump($mail);
 
     }
+    public function normalizar_link($string)
+    {
+        $string = str_replace("á", "a", $string);
+        $string = str_replace("Á", "A", $string);
+        $string = str_replace("é", "e", $string);
+        $string = str_replace("É", "E", $string);
+        $string = str_replace("í", "i", $string);
+        $string = str_replace("Í", "I", $string);
+        $string = str_replace("ó", "o", $string);
+        $string = str_replace("Ó", "O", $string);
+        $string = str_replace("ú", "u", $string);
+        $string = str_replace("Ú", "U", $string);
+        $string = str_replace(" ", "-", $string);
+        $string = str_replace("!", "", $string);
+        $string = str_replace("ñ", "n", $string);
+        $string = str_replace("Ñ", "N", $string);
+        $string = str_replace("!", "", $string);
+        $string = str_replace("?", "", $string);
+        $string = str_replace("¿", "", $string);
+        $string = str_replace("¡", "", $string);
+        $string = str_replace("/", "", $string);
+        $string = str_replace(",", "", $string);
+        $string = str_replace(".", "", $string);
+        $string = strtolower($string);
+        //para ampliar los caracteres a reemplazar agregar lineas de este tipo:
+        //$string = str_replace("caracter - que - queremos - cambiar","caracter - por - el - cual - lo - vamos - a - cambiar",$string);
+        return $string;
+
+    }
 }

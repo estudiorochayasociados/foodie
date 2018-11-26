@@ -31,6 +31,8 @@ foreach($categoriasData as $valor){
         $banDataSide = $banners->listForCategory();  
     }
 }
+//Productos
+$productData = $productos->list('');
 //
 ?>
  <!-- CONTENT -->

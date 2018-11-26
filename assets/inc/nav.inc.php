@@ -1,4 +1,7 @@
-    <body id="bd" class=" cms-index-index2 header-style2 cms-simen-home-page-v2 default cmspage">
+ <?php
+ $funcionesNav = new Clases\PublicFunction();
+ ?>
+   <body id="bd" class=" cms-index-index2 header-style2 cms-simen-home-page-v2 default cmspage">
         <div id="sns_wrapper">      
             <!-- HEADER -->
             <div id="sns_header" class="wrap">
@@ -125,7 +128,7 @@
                                 <div id="sns_custommenu" class="visible-md visible-lg">
                                     <ul class="mainnav">
                                         <li class="level0 custom-item active">
-                                            <a class="menu-title-lv0 pd-menu116" href="index2.html" target="_self">
+                                            <a class="menu-title-lv0 pd-menu116" href="<?=URL . '/index' ?>" target="_self">
                                                 <span class="title">Home</span>
                                             </a>
                                         </li>
@@ -294,8 +297,9 @@
                                                 </div>
                                             </div>
                                         </li>
+
                                         <li class="level0 nav-2 no-group drop-submenu parent">
-                                            <a class=" menu-title-lv0" href="#">
+                                            <a class=" menu-title-lv0" href="<?=URL . '/listing' ?>">
                                                 <span class="title">All products</span>
                                             </a>
                                             <div class="wrap_submenu">
@@ -705,18 +709,13 @@
                                             </a>
                                         </li>
                                         <li class="level0 custom-item">
-                                            <a class="menu-title-lv0" href="blog.html">
+                                            <a class="menu-title-lv0" href="<?=URL . '/blog' ?>">
                                                 <span class="title">Blog</span>
                                             </a>
                                         </li>
                                         <li class="level0 custom-item">
-                                            <a class="menu-title-lv0" href="contact-us.html">
+                                            <a class="menu-title-lv0" href="<?=URL . '/contact' ?>">
                                                 <span class="title">Contact Us</span>
-                                            </a>
-                                        </li>
-                                        <li class="level0 custom-item">
-                                            <a class="menu-title-lv0" href="#">
-                                                <span class="title">Custom menu</span>
                                             </a>
                                         </li>
                                         </ul>
@@ -738,7 +737,7 @@
                                         <ul class="mainnav">
                                             <li class="level0 custom-item">
                                                 <div class="accr_header">
-                                                    <a class="menu-title-lv0" href="index.html">
+                                                    <a class="menu-title-lv0" href="<?=URL . '/index' ?>">
                                                         <span class="title">Home</span>
                                                     </a>
                                                 </div>
@@ -754,7 +753,7 @@
 
                                             <li class="level0 nav-6 parent">
                                                 <div class="accr_header">
-                                                    <a class=" menu-title-lv0" href="#">
+                                                    <a class=" menu-title-lv0" href="<?=URL . '/listing' ?>">
                                                         <span>All products</span>
                                                     </a>
                                                     <span class="btn_accor">

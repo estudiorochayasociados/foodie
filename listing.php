@@ -1,3 +1,40 @@
+<?php
+require_once "Config/Autoload.php";
+Config\Autoload::runSitio();
+$template = new Clases\TemplateSite();
+$funciones= new Clases\PublicFunction();
+$template->set("title", "Admin");
+$template->set("description", "Admin");
+$template->set("keywords", "Inicio");
+$template->set("favicon", LOGO);
+$template->themeInit();
+//Clases
+$productos = new Clases\Productos();
+$imagenes = new Clases\Imagenes();
+$categorias = new Clases\Categorias();
+$banners = new Clases\Banner();
+//Banners
+$categoriasData = $categorias->list('');
+foreach($categoriasData as $valor){
+    if($valor['titulo']=='Pie' && $valor['area']=='banners'){ 
+        $banners->set("categoria",$valor['cod']);
+        $banDataPie = $banners->listForCategory();
+    }
+    
+    if($valor['titulo']=='Pie 1/2' && $valor['area']=='banners'){ 
+        $banners->set("categoria",$valor['cod']);
+        $banDataPieMedio = $banners->listForCategory();
+    }
+    
+    if($valor['titulo']=='Side' && $valor['area']=='banners'){
+        $banners->set("categoria",$valor['cod']);
+        $banDataSide = $banners->listForCategory();  
+    }
+}
+//Productos
+$productData = $productos->list('');
+//
+?>
 
             <!-- CONTENT -->
             <div id="sns_content" class="wrap layout-lm">
@@ -95,7 +132,7 @@
                                                     <li style="line-height: 19px;">
                                                         <a class="swatch-link has-image" href="#">
                                                             <span class="swatch-label" style="height:15px; width:15px;">
-                                                                <img width="15" height="15" title="Red" alt="Red" src="images/shopby/color1.jpg">
+                                                                <img width="15" height="15" title="Red" alt="Red" src="<?=URL?>/assets/images/shopby/color1.jpg">
                                                                 <span>Red</span>
                                                             </span>
                                                             <span class="count">(12)</span>
@@ -104,7 +141,7 @@
                                                     <li style="line-height: 19px;">
                                                         <a class="swatch-link has-image" href="#">
                                                             <span class="swatch-label" style="height:15px; width:15px;">
-                                                                <img width="15" height="15" title="Yellow" alt="Yellow" src="images/shopby/color2.jpg">
+                                                                <img width="15" height="15" title="Yellow" alt="Yellow" src="<?=URL?>/assets/images/shopby/color2.jpg">
                                                                 <span>Yellow</span>
                                                             </span>
                                                             <span class="count">(12)</span>
@@ -113,7 +150,7 @@
                                                     <li style="line-height: 19px;">
                                                         <a class="swatch-link has-image" href="#">
                                                             <span class="swatch-label" style="height:15px; width:15px;">
-                                                                <img width="15" height="15" title="Blue" alt="Blue" src="images/shopby/color3.jpg">
+                                                                <img width="15" height="15" title="Blue" alt="Blue" src="<?=URL?>/assets/images/shopby/color3.jpg">
                                                                 <span>Blue</span>
                                                             </span>
                                                             <span class="count">(12)</span>
@@ -122,7 +159,7 @@
                                                     <li style="line-height: 19px;">
                                                         <a class="swatch-link has-image" href="#">
                                                             <span class="swatch-label" style="height:15px; width:15px;">
-                                                                <img width="15" height="15" title="Green" alt="Green" src="images/shopby/color4.jpg">
+                                                                <img width="15" height="15" title="Green" alt="Green" src="<?=URL?>/assets/images/shopby/color4.jpg">
                                                                 <span>Green</span>
                                                             </span>
                                                             <span class="count">(12)</span>
@@ -135,7 +172,7 @@
                                 </div>
                                 <div class="block block_cat">
                                     <a class="banner5" href="#">
-                                        <img src="images/banner_right.jpg" alt="">
+                                        <img src="<?=URL?>/assets/images/banner_right.jpg" alt="">
                                     </a>
                                 </div>
 
@@ -153,7 +190,7 @@
                                                             <div class="item-img clearfix">
                                                                 <a class="product-image have-additional" href="index4-detail.html" title="Modular Modern">
                                                                     <span class="img-main">
-                                                                        <img alt="" src="images/products/10.jpg">
+                                                                        <img alt="" src="<?=URL?>/assets/images/products/10.jpg">
                                                                     </span>
                                                                 </a>
                                                             </div>
@@ -187,7 +224,7 @@
                                                             <div class="item-img clearfix">
                                                                 <a class="product-image have-additional" href="index4-detail.html" title="Modular Modern">
                                                                     <span class="img-main">
-                                                                        <img alt="" src="images/products/11.jpg">
+                                                                        <img alt="" src="<?=URL?>/assets/images/products/11.jpg">
                                                                     </span>
                                                                 </a>
                                                             </div>
@@ -221,7 +258,7 @@
                                                             <div class="item-img clearfix">
                                                                 <a class="product-image have-additional" href="index4-detail.html" title="Modular Modern">
                                                                     <span class="img-main">
-                                                                        <img alt="" src="images/products/12.jpg">
+                                                                        <img alt="" src="<?=URL?>/assets/images/products/12.jpg">
                                                                     </span>
                                                                 </a>
                                                             </div>
@@ -255,7 +292,7 @@
                                                             <div class="item-img clearfix">
                                                                 <a class="product-image have-additional" href="index4-detail.html" title="Modular Modern">
                                                                     <span class="img-main">
-                                                                        <img alt="" src="images/products/13.jpg">
+                                                                        <img alt="" src="<?=URL?>/assets/images/products/13.jpg">
                                                                     </span>
                                                                 </a>
                                                             </div>
@@ -290,7 +327,7 @@
                                                             <div class="item-img clearfix">
                                                                 <a class="product-image have-additional" href="index4-detail.html" title="Modular Modern">
                                                                     <span class="img-main">
-                                                                        <img alt="" src="images/products/14.jpg">
+                                                                        <img alt="" src="<?=URL?>/assets/images/products/14.jpg">
                                                                     </span>
                                                                 </a>
                                                             </div>
@@ -324,7 +361,7 @@
                                                             <div class="item-img clearfix">
                                                                 <a class="product-image have-additional" href="index4-detail.html" title="Modular Modern">
                                                                     <span class="img-main">
-                                                                        <img alt="" src="images/products/15.jpg">
+                                                                        <img alt="" src="<?=URL?>/assets/images/products/15.jpg">
                                                                     </span>
                                                                 </a>
                                                             </div>
@@ -358,7 +395,7 @@
                                                             <div class="item-img clearfix">
                                                                 <a class="product-image have-additional" href="index4-detail.html" title="Modular Modern">
                                                                     <span class="img-main">
-                                                                        <img alt="" src="images/products/16.jpg">
+                                                                        <img alt="" src="<?=URL?>/assets/images/products/16.jpg">
                                                                     </span>
                                                                 </a>
                                                             </div>
@@ -392,7 +429,7 @@
                                                             <div class="item-img clearfix">
                                                                 <a class="product-image have-additional" href="index4-detail.html" title="Modular Modern">
                                                                     <span class="img-main">
-                                                                        <img alt="" src="images/products/17.jpg">
+                                                                        <img alt="" src="<?=URL?>/assets/images/products/17.jpg">
                                                                     </span>
                                                                 </a>
                                                             </div>
@@ -427,7 +464,7 @@
                                                             <div class="item-img clearfix">
                                                                 <a class="product-image have-additional" href="index4-detail.html" title="Modular Modern">
                                                                     <span class="img-main">
-                                                                        <img alt="" src="images/products/18.jpg">
+                                                                        <img alt="" src="<?=URL?>/assets/images/products/18.jpg">
                                                                     </span>
                                                                 </a>
                                                             </div>
@@ -461,7 +498,7 @@
                                                             <div class="item-img clearfix">
                                                                 <a class="product-image have-additional" href="index4-detail.html" title="Modular Modern">
                                                                     <span class="img-main">
-                                                                        <img alt="" src="images/products/19.jpg">
+                                                                        <img alt="" src="<?=URL?>/assets/images/products/19.jpg">
                                                                     </span>
                                                                 </a>
                                                             </div>
@@ -495,7 +532,7 @@
                                                             <div class="item-img clearfix">
                                                                 <a class="product-image have-additional" href="index4-detail.html" title="Modular Modern">
                                                                     <span class="img-main">
-                                                                        <img alt="" src="images/products/20.jpg">
+                                                                        <img alt="" src="<?=URL?>/assets/images/products/20.jpg">
                                                                     </span>
                                                                 </a>
                                                             </div>
@@ -529,7 +566,7 @@
                                                             <div class="item-img clearfix">
                                                                 <a class="product-image have-additional" href="index4-detail.html" title="Modular Modern">
                                                                     <span class="img-main">
-                                                                        <img alt="" src="images/products/21.jpg">
+                                                                        <img alt="" src="<?=URL?>/assets/images/products/21.jpg">
                                                                     </span>
                                                                 </a>
                                                             </div>
@@ -575,7 +612,7 @@
                                  <div class="category-cms-block"></div>
                                  <p class="category-image banner5">
                                     <a href="#">
-                                        <img src="images/banner-grid.jpg" alt="">
+                                        <img src="<?=URL?>/assets/images/banner-grid.jpg" alt="">
                                     </a>
                                 </p>
 
@@ -692,7 +729,7 @@
                                                                 title="Modular Modern"
                                                                 href="index4-detail.html">
                                                                 <span class="img-main">
-                                                               <img src="images/products/1.jpg" alt="">
+                                                               <img src="<?=URL?>/assets/images/products/1.jpg" alt="">
                                                                 </span>
                                                              </a>
                                                          </div>
@@ -762,7 +799,7 @@
                                                                 title="Modular Modern"
                                                                 href="index4-detail.html">
                                                                 <span class="img-main">
-                                                               <img src="images/products/2.jpg" alt="">
+                                                               <img src="<?=URL?>/assets/images/products/2.jpg" alt="">
                                                                 </span>
                                                              </a>
                                                          </div>
@@ -834,7 +871,7 @@
                                                                 title="Modular Modern"
                                                                 href="index4-detail.html">
                                                                 <span class="img-main">
-                                                               <img src="images/products/3.jpg" alt="">
+                                                               <img src="<?=URL?>/assets/images/products/3.jpg" alt="">
                                                                 </span>
                                                              </a>
                                                          </div>
@@ -904,7 +941,7 @@
                                                                 title="Modular Modern"
                                                                 href="index4-detail.html">
                                                                 <span class="img-main">
-                                                               <img src="images/products/4.jpg" alt="">
+                                                               <img src="<?=URL?>/assets/images/products/4.jpg" alt="">
                                                                 </span>
                                                              </a>
                                                          </div>
@@ -974,7 +1011,7 @@
                                                                 title="Modular Modern"
                                                                 href="index4-detail.html">
                                                                 <span class="img-main">
-                                                               <img src="images/products/5.jpg" alt="">
+                                                               <img src="<?=URL?>/assets/images/products/5.jpg" alt="">
                                                                 </span>
                                                              </a>
                                                          </div>
@@ -1044,7 +1081,7 @@
                                                                 title="Modular Modern"
                                                                 href="index4-detail.html">
                                                                 <span class="img-main">
-                                                               <img src="images/products/6.jpg" alt="">
+                                                               <img src="<?=URL?>/assets/images/products/6.jpg" alt="">
                                                                 </span>
                                                              </a>
                                                          </div>
@@ -1116,7 +1153,7 @@
                                                                 title="Modular Modern"
                                                                 href="index4-detail.html">
                                                                 <span class="img-main">
-                                                               <img src="images/products/7.jpg" alt="">
+                                                               <img src="<?=URL?>/assets/images/products/7.jpg" alt="">
                                                                 </span>
                                                              </a>
                                                          </div>
@@ -1186,7 +1223,7 @@
                                                                 title="Modular Modern"
                                                                 href="index4-detail.html">
                                                                 <span class="img-main">
-                                                               <img src="images/products/8.jpg" alt="">
+                                                               <img src="<?=URL?>/assets/images/products/8.jpg" alt="">
                                                                 </span>
                                                              </a>
                                                          </div>
@@ -1259,7 +1296,7 @@
                                                                 title="Modular Modern"
                                                                 href="index4-detail.html">
                                                                 <span class="img-main">
-                                                               <img src="images/products/9.jpg" alt="">
+                                                               <img src="<?=URL?>/assets/images/products/9.jpg" alt="">
                                                                 </span>
                                                              </a>
                                                          </div>
@@ -1329,7 +1366,7 @@
                                                                 title="Modular Modern"
                                                                 href="index4-detail.html">
                                                                 <span class="img-main">
-                                                               <img src="images/products/10.jpg" alt="">
+                                                               <img src="<?=URL?>/assets/images/products/10.jpg" alt="">
                                                                 </span>
                                                              </a>
                                                          </div>
@@ -1401,7 +1438,7 @@
                                                                 title="Modular Modern"
                                                                 href="index4-detail.html">
                                                                 <span class="img-main">
-                                                               <img src="images/products/11.jpg" alt="">
+                                                               <img src="<?=URL?>/assets/images/products/11.jpg" alt="">
                                                                 </span>
                                                              </a>
                                                          </div>
@@ -1471,7 +1508,7 @@
                                                                 title="Modular Modern"
                                                                 href="index4-detail.html">
                                                                 <span class="img-main">
-                                                               <img src="images/products/12.jpg" alt="">
+                                                               <img src="<?=URL?>/assets/images/products/12.jpg" alt="">
                                                                 </span>
                                                              </a>
                                                          </div>
@@ -1544,7 +1581,7 @@
                                                                 title="Modular Modern"
                                                                 href="index4-detail.html">
                                                                 <span class="img-main">
-                                                               <img src="images/products/25.jpg" alt="">
+                                                               <img src="<?=URL?>/assets/images/products/25.jpg" alt="">
                                                                 </span>
                                                              </a>
                                                          </div>
@@ -1614,7 +1651,7 @@
                                                                 title="Modular Modern"
                                                                 href="index4-detail.html">
                                                                 <span class="img-main">
-                                                               <img src="images/products/14.jpg" alt="">
+                                                               <img src="<?=URL?>/assets/images/products/14.jpg" alt="">
                                                                 </span>
                                                              </a>
                                                          </div>
@@ -1684,7 +1721,7 @@
                                                                 title="Modular Modern"
                                                                 href="index4-detail.html">
                                                                 <span class="img-main">
-                                                               <img src="images/products/15.jpg" alt="">
+                                                               <img src="<?=URL?>/assets/images/products/15.jpg" alt="">
                                                                 </span>
                                                              </a>
                                                          </div>
@@ -1754,7 +1791,7 @@
                                                                 title="Modular Modern"
                                                                 href="index4-detail.html">
                                                                 <span class="img-main">
-                                                               <img src="images/products/16.jpg" alt="">
+                                                               <img src="<?=URL?>/assets/images/products/16.jpg" alt="">
                                                                 </span>
                                                              </a>
                                                          </div>
@@ -1827,7 +1864,7 @@
                                                                 title="Modular Modern"
                                                                 href="index4-detail.html">
                                                                 <span class="img-main">
-                                                               <img src="images/products/17.jpg" alt="">
+                                                               <img src="<?=URL?>/assets/images/products/17.jpg" alt="">
                                                                 </span>
                                                              </a>
                                                          </div>
@@ -1897,7 +1934,7 @@
                                                                 title="Modular Modern"
                                                                 href="index4-detail.html">
                                                                 <span class="img-main">
-                                                               <img src="images/products/18.jpg" alt="">
+                                                               <img src="<?=URL?>/assets/images/products/18.jpg" alt="">
                                                                 </span>
                                                              </a>
                                                          </div>
@@ -1967,7 +2004,7 @@
                                                                 title="Modular Modern"
                                                                 href="index4-detail.html">
                                                                 <span class="img-main">
-                                                               <img src="images/products/19.jpg" alt="">
+                                                               <img src="<?=URL?>/assets/images/products/19.jpg" alt="">
                                                                 </span>
                                                              </a>
                                                          </div>
@@ -2037,7 +2074,7 @@
                                                                 title="Modular Modern"
                                                                 href="index4-detail.html">
                                                                 <span class="img-main">
-                                                               <img src="images/products/20.jpg" alt="">
+                                                               <img src="<?=URL?>/assets/images/products/20.jpg" alt="">
                                                                 </span>
                                                              </a>
                                                          </div>
@@ -2140,3 +2177,7 @@
                 </div>
             </div>
             <!-- AND CONTENT -->
+
+<?php
+$template->themeEnd();
+?>

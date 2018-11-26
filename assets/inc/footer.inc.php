@@ -6,32 +6,32 @@
                             <div id="partners_slider1" class="our_partners owl-carousel owl-theme owl-loaded" style="display: inline-block">
                                 <div class="item">
                                     <a class="banner11" href="#" target="_blank">
-                                        <img alt="" src="images/brands/1.png">
+                                        <img alt="" src="<?=URL?>/assets/images/brands/1.png">
                                     </a>
                                 </div>
                                 <div class="item">
                                     <a class="banner11" href="#" target="_blank">
-                                        <img alt="" src="images/brands/2.png">
+                                        <img alt="" src="<?=URL?>/assets/images/brands/2.png">
                                     </a>
                                 </div>
                                 <div class="item">
                                     <a class="banner11" href="#" target="_blank">
-                                        <img alt="" src="images/brands/3.png">
+                                        <img alt="" src="<?=URL?>/assets/images/brands/3.png">
                                     </a>
                                 </div>
                                 <div class="item">
                                     <a class="banner11" href="#" target="_blank">
-                                        <img alt="" src="images/brands/4.png">
+                                        <img alt="" src="<?=URL?>/assets/images/brands/4.png">
                                     </a>
                                 </div>
                                 <div class="item">
                                     <a class="banner11" href="#" target="_blank">
-                                        <img alt="" src="images/brands/5.png">
+                                        <img alt="" src="<?=URL?>/assets/images/brands/5.png">
                                     </a>
                                 </div>
                                 <div class="item">
                                     <a class="banner11" href="#" target="_blank">
-                                        <img alt="" src="images/brands/6.png">
+                                        <img alt="" src="<?=URL?>/assets/images/brands/6.png">
                                     </a>
                                 </div>
                             </div>
@@ -175,7 +175,7 @@
                             </div>
                             <div class="bottom-pd2 col-sm-6">
                                 <div class="payment">
-                                    <img src="images/sns_paymal.png" alt="">
+                                    <img src="<?=URL?>/assets/images/sns_paymal.png" alt="">
                                 </div>
                             </div>
                         </div>
