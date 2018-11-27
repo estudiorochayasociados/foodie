@@ -8,7 +8,7 @@ $borrarImg = $funciones->antihack_mysqli(isset($_GET["borrarImg"]) ? $_GET["borr
 
 $productos->set("cod", $cod);
 $producto = $productos->view();
-$imagenes->set("cod", $producto["cod"]);
+$imagenes->set("codigo", $producto["cod"]);
 $imagenes->set("link", "productos&accion=modificar");
 
 $categorias = new Clases\Categorias();
@@ -63,7 +63,7 @@ if (isset($_POST["agregar"])) {
                 unlink($destinoFinal);
             }
 
-            $imagenes->set("cod", $cod);
+            $imagenes->set("codigo", $cod);
             $imagenes->set("ruta", str_replace("../", "", $destinoRecortado));
             $imagenes->add();
         }
@@ -131,16 +131,6 @@ if (isset($_POST["agregar"])) {
         </div>
     </div>
     <br/>
-    <div class="col-md-12">
-        <div class="row">
-            <?php
-$imagenes->imagenesAdmin();
-?>
-        </div>
-    </div>
-    <label class="col-md-7">Imágenes:<br/>
-        <input type="file" id="file" name="files[]" multiple="multiple" accept="image/*" />
-    </label>
     <div class="clearfix"><br/></div>
     <div class="col-md-12">
         <input type="submit" class="btn btn-primary" name="agregar" value="Modificar Productos" />

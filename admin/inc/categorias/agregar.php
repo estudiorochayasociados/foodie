@@ -58,13 +58,11 @@ if (isset($_POST["agregar"])) {
                 <option value="" disabled selected>-- categorías --</option>
                 <option value="novedades">Novedades</option>
                 <option value="banners">Banners</option>
+                <option value="productos">Productos</option>
+                <option value="sliders">Sliders</option>
             </select>
         </label> 
         <div class="clearfix"></div>
-        <label class="col-md-7">
-            Icono (Solos para novedades):<br/>
-            <input type="file" id="file" name="files[]" accept="image/*" />
-        </label>
         <br/>
         <div class="col-md-12">
             <input type="submit" class="btn btn-primary" name="agregar" value="Crear Categoría" />

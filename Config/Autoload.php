@@ -6,7 +6,7 @@ class autoload
     public static function runSitio()
     {
         session_start();
-        define('URL', "http://".$_SERVER['HTTP_HOST']."/joa/cms-joa");
+        define('URL', "http://".$_SERVER['HTTP_HOST']."/cms-joa");
         define('CANONICAL', "http://".$_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"]);
         define('TITULO', "Pintureria Ariel");
         define('TELEFONO', "5555555");
@@ -30,8 +30,8 @@ class autoload
     public static function runAdmin()
     {
         session_start();
-        define('URLSITE',"http://".$_SERVER['HTTP_HOST']."/joa/cms-joa/admin");
-        define('URL', "http://".$_SERVER['HTTP_HOST']."/joa/cms-joa/admin");
+        define('URLSITE',"http://".$_SERVER['HTTP_HOST']."/cms-joa/admin");
+        define('URL', "http://".$_SERVER['HTTP_HOST']."/cms-joa/admin");
         require_once "../Clases/Zebra_Image.php";
         spl_autoload_register(
             function ($clase)

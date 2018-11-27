@@ -75,4 +75,16 @@ class Categorias
             return $array;
         }
     }
+
+    function listForArea() {
+        $array = array();
+        $sql = "SELECT * FROM `categorias` WHERE area = '{$this->area}'  ORDER BY id DESC";
+        $notas = $this->con->sqlReturn($sql);
+        if ($notas) {
+            while ($row = mysqli_fetch_assoc($notas)) {
+                $array[] = $row;
+            }
+            return $array;
+        }
+    }
 }
