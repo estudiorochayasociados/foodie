@@ -87,4 +87,21 @@ class Categorias
             return $array;
         }
     }
+
+    function listForSearch($limit) {
+        $array = array();
+        if ($limit != '') {
+            $limitSql = "LIMIT " . $limit;
+        } else {
+            $limitSql = '';
+        }
+        $sql = " SELECT categorias.titulo,categorias.cod, count(categoria) FROM `productos`,`categorias` WHERE `categoria` = categorias.cod GROUP BY categoria ORDER BY `count(categoria)` DESC  $limitSql";
+         $notas = $this->con->sqlReturn($sql);
+        if ($notas) {
+            while ($row = mysqli_fetch_assoc($notas)) {
+                $array[] = $row;
+            }
+            return $array ;
+        } 
+    }
 }

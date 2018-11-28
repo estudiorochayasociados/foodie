@@ -299,8 +299,8 @@
                                         </li>
 
                                         <li class="level0 nav-2 no-group drop-submenu parent">
-                                            <a class=" menu-title-lv0" href="<?=URL . '/listing' ?>">
-                                                <span class="title">All products</span>
+                                            <a class=" menu-title-lv0" href="<?=URL . '/productos' ?>">
+                                                <span class="title">Todos los productos</span>
                                             </a>
                                             <div class="wrap_submenu">
                                                 <ul class="level0">
@@ -738,7 +738,7 @@
                                             <li class="level0 custom-item">
                                                 <div class="accr_header">
                                                     <a class="menu-title-lv0" href="<?=URL . '/index' ?>">
-                                                        <span class="title">Home</span>
+                                                        <span class="title">Inicio</span>
                                                     </a>
                                                 </div>
                                             </li>

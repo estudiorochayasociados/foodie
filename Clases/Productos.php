@@ -76,7 +76,7 @@ class Productos
 
     public function view()
     {
-        $sql   = "SELECT * FROM `productos` WHERE cod = '{$this->cod}' ORDER BY id DESC";
+        $sql   = "SELECT * FROM `productos` WHERE id = '{$this->id}' ||  cod = '{$this->cod}' ORDER BY id DESC";
         $notas = $this->con->sqlReturn($sql);
         $row   = mysqli_fetch_assoc($notas);
         return $row;
@@ -133,4 +133,18 @@ class Productos
         } 
     }
 
+    function paginador($filter,$cantidad) {
+        $array = array();
+        if (is_array($filter)) {
+            $filterSql = "WHERE ";
+            $filterSql .= implode(" AND ", $filter);
+        } else {
+            $filterSql = '';
+        }
+        $sql = "SELECT * FROM `productos` $filterSql";
+        $contar = $this->con->sqlReturn($sql);
+        $total = mysqli_num_rows($contar);
+        $totalPaginas = $total / $cantidad;
+        return floor($totalPaginas);       
+    }
 }

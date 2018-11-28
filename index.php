@@ -34,7 +34,10 @@ foreach($categoriasData as $valor){
 //Productos
 $categorias->set("area","productos");
 $categoriasParaProductos= $categorias->listForArea();
-$productData = $productos->listWithOps('','','');
+$productDataCenter1 = $productos->listWithOps('','','');
+$productDataCenter2 = $productos->listWithOps('','','');
+$productDataCenter3 = $productos->listWithOps('','','');
+$productDataCenter4 = $productos->listWithOps('','','');
 $productDataSide = $productos->listWithOps('','','4');
 //
 ?>
@@ -56,7 +59,7 @@ $productDataSide = $productos->listWithOps('','','4');
                                                 $nro = 1;
                                                 foreach ($categoriasParaProductos as $catList) {
                                                 ?>
-                                                    <li><span><?=$nro?></span><a href="#"><?=$catList['titulo']?></a></li>
+                                                    <li><span><?=$nro?></span><a href="#"><?=ucfirst($catList['titulo'])?></a></li>
                                                 <?php
                                                     $nro++;
                                                     if ($nro>12) {
@@ -91,7 +94,7 @@ $productDataSide = $productos->listWithOps('','','4');
                                 <!-- Productos random -->
                                 <div class="block bestsale">
                                     <div class="title">
-                                        <h3>Productos</h3>
+                                        <h3>Recomendados</h3>
                                     </div>
                                     <div class="content">
                                         <div class="products-slider12  owl-theme" style="display: inline-block">
@@ -120,7 +123,7 @@ $productDataSide = $productos->listWithOps('','','4');
                                                             <div class="item-info">
                                                                 <div class="info-inner">
                                                                     <div class="item-title">
-                                                                        <a href="<?php echo URL . '/producto/' . $funciones->normalizar_link($proRandSide['titulo']) . "/" . $proRandSide['id'] ?>"> <?= $proRandSide['titulo'] ?> </a>
+                                                                        <a href="<?php echo URL . '/producto/' . $funciones->normalizar_link($proRandSide['titulo']) . "/" . $proRandSide['id'] ?>"> <?= ucfirst($proRandSide['titulo']) ?> </a>
                                                                     </div>
                                                                     <div class="item-price">
                                                                         <span class="price">
@@ -264,7 +267,9 @@ $productDataSide = $productos->listWithOps('','','4');
                                         <div  class="taps-slider1 products-grid row style_grid owl-carousel owl-theme owl-loaded">
                                             <div class="taps-slider">
                                             <?php
-                                                foreach($productData as $productosCenter1){
+                                                $cont=0;
+                                                foreach($productDataCenter1 as $productosCenter1){
+                                                    if ($cont<4) {
                                                     $imagenes->set("codigo",$productosCenter1['cod']);
                                                     $imgProCenter1 = $imagenes->view();    
                                                 ?>
@@ -284,7 +289,7 @@ $productDataSide = $productos->listWithOps('','','4');
                                                                      <div class="item-title">
                                                                          <a
                                                                             href="<?php echo URL . '/producto/' . $funciones->normalizar_link($productosCenter1['titulo']) . "/" . $productosCenter1['id'] ?>"> 
-                                                                             <?= $productosCenter1['titulo'] ?> </a>
+                                                                             <?= ucfirst($productosCenter1['titulo']) ?> </a>
                                                                      </div>
                                                                      <div class="item-price">
                                                                          <div class="price-box">
@@ -323,12 +328,81 @@ $productDataSide = $productos->listWithOps('','','4');
                                                      </div>
                                                  </div>
                                                 <?php
+                                                $cont++;
+                                                if (($key = array_search($productosCenter1, $productDataCenter1)) !== false) {
+                                                    unset($productDataCenter1[$key]);
+                                                }
+                                                }
                                                 }
                                                 ?>
                                              </div>
-
                                              <div class="taps-slider">
-                                            
+                                             <?php
+                                                $cont=0;
+                                                foreach($productDataCenter1 as $productosCenter1){
+                                                    if ($cont<4) {
+                                                    $imagenes->set("codigo",$productosCenter1['cod']);
+                                                    $imgProCenter1 = $imagenes->view();    
+                                                ?>
+                                                    <div class="item col-lg-3 col-md-4 col-sm-4 col-xs-6 col-phone-12">
+                                                     <div class="item-inner">
+                                                         <div class="prd">
+                                                             <div class="item-img clearfix">
+                                                                 <a class="product-image have-additional"
+                                                                    href="<?php echo URL . '/producto/' . $funciones->normalizar_link($productosCenter1['titulo']) . "/" . $productosCenter1['id'] ?>"> 
+                                                                    <span class="img-main">
+                                                                   <img src="<?= URL. '/' . $imgProCenter1['ruta'] ?>" alt="">
+                                                                    </span>
+                                                                 </a>
+                                                             </div>
+                                                             <div class="item-info">
+                                                                 <div class="info-inner">
+                                                                     <div class="item-title">
+                                                                         <a
+                                                                            href="<?php echo URL . '/producto/' . $funciones->normalizar_link($productosCenter1['titulo']) . "/" . $productosCenter1['id'] ?>"> 
+                                                                             <?= ucfirst($productosCenter1['titulo']) ?> </a>
+                                                                     </div>
+                                                                     <div class="item-price">
+                                                                         <div class="price-box">
+                                                                    <span class="regular-price">
+                                                                        <span class="price">
+                                                                            <span class="price1">$ <?= $productosCenter1['precio'] ?></span>
+                                                                            <!--<span class="price2">$ 600.00</span>-->
+                                                                        </span>
+                                                                    </span>
+                                                                         </div>
+                                                                     </div>
+                                                                 </div>
+                                                             </div>
+                                                             <div class="action-bot">
+                                                                 <div class="wrap-addtocart">
+                                                                     <button class="btn-cart"
+                                                                             >
+                                                                         <i class="fa fa-shopping-cart"></i>
+                                                                         <span>Añadir</span>
+                                                                     </button>
+                                                                 </div>
+                                                                 <div class="actions">
+                                                                     <ul class="add-to-links">
+                                                                         <li class="wrap-quickview" data-id="qv_item_7">
+                                                                             <div class="quickview-wrap">
+                                                                                 <a class="sns-btn-quickview qv_btn"
+                                                                                    href="<?php echo URL . '/producto/' . $funciones->normalizar_link($productosCenter1['titulo']) . "/" . $productosCenter1['id'] ?>">
+                                                                                     <i class="fa fa-eye"></i>
+                                                                                 </a>
+                                                                             </div>
+                                                                         </li>
+                                                                     </ul>
+                                                                 </div>
+                                                             </div>
+                                                         </div>
+                                                     </div>
+                                                 </div>
+                                                <?php
+                                                $cont++;
+                                                }
+                                                }
+                                                ?>
                                              </div>
                                         </div>
                                     </div>
@@ -368,7 +442,9 @@ $productDataSide = $productos->listWithOps('','','4');
                                         <div  class="taps-slider1 products-grid row style_grid owl-carousel owl-theme owl-loaded">
                                             <div class="taps-slider">
                                             <?php
-                                                foreach($productData as $productosCenter2){
+                                                $cont=0;
+                                                foreach($productDataCenter2 as $productosCenter2){
+                                                    if ($cont<4) {
                                                     $imagenes->set("codigo",$productosCenter2['cod']);
                                                     $imgProCenter2 = $imagenes->view();    
                                                 ?>
@@ -390,7 +466,7 @@ $productDataSide = $productos->listWithOps('','','4');
                                                                      <div class="item-title">
                                                                          <a title="Modular Modern"
                                                                             href="<?php echo URL . '/producto/' . $funciones->normalizar_link($productosCenter2['titulo']) . "/" . $productosCenter2['id'] ?>">
-                                                                            <?= $productosCenter2['titulo'] ?> </a>
+                                                                            <?= ucfirst($productosCenter2['titulo']) ?> </a>
                                                                      </div>
                                                                      <div class="item-price">
                                                                          <div class="price-box">
@@ -428,12 +504,83 @@ $productDataSide = $productos->listWithOps('','','4');
                                                      </div>
                                                  </div>
                                                 <?php
+                                                $cont++;
+                                                if (($key = array_search($productosCenter2, $productDataCenter2)) !== false) {
+                                                    unset($productDataCenter2[$key]);
+                                                }
+                                                }
                                                 }
                                                 ?>
                                              </div>
 
                                              <div class="taps-slider">
-                                             
+                                            <?php
+                                             $cont=0;
+                                                foreach($productDataCenter2 as $productosCenter2){
+                                                    if ($cont<4) {
+                                                    $imagenes->set("codigo",$productosCenter2['cod']);
+                                                    $imgProCenter2 = $imagenes->view();    
+                                                ?>
+                                                    <div class="item col-lg-3 col-md-4 col-sm-4 col-xs-6 col-phone-12">
+                                                     <div class="item-inner">
+                                                         <div class="prd">
+                                                             <div class="item-img clearfix">
+                                                                 
+                                                                 <a class="product-image have-additional"
+                                                                    title="Modular Modern"
+                                                                    href="<?php echo URL . '/producto/' . $funciones->normalizar_link($productosCenter2['titulo']) . "/" . $productosCenter2['id'] ?>">
+                                                                    <span class="img-main">
+                                                                   <img src="<?= URL. '/' . $imgProCenter2['ruta'] ?>" alt="">
+                                                                    </span>
+                                                                 </a>
+                                                             </div>
+                                                             <div class="item-info">
+                                                                 <div class="info-inner">
+                                                                     <div class="item-title">
+                                                                         <a title="Modular Modern"
+                                                                            href="<?php echo URL . '/producto/' . $funciones->normalizar_link($productosCenter2['titulo']) . "/" . $productosCenter2['id'] ?>">
+                                                                            <?= ucfirst($productosCenter2['titulo']) ?> </a>
+                                                                     </div>
+                                                                     <div class="item-price">
+                                                                         <div class="price-box">
+                                                                    <span class="regular-price">
+                                                                        <span class="price">
+                                                                            <span class="price1">$ <?= $productosCenter2['precio'] ?></span>
+                                                                        </span>
+                                                                    </span>
+                                                                         </div>
+                                                                     </div>
+                                                                 </div>
+                                                             </div>
+                                                             <div class="action-bot">
+                                                                 <div class="wrap-addtocart">
+                                                                     <button class="btn-cart"
+                                                                             >
+                                                                         <i class="fa fa-shopping-cart"></i>
+                                                                         <span>Añadir</span>
+                                                                     </button>
+                                                                 </div>
+                                                                 <div class="actions">
+                                                                     <ul class="add-to-links">
+                                                                         <li class="wrap-quickview" data-id="qv_item_7">
+                                                                             <div class="quickview-wrap">
+                                                                                 <a class="sns-btn-quickview qv_btn"
+                                                                                    href="<?php echo URL . '/producto/' . $funciones->normalizar_link($productosCenter2['titulo']) . "/" . $productosCenter2['id'] ?>"">
+                                                                                     <i class="fa fa-eye"></i>
+                                                                                 </a>
+                                                                             </div>
+                                                                         </li>
+                                                                     </ul>
+                                                                 </div>
+                                                             </div>
+                                                         </div>
+                                                     </div>
+                                                 </div>
+                                                <?php
+                                                $cont++;
+                                                }
+                                                }
+                                                ?>
                                              </div>
                                         </div>
                                     </div>
@@ -521,7 +668,9 @@ $productDataSide = $productos->listWithOps('','','4');
                                         <div  class="taps-slider1 products-grid row style_grid owl-carousel owl-theme owl-loaded">
                                             <div class="taps-slider">
                                             <?php
-                                                foreach($productData as $productosCenter3){
+                                                $cont=0;
+                                                foreach($productDataCenter3 as $productosCenter3){
+                                                    if ($cont<4) {
                                                     $imagenes->set("codigo",$productosCenter3['cod']);
                                                     $imgProCenter3 = $imagenes->view();    
                                                 ?>
@@ -543,7 +692,7 @@ $productDataSide = $productos->listWithOps('','','4');
                                                                      <div class="item-title">
                                                                          <a title="Modular Modern"
                                                                             href="<?php echo URL . '/producto/' . $funciones->normalizar_link($productosCenter3['titulo']) . "/" . $productosCenter3['id'] ?>">
-                                                                            <?= $productosCenter3['titulo'] ?> </a>
+                                                                            <?= ucfirst($productosCenter3['titulo']) ?> </a>
                                                                      </div>
                                                                      <div class="item-price">
                                                                          <div class="price-box">
@@ -581,12 +730,83 @@ $productDataSide = $productos->listWithOps('','','4');
                                                      </div>
                                                  </div>
                                                 <?php
+                                                $cont++;
+                                                if (($key = array_search($productosCenter3, $productDataCenter3)) !== false) {
+                                                    unset($productDataCenter3[$key]);
+                                                }
+                                                }
                                                 }
                                                 ?>
                                              </div>
 
                                              <div class="taps-slider">
-                                             
+                                             <?php
+                                                $cont=0;
+                                                foreach($productDataCenter3 as $productosCenter3){
+                                                    if ($cont<4) {
+                                                    $imagenes->set("codigo",$productosCenter3['cod']);
+                                                    $imgProCenter3 = $imagenes->view();    
+                                                ?>
+                                                    <div class="item col-lg-3 col-md-4 col-sm-4 col-xs-6 col-phone-12">
+                                                     <div class="item-inner">
+                                                         <div class="prd">
+                                                             <div class="item-img clearfix">
+                                                                 
+                                                                 <a class="product-image have-additional"
+                                                                    title="Modular Modern"
+                                                                    href="<?php echo URL . '/producto/' . $funciones->normalizar_link($productosCenter3['titulo']) . "/" . $productosCenter3['id'] ?>">
+                                                                    <span class="img-main">
+                                                                   <img src="<?= URL. '/' . $imgProCenter3['ruta'] ?>" alt="">
+                                                                    </span>
+                                                                 </a>
+                                                             </div>
+                                                             <div class="item-info">
+                                                                 <div class="info-inner">
+                                                                     <div class="item-title">
+                                                                         <a title="Modular Modern"
+                                                                            href="<?php echo URL . '/producto/' . $funciones->normalizar_link($productosCenter3['titulo']) . "/" . $productosCenter3['id'] ?>">
+                                                                            <?= ucfirst($productosCenter3['titulo']) ?> </a>
+                                                                     </div>
+                                                                     <div class="item-price">
+                                                                         <div class="price-box">
+                                                                    <span class="regular-price">
+                                                                        <span class="price">
+                                                                            <span class="price1">$ <?= $productosCenter3['precio'] ?></span>
+                                                                        </span>
+                                                                    </span>
+                                                                         </div>
+                                                                     </div>
+                                                                 </div>
+                                                             </div>
+                                                             <div class="action-bot">
+                                                                 <div class="wrap-addtocart">
+                                                                     <button class="btn-cart"
+                                                                             >
+                                                                         <i class="fa fa-shopping-cart"></i>
+                                                                         <span>Añadir</span>
+                                                                     </button>
+                                                                 </div>
+                                                                 <div class="actions">
+                                                                     <ul class="add-to-links">
+                                                                         <li class="wrap-quickview" data-id="qv_item_7">
+                                                                             <div class="quickview-wrap">
+                                                                                 <a class="sns-btn-quickview qv_btn"
+                                                                                    href="<?php echo URL . '/producto/' . $funciones->normalizar_link($productosCenter3['titulo']) . "/" . $productosCenter3['id'] ?>"">
+                                                                                     <i class="fa fa-eye"></i>
+                                                                                 </a>
+                                                                             </div>
+                                                                         </li>
+                                                                     </ul>
+                                                                 </div>
+                                                             </div>
+                                                         </div>
+                                                     </div>
+                                                 </div>
+                                                <?php
+                                                $cont++;
+                                                }
+                                                }
+                                                ?>
                                              </div>
                                         </div>
                                     </div>
@@ -650,7 +870,9 @@ $productDataSide = $productos->listWithOps('','','4');
                                         <div  class="taps-slider1 products-grid row style_grid owl-carousel owl-theme owl-loaded">
                                             <div class="taps-slider">
                                             <?php
-                                                foreach($productData as $productosCenter4){
+                                                $cont=0;
+                                                foreach($productDataCenter4 as $productosCenter4){
+                                                    if ($cont<4) {
                                                     $imagenes->set("codigo",$productosCenter4['cod']);
                                                     $imgProCenter4 = $imagenes->view();    
                                                 ?>
@@ -672,7 +894,7 @@ $productDataSide = $productos->listWithOps('','','4');
                                                                      <div class="item-title">
                                                                          <a title="Modular Modern"
                                                                             href="<?php echo URL . '/producto/' . $funciones->normalizar_link($productosCenter4['titulo']) . "/" . $productosCenter4['id'] ?>">
-                                                                            <?= $productosCenter4['titulo'] ?> </a>
+                                                                            <?= ucfirst($productosCenter4['titulo']) ?> </a>
                                                                      </div>
                                                                      <div class="item-price">
                                                                          <div class="price-box">
@@ -710,12 +932,86 @@ $productDataSide = $productos->listWithOps('','','4');
                                                      </div>
                                                  </div>
                                                 <?php
+                                                $cont++;
+                                                if (($key = array_search($productosCenter4, $productDataCenter4)) !== false) {
+                                                    unset($productDataCenter4[$key]);
+                                                }
+                                                }
                                                 }
                                                 ?>
                                              </div>
 
                                              <div class="taps-slider">
-                                             
+                                             <?php
+                                                $cont=0;
+                                                foreach($productDataCenter4 as $productosCenter4){
+                                                    if ($cont<4) {
+                                                    $imagenes->set("codigo",$productosCenter4['cod']);
+                                                    $imgProCenter4 = $imagenes->view();    
+                                                ?>
+                                                    <div class="item col-lg-3 col-md-4 col-sm-4 col-xs-6 col-phone-12">
+                                                     <div class="item-inner">
+                                                         <div class="prd">
+                                                             <div class="item-img clearfix">
+                                                                 
+                                                                 <a class="product-image have-additional"
+                                                                    title="Modular Modern"
+                                                                    href="<?php echo URL . '/producto/' . $funciones->normalizar_link($productosCenter4['titulo']) . "/" . $productosCenter4['id'] ?>">
+                                                                    <span class="img-main">
+                                                                   <img src="<?= URL. '/' . $imgProCenter4['ruta'] ?>" alt="">
+                                                                    </span>
+                                                                 </a>
+                                                             </div>
+                                                             <div class="item-info">
+                                                                 <div class="info-inner">
+                                                                     <div class="item-title">
+                                                                         <a title="Modular Modern"
+                                                                            href="<?php echo URL . '/producto/' . $funciones->normalizar_link($productosCenter4['titulo']) . "/" . $productosCenter4['id'] ?>">
+                                                                            <?= ucfirst($productosCenter4['titulo']) ?> </a>
+                                                                     </div>
+                                                                     <div class="item-price">
+                                                                         <div class="price-box">
+                                                                    <span class="regular-price">
+                                                                        <span class="price">
+                                                                            <span class="price1">$ <?= $productosCenter4['precio'] ?></span>
+                                                                        </span>
+                                                                    </span>
+                                                                         </div>
+                                                                     </div>
+                                                                 </div>
+                                                             </div>
+                                                             <div class="action-bot">
+                                                                 <div class="wrap-addtocart">
+                                                                     <button class="btn-cart"
+                                                                             >
+                                                                         <i class="fa fa-shopping-cart"></i>
+                                                                         <span>Añadir</span>
+                                                                     </button>
+                                                                 </div>
+                                                                 <div class="actions">
+                                                                     <ul class="add-to-links">
+                                                                         <li class="wrap-quickview" data-id="qv_item_7">
+                                                                             <div class="quickview-wrap">
+                                                                                 <a class="sns-btn-quickview qv_btn"
+                                                                                    href="<?php echo URL . '/producto/' . $funciones->normalizar_link($productosCenter4['titulo']) . "/" . $productosCenter4['id'] ?>"">
+                                                                                     <i class="fa fa-eye"></i>
+                                                                                 </a>
+                                                                             </div>
+                                                                         </li>
+                                                                     </ul>
+                                                                 </div>
+                                                             </div>
+                                                         </div>
+                                                     </div>
+                                                 </div>
+                                                <?php
+                                                $cont++;
+                                                if (($key = array_search($productosCenter4, $productDataCenter4)) !== false) {
+                                                    unset($productDataCenter4[$key]);
+                                                }
+                                                }
+                                                }
+                                                ?>
                                              </div>
                                         </div>
                                     </div>

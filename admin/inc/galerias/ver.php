@@ -49,7 +49,7 @@ $data = $galerias->list("");
 if (isset($_GET["borrar"])) {
     $cod = $funciones->antihack_mysqli(isset($_GET["borrar"]) ? $_GET["borrar"] : '');
     $galerias->set("cod", $cod);
-    $imagenes->set("cod", $cod);
+    $imagenes->set("codigo", $cod);
     $galerias->delete();
     $imagenes->deleteAll();
     $funciones->headerMove(URL . "/index.php?op=galerias");

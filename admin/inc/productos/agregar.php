@@ -132,6 +132,7 @@ if (isset($_POST["agregar"])) {
                 </label>
             </div>
         </div>
+        
         <label class="col-md-7">
             Imágenes:<br/>
             <input type="file" id="file" name="files[]" multiple="multiple" accept="image/*" />

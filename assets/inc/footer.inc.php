@@ -4,36 +4,22 @@
                     <div class="slider-wrap">
                         <div class="partners_slider_in">
                             <div id="partners_slider1" class="our_partners owl-carousel owl-theme owl-loaded" style="display: inline-block">
-                                <div class="item">
-                                    <a class="banner11" href="#" target="_blank">
-                                        <img alt="" src="<?=URL?>/assets/images/brands/1.png">
-                                    </a>
-                                </div>
-                                <div class="item">
-                                    <a class="banner11" href="#" target="_blank">
-                                        <img alt="" src="<?=URL?>/assets/images/brands/2.png">
-                                    </a>
-                                </div>
-                                <div class="item">
-                                    <a class="banner11" href="#" target="_blank">
-                                        <img alt="" src="<?=URL?>/assets/images/brands/3.png">
-                                    </a>
-                                </div>
-                                <div class="item">
-                                    <a class="banner11" href="#" target="_blank">
-                                        <img alt="" src="<?=URL?>/assets/images/brands/4.png">
-                                    </a>
-                                </div>
-                                <div class="item">
-                                    <a class="banner11" href="#" target="_blank">
-                                        <img alt="" src="<?=URL?>/assets/images/brands/5.png">
-                                    </a>
-                                </div>
-                                <div class="item">
-                                    <a class="banner11" href="#" target="_blank">
-                                        <img alt="" src="<?=URL?>/assets/images/brands/6.png">
-                                    </a>
-                                </div>
+                                <?php
+                                $galerias = new Clases\Galerias();
+                                $imgsFooter = new Clases\Imagenes();
+                                $galeriasData = $galerias->list('');
+                                foreach ($galeriasData as $gal) {
+                                    $imgsFooter->set("codigo",$gal['cod']);
+                                    $imgFooter = $imgsFooter->view();    
+                                ?>
+                                    <div class="item">
+                                        <a class="banner11" href="#" target="_blank">
+                                            <img alt="" src="<?=URL. '/' . $imgFooter['ruta'] ?>">
+                                        </a>
+                                    </div>
+                                <?php
+                                }
+                                ?>
                             </div>
                         </div>
                     </div>

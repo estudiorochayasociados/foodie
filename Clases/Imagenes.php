@@ -71,6 +71,26 @@ class Imagenes
         $row      = mysqli_fetch_assoc($imagenes);
         return $row;
     }
+    
+    function list($filter) {
+        $array = array();
+        if (is_array($filter)) {
+            $filterSql = "WHERE ";
+            $filterSql .= implode(" AND ", $filter);
+        } else {
+            $filterSql = '';
+        }
+
+        $sql   = "SELECT * FROM `imagenes` $filterSql  ORDER BY id DESC";
+        $notas = $this->con->sqlReturn($sql);
+
+        if ($notas) {
+            while ($row = mysqli_fetch_assoc($notas)) {
+                $array[] = $row;
+            }
+            return $array;
+        }
+    }
 
     public function imagenesAdmin()
     {

@@ -5,11 +5,8 @@ RewriteCond %{SCRIPT_FILENAME} !-d
 RewriteCond %{SCRIPT_FILENAME} !-f
 RewriteRule ^(.*)$ $1.php
 
-RewriteRule ^producto/(.*)$ ./servicio.php?id=$2
-#RewriteRule ^novedades/(.*)/(.*)/(.*)$ ./novedades.php?id=$2&pagina=$3
-#RewriteRule ^novedades/(.*)/(.*)$ ./novedades.php?id=$2
-#RewriteRule ^c/(.*)/(.*)$ ./contenidos.php?id=$2
-#RewriteRule ^novedad/(.*)/(.*)$ ./novedad.php?id=$2
+RewriteRule ^producto/(.*)/(.*)$ ./producto.php?id=$2
+RewriteRule ^productos ./listing.php
 	
 ErrorDocument 404 https://www.cordobapymes.com.ar/404
 ErrorDocument 400 https://www.cordobapymes.com.ar/404
