@@ -17,8 +17,8 @@ class TemplateSite
         <!DOCTYPE html>
         <html lang="es">
         <head>
+           <link rel="stylesheet" href="<?=URL?>/assets/css/estilos.css">
            <link rel="stylesheet" href="<?=URL?>/assets/css/style.css" />
-           <link rel="stylesheet" href="<?=URL?>/assets/font/estilos.css">
            <link rel="stylesheet" href="<?=URL?>/assets/font/font-awesome/css/font-awesome.css">
            <link rel="stylesheet" href="<?=URL?>/assets/css/bootstrap.min.css">
            <link rel="stylesheet" href="<?=URL?>/assets/css/bootstrap.css">

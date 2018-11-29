@@ -136,7 +136,18 @@ $productosPaginador = $productos->paginador('',5);
                                                                     </div>
                                                                     <div class="item-price">
                                                                         <span class="price">
-                                                                            <span class="price1">$ <?= $proRandSide['precio'] ?></span>
+                                                                        <?php
+                                                                                    if ($proRandSide['precioDescuento']>0) {
+                                                                                    ?>
+                                                                                       <span class="precioS1">$ <?= $proRandSide['precioDescuento']; ?></span>
+                                                                                       <span class="precioS2">$ <?= $proRandSide['precio']; ?></span>
+                                                                                    <?php
+                                                                                    }else {
+                                                                                    ?>
+                                                                                        <span class="precioS1">$ <?= $proRandSide['precio']; ?></span>
+                                                                                    <?php
+                                                                                    }
+                                                                                ?>
                                                                         </span>
                                                                     </div>
                                                                 </div>
@@ -292,6 +303,15 @@ $productosPaginador = $productos->paginador('',5);
                                                      <div class="item-inner">
                                                          <div class="prd">
                                                              <div class="item-img clearfix">
+                                                             <div class="ico-label">
+                                                                <?php
+                                                                    if ($productos['precioDescuento']>0) {
+                                                                    ?>
+                                                                       <span class="ico-product ico-sale">Promo</span>
+                                                                    <?php
+                                                                    }
+                                                                ?>
+                                                                </div>
                                                                  <a class="product-image have-additional"
                                                                     href="<?php echo URL . '/producto/' . $funciones->normalizar_link($productos['titulo']) . "/" . $productos['id'] ?>"> 
                                                                     <span class="img-main">
@@ -310,8 +330,18 @@ $productosPaginador = $productos->paginador('',5);
                                                                          <div class="price-box">
                                                                     <span class="regular-price">
                                                                         <span class="price">
-                                                                            <span class="price1">$ <?= $productos['precio'] ?></span>
-                                                                            <!--<span class="price2">$ 600.00</span>-->
+                                                                        <?php
+                                                                                    if ($productos['precioDescuento']>0) {
+                                                                                    ?>
+                                                                                       <span class="precio1">$ <?= $productos['precioDescuento']; ?></span>
+                                                                                       <span class="precio2">$ <?= $productos['precio']; ?></span>
+                                                                                    <?php
+                                                                                    }else {
+                                                                                    ?>
+                                                                                        <span class="precio1">$ <?= $productos['precio']; ?></span>
+                                                                                    <?php
+                                                                                    }
+                                                                                ?>
                                                                         </span>
                                                                     </span>
                                                                          </div>

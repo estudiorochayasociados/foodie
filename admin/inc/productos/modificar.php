@@ -131,6 +131,17 @@ if (isset($_POST["agregar"])) {
         </div>
     </div>
     <br/>
+    <div class="col-md-12">
+        <div class="row">
+            <?php
+            $imagenes->imagenesAdmin();
+            ?>
+        </div>
+    </div>
+    <label class="col-md-7">Imágenes:<br/>
+        <input type="file" id="file" name="files[]" multiple="multiple" accept="image/*" />
+    </label>
+    <br/>
     <div class="clearfix"><br/></div>
     <div class="col-md-12">
         <input type="submit" class="btn btn-primary" name="agregar" value="Modificar Productos" />

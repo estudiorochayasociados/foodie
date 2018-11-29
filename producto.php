@@ -27,10 +27,10 @@ if (($key = array_search($productData, $productDataRel)) !== false) {
 //
 //Banners
 $categoriasData = $categorias->list('');
-foreach($categoriasData as $valor){
+foreach($categoriasData as $val){
     
-    if($valor['titulo']=='Side' && $valor['area']=='banners'){
-        $banners->set("categoria",$valor['cod']);
+    if($val['titulo']=='Side' && $val['area']=='banners'){
+        $banners->set("categoria",$val['cod']);
         $banDataSide = $banners->listForCategory();  
     }
 }
@@ -103,7 +103,21 @@ foreach($categoriasData as $valor){
                                                         <div class="item-price">
                                                             <div class="price-box">
                                                                 <span class="regular-price">
-                                                                    <span class="price">$ <?= $productData['precio']; ?></span>
+                                                                    <span class="price">
+                                                                    <?php
+                                                                        if ($productData['precioDescuento']>0) {
+                                                                        ?>
+                                                                           <span class="precioD1">$ <?= $productData['precioDescuento']; ?></span>
+                                                                           <span class="precioD2">$ <?= $productData['precio']; ?></span>
+                                                                        <?php
+                                                                        }else {
+                                                                        ?>
+                                                                            <span class="precioD1">$ <?= $productData['precio']; ?></span>
+                                                                        <?php
+                                                                        }
+                                                                    ?>
+                                                                    </span>
+                                                                    
                                                                 </span>
                                                             </div>
                                                         </div>
@@ -222,7 +236,13 @@ foreach($categoriasData as $valor){
                                                         <div class="prd">
                                                             <div class="item-img clearfix">
                                                                 <div class="ico-label">
-                                                                    <span class="ico-product ico-sale">Promo</span>
+                                                                <?php
+                                                                    if ($productosRel1['precioDescuento']>0) {
+                                                                    ?>
+                                                                       <span class="ico-product ico-sale">Promo</span>
+                                                                    <?php
+                                                                    }
+                                                                ?>
                                                                 </div>
                                                                 <a class="product-image have-additional" href="<?php echo URL . '/producto/' . $funciones->normalizar_link($productosRel1['titulo']) . "/" . $productosRel1['id'] ?>">
                                                                     <span class="img-main">
@@ -240,8 +260,18 @@ foreach($categoriasData as $valor){
                                                                         <div class="price-box">
                                                                             <span class="regular-price">
                                                                                 <span class="price">
-                                                                                    <span class="price1">$ 540.00</span>
-                                                                                    <span class="price2">$ 600.00</span>
+                                                                                <?php
+                                                                                    if ($productosRel1['precioDescuento']>0) {
+                                                                                    ?>
+                                                                                       <span class="precio1">$ <?= $productosRel1['precioDescuento']; ?></span>
+                                                                                       <span class="precio2">$ <?= $productosRel1['precio']; ?></span>
+                                                                                    <?php
+                                                                                    }else {
+                                                                                    ?>
+                                                                                        <span class="precio1">$ <?= $productosRel1['precio']; ?></span>
+                                                                                    <?php
+                                                                                    }
+                                                                                ?>
                                                                                 </span>
                                                                             </span>
                                                                         </div>

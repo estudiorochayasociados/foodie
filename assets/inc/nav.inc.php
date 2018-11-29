@@ -1,5 +1,17 @@
- <?php
- $funcionesNav = new Clases\PublicFunction();
+<?php
+$funcionesNav = new Clases\PublicFunction();
+//Clases
+$imagenesNav = new Clases\Imagenes();
+$categoriasNav = new Clases\Categorias();
+$bannersNav = new Clases\Banner();
+//Banners
+$categoriasDataNav = $categoriasNav->list('');
+foreach($categoriasDataNav as $valNav){
+    if($valNav['titulo']=='Botonera' && $valNav['area']=='banners'){ 
+        $bannersNav->set("categoria",$valNav['cod']);
+        $banDataBotonera = $bannersNav->listForCategory();
+    }
+}
  ?>
    <body id="bd" class=" cms-index-index2 header-style2 cms-simen-home-page-v2 default cmspage">
         <div id="sns_wrapper">      
@@ -10,63 +22,27 @@
                     <div class="container">
                         <div class="sns_module">
                             <div class="header-setting">
-                                <div class="module-setting">
-                                    <div class="mysetting language-switcher">
-                                        <div class="tongle">
-                                            <img alt="" src="<?=URL?>/assets/images/flag/english.png">
-                                            <span>English</span>
-                                        </div>
-                                        <div class="content">
-                                            <div class="language-switcher">
-                                                <ul id="select-language">
-                                                        <li>
-                                                            <a  href="index.html">
-                                                            <img alt="" src="<?=URL?>/assets/images/flag/english.png">
-                                                            <span>English</span>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                            </div>
-                                        </div>
-                                    </div>  
-
-                                    <div class="mysetting currency-switcher">
-                                        <div class="tongle">
-                                            <span class="gfont"> USD </span>
-                                        </div>
-                                        <div class="content">
-                                            <ul id="select-currency">
-                                                <li>
-                                                    <a href="#"> EUR </a>
-                                                </li>
-                                                <li>
-                                                    <a class="selected" href="#"> USD </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
+                                <div style="margin-top:11px;color:gray;">
+                                (03564) 438484-443393 , Las Malvinas 930 - San Francisco (CBA).
                                 </div>
                             </div>
                             <div class="header-account">
                                 <div class="myaccount">
                                     <div class="tongle">
                                         <i class="fa fa-user"></i>
-                                        <span>My account</span>
+                                        <span>Mi cuenta</span>
                                         <i class="fa fa-angle-down"></i>
                                     </div>
                                     <div class="customer-ct content">
                                         <ul class="links">
                                             <li class="first">
-                                                <a class="top-link-myaccount" title="My Account" href="#">My Account</a>
+                                                <a class="top-link-myaccount" title="My Account" href="#">Mi cuenta</a>
                                             </li>
                                             <li>
-                                                <a class="top-link-wishlist" title="My Wishlist" href="#">My Wishlist</a>
-                                            </li>
-                                            <li>
-                                                <a class="top-link-checkout" title="Checkout" href="#">Checkout</a>
+                                                <a class="top-link-checkout" title="Checkout" href="#">Carrito</a>
                                             </li>
                                             <li class=" last">
-                                                <a class="top-link-login" title="Log In" href="#">Login</a>
+                                                <a class="top-link-login" title="Log In" href="#">Iniciar sesión</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -81,40 +57,29 @@
                         <div class="container_in">
                             <div class="row">
                                 <h1 id="logo" class=" responsv col-md-3">
-                                    <a href="index2.html" title="Magento Commerce">
-                                     <img alt="" src="<?=URL?>/assets/images/logo.jpg"> 
+                                    <a href="<?=URL . '/index' ?>" title="Magento Commerce">
+                                     <img alt="" src="<?=URL?>/assets/archivos/logo-grande.png"> 
                                     </a>
                                 </h1>
                                 <div class="col-md-9 policy">
-                                    <div class="row">
-                                        <div class="col-md-4 col-sm-4 col-phone-12">
-                                            <div class="policy_custom">
-                                                <div class="policy-icon">
-                                                    <em class="fa fa-truck"> </em>
-                                                </div>
-                                                <p class="policy-titile">FREE DELIVERY WORLDWIDE</p>
-                                                <p class="policy-ct">On order over $100</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 col-sm-4 col-phone-12">
-                                            <div class="policy_custom">
-                                                <div class="policy-icon">
-                                                    <em class="fa fa-cloud-upload"> </em>
-                                                </div>
-                                                <p class="policy-titile">UP TO 20% OFF COSY LAYERS</p>
-                                                <p class="policy-ct">Lorem ipsum dolor sit amet</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 col-sm-4 col-phone-12">
-                                            <div class="policy_custom">
-                                                <div class="policy-icon">
-                                                    <em class="fa fa-gift"> </em>
-                                                </div>
-                                                <p class="policy-titile">Buy 1 get 1 free</p>
-                                                <p class="policy-ct">On order over $100</p>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <?php
+                                if (count($banDataBotonera)!=''){
+                                    $banRandBotonera = $banDataBotonera[array_rand($banDataBotonera)];
+                                    $imagenesNav->set("codigo",$banRandBotonera['cod']);
+                                    $imgRandBotonera = $imagenesNav->view();
+                                    $bannersNav->set("id",$banRandBotonera['id']);
+                                    $valueNav=$banRandBotonera['vistas']+1;
+                                    $bannersNav->set("vistas",$valueNav);
+                                    $bannersNav->increaseViews();
+                                ?>
+                                    <div class="block banner_left2 block_cat">
+                                    <a class="banner5" href="<?= $banRandBotonera['link'] ?>">
+                                        <img src="<?=URL. '/' . $imgRandBotonera['ruta'] ?>" alt="<?= $banRandBotonera['nombre']?>" style="width:100%;margin-top:10px;">
+                                    </a>
+                                </div>
+                                <?php
+                                }
+                                ?>
                                 </div>
                             </div>
                         </div>
