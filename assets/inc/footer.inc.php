@@ -39,20 +39,17 @@
                                         <ul class="fa-ul">
                                             <li class="pd-right">
                                                 <i class="fa-li fa fw fa-home"> </i>
-                                                8888 South Avenue Street, New York
+                                                Las Malvinas 930 - San Francisco (CBA)
                                             </li>
                                             <li>
                                                 <i class="fa-li fa fw fa-phone"> </i>
-                                                <p>(12) 3 456 7896</p>
-                                                <p>(12) 3 456 7895</p>
+                                                <p>(03564) 438484</p>
+                                                <p>(03564) 443393</p>
                                             </li>
                                             <li>
                                                 <i class="fa-li fa fw fa-envelope"> </i>
                                                 <p>
-                                                    <a href="mailto:info@yourdomain.com">info@yourdomain.com</a>
-                                                </p>
-                                                <p>
-                                                    <a href="mailto:info@yourdomain.com">info@yourdomain.com</a>
+                                                    <a href="mailto:marketing@pintureriasariel.com.ar">marketing@pintureriasariel.com.ar</a>
                                                 </p>
                                             </li>
                                         </ul>
@@ -153,15 +150,9 @@
                 <div id="sns_footer_bottom" class="footer">
                     <div class="container">
                         <div class="row">
-                            <div class="bottom-pd1 col-sm-6">
+                            <div class="bottom-pd1 col-sm-12">
                                 <div class="sns-copyright">
-                                    © 2015 Magento Demo Store. All Rights Reserved. Developer by
-                                    <a title="" data-original-title="Visit SNSTheme.Com!" data-toggle="tooltip" href="http://www.snstheme.com/">SNSTheme.Com</a>
-                                </div>
-                            </div>
-                            <div class="bottom-pd2 col-sm-6">
-                                <div class="payment">
-                                    <img src="<?=URL?>/assets/images/sns_paymal.png" alt="">
+                                    © 2018 Todos los derechos reservados, Pinturerías Ariel. Copyright by <a href="http://www.estudiorochayasoc.com" target="_blank">Estudio Rocha & Asociados</a>
                                 </div>
                             </div>
                         </div>

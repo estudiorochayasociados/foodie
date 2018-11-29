@@ -49,7 +49,6 @@ class TemplateSite
         </body>
         <script src="<?=URL?>/admin/ckeditor/ckeditor.js"></script>
         <script src="<?=URL?>/admin/ckeditor/lang/es.js"></script>
-        <script src="<?=URL?>/assets/js/script.js"></script>
         <script src="<?=URL?>/assets/js/jquery-1.9.1.min.js"></script>
         <script src="<?=URL?>/assets/js/bootstrap.min.js"></script>
         <script src="<?=URL?>/assets/js/less.min.js"></script>

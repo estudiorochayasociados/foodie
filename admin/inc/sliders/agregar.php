@@ -1,22 +1,23 @@
 <?php
-$banners = new Clases\Banner();
-$imagenes  = new Clases\Imagenes();  
-$zebra     = new Clases\Zebra_Image();
+$sliders  = new Clases\Sliders();
+$imagenes = new Clases\Imagenes();
+$zebra    = new Clases\Zebra_Image();
+
 $categorias = new Clases\Categorias();
-$data = $categorias->list(array("area = 'banners'"));
+$data = $categorias->list(array("area = 'sliders'"));
 
 if (isset($_POST["agregar"])) {
-    $count = 0;
-    $cod   = substr(md5(uniqid(rand())), 0, 10);
+    $cod = substr(md5(uniqid(rand())), 0, 10);
 
-    $banners->set("cod", $cod);
-    $banners->set("nombre", $funciones->antihack_mysqli(isset($_POST["nombre"]) ? $_POST["nombre"] : ''));
-    $banners->set("categoria", $funciones->antihack_mysqli(isset($_POST["categoria"]) ? $_POST["categoria"] : ''));
-    $banners->set("link", $funciones->antihack_mysqli(isset($_POST["link"]) ? $_POST["link"] : ''));
+    $sliders->set("cod", $cod);
+    $sliders->set("titulo", $funciones->antihack_mysqli(isset($_POST["titulo"]) ? $_POST["titulo"] : ''));
+    $sliders->set("subtitulo", $funciones->antihack_mysqli(isset($_POST["subtitulo"]) ? $_POST["subtitulo"] : ''));
+    $sliders->set("categoria", $funciones->antihack_mysqli(isset($_POST["categoria"]) ? $_POST["categoria"] : ''));
+    $sliders->set("fecha", $funciones->antihack_mysqli(isset($_POST["fecha"]) ? $_POST["fecha"] : date("Y-m-d")));
 
     foreach ($_FILES['files']['name'] as $f => $name) {
-        $imgInicio = $_FILES["files"]["tmp_name"][$f];
-        $tucadena  = $_FILES["files"]["name"][$f];
+        $imgInicio = $_FILES["files"]["tmp_name"][0];
+        $tucadena  = $name;
         $partes    = explode(".", $tucadena);
         $dom       = (count($partes) - 1);
         $dominio   = $partes[$dom];
@@ -25,7 +26,7 @@ if (isset($_POST["agregar"])) {
             $destinoFinal = "../assets/archivos/" . $prefijo . "." . $dominio;
             move_uploaded_file($imgInicio, $destinoFinal);
             chmod($destinoFinal, 0777);
-            $destinoRecortado = "../assets/archivos/banner/" . $prefijo . "." . $dominio;
+            $destinoRecortado = "../assets/archivos/recortadas/a_" . $prefijo . "." . $dominio;
 
             $zebra->source_path            = $destinoFinal;
             $zebra->target_path            = $destinoRecortado;
@@ -43,44 +44,38 @@ if (isset($_POST["agregar"])) {
             $imagenes->add();
         }
 
-        $count++;
     }
-
-    $banners->add();
-    $funciones->headerMove(URL . "/index.php?op=banners");
+    $sliders->add();
+    $funciones->headerMove(URL . "/index.php?op=sliders&accion=ver");
 }
 ?>
 
 <div class="col-md-12 ">
-    <h4>Banners</h4>
+    <h4>Sliders</h4>
     <hr/>
     <form method="post" class="row" enctype="multipart/form-data">
-        <label class="col-md-4">Nombre:<br/>
-            <input type="text" name="nombre">
+        <label class="col-md-4">Título:<br/>
+            <input type="text" name="titulo">
+        </label>
+        <label class="col-md-4">Subtitulo:<br/>
+            <input type="text" name="subtitulo">
         </label>
         <label class="col-md-4">Categoría:<br/>
             <select name="categoria">
-                <option value="" disabled selected>-- categorías --</option>
                 <?php
                 foreach ($data as $categoria) {
                     echo "<option value='".$categoria["cod"]."'>".$categoria["titulo"]."</option>";
                 }
                 ?>
             </select>
-        </label>
-        <div class="clearfix"></div>
-        <div class="clearfix"></div>
-        <label class="col-md-12">Url del banner<br/>
-            <input type="text" name="link">
-        </label>
-        <br/>
-        <label class="col-md-7">Imágenes:<br/>
+        </label>                
+        <label class="col-md-7">Imágen:<br/>
             <input type="file" id="file" name="files[]" accept="image/*" />
         </label>
         <div class="clearfix"></div>
         <br/>
         <div class="col-md-12">
-            <input type="submit" class="btn btn-primary" name="agregar" value="Crear Banner" />
+            <input type="submit" class="btn btn-primary" name="agregar" value="Crear Slider" />
         </div>
     </form>
 </div>

@@ -78,4 +78,15 @@ class Sliders
             return $array;
         }
     }
+    function listForCategory() {
+        $array = array();
+        $sql = "SELECT * FROM `sliders` WHERE categoria = '{$this->categoria}'  ORDER BY id DESC";
+        $notas = $this->con->sqlReturn($sql);
+        if ($notas) {
+            while ($row = mysqli_fetch_assoc($notas)) {
+                $array[] = $row;
+            }
+            return $array;
+        }
+    }
 }

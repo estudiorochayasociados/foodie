@@ -9,7 +9,7 @@ class Imagenes
     public $id;
     public $link;
     public $ruta;
-    public $codigo;
+    public $cod;
     private $con;
 
     //Metodos
@@ -30,14 +30,14 @@ class Imagenes
 
     public function add()
     {
-        $sql   = "INSERT INTO `imagenes`(`ruta`, `codigo`) VALUES ('{$this->ruta}', '{$this->codigo}')";
+        $sql   = "INSERT INTO `imagenes`(`ruta`, `cod`) VALUES ('{$this->ruta}', '{$this->cod}')";
         $query = $this->con->sql($sql);
         return $query;
     }
 
     public function edit()
     {
-        $sql   = "UPDATE `imagenes` SET ruta = '{$this->ruta}', codigo = '{$this->codigo}' WHERE `id`='{$this->id}'";
+        $sql   = "UPDATE `imagenes` SET ruta = '{$this->ruta}', cod = '{$this->cod}' WHERE `id`='{$this->id}'";
         $query = $this->con->sql($sql);
         return $query;
     }
@@ -55,10 +55,10 @@ class Imagenes
 
     public function deleteAll()
     {
-        $sql    = "SELECT * FROM `imagenes` WHERE codigo = '{$this->codigo}' ORDER BY codigo DESC";
+        $sql    = "SELECT * FROM `imagenes` WHERE cod = '{$this->cod}' ORDER BY cod DESC";
         $imagen = $this->con->sqlReturn($sql);
         while ($row = mysqli_fetch_assoc($imagen)) {
-            $sqlDelete = "DELETE FROM `imagenes` WHERE codigo = '{$this->codigo}'";
+            $sqlDelete = "DELETE FROM `imagenes` WHERE cod = '{$this->cod}'";
             $query     = $this->con->sql($sqlDelete);
             unlink("../" . $row["ruta"]);
         }
@@ -66,7 +66,7 @@ class Imagenes
 
     public function view()
     {
-        $sql      = "SELECT * FROM `imagenes` WHERE codigo = '{$this->codigo}' ORDER BY id DESC";
+        $sql      = "SELECT * FROM `imagenes` WHERE cod = '{$this->cod}' ORDER BY id DESC";
         $imagenes = $this->con->sqlReturn($sql);
         $row      = mysqli_fetch_assoc($imagenes);
         return $row;
@@ -94,12 +94,12 @@ class Imagenes
 
     public function imagenesAdmin()
     {
-        $sql      = "SELECT * FROM `imagenes` WHERE codigo = '{$this->codigo}' ORDER BY id DESC";
+        $sql      = "SELECT * FROM `imagenes` WHERE cod = '{$this->cod}' ORDER BY id DESC";
         $imagenes = $this->con->sqlReturn($sql);
         while ($row = mysqli_fetch_assoc($imagenes)) {
             echo "<div class='col-md-2 mb-20 mt-20'>";
             echo "<img src='../" . $row["ruta"] . "' width='100%'  class='mb-20' />";
-            echo "<a href='" . URL . "/index.php?op={$this->link}&cod=" . $row["codigo"] . "&borrarImg=" . $row["id"] . "' class='btn btn-primary'>BORRAR IMAGEN</a>";
+            echo "<a href='" . URL . "/index.php?op={$this->link}&cod=" . $row["cod"] . "&borrarImg=" . $row["id"] . "' class='btn btn-primary'>BORRAR IMAGEN</a>";
             echo "<div class='clearfix'></div>";
             echo "</div>";
         };

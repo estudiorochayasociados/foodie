@@ -53,7 +53,7 @@ $data      = $banners->list();
 if (isset($_GET["borrar"])) {
     $cod = $funciones->antihack_mysqli(isset($_GET["borrar"]) ? $_GET["borrar"] : '');
     $banners->set("cod", $cod);
-    $imagenes->set("codigo", $cod);
+    $imagenes->set("cod", $cod);
     $banners->delete();
     $imagenes->deleteAll();
     $funciones->headerMove(URL . "/index.php?op=banners");

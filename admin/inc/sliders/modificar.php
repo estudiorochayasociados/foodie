@@ -1,39 +1,41 @@
 <?php
-$imagenes  = new Clases\Imagenes();
-$zebra     = new Clases\Zebra_Image();
-$banners = new Clases\Banner();
+$sliders = new Clases\Sliders();
+$imagenes= new Clases\Imagenes();
+$zebra   = new Clases\Zebra_Image();
 
-$cod       = $funciones->antihack_mysqli(isset($_GET["cod"]) ? $_GET["cod"] : '');
+$cod     = $funciones->antihack_mysqli(isset($_GET["cod"]) ? $_GET["cod"] : '');
 $borrarImg = $funciones->antihack_mysqli(isset($_GET["borrarImg"]) ? $_GET["borrarImg"] : '');
 
-$banners->set("cod", $cod);
-$banner = $banners->view();
+$sliders->set("cod", $cod);
+$slide = $sliders->view();
+$imagenes->set("cod", $slide["cod"]);
+$imagenes->set("link", "sliders&accion=modificar");
+
 
 $categorias = new Clases\Categorias();
-$data = $categorias->list(array("area = 'banners'"));
-
-$imagenes->set("cod", $banner["cod"]);
-$imagenes->set("link", "banners&accion=modificar");
+$data = $categorias->list(array("area = 'sliders'"));
 
 if ($borrarImg != '') {
     $imagenes->set("id", $borrarImg);
     $imagenes->delete();
-    $funciones->headerMove(URL . "/index.php?op=banners&accion=modificar&cod=$cod");
+    $funciones->headerMove(URL . "/index.php?op=sliders&accion=modificar&cod=$cod");
 }
 
 if (isset($_POST["agregar"])) {
     $count = 0;
-    $cod   = $banner["cod"];
-    //$banners->set("id", $id);
-    $banners->set("cod", $cod);
-    $banners->set("nombre", $funciones->antihack_mysqli(isset($_POST["nombre"]) ? $_POST["nombre"] : ''));
-    $banners->set("categoria", $funciones->antihack_mysqli(isset($_POST["categoria"]) ? $_POST["categoria"] : ''));
-    $banners->set("link", $funciones->antihack_mysqli(isset($_POST["link"]) ? $_POST["link"] : ''));
+    $cod = $slide["cod"];
+    //$sliders->set("id", $id);
+    $sliders->set("cod", $cod);
+    $sliders->set("titulo", $funciones->antihack_mysqli(isset($_POST["titulo"]) ? $_POST["titulo"] : ''));
+    $sliders->set("subtitulo", $funciones->antihack_mysqli(isset($_POST["subtitulo"]) ? $_POST["subtitulo"] : ''));
+    $sliders->set("categoria", $funciones->antihack_mysqli(isset($_POST["categoria"]) ? $_POST["categoria"] : ''));
+    $sliders->set("fecha", $funciones->antihack_mysqli(isset($_POST["fecha"]) ? $_POST["fecha"] : date("Y-m-d")));
 
+ 
     foreach ($_FILES['files']['name'] as $f => $name) {
-        $imgInicio = $_FILES["files"]["tmp_name"][$f];
-        $tucadena  = $_FILES["files"]["name"][$f];
-        $partes    = explode(".", $tucadena);
+        $imgInicio = $_FILES["files"]["tmp_name"][0];
+        $tucadena  = $name;
+        $partes    = explode('.', $tucadena);
         $dom       = (count($partes) - 1);
         $dominio   = $partes[$dom];
         $prefijo   = substr(md5(uniqid(rand())), 0, 10);
@@ -41,7 +43,7 @@ if (isset($_POST["agregar"])) {
             $destinoFinal     = "../assets/archivos/" . $prefijo . "." . $dominio;
             move_uploaded_file($imgInicio, $destinoFinal);
             chmod($destinoFinal, 0777);
-            $destinoRecortado = "../assets/archivos/banner/" . $prefijo . "." . $dominio;
+            $destinoRecortado = "../assets/archivos/recortadas/a_" . $prefijo . "." . $dominio;
 
             $zebra->source_path = $destinoFinal;
             $zebra->target_path = $destinoRecortado;
@@ -59,30 +61,33 @@ if (isset($_POST["agregar"])) {
             $imagenes->add();
         }
 
-        $count++;
     }
+     
 
-    $banners->edit();
-    $funciones->headerMove(URL . "/index.php?op=banners");
+    $sliders->edit();
+    $funciones->headerMove(URL . "/index.php?op=sliders&accion=modificar&cod=$cod");
 }
 ?>
 
 <div class="col-md-12 ">
     <h4>
-        Banners
+        Sliders
     </h4>
     <hr/>
     <form method="post" class="row" enctype="multipart/form-data">
         <label class="col-md-4">
-            Nombre:<br/>
-            <input type="text" value="<?=$banner['nombre']?>" name="nombre">
+            Título:<br/>
+            <input type="text" value="<?=$slide["titulo"]?>" name="titulo">
         </label>
         <label class="col-md-4">
-            Categoría:<br/>
+            Subtitulo:<br/>
+            <input type="text" value="<?=$slide["subtitulo"]?>" name="subtitulo">
+        </label>
+        <label class="col-md-4">Categoría:<br/>
             <select name="categoria">
-               <?php
+                <?php
                 foreach ($data as $categoria) {
-                    if($banner["categoria"] == $categoria["cod"]) {
+                    if($slide["categoria"] == $categoria["cod"]) {
                         echo "<option value='".$categoria["cod"]."' selected>".$categoria["titulo"]."</option>";
                     } else {
                         echo "<option value='".$categoria["cod"]."'>".$categoria["titulo"]."</option>";
@@ -91,13 +96,6 @@ if (isset($_POST["agregar"])) {
                 ?>
             </select>
         </label>
-        <div class="clearfix">
-        </div>
-        <label class="col-md-12">Url del banner<br/>
-        
-            <input type="text" value="<?= $banner['link'] ?>" name="link">
-        </label>
-        <br/>
         <div class="col-md-12">
             <div class="row">
                 <?php
@@ -107,14 +105,15 @@ if (isset($_POST["agregar"])) {
         </div>
         <div class="clearfix">
         </div>
-        <label class="col-md-7">Imágenes:<br/>
-            <input type="file" id="file" name="files[]" accept="image/*" />
+        <label class="col-md-12">
+            Imágenes:<br/>
+            <input type="file" id="file" name="files[]" multiple="multiple" accept="image/*" />
         </label>
         <div class="clearfix">
         </div>
         <br/>
         <div class="col-md-12">
-            <input type="submit" class="btn btn-primary" name="agregar" value="Modificar Banner" />
+            <input type="submit" class="btn btn-primary" name="agregar" value="Modificar Sliders" />
         </div>
     </form>
 </div>

@@ -18,7 +18,7 @@ if (isset($_POST["agregar"])) {
 $cod       = $funciones->antihack_mysqli(isset($_GET["cod"]) ? $_GET["cod"] : '');
 $borrarImg = $funciones->antihack_mysqli(isset($_GET["borrarImg"]) ? $_GET["borrarImg"] : '');
 
-$imagenes->set("codigo", $data['cod']);
+$imagenes->set("cod", $data['cod']);
 $imagenes->set("link", "modificar");
 
 
