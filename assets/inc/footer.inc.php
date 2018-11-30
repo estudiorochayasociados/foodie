@@ -9,7 +9,7 @@
                                 $imgsFooter = new Clases\Imagenes();
                                 $galeriasData = $galerias->list('');
                                 foreach ($galeriasData as $gal) {
-                                    $imgsFooter->set("codigo",$gal['cod']);
+                                    $imgsFooter->set("cod",$gal['cod']);
                                     $imgFooter = $imgsFooter->view();    
                                 ?>
                                     <div class="item">

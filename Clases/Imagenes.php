@@ -66,10 +66,37 @@ class Imagenes
 
     public function view()
     {
-        $sql      = "SELECT * FROM `imagenes` WHERE cod = '{$this->cod}' ORDER BY id DESC";
+        $sql      = "SELECT * FROM `imagenes` WHERE cod = '{$this->cod}' ORDER BY id ASC";
         $imagenes = $this->con->sqlReturn($sql);
         $row      = mysqli_fetch_assoc($imagenes);
+        if ($row===NULL) {
+            $row['ruta']      =  "assets/archivos/sin_imagen.jpg";
         return $row;
+        }else {
+        return $row;
+        }
+    }
+
+    function listForProduct() {
+        $array = array();
+        $sql   = "SELECT * FROM `imagenes` WHERE cod = '{$this->cod}' ORDER BY id ASC";
+        $notas = $this->con->sqlReturn($sql);
+
+       // if ($notas) {
+       //     while ($row = mysqli_fetch_assoc($notas)) {
+       //         $array[] = $row;
+       //     }
+       //     return $array;
+       // }
+        if ($notas===NULL) {
+            $row['ruta']      =  "assets/archivos/sin_imagen.jpg";
+        return $row;
+        }else {
+            while ($row = mysqli_fetch_assoc($notas)) {
+                 $array[] = $row;
+             }
+             return $array;
+        }
     }
     
     function list($filter) {
@@ -81,7 +108,7 @@ class Imagenes
             $filterSql = '';
         }
 
-        $sql   = "SELECT * FROM `imagenes` $filterSql  ORDER BY id DESC";
+        $sql   = "SELECT * FROM `imagenes` $filterSql  ORDER BY id ASC";
         $notas = $this->con->sqlReturn($sql);
 
         if ($notas) {

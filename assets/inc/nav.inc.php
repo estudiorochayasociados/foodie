@@ -62,7 +62,7 @@ foreach($categoriasDataNav as $valNav){
                                 <?php
                                 if (count($banDataBotonera)!=''){
                                     $banRandBotonera = $banDataBotonera[array_rand($banDataBotonera)];
-                                    $imagenesNav->set("codigo",$banRandBotonera['cod']);
+                                    $imagenesNav->set("cod",$banRandBotonera['cod']);
                                     $imgRandBotonera = $imagenesNav->view();
                                     $bannersNav->set("id",$banRandBotonera['id']);
                                     $valueNav=$banRandBotonera['vistas']+1;

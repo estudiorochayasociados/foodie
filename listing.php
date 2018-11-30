@@ -86,7 +86,7 @@ $productosPaginador = $productos->paginador('',5);
                                 <?php
                                 if (count($banDataSide)!=''){
                                     $banRandSide = $banDataSide[array_rand($banDataSide)];
-                                    $imagenes->set("codigo",$banRandSide['cod']);
+                                    $imagenes->set("cod",$banRandSide['cod']);
                                     $imgRandSide = $imagenes->view();
                                     $banners->set("id",$banRandSide['id']);
                                     $value=$banRandSide['vistas']+1;
@@ -113,7 +113,7 @@ $productosPaginador = $productos->paginador('',5);
                                                 }else{ $cont = count($productDataSide); }
                                                 for ($i=0; $i < $cont ; $i++) { 
                                                         $proRandSide = $productDataSide[array_rand($productDataSide)];
-                                                        $imagenes->set("codigo",$proRandSide['cod']);
+                                                        $imagenes->set("cod",$proRandSide['cod']);
                                                         $imgProSide = $imagenes->view();
                                                         if (($key = array_search($proRandSide, $productDataSide)) !== false) {
                                                             unset($productDataSide[$key]);
@@ -181,7 +181,7 @@ $productosPaginador = $productos->paginador('',5);
                                 <?php
                                 if (count($banDataPie)!=''){
                                     $banRandPie = $banDataPie[array_rand($banDataPie)];
-                                    $imagenes->set("codigo",$banRandPie['cod']);
+                                    $imagenes->set("cod",$banRandPie['cod']);
                                     $imgRandPie = $imagenes->view();
                                     $banners->set("id",$banRandPie['id']);
                                     $valuePie=$banRandPie['vistas']+1;
@@ -296,7 +296,7 @@ $productosPaginador = $productos->paginador('',5);
 
                                              <?php
                                                 foreach($productData as $productos){
-                                                    $imagenes->set("codigo",$productos['cod']);
+                                                    $imagenes->set("cod",$productos['cod']);
                                                     $imgProCenter1 = $imagenes->view();    
                                                 ?>
                                                     <div class="item col-lg-3 col-md-4 col-sm-4 col-xs-6 col-phone-12">
@@ -315,7 +315,8 @@ $productosPaginador = $productos->paginador('',5);
                                                                  <a class="product-image have-additional"
                                                                     href="<?php echo URL . '/producto/' . $funciones->normalizar_link($productos['titulo']) . "/" . $productos['id'] ?>"> 
                                                                     <span class="img-main">
-                                                                   <img src="<?= URL. '/' . $imgProCenter1['ruta'] ?>" alt="">
+                                                                   <div style="height:200px;background:url(<?= URL. '/' . $imgProCenter1['ruta'] ?>)no-repeat center center/contain;">
+                                                                   </div>
                                                                     </span>
                                                                  </a>
                                                              </div>

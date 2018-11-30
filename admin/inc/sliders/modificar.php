@@ -24,7 +24,7 @@ if ($borrarImg != '') {
 if (isset($_POST["agregar"])) {
     $count = 0;
     $cod = $slide["cod"];
-    //$sliders->set("id", $id);
+    $sliders->set("id", $id);
     $sliders->set("cod", $cod);
     $sliders->set("titulo", $funciones->antihack_mysqli(isset($_POST["titulo"]) ? $_POST["titulo"] : ''));
     $sliders->set("subtitulo", $funciones->antihack_mysqli(isset($_POST["subtitulo"]) ? $_POST["subtitulo"] : ''));
@@ -65,7 +65,7 @@ if (isset($_POST["agregar"])) {
      
 
     $sliders->edit();
-    $funciones->headerMove(URL . "/index.php?op=sliders&accion=modificar&cod=$cod");
+    $funciones->headerMove(URL . "/index.php?op=sliders");
 }
 ?>
 

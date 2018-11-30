@@ -17,8 +17,8 @@ $banners = new Clases\Banner();
 $id       = isset($_GET["id"]) ? $_GET["id"] : '';
 $productos->set("id",$id);
 $productData = $productos->view();
-$imagenes->set("codigo",$productData['cod']);
-$imagenesData = $imagenes->view();
+$imagenes->set("cod",$productData['cod']);
+$imagenesData = $imagenes->listForProduct();
 $filter = array("categoria ='".$productData['categoria']."'");
 $productDataRel = $productos->listWithOps($filter,'','');
 if (($key = array_search($productData, $productDataRel)) !== false) {
@@ -36,33 +36,6 @@ foreach($categoriasData as $val){
 }
 //
 ?>
-<!-- BREADCRUMBS -->
-<div id="sns_breadcrumbs" class="wrap">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div id="sns_titlepage"></div>
-                            <div id="sns_pathway" class="clearfix">
-                                <div class="pathway-inner">
-                                    <span class="icon-pointer "></span>
-                                    <ul class="breadcrumbs">
-                                        <li class="home">
-                                            <a  href="<?=URL . '/index' ?>">
-                                                <i class="fa fa-home"></i>
-                                            </a>
-                                        </li>
-                                        <li class="category3 last">
-                                            <span><?= ucfirst($productData['titulo']); ?></span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- AND BREADCRUMBS -->
-
             <!-- CONTENT -->
             <div id="sns_content" class="wrap layout-m">
                 <div class="container">
@@ -74,25 +47,33 @@ foreach($categoriasData as $val){
                                         <div class="row row-img">
 
                                             <div class="product-img-box col-md-4 col-sm-5">
-                                                <div class="detail-img">
-                                                    <img src="<?=URL. '/' . $imagenesData['ruta'] ?>" alt="">
+                                                <?php
+                                                if (count($imagenesData)>1) {
+                                                ?>
+                                                <div class="detail-img" >
+                                                    <img id="imgFront" src="<?=URL. '/' . $imagenesData[0]['ruta'] ?>" alt="">
                                                 </div>
                                                 <div class="small-img">
                                                     <div id="sns_thumbail" class="owl-carousel owl-theme">
-                                                        <div class="item">
-                                                            <img src="<?=URL?>/assets/images/products/1.jpg" alt="">
-                                                        </div>
-                                                        <div class="item">
-                                                            <img src="<?=URL?>/assets/images/products/2.jpg" alt="">
-                                                        </div>
-                                                        <div class="item">
-                                                            <img src="<?=URL?>/assets/images/products/3.jpg" alt="">
-                                                        </div>
-                                                        <div class="item">
-                                                            <img src="<?=URL?>/assets/images/products/4.jpg" alt="">
-                                                        </div>
+                                                        <?php
+                                                        foreach ($imagenesData as $imgM ) {
+                                                        ?>
+                                                        <div class="item" style="background:url('<?=URL. '/' . $imgM['ruta'] ?>') no-repeat center center/contain;height:100px;width:100px;overflow:hidden" onclick="$('#imgFront').attr('src','<?=URL. '/' . $imgM['ruta'] ?>')"></div>
+                                                        <?php
+                                                        }
+                                                        ?>
                                                     </div>
                                                 </div>
+                                                <?php
+                                                }else{
+                                                    ?>
+                                                    <div class="detail-img" >
+                                                    <img src="<?=URL. '/assets/archivos/sin_imagen.jpg'?>" alt="">
+                                                </div>
+                                                <?php
+                                                }
+                                                ?>
+                                                
                                             </div>
                                             <div id="product_shop" class="product-shop col-md-8 col-sm-7">
                                                 <div class="item-inner product_list_style">
@@ -136,7 +117,7 @@ foreach($categoriasData as $val){
                                                         </div>
 
                                                         <div class="actions">
-                                                            <label class="gfont" for="qty">Qty : </label>
+                                                            <label class="gfont" for="qty">Cantidad : </label>
                                                             <div class="qty-container">
                                                                 <button class="qty-decrease" onclick="var qty_el = document.getElementById('qty'); var qty = qty_el.value; if( !isNaN( qty ) && qty > 1 ) qty_el.value--;return false;" type="button"></button>
                                                                 <input id="qty" class="input-text qty" type="text" title="Qty" value="1" name="qty">
@@ -144,7 +125,7 @@ foreach($categoriasData as $val){
                                                             </div>
                                                             
                                                             <button class="btn-cart" title="Add to Cart" data-id="qv_item_8">
-                                                                Add to Cart
+                                                                Añadir
                                                             </button>
                                                         </div>
                                                             <div class="addthis_native_toolbox"></div>
@@ -163,7 +144,7 @@ foreach($categoriasData as $val){
                             <?php
                             if (count($banDataSide)>=2) {
                                     $banRandSide = $banDataSide[array_rand($banDataSide)];
-                                    $imagenes->set("codigo",$banRandSide['cod']);
+                                    $imagenes->set("cod",$banRandSide['cod']);
                                     $imgRandSide = $imagenes->view();
                                     $banners->set("id",$banRandSide['id']);
                                     $value=$banRandSide['vistas']+1;
@@ -180,7 +161,7 @@ foreach($categoriasData as $val){
                                          unset($banDataSide[$key]);
                                      }
                                      $banRandSide2 = $banDataSide[array_rand($banDataSide)];
-                                     $imagenes->set("codigo",$banRandSide2['cod']);
+                                     $imagenes->set("cod",$banRandSide2['cod']);
                                      $imgRandSide2 = $imagenes->view();
                                      $banners->set("id",$banRandSide2['id']);
                                      $value=$banRandSide2['vistas']+1;
@@ -197,7 +178,7 @@ foreach($categoriasData as $val){
                             ?>
                             </div>
                             <div id="sns_mainm" class="col-md-9">
-                                <div id="sns_description" class="description">
+                                <div id="sns_description" class="description mt-15">
                                     <div class="sns_producttaps_wraps1">
                                         <h3 class="detail-none">Descripción
                                             <i class="fa fa-align-justify"></i>
@@ -228,7 +209,7 @@ foreach($categoriasData as $val){
                                             <?php
                                             foreach ($productDataRel as $rel) {
                                                 $productosRel1 = $productDataRel[array_rand($productDataRel)];
-                                                $imagenes->set("codigo",$productosRel1['cod']);
+                                                $imagenes->set("cod",$productosRel1['cod']);
                                                 $imgProRel1 = $imagenes->view();
                                             ?>
                                                  <div class="item">
@@ -245,8 +226,7 @@ foreach($categoriasData as $val){
                                                                 ?>
                                                                 </div>
                                                                 <a class="product-image have-additional" href="<?php echo URL . '/producto/' . $funciones->normalizar_link($productosRel1['titulo']) . "/" . $productosRel1['id'] ?>">
-                                                                    <span class="img-main">
-                                                                        <img alt="" src="<?= URL . '/' . $imgProRel1['ruta'] ?>">
+                                                                    <span class="img-main" style="height:200px;background:url(<?= URL. '/' . $imgProRel1['ruta'] ?>)center/contain;">
                                                                     </span>
                                                                 </a>
                                                             </div>
@@ -321,47 +301,4 @@ foreach($categoriasData as $val){
 <?php
 $template->themeEnd();
 ?>
-<?php /*
-     <div class="item">
-        <div class="item-inner">
-            <div class="prd">
-                <div class="item-img clearfix">
-                    <div class="ico-label">
-                        <span class="ico-product ico-sale">Sale</span>
-                    </div>
-                    <a class="product-image have-additional" href="index4-detail.html" title="Modular Modern">
-                        <span class="img-main">
-                            <img alt="" src="<?=URL?>/assets/images/products/16.jpg">
-                        </span>
-                    </a>
-                </div>
-                <div class="item-info">
-                    <div class="info-inner">
-                        <div class="item-title">
-                            <a href="index4-detail.html" title="Modular Modern"> Modular Modern </a>
-                        </div>
-                        <div class="item-price">
-                            <div class="price-box">
-                                <span class="regular-price">
-                                    <span class="price">
-                                        <span class="price1">$ 540.00</span>
-                                        <!--<span class="price2">$ 600.00</span>-->
-                                        </span>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="action-bot">
-                    <div class="wrap-addtocart">
-                        <button class="btn-cart" title="Add to Cart">
-                            <i class="fa fa-shopping-cart"></i>
-                            <span>Add to Cart</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    */ ?>
-                                            
+<?php                                     

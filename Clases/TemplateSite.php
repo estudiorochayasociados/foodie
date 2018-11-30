@@ -40,6 +40,20 @@ class TemplateSite
                 <?php
                 
     }
+    public function themeSideIndex()
+    {
+        ?>
+        <?php include 'assets/inc/sideIndex.inc.php'; ?>
+        <?php
+    }
+
+    public function themeList()
+    {
+        ?>
+        <?php include 'assets/inc/sideList.inc.php'; ?>
+        <?php
+    }
+
 
     public function themeEnd()
     {

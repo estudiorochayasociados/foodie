@@ -17,7 +17,7 @@ $data = $categorias->list(array("area = 'productos'"));
 if ($borrarImg != '') {
     $imagenes->set("id", $borrarImg);
     $imagenes->delete();
-        $funciones->headerMove(URL . "/index.php?op=productos&cod=$cod");
+        $funciones->headerMove(URL . "/index.php?op=productos&accion=modificar&cod=$cod");
 }
 
 if (isset($_POST["agregar"])) {
