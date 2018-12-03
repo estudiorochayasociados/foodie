@@ -16,6 +16,8 @@ foreach ($categoriasIncSideData as $valIncSide) {
 $categoriasIncSide->set("area", "productos");
 $categoriasParaProductos = $categoriasIncSide->listForArea();
 $productDataIncSide = $productosIncSide->listWithOps('', '', '4');
+$novedades = new Clases\Novedades();
+$novedadesData = $novedades->list('');
 ?>
             <!-- sns_left -->
             <div id="sns_left" class="col-md-3">
@@ -96,7 +98,7 @@ $productDataIncSide = $productosIncSide->listWithOps('', '', '4');
                                             </div>
                                             <div class="item-info">
                                                 <div class="info-inner">
-                                                    <div class="item-title">
+                                                    <div class="item-title" title="<?= ucfirst($proRandIncSide['titulo']); ?>">
                                                         <a href="<?php echo URL . '/producto/' . $funcionesIncSide->normalizar_link($proRandIncSide['titulo']) . "/" . $proRandIncSide['id'] ?>"> <?= substr(ucfirst($proRandIncSide['titulo']),0,10) ?>... </a>
                                                     </div>
                                                     <div class="item-price">
@@ -138,40 +140,31 @@ $productDataIncSide = $productosIncSide->listWithOps('', '', '4');
 
                 <div class="block sns-latestblog">
                     <div class="block-title">
-                        <h3>LATEST POSTS</h3>
+                        <h3>Últimos blogs</h3>
                     </div>
                     <div class="content">
                         <div id="latestblog1333" class=" slider-left9  latestblog-content owl-carousel owl-theme owl-loaded" style="display: inline-block">
-                            <div class="item banner5">
-                                <img alt="" src="<?= URL ?>/assets/images/page2/blog-page2.jpg">
-                                <div class="blog-page">
-                                    <div class="blog-left">
-                                        <p class="text1">08</p>
-                                        <p class="text2">JAN</p>
-                                    </div>
-                                    <div class="blog-right">
-                                        <p class="style1">
-                                            <a href="blog-detail.html">Chair furnitured</a>
-                                        </p>
-                                        <p class="style2">Lorem Ipsum has been the industry's </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item banner5">
-                                <img alt="" src="<?= URL ?>/assets/images/blog/blog5.jpg">
-                                <div class="blog-page">
-                                    <div class="blog-left">
-                                        <p class="text1">08</p>
-                                        <p class="text2">JAN</p>
-                                    </div>
-                                    <div class="blog-right">
-                                        <p class="style1">
-                                            <a href="blog-detail.html">Chair furnitured</a>
-                                        </p>
-                                        <p class="style2">Lorem Ipsum has been the industry's </p>
+                            <?php
+                            foreach($novedadesData as $novSide) {
+                                $imagenesIncSide->set("cod",$novSide['cod']);
+                                $imgNovSide=$imagenesIncSide->view();
+                                $fechaSide = explode("-", $novSide['fecha']);
+                            ?>
+                                <div class="item banner5" >
+                                    <img alt="<?= ucfirst($novSide['titulo']); ?>" src="<?= URL. '/' . $imgNovSide['ruta'] ?>">
+                                    <div class="blog-page pb-40">
+                                        <div class="blog-left">
+                                            <p class="text1"><?= $fechaSide[2]; ?></p>
+                                            <p class="text2"><?= $fechaSide[1]; ?></p>
+                                        </div>
+                                        <div class="blog-right">
+                                            <p class="style2" href="<?php echo URL . '/blog/' . $funcionesIncSide->normalizar_link($novSide['titulo']) . "/" . $novSide['id'] ?>"><?= substr(ucfirst($novSide['titulo']),0,10) ?>...</p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            <?php
+                            }
+                            ?>
                         </div>
                     </div>
                 </div>

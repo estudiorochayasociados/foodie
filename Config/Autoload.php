@@ -6,6 +6,7 @@ class autoload
     public static function runSitio()
     {
         session_start();
+        //$_SESSION["carrito"] = isset($_SESSION["carrito"]) ? $_SESSION["carrito"] : '';
         define('URL', "http://".$_SERVER['HTTP_HOST']."/cms-joa");
         define('CANONICAL', "http://".$_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"]);
         define('TITULO', "Pintureria Ariel");

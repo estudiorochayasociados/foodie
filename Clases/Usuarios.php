@@ -70,6 +70,28 @@ class Usuarios
         }
     }
 
+    public function invitado_sesion()
+    {
+        $_SESSION["usuarios"] = array(
+            'cod' => '{$this->cod}',
+            'nombre' => '{$this->nombre}',
+            'apellido' => '{$this->apellido}',
+            'doc' => '{$this->doc}',
+            'email' => '{$this->email}',
+            'password' => '{$this->password}',
+            'postal' => '{$this->postal}',
+            'localidad' => '{$this->localidad}',
+            'provincia' => '{$this->provincia}',
+            'pais' => '{$this->pais}',
+            'telefono' => '{$this->telefono}',
+            'celular' => '{$this->celular}',
+            'invitado' => '{$this->invitado}',
+            'descuento' => '{$this->descuento}',
+            'fecha' => '{$this->fecha}'
+        );        
+    }
+
+
     public function delete()
     {
         $sql   = "DELETE FROM `usuarios`WHERE `cod`= '{$this->cod}'";
@@ -102,6 +124,17 @@ class Usuarios
         $usuario = $this->con->sqlReturn($sql);
         $row     = mysqli_fetch_assoc($usuario);
         return $row;
+    }
+
+    public function view_sesion()
+    { 
+        if(!isset($_SESSION["usuarios"])) 
+       {
+        $_SESSION["usuarios"] = array();
+        return $_SESSION["usuarios"];
+    } else {        
+     return $_SESSION["usuarios"];
+   } 
     }
 
     public function validate()

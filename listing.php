@@ -3,9 +3,9 @@ require_once "Config/Autoload.php";
 Config\Autoload::runSitio();
 $template = new Clases\TemplateSite();
 $funciones= new Clases\PublicFunction();
-$template->set("title", "Admin");
-$template->set("description", "Admin");
-$template->set("keywords", "Inicio");
+$template->set("title", "Pinturería Ariel | Productos");
+$template->set("description", "");
+$template->set("keywords", "");
 $template->set("favicon", LOGO);
 $template->themeInit();
 //
@@ -131,8 +131,8 @@ $productosPaginador = $productos->paginador('',5);
                                                             </div>
                                                             <div class="item-info">
                                                                 <div class="info-inner">
-                                                                    <div class="item-title">
-                                                                        <a href="<?php echo URL . '/producto/' . $funciones->normalizar_link($proRandSide['titulo']) . "/" . $proRandSide['id'] ?>"> <?= $proRandSide['titulo'] ?> </a>
+                                                                    <div class="item-title" title="<?= ucfirst($proRandSide['titulo']); ?>">
+                                                                        <a href="<?php echo URL . '/producto/' . $funciones->normalizar_link($proRandSide['titulo']) . "/" . $proRandSide['id'] ?>"> <?= substr(ucfirst($proRandSide['titulo']),0,10) ?>... </a>
                                                                     </div>
                                                                     <div class="item-price">
                                                                         <span class="price">
