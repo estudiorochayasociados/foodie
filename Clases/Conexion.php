@@ -9,11 +9,14 @@ class Conexion
     public function __construct()
     {
         $this->con = mysqli_connect($this->datos["host"], $this->datos["user"], $this->datos["pass"], $this->datos["db"]);
+        mysqli_set_charset($this->con,'utf8');
+
     }
 
     public function con()
     {
         $conexion = mysqli_connect($this->datos["host"], $this->datos["user"], $this->datos["pass"], $this->datos["db"]);
+        mysqli_set_charset($conexion,'utf8');
         return $conexion;
     }
 

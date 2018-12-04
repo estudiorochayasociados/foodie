@@ -76,4 +76,15 @@ class Subcategorias
             return $array;
         }
     }
+
+    function listForSearch($categoria) {
+        $sql = " SELECT * FROM `categorias`,`subcategorias` WHERE `subcategorias`.`categoria` = categorias.cod AND categorias.cod = '$categoria' ORDER BY subcategorias.titulo ASC";
+        $notas = $this->con->sqlReturn($sql);
+        if ($notas) {
+            while ($row = mysqli_fetch_assoc($notas)) {
+                $array[] = $row;
+            }
+            return $array ;
+        }
+    }
 }

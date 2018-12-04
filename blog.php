@@ -90,3 +90,6 @@ $template->themeInit();
                     </div>
                 </div>
             </div>
+<?php
+$template->themeEnd();
+?>

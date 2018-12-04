@@ -39,7 +39,7 @@ $carro = $carrito->return();
                                 <div class="customer-ct content">
                                     <ul class="links">
                                         <li>
-                                            <a class="top-link-checkout" title="Checkout" href="#">Carrito</a>
+                                            <a class="top-link-cart" title="Checkout" href="#">Carrito</a>
                                         </li>
                                         <li class=" last">
                                             <a class="top-link-login" title="Log In" href="#">Iniciar sesión</a>
@@ -228,7 +228,7 @@ $carro = $carrito->return();
                             </li>
                             <li class="level0 custom-item">
                                 <a class="menu-title-lv0" href="<?=URL . '/contact' ?>">
-                                    <span class="title">Contact Us</span>
+                                    <span class="title">Contactanos</span>
                                 </a>
                             </li>
                         </ul>
@@ -700,8 +700,8 @@ $carro = $carrito->return();
                         <div class="sns-searbox-content">
                             <form id="search_mini_form3703138361442478087" method="get" action="http://demo.snstheme.com/sns-simen/index.php/catalogsearch/result/">
                                 <div class="form-search">
-                                    <input id="search3703138361442478087" class="input-text" type="text" value="" name="q" placeholder="Search here...." size="30" autocomplete="off">
-                                    <button class="button form-button" title="Search" type="submit">Search</button>
+                                    <input id="search3703138361442478087" class="input-text" type="text" value="" name="q" placeholder="Que desea buscar...." size="30" autocomplete="off">
+                                    <button class="button form-button" title="Search" type="submit">Buscar</button>
                                     <div id="search_autocomplete3703138361442478087" class="search-autocomplete" style="display: none;"></div>
                                 </div>
                             </form>

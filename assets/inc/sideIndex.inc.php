@@ -92,7 +92,7 @@ $novedadesData = $novedades->list('');
                                         <div class="prd">
                                             <div class="item-img clearfix">
                                                 <a class="product-image have-additional" href="<?php echo URL . '/producto/' . $funcionesIncSide->normalizar_link($proRandIncSide['titulo']) . "/" . $proRandIncSide['id'] ?>">
-                                                    <span class="img-main"  style="width:80px;height:100px;background:url('<?= URL . '/' . $imgProIncSide['ruta'] ?>') no-repeat center center/contain;">
+                                                    <span class="img-main"  style="width:80px;height:80px;background:url('<?= URL . '/' . $imgProIncSide['ruta'] ?>') no-repeat center center/contain;">
                                                     </span>
                                                 </a>
                                             </div>
@@ -150,15 +150,15 @@ $novedadesData = $novedades->list('');
                                 $imgNovSide=$imagenesIncSide->view();
                                 $fechaSide = explode("-", $novSide['fecha']);
                             ?>
-                                <div class="item banner5" >
-                                    <img alt="<?= ucfirst($novSide['titulo']); ?>" src="<?= URL. '/' . $imgNovSide['ruta'] ?>">
-                                    <div class="blog-page pb-40">
+                                <div class="item banner5">
+                                    <div style="height:200px;background:url(<?= URL . '/' . $imgNovSide['ruta'] ?>)no-repeat center center/contain;"></div>
+                                    <div class="blog-page pb-30 mt-5">
                                         <div class="blog-left">
-                                            <p class="text1"><?= $fechaSide[2]; ?></p>
+                                            <p class="text1"  ><?= $fechaSide[2]; ?></p>
                                             <p class="text2"><?= $fechaSide[1]; ?></p>
                                         </div>
                                         <div class="blog-right">
-                                            <p class="style2" href="<?php echo URL . '/blog/' . $funcionesIncSide->normalizar_link($novSide['titulo']) . "/" . $novSide['id'] ?>"><?= substr(ucfirst($novSide['titulo']),0,10) ?>...</p>
+                                            <p class="style2" ><?= substr(ucfirst($novSide['titulo']),0,60) ?>...</p>
                                         </div>
                                     </div>
                                 </div>

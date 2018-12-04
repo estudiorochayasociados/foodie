@@ -32,7 +32,7 @@ class TemplateSite
       <meta name="keywords" content="<?=$this->keywords?>">
     </head>
     <?php include 'assets/inc/nav.inc.php'; ?>
-    <body>
+    <body class="cms-index-index2 header-style2 cms-simen-home-page-v2 default cmspage">
       <div class="container-fluid">
         <?php
 

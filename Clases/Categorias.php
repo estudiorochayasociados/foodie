@@ -88,6 +88,7 @@ class Categorias
         }
     }
 
+
     function listForSearch($limit) {
         $array = array();
         if ($limit != '') {

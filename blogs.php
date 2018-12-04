@@ -21,7 +21,7 @@ $imagenes = new Clases\Imagenes();
                 <div class="wrap-in">
                     <div class="block block-latestblog-v3" id="sns_latestblog_19454288391442904929">
                         <div class="block-title">
-                            <strong>LATEST POST</strong>
+                            <strong>Últimos blogs</strong>
                         </div>
                         <div class="block-content">
                             <div class="list-blog">
@@ -120,8 +120,6 @@ $imagenes = new Clases\Imagenes();
     </div>
 </div>
 <!-- AND CONTENT -->
-
-
 <?php
 $template->themeEnd();
 ?>
