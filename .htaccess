@@ -1,12 +1,14 @@
 Options +FollowSymLinks
 RewriteEngine on
-#RewriteBase /
+
 RewriteCond %{SCRIPT_FILENAME} !-d
 RewriteCond %{SCRIPT_FILENAME} !-f
-RewriteRule ^(.*)$ $1.php
+
 
 RewriteRule ^producto/(.*)/(.*)$ ./producto.php?id=$2
-RewriteRule ^productos/(.*)/(.*)$ ./listing.php?pagina=$2
+RewriteRule ^productos/(.*)/(.*)/(.*)/(.*)$ ./listing.php?$1=$2&$3=$4&$5=$6
+#RewriteRule ^productos/(.*)/(.*)/(.*)$ ./listing.php?pagina=$3&categoria=$3
+#RewriteRule ^productos/(.*)/(.*)$ ./listing.php?pagina=$2
 RewriteRule ^productos ./listing.php
 RewriteRule ^contacto ./contact.php
 RewriteRule ^blog/(.*)/(.*)$ ./blog.php?id=$2

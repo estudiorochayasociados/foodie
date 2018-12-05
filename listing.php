@@ -10,9 +10,27 @@ $template->set("favicon", LOGO);
 $template->themeInit();
 //
 $pagina = isset($_GET["pagina"]) ? $_GET["pagina"] : '0';
+$categoria = isset($_GET["categoria"]) ? $_GET["categoria"] : '';
+$subcategoria = isset($_GET["subcategoria"]) ? $_GET["subcategoria"] : '';
+
+$filter = array();
+
+if($categoria != '') {
+    array_push($filter,"categoria = '$categoria'");
+}
+
+if($subcategoria != '') {
+    array_push($filter,"subcategoria = '$subcategoria'");
+}
 
 if ($pagina > 0) {
     $pagina = $pagina - 1;
+}
+
+if(count($_GET) == 0) {
+    $anidador = "?";
+} else {
+    $anidador = "&";
 }
 
 
@@ -38,14 +56,14 @@ foreach ($categoriasData as $valor) {
 //Productos
 $categorias->set("area", "productos");
 $categoriasParaProductos = $categorias->listForSearch('');
-$productData = $productos->listWithOps('', '', (24 * $pagina) . ',' . 24);
-$productDataSide = $productos->listWithOps('', '', '8');
-$productosPaginador = $productos->paginador('', 24);
+$productData = $productos->listWithOps($filter, '', (24 * $pagina) . ',' . 24);
+$productDataSide = $productos->listWithOps($filter, '', '8');
+$productosPaginador = $productos->paginador($filter, 24);
 //
 
 //SUBCATEGORIAS
 $subSub = $subcategorias->listForSearch("045");
-echo count($subSub);
+//echo count($subSub);
 
 ?>
 
@@ -72,7 +90,7 @@ echo count($subSub);
                                             foreach ($categoriasParaProductos as $catList) {
                                                 ?>
                                                 <li>
-                                                    <a href="<?= URL . "/productos/" . $catList['cod'] ?>">
+                                                    <a href="<?= URL . "/productos.php?categoria=" . $catList['cod'] ?>">
                                                         <?= $catList['titulo'] ?>
                                                         <span class="count">(<?= $catList['count(categoria)'] ?>)</span>
                                                     </a>
@@ -292,7 +310,7 @@ echo count($subSub);
                                                 <?php
                                                 if ($productosPaginador != 1 && $productosPaginador != 0) {
                                                     $links = '';
-                                                    $links .= "<li><a href='" . URL . "/productos" . "/1'>1</a></li>";
+                                                    $links .= "<li><a href='" . CANONICAL."".$anidador."pagina=1'>1</a></li>";
                                                     $i = max(2, $pagina - 5);
 
                                                     if ($i > 2) {
@@ -300,12 +318,12 @@ echo count($subSub);
                                                     }
 
                                                     for (; $i < min($pagina + 6, $productosPaginador); $i++) {
-                                                        $links .= "<li><a href='" . URL . "/productos" . "/" . $i . "'>" . $i . "</a></li>";
+                                                        $links .= "<li><a href='" . CANONICAL."".$anidador."pagina=". $i . "'>" . $i . "</a></li>";
                                                     }
 
                                                     if ($i != $productosPaginador) {
                                                         $links .= "<li><a href='#'>...</a></li>";
-                                                        $links .= "<li><a href='" . URL . "/productos" . "/" . $productosPaginador . "'>" . $productosPaginador . "</a></li>";
+                                                        $links .= "<li><a href='" . CANONICAL."".$anidador."pagina=". $productosPaginador . "'>" . $productosPaginador . "</a></li>";
                                                     }
                                                     echo $links;
                                                     echo "";
@@ -423,18 +441,18 @@ echo count($subSub);
                                                 <?php
                                                 if ($productosPaginador != 1 && $productosPaginador != 0) {
                                                     $links = '';
-                                                    $links .= "<li><a href='" . URL . "/productos" . "/1'>1</a></li>";
+                                                    $links .= "<li><a href='" . CANONICAL."".$anidador."pagina=1'>1</a></li>";
                                                     $i = max(2, $pagina - 5);
 
                                                     if ($i > 2) {
                                                         $links .= "<li><a href='#'>...</a></li>";
                                                     }
                                                     for (; $i < min($pagina + 6, $productosPaginador); $i++) {
-                                                        $links .= "<li><a href='" . URL . "/productos" . "/" . $i . "'>" . $i . "</a></li>";
+                                                        $links .= "<li><a href='" . CANONICAL."".$anidador."pagina=". $i . "'>" . $i . "</a></li>";
                                                     }
                                                     if ($i != $productosPaginador) {
                                                         $links .= "<li><a href='#'>...</a></li>";
-                                                        $links .= "<li><a href='" . URL . "/productos" . "/" . $productosPaginador . "'>" . $productosPaginador . "</a></li>";
+                                                        $links .= "<li><a href='" . CANONICAL."".$anidador."pagina=". $productosPaginador . "'>" . $productosPaginador . "</a></li>";
                                                     }
                                                     echo $links;
                                                     echo "";
