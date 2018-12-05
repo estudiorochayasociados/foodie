@@ -3,7 +3,7 @@ RewriteEngine on
 
 RewriteCond %{SCRIPT_FILENAME} !-d
 RewriteCond %{SCRIPT_FILENAME} !-f
-
+RewriteRule ^(.*)$ $1.php
 
 RewriteRule ^producto/(.*)/(.*)$ ./producto.php?id=$2
 RewriteRule ^productos/(.*)/(.*)/(.*)/(.*)$ ./listing.php?$1=$2&$3=$4&$5=$6

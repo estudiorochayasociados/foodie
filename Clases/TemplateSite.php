@@ -30,9 +30,13 @@ class TemplateSite
       <title><?=$this->title?></title>
       <meta name="description" content="<?=$this->description?>">
       <meta name="keywords" content="<?=$this->keywords?>">
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     </head>
-    <?php include 'assets/inc/nav.inc.php'; ?>
-    <body class="cms-index-index2 header-style2 cms-simen-home-page-v2 default cmspage">
+    
+    <body id="bd" class="cms-index-index4 header-style4 prd-detail blog-pagev1 cms-simen-home-page-v2 default cmspage">
+     <div id="sns_wrapper"> 
+
+      <?php include 'assets/inc/nav.inc.php'; ?>
       <div class="container-fluid">
         <?php
 
@@ -57,6 +61,7 @@ class TemplateSite
         ?>
         <?php include 'assets/inc/footer.inc.php'; ?>
       </div>
+    </div>
     </body>
     <script src="<?=URL?>/admin/ckeditor/ckeditor.js"></script>
     <script src="<?=URL?>/admin/ckeditor/lang/es.js"></script>
@@ -66,6 +71,9 @@ class TemplateSite
     <script src="<?=URL?>/assets/js/owl-carousel/owl.carousel.min.js"></script>
     <script src="<?=URL?>/assets/js/sns-extend.js"></script>
     <script src="<?=URL?>/assets/js/custom.js"></script>
+          <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+          <script src="<?=URL?>/assets/js/list-grid.js"></script>
     </html>
     <?php
   }

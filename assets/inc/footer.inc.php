@@ -24,18 +24,17 @@
                         </div>
                     </div>
                 </div>
-            </div>
             <!-- AND PARTNERS -->
 
-           <!-- FOOTER -->
-            <div id="sns_footer" class="footer_style vesion2 wrap">
+           <!-- FOOTER MD LG -->
+            <div id="sns_footer" class="footer_style vesion2 wrap visible-md visible-lg">
                 <div id="sns_footer_top" class="footer">
                     <div class="container">
                         <div class="container_in">
                             <div class="row">
                                 <div class="col-md-3 col-sm-12 col-xs-12 column0">
                                     <div class="contact_us">
-                                        <h6>Contact us</h6>
+                                        <h6>Contactanos</h6>
                                         <ul class="fa-ul">
                                             <li class="pd-right">
                                                 <i class="fa-li fa fw fa-home"> </i>
@@ -159,4 +158,52 @@
                     </div>
                 </div>
             </div>
-            <!-- AND FOOTER -->
+            <!-- AND FOOTER MD LG-->
+
+            <!-- FOOTER XS-->
+            <div id="sns_footer" class="footer_style vesion2 wrap visible-xs visible-sm">
+                <div id="sns_footer_top" class="footer">
+                    <div class="container">
+                        <div class="container_in">
+                            <div class="row">
+                                <div class="col-md-3 col-sm-12 col-xs-12 column0">
+                                    <div class="contact_us">
+                                        <h6>Contactanos</h6>
+                                        <ul class="fa-ul">
+                                            <li class="pd-right">
+                                                <i class="fa-li fa fw fa-home"> </i>
+                                                Las Malvinas 930 - San Francisco (CBA)
+                                            </li>
+                                            <li>
+                                                <i class="fa-li fa fw fa-phone"> </i>
+                                                <p>(03564) 438484</p>
+                                                <p>(03564) 443393</p>
+                                            </li>
+                                            <li>
+                                                <i class="fa-li fa fw fa-envelope"> </i>
+                                                <p>
+                                                    <a href="mailto:marketing@pintureriasariel.com.ar">marketing@pintureriasariel.com.ar</a>
+                                                </p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="sns_footer_bottom" class="footer">
+                    <div class="container">
+                        <div class="row">
+                            <div class="bottom-pd1 col-sm-12">
+                                <div class="sns-copyright">
+                                    © 2018 Todos los derechos reservados, Pinturerías Ariel. Copyright by <a href="http://www.estudiorochayasoc.com" target="_blank">Estudio Rocha & Asociados</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- AND FOOTER MD LG-->
+ </div>

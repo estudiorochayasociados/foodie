@@ -154,8 +154,28 @@ $template->themeInit();
                                                 </button>
                                             </form>
                                         </div>
-                                        <div class="addthis_native_toolbox"></div>
-                                    </div>
+                                            <div>
+                                                <!--
+                                                <div style="display: inline-block;">
+                                                    <div class="fb-share-button" data-href="<?= URL . '/producto/' . $funciones->normalizar_link($producData['titulo']) . "/" . $productData['id'] ?>" data-layout="button" data-size="large" data-mobile-iframe="false"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.estudiorochayasoc.com%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Compartir</a></div>
+                                                </div>
+                                                <div  style="display: inline-block;">
+                                                    <a class="twitter-share-button" data-size="large"
+                                                       href="https://twitter.com/intent/tweet">
+                                                        Tweet</a>
+                                                </div>-->
+                                                <div class="mt-5">
+                                                    <!-- AddToAny BEGIN -->
+                                                    <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+                                                        <a class="a2a_button_facebook"></a>
+                                                        <a class="a2a_button_twitter"></a>
+                                                        <a class="a2a_button_google_plus"></a>
+                                                    </div>
+                                                    <script async src="https://static.addtoany.com/menu/page.js"></script>
+                                                    <!-- AddToAny END -->
+                                                </div>
+                                            </div>
+                                        </div>
                                 </div>
                             </div>
                         </div>
@@ -284,25 +304,6 @@ $template->themeInit();
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="action-bot">
-                                                    <div class="wrap-addtocart">
-                                                        <button class="btn-cart">
-                                                            <i class="fa fa-shopping-cart"></i>
-                                                            <span>Añadir</span>
-                                                        </button>
-                                                    </div>
-                                                    <div class="actions">
-                                                        <ul class="add-to-links">
-                                                            <li class="wrap-quickview" data-id="qv_item_7">
-                                                                <div class="quickview-wrap">
-                                                                    <a class="sns-btn-quickview qv_btn" href="<?php echo URL . '/producto/' . $funciones->normalizar_link($productosRel1['titulo']) . "/" . $productosRel1['id'] ?>">
-                                                                        <i class="fa fa-eye"></i>
-                                                                    </a>
-                                                                </div>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -312,8 +313,6 @@ $template->themeInit();
                                     }
                                 }
                                 ?>
-
-
                             </div>
                         </div>
                     </div>
@@ -323,6 +322,32 @@ $template->themeInit();
     </div>
 </div>
 </div>
+<script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v3.2';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
+    <script>window.twttr = (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0],
+                t = window.twttr || {};
+            if (d.getElementById(id)) return t;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "https://platform.twitter.com/widgets.js";
+            fjs.parentNode.insertBefore(js, fjs);
+
+            t._e = [];
+            t.ready = function(f) {
+                t._e.push(f);
+            };
+
+            return t;
+        }(document, "script", "twitter-wjs"));</script>
+
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
 <!-- AND CONTENT -->
 <?php
 $template->themeEnd();

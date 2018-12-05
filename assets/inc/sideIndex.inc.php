@@ -118,14 +118,6 @@ $novedadesData = $novedades->list('');
                                                         </span>
                                                     </div>
                                                 </div>
-                                                <div class="action-bot">
-                                                    <div class="wrap-addtocart">
-                                                        <button class="btn-cart" >
-                                                            <i class="fa fa-shopping-cart"></i>
-                                                            <span>Añadir</span>
-                                                        </button>
-                                                    </div>
-                                                </div>
                                             </div>
                                         </div>
                                     </div>

@@ -27,7 +27,12 @@ if ($pagina > 0) {
     $pagina = $pagina - 1;
 }
 
-if(count($_GET) == 0) {
+if(@count($filter) == 0) {
+    $filter = '';
+}
+
+
+if(@count($_GET) == 0) {
     $anidador = "?";
 } else {
     $anidador = "&";
@@ -71,14 +76,13 @@ $subSub = $subcategorias->listForSearch("045");
     <div id="sns_content" class="wrap layout-lm">
         <div class="container">
             <div class="row">
-
                 <!-- sns_left -->
                 <div id="sns_left" class="col-md-3">
                     <div class="wrap-in">
                         <div class="block block-layered-nav block-layered-nav--no-filters">
                             <div class="block-title">
                                 <strong>
-                                    <span>Shop By</span>
+                                    <span>Categorías</span>
                                 </strong>
                             </div>
                             <div class="block-content toggle-content">
@@ -113,15 +117,14 @@ $subSub = $subcategorias->listForSearch("045");
                         $banners->set("vistas", $value);
                         $banners->increaseViews();
                         ?>
-                        <div class="block block_cat">
+                        <div class="block block_cat ">
                             <a class="banner5" href="<?= $banRandSide['link'] ?>">
                                 <img src="<?= URL . '/' . $imgRandSide['ruta'] ?>" alt=<?= $banRandSide['nombre'] ?>">
                                     </a>
-                                </div>
                                 <?php
                                 }
                                 ?>
-                                <div class=" bestsale">
+                                <div class="bestsale">
                                 <div class="title">
                                     <h3 class="mt-5">Recomendados</h3>
                                 </div>
@@ -176,32 +179,23 @@ $subSub = $subcategorias->listForSearch("045");
                                                                         </span>
                                                                 </div>
                                                             </div>
-                                                            <div class="action-bot">
-                                                                <div class="wrap-addtocart">
-                                                                    <button class="btn-cart">
-                                                                        <i class="fa fa-shopping-cart"></i>
-                                                                        <span>Añadir</span>
-                                                                    </button>
-                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
                                             <?php
                                         }
                                         ?>
-                                    </div>
                                 </div>
+                                </div>
+                    </div>
                         </div>
 
 
                     </div>
-                </div>
+            </div>
                 <!-- sns_left -->
-
-
-                <div id="sns_main" class="col-md-9 col-main">
+            <div id="sns_main" class="col-md-9 col-main">
                     <div id="sns_mainmidle">
                         <?php
                         if (count($banDataPie) != '') {
@@ -396,27 +390,6 @@ $subSub = $subcategorias->listForSearch("045");
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="action-bot">
-                                                        <div class="wrap-addtocart">
-                                                            <button class="btn-cart"
-                                                            >
-                                                                <i class="fa fa-shopping-cart"></i>
-                                                                <span>Añadir</span>
-                                                            </button>
-                                                        </div>
-                                                        <div class="actions">
-                                                            <ul class="add-to-links">
-                                                                <li class="wrap-quickview" data-id="qv_item_7">
-                                                                    <div class="quickview-wrap">
-                                                                        <a class="sns-btn-quickview qv_btn"
-                                                                           href="<?php echo URL . '/producto/' . $funciones->normalizar_link($productos['titulo']) . "/" . $productos['id'] ?>">
-                                                                            <i class="fa fa-eye"></i>
-                                                                        </a>
-                                                                    </div>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -467,7 +440,6 @@ $subSub = $subcategorias->listForSearch("045");
                         </div>
                     </div>
                 </div>
-            </div>
         </div>
     </div>
     <!-- AND CONTENT -->

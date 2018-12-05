@@ -22,7 +22,7 @@ $template->themeInit();
                             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3404.501697097214!2d-62.0759642848517!3d-31.42785248140028!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95cad7e1edd2fdf9%3A0x80e062808a2833c7!2sPintureria+Ariel!5e0!3m2!1ses!2sar!4v1543502523334" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
 
                             <div class="row clearfix">
-                                <div class="col-md-4 contact-info">
+                                <div class="col-md-4 contact-info mt-40">
                                     <ul class="fa-ul">
                                         <li><i class="fa-li fa fa-map-marker"></i>Las Malvinas 930 - San Francisco (CBA.)</li>
                                         <li><i class="fa-li fa fa-phone"></i>03564 - 438484</li>
@@ -56,7 +56,7 @@ $template->themeInit();
                                                     <input name="email" class="form-control input-text required-entry validate-email" id="email" placeholder="E-mail (*)" title="Email" value="" type="text" />
                                                 </div>
                                                 <div class="form-group">
-                                                    <input class="input-text form-control" name="telefono" id="telephone" placeholder="Telephone" title="Teléfono" value="" type="text" />
+                                                    <input class="input-text form-control" name="telefono" id="telephone" placeholder="Teléfono" title="Teléfono" value="" type="text" />
                                                 </div>
                                             </div>
                                             <div class="col-sm-6">
