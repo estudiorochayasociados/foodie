@@ -38,13 +38,17 @@ foreach ($categoriasData as $val) {
 }
 //Productos
 $categorias->set("area", "productos");
-$categoriasParaProductos = $categorias->listForArea();
+$categoriasParaProductos = $categorias->listForArea('');
 $productDataCenter1 = $productos->listWithOps('', '', '16');
 $productDataCenter2 = $productos->listWithOps('', '', '8');
 $productDataCenter3 = $productos->listWithOps('', '', '8');
 $productDataSide = $productos->listWithOps('', '', '4');
 $productDataRel = $productos->listWithOps('', '', '');
 ?>
+
+    <body id="bd" class=" cms-index-index2 header-style2 cms-simen-home-page-v2 default cmspage">
+    <div id="sns_wrapper">
+        <?php $template->themeNav(); ?>
     <!-- CONTENT -->
     <div id="sns_content" class="wrap layout-m">
         <div class="container">
@@ -977,6 +981,8 @@ $productDataRel = $productos->listWithOps('', '', '');
     </div>
     <!-- AND CONTENT -->
 
+    </div>
+    </body>
 <?php
 $template->themeEnd();
 ?>

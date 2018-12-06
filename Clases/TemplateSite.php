@@ -32,15 +32,15 @@ class TemplateSite
       <meta name="keywords" content="<?=$this->keywords?>">
         <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     </head>
-    
-    <body id="bd" class="cms-index-index4 header-style4 prd-detail blog-pagev1 cms-simen-home-page-v2 default cmspage">
-     <div id="sns_wrapper"> 
-
-      <?php include 'assets/inc/nav.inc.php'; ?>
-      <div class="container-fluid">
         <?php
-
       }
+
+      public function themeNav(){
+      ?>
+          <?php include 'assets/inc/nav.inc.php'; ?>
+          <?php
+      }
+
       public function themeSideIndex()
       {
         ?>
@@ -48,21 +48,17 @@ class TemplateSite
         <?php
       }
 
-      public function themeList()
+      public function themeSideBlog()
       {
-        ?>
-        <?php include 'assets/inc/sideList.inc.php'; ?>
-        <?php
+          ?>
+          <?php include 'assets/inc/sideBlog.inc.php'; ?>
+          <?php
       }
-
 
       public function themeEnd()
       {
         ?>
         <?php include 'assets/inc/footer.inc.php'; ?>
-      </div>
-    </div>
-    </body>
     <script src="<?=URL?>/admin/ckeditor/ckeditor.js"></script>
     <script src="<?=URL?>/admin/ckeditor/lang/es.js"></script>
     <script src="<?=URL?>/assets/js/jquery-1.9.1.min.js"></script>

@@ -5,7 +5,8 @@ $categoriasIncSide = new Clases\Categorias();
 $bannersIncSide = new Clases\Banner();
 $funcionesIncSide = new Clases\PublicFunction();
 //Banners
-$categoriasIncSideData = $categoriasIncSide->list('');
+$categoriasIncSide->set("area", "banners");
+$categoriasIncSideData = $categoriasIncSide->listForArea('');
 foreach ($categoriasIncSideData as $valIncSide) {
     if ($valIncSide['titulo'] == 'Side' && $valIncSide['area'] == 'banners') {
         $bannersIncSide->set("categoria", $valIncSide['cod']);
@@ -14,13 +15,13 @@ foreach ($categoriasIncSideData as $valIncSide) {
 }
 //Productos
 $categoriasIncSide->set("area", "productos");
-$categoriasParaProductos = $categoriasIncSide->listForArea();
+$categoriasParaProductos = $categoriasIncSide->listForArea('12');
 $productDataIncSide = $productosIncSide->listWithOps('', '', '4');
 $novedades = new Clases\Novedades();
 $novedadesData = $novedades->list('');
 ?>
             <!-- sns_left -->
-            <div id="sns_left" class="col-md-3">
+            <div id="sns_left" class="col-md-3 visible-md visible-lg">
                 <div class="wrap-in">
                     <div class="block block-blog-inner">
                         <div class="block-content">
@@ -45,6 +46,7 @@ $novedadesData = $novedades->list('');
                            </div>
                        </div>
                    </div>
+
                    <!-- Banner 270x350 -->
                    <?php
                     if (count($banDataIncSide) != '') {

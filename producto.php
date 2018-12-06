@@ -41,7 +41,39 @@ $template->set("favicon", LOGO);
 $template->themeInit();
 //
 ?>
-<!-- CONTENT -->
+    <body id="bd" class="cms-index-index2 header-style2 prd-detail sns-products-detail1 cms-simen-home-page-v2 default cmspage">
+<div id="sns_wrapper">
+    <?php $template->themeNav(); ?>
+
+    <!-- BREADCRUMBS -->
+    <div id="sns_breadcrumbs" class="wrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="sns_titlepage"></div>
+                    <div id="sns_pathway" class="clearfix">
+                        <div class="pathway-inner">
+                            <span class="icon-pointer "></span>
+                            <ul class="breadcrumbs">
+                                <li class="home">
+                                    <a href="<?=URL . '/index' ?>">
+                                        <i class="fa fa-home"></i>
+                                        <span>Inicio</span>
+                                    </a>
+                                </li>
+                                <li class="category3 last">
+                                    <span><?= ucfirst($productData['titulo']); ?></span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- AND BREADCRUMBS -->
+
+    <!-- CONTENT -->
 <div id="sns_content" class="wrap layout-m">
     <div class="container">
         <div class="row">
@@ -174,6 +206,7 @@ $template->themeInit();
                                                     <script async src="https://static.addtoany.com/menu/page.js"></script>
                                                     <!-- AddToAny END -->
                                                 </div>
+
                                             </div>
                                         </div>
                                 </div>
@@ -322,6 +355,8 @@ $template->themeInit();
     </div>
 </div>
 </div>
+</div>
+    </body>
 <script>(function(d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) return;

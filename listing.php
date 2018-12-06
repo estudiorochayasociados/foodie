@@ -71,8 +71,37 @@ $subSub = $subcategorias->listForSearch("045");
 //echo count($subSub);
 
 ?>
-
-    <!-- CONTENT -->
+    <body id="bd" class="cms-index-index2 header-style2 prd-detail cms-index-index  products-grid1 cms-simen-home-page-v2 default cmspage">
+<div id="sns_wrapper">
+    <?php $template->themeNav(); ?>
+    <!-- BREADCRUMBS -->
+    <div id="sns_breadcrumbs" class="wrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="sns_titlepage"></div>
+                    <div id="sns_pathway" class="clearfix">
+                        <div class="pathway-inner">
+                            <span class="icon-pointer "></span>
+                            <ul class="breadcrumbs">
+                                <li class="home">
+                                    <a  href="<?=URL . '/index' ?>">
+                                        <i class="fa fa-home"></i>
+                                        <span>Inicio</span>
+                                    </a>
+                                </li>
+                                <li class="category3 last">
+                                    <span>Todos los productos</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- AND BREADCRUMBS -->
+<!-- CONTENT -->
     <div id="sns_content" class="wrap layout-lm">
         <div class="container">
             <div class="row">
@@ -117,7 +146,7 @@ $subSub = $subcategorias->listForSearch("045");
                         $banners->set("vistas", $value);
                         $banners->increaseViews();
                         ?>
-                        <div class="block block_cat ">
+                        <div class="block block_cat visible-lg visible-md">
                             <a class="banner5" href="<?= $banRandSide['link'] ?>">
                                 <img src="<?= URL . '/' . $imgRandSide['ruta'] ?>" alt=<?= $banRandSide['nombre'] ?>">
                                     </a>
@@ -263,7 +292,7 @@ $subSub = $subcategorias->listForSearch("045");
                                         <span>per page</span>
                                     </div>
                                     <div class="sort-by">
-                                        <label>Sort by</label>
+                                        <label>Buscar por</label>
                                         <div class="select-new">
                                             <div class="select-inner jqtransformdone">
                                                 <div class="jqTransformSelectWrapper"
@@ -274,13 +303,13 @@ $subSub = $subcategorias->listForSearch("045");
                                                     </div>
                                                     <ul style="width: 116px; display: none; visibility: visible;">
                                                         <li class="active">
-                                                            <a class="selected" href="#"> Position </a>
+                                                            <a class="selected" href="#"> Ultimos </a>
                                                         </li>
                                                         <li>
-                                                            <a href="#"> Name </a>
+                                                            <a href="#"> Mayor precio </a>
                                                         </li>
                                                         <li>
-                                                            <a href="#"> Price </a>
+                                                            <a href="#"> Menor precio </a>
                                                         </li>
                                                     </ul>
                                                     <select class="select-sort-by jqTransformHidden"
@@ -294,7 +323,7 @@ $subSub = $subcategorias->listForSearch("045");
                                         </div>
                                         <!--  <a class="set-desc" title="Set Descending Direction" href="http://demo.snstheme.com/sns-simen/index.php/women.html?dir=desc&order=position"></a> -->
                                     </div>
-                                    <div class="pager">
+                                    <div class="pager visible-md visible-lg">
                                         <p class="amount">
                                             <?= count($productData) ?> productos (s)
                                         </p>
@@ -443,7 +472,8 @@ $subSub = $subcategorias->listForSearch("045");
         </div>
     </div>
     <!-- AND CONTENT -->
-
+</div>
+    </body>
 <?php
 $template->themeEnd();
 ?>

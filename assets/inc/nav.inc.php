@@ -19,7 +19,7 @@ $carro = $carrito->return();
         <!-- HEADER -->
         <div id="sns_header" class="wrap">
             <!-- Header Top -->
-            <div class="sns_header_top">
+            <div class="sns_header_top" >
                 <div class="container">
                     <div class="sns_module">
 
@@ -119,10 +119,6 @@ $carro = $carrito->return();
                         <div id="sns_mommenu" class="menu-offcanvas hidden-md hidden-lg hidden-sm">
                             <span class="btn2 btn-navbar leftsidebar" style="display: inline-block;">
                                 <i class="fa fa-align-left"></i>
-                                <span class="overlay"></span>
-                            </span>
-                            <span class="btn2 btn-navbar offcanvas">
-                                <i class="fa fa-align-justify"></i>
                                 <span class="overlay"></span>
                             </span>
                             <span class="btn2 btn-navbar rightsidebar">

@@ -23,47 +23,43 @@ $template->set("favicon", LOGO);
 $template->themeInit();
 //
 ?>
+    <body id="bd" class="cms-index-index2 header-style2 prd-detail blog-pagev1 detail cms-simen-home-page-v2 default cmspage">
+<div id="sns_wrapper">
+    <?php $template->themeNav(); ?>
+    <!-- BREADCRUMBS -->
+    <div id="sns_breadcrumbs" class="wrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="sns_titlepage"></div>
+                    <div id="sns_pathway" class="clearfix">
+                        <div class="pathway-inner">
+                            <span class="icon-pointer "></span>
+                            <ul class="breadcrumbs">
+                                <li class="home">
+                                    <a href="<?=URL . '/blogs' ?>">
+                                        <i class="fa fa-home"></i>
+                                        <span>Blogs</span>
+                                    </a>
+                                </li>
+                                <li class="category3 last">
+                                    <span>Blog</span>
+                                </li>
+                                <li class="category3 last">
+                                    <span><?= ucfirst($novedadData['titulo']); ?></span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- AND BREADCRUMBS -->
 <div id="sns_content" class="wrap">
                 <div class="container">
                     <div class="row">
-                        <div id="sns_left" class="col-md-3">
-                            <div class="block block-latestblog-v3" id="sns_latestblog_19454288391442904929">
-                                <div class="block-title">
-                                    <strong>LATEST POST</strong>
-                                </div>
-                                <div class="block-content">
-                                    <div class="list-blog">
-                                    <div class="item-post clearfix">
-                                            <?php
-                                            foreach ($novedadesData as $novSide) {
-                                                $imagenes->set("cod",$novSide['cod']);
-                                                $imgSide=$imagenes->view();
-                                                $fechaSide = explode("-", $novSide['fecha']);
-                                                ?>
-                                                <div class="item-child">
-                                                    <div class="item-img">
-                                                        <a class="post-img" title="Donec scelerisque quam vitae est." href="<?php echo URL . '/blog/' . $funciones->normalizar_link($novSide['titulo']) . "/" . $novSide['id'] ?>">
-                                                            <img alt="" src="<?= URL. '/' . $imgSide['ruta'] ?>">
-                                                        </a>
-                                                    </div>
-                                                    <div class="item-content">
-                                                        <div class="post-title">
-                                                            <a href="<?php echo URL . '/blog/' . $funciones->normalizar_link($novSide['titulo']) . "/" . $novSide['id'] ?>" >Donec scelerisque quam vitae est.</a>
-                                                        </div>
-                                                        <div class="date">  
-                                                            <i class="fa fa-calendar-o"></i>
-                                                            <span class="day-month"><?php echo $fechaSide[2] . "/" . $fechaSide[1] . "/" . $fechaSide[0] ?></span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <?php
-                                            }
-                                            ?>
-                                            </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <?php $template->themeSideBlog(); ?>
                         <div id="sns_main" class="col-md-9 col-main">
                             <div id="sns_mainmidle">
                                 <div class="blogs-page">
@@ -86,10 +82,22 @@ $template->themeInit();
                                     </div>
                                 </div>
                             </div>
+                            <div class="mt-5" style="float: right;">
+                                <!-- AddToAny BEGIN -->
+                                <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+                                    <a class="a2a_button_facebook"></a>
+                                    <a class="a2a_button_twitter"></a>
+                                    <a class="a2a_button_google_plus"></a>
+                                </div>
+                                <script async src="https://static.addtoany.com/menu/page.js"></script>
+                                <!-- AddToAny END -->
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+</div>
+    </body>
 <?php
 $template->themeEnd();
 ?>
