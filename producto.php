@@ -198,10 +198,15 @@ $template->themeInit();
                                                 </div>-->
                                                 <div class="mt-5">
                                                     <!-- AddToAny BEGIN -->
+                                                    <label >Compartir en:</label>
+                                                    <!-- AddToAny BEGIN -->
                                                     <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
                                                         <a class="a2a_button_facebook"></a>
                                                         <a class="a2a_button_twitter"></a>
                                                         <a class="a2a_button_google_plus"></a>
+                                                        <a class="a2a_button_pinterest"></a>
+                                                        <a class="a2a_button_whatsapp"></a>
+                                                        <a class="a2a_button_facebook_messenger"></a>
                                                     </div>
                                                     <script async src="https://static.addtoany.com/menu/page.js"></script>
                                                     <!-- AddToAny END -->
@@ -264,7 +269,7 @@ $template->themeInit();
                     </h3>
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs" role="tablist">
-                        <li role="presentation" class="active style-detail"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Descripción</a></li>
+                        <li role="presentation" class="active style-detail"><a aria-controls="home" role="tab" data-toggle="tab">Descripción</a></li>
                     </ul>
                     <!-- Tab panes -->
                     <div class="tab-content">
@@ -280,8 +285,11 @@ $template->themeInit();
             </div>
             <div class="products-upsell">
                 <div class="detai-products1">
-                    <div class="title">
+                    <div class="title visible-md visible-lg">
                         <h3>Productos relacionados</h3>
+                    </div>
+                    <div class="title visible-xs">
+                        <h3>Relacionados</h3>
                     </div>
                     <div class="products-grid">
                         <div id="related_upsell" class="item-row owl-carousel owl-theme" style="display: inline-block">
@@ -357,32 +365,6 @@ $template->themeInit();
 </div>
 </div>
     </body>
-<script>(function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = 'https://connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v3.2';
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));</script>
-
-    <script>window.twttr = (function(d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0],
-                t = window.twttr || {};
-            if (d.getElementById(id)) return t;
-            js = d.createElement(s);
-            js.id = id;
-            js.src = "https://platform.twitter.com/widgets.js";
-            fjs.parentNode.insertBefore(js, fjs);
-
-            t._e = [];
-            t.ready = function(f) {
-                t._e.push(f);
-            };
-
-            return t;
-        }(document, "script", "twitter-wjs"));</script>
-
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
 <!-- AND CONTENT -->
 <?php
 $template->themeEnd();

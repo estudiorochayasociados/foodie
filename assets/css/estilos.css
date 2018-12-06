@@ -37,6 +37,14 @@
     .menuNav {
         margin-top: -20px;
     }
+    .categoriasList{
+        overflow-y: scroll;
+        height: 400px;
+    }
+    .marcasList{
+        overflow-y: scroll;
+        height: 400px;
+    }
     .mt15 {
         margin-top: 15px;
     }

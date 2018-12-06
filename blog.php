@@ -64,6 +64,9 @@ $template->themeInit();
                             <div id="sns_mainmidle">
                                 <div class="blogs-page">
                                     <div class="postWrapper v1">
+                                        <div class="post-title">
+                                            <a><?= ucfirst($novedadData['titulo']); ?></a>
+                                        </div>
                                         <a class="post-img">
                                             <img src="<?= URL. '/' . $imagenData['ruta']; ?>" alt="<?= $novedadData['titulo']; ?>">
                                         </a>
@@ -71,9 +74,7 @@ $template->themeInit();
                                         <div class="date">
                                             <span class="poster"><?php echo $fecha[2] . "/" . $fecha[1] . "/" . $fecha[0] ?></span>
                                         </div>
-                                        <div class="post-title">
-                                            <a><?= ucfirst($novedadData['titulo']); ?></a>
-                                        </div>
+
                                         <div class="post-content">
                                             <p class="text1">
                                                     <?= $novedadData['desarrollo']; ?>
@@ -82,12 +83,17 @@ $template->themeInit();
                                     </div>
                                 </div>
                             </div>
-                            <div class="mt-5" style="float: right;">
+                            <div class="mt-5" >
+                                <!-- AddToAny BEGIN -->
+                                <label >Compartir en:</label>
                                 <!-- AddToAny BEGIN -->
                                 <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
                                     <a class="a2a_button_facebook"></a>
                                     <a class="a2a_button_twitter"></a>
                                     <a class="a2a_button_google_plus"></a>
+                                    <a class="a2a_button_pinterest"></a>
+                                    <a class="a2a_button_whatsapp"></a>
+                                    <a class="a2a_button_facebook_messenger"></a>
                                 </div>
                                 <script async src="https://static.addtoany.com/menu/page.js"></script>
                                 <!-- AddToAny END -->

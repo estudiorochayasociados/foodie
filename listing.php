@@ -43,8 +43,8 @@ if(@count($_GET) == 0) {
 $productos = new Clases\Productos();
 $imagenes = new Clases\Imagenes();
 $categorias = new Clases\Categorias();
-$banners = new Clases\Banner();
 $subcategorias = new Clases\Subcategorias();
+$banners = new Clases\Banner();
 //Banners
 $categoriasData = $categorias->list('');
 foreach ($categoriasData as $valor) {
@@ -60,7 +60,8 @@ foreach ($categoriasData as $valor) {
 }
 //Productos
 $categorias->set("area", "productos");
-$categoriasParaProductos = $categorias->listForSearch('');
+$categoriasParaProductos = $categorias->listForArea('');
+$marcasParaProductos = $subcategorias->list('');
 $productData = $productos->listWithOps($filter, '', (24 * $pagina) . ',' . 24);
 $productDataSide = $productos->listWithOps($filter, '', '8');
 $productosPaginador = $productos->paginador($filter, 24);
@@ -116,16 +117,31 @@ $subSub = $subcategorias->listForSearch("045");
                             </div>
                             <div class="block-content toggle-content">
                                 <dl id="narrow-by-list">
-                                    <dt class="odd">Categories</dt>
-                                    <dd class="odd">
+                                    <dt class="odd">Categorias</dt>
+                                    <dd class="odd categoriasList">
+                                        <ol>
+                                            <?php
+                                            foreach ($marcasParaProductos as $marList) {
+                                                ?>
+                                                <li>
+                                                    <a href="<?= URL . "/productos.php?categoria=" . $marList['cod'] ?>">
+                                                        <?= $marList['titulo'] ?>
+                                                    </a>
+                                                </li>
+                                                <?php
+                                            }
+                                            ?>
+                                        </ol>
+                                    </dd>
+                                    <dt class="odd">Marcas</dt>
+                                    <dd class="odd marcasList">
                                         <ol>
                                             <?php
                                             foreach ($categoriasParaProductos as $catList) {
                                                 ?>
                                                 <li>
-                                                    <a href="<?= URL . "/productos.php?categoria=" . $catList['cod'] ?>">
+                                                    <a href="<?= URL . "/productos.php?marca=" . $catList['cod'] ?>">
                                                         <?= $catList['titulo'] ?>
-                                                        <span class="count">(<?= $catList['count(categoria)'] ?>)</span>
                                                     </a>
                                                 </li>
                                                 <?php
@@ -298,12 +314,12 @@ $subSub = $subcategorias->listForSearch("045");
                                                 <div class="jqTransformSelectWrapper"
                                                      style="z-index: 10; width: 118px;">
                                                     <div>
-                                                        <span style="width: 50px;"> Position </span>
+                                                        <span style="width: 50px;"> Últimos </span>
                                                         <a class="jqTransformSelectOpen" href="#"></a>
                                                     </div>
                                                     <ul style="width: 116px; display: none; visibility: visible;">
                                                         <li class="active">
-                                                            <a class="selected" href="#"> Ultimos </a>
+                                                            <a class="selected" href="#"> Últimos </a>
                                                         </li>
                                                         <li>
                                                             <a href="#"> Mayor precio </a>

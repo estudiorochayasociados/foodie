@@ -110,22 +110,63 @@ $carro = $carrito->return();
                                     </a>
                                 </li>
                                 <li class="level0 custom-item">
-                                    <a class="menu-title-lv0" href="<?=URL . '/contact' ?>">
+                                    <a class="menu-title-lv0" href="<?=URL . '/contacto' ?>">
                                         <span class="title">Contactanos</span>
                                     </a>
                                 </li>
                             </ul>
                         </div>
                         <div id="sns_mommenu" class="menu-offcanvas hidden-md hidden-lg hidden-sm">
-                            <span class="btn2 btn-navbar leftsidebar" style="display: inline-block;">
-                                <i class="fa fa-align-left"></i>
-                                <span class="overlay"></span>
-                            </span>
-                            <span class="btn2 btn-navbar rightsidebar">
-                                <i class="fa fa-align-right"></i>
-                                <span class="overlay"></span>
-                            </span>
+                            <div id="sns_mommenu" class="menu-offcanvas hidden-md hidden-lg">
+                                <!--<span class="btn2 btn-navbar leftsidebar" style="display: inline-block;">
+                                        <i class="fa fa-align-left"></i>
+                                        <span class="overlay"></span>
+                                    </span>
+                                    -->
+                                <span class="btn2 btn-navbar offcanvas">
+                                        <i class="fa fa-align-justify"></i>
+                                        <span class="overlay"></span>
+                                    </span>
+                                <span class="btn2 btn-navbar rightsidebar">
+                                        <i class="fa fa-align-right"></i>
+                                        <span class="overlay"></span>
+                                    </span>
+                                <div id="menu_offcanvas" class="offcanvas">
+                                    <ul class="mainnav">
+                                        <li class="level0 custom-item">
+                                            <div class="accr_header">
+                                                <a class="menu-title-lv0" href="<?=URL . '/inicio' ?>">
+                                                    <span class="title">Inicio</span>
+                                                </a>
+                                            </div>
+                                        </li>
 
+                                        <li class="level0 nav-5 first active">
+                                            <div class="accr_header">
+                                                <a class=" menu-title-lv0" href="<?=URL . '/productos' ?>">
+                                                    <span>Todos los productos</span>
+                                                </a>
+                                            </div>
+                                        </li>
+
+                                        <li class="level0 nav-5 first active">
+                                            <div class="accr_header">
+                                                <a class=" menu-title-lv0" href="<?=URL . '/blogs' ?>">
+                                                    <span>Blog</span>
+                                                </a>
+                                            </div>
+                                        </li>
+                                        <li class="level0 nav-5 first active">
+                                            <div class="accr_header">
+                                                <a class=" menu-title-lv0" href="<?=URL . '/contacto' ?>">
+                                                    <span>Contacto</span>
+                                                </a>
+                                            </div>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="sns_menu_right">

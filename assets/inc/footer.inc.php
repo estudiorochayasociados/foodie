@@ -161,7 +161,7 @@
             <!-- AND FOOTER MD LG-->
 
             <!-- FOOTER XS-->
-            <div id="sns_footer" class="footer_style vesion2 wrap visible-xs visible-sm">
+            <div id="sns_footer" class="footer_style vesion2 wrap visible-xs ">
                 <div id="sns_footer_top" class="footer">
                     <div class="container">
                         <div class="container_in">
