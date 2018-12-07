@@ -8,13 +8,16 @@ class Pedidos
     //Atributos
     public $id;
     public $cod;
-    public $pedido;
+    public $producto;
+    public $cantidad;
+    public $precio;
     public $estado;
     public $tipo;
     public $usuario;
     public $detalle;
     public $fecha;
     private $con;
+
 
     //Metodos
     public function __construct()
@@ -34,14 +37,21 @@ class Pedidos
 
     public function add()
     {
-        $sql   = "INSERT INTO `pedidos`(`cod`, `pedido`, `estado`, `tipo`, `usuario`, `detalle`, `fecha`) VALUES ('{$this->cod}', '{$this->pedido}', '{$this->estado}', '{$this->tipo}', '{$this->usuario}', '{$this->detalle}', '{$this->fecha}')";
+        $sql   = "INSERT INTO `pedidos`(`cod`, `producto`,`cantidad`,`precio`, `estado`, `tipo`, `usuario`, `detalle`, `fecha`) VALUES ('{$this->cod}', '{$this->producto}','{$this->cantidad}','{$this->precio}', '{$this->estado}', '{$this->tipo}', '{$this->usuario}', '{$this->detalle}', '{$this->fecha}')";
         $query = $this->con->sql($sql);
         return $query;
     }
 
     public function edit()
     {
-        $sql   = "UPDATE `pedidos` SET  `pedido`='{$this->pedido}',`estado`='{$this->estado}',`tipo`='{$this->tipo}',`usuario`='{$this->usuario}',`detalle`='{$this->detalle}',`fecha`='{$this->fecha}' WHERE `id`='{$this->id}'";
+        $sql   = "UPDATE `pedidos` SET  `producto`='{$this->producto}',`cantidad`='{$this->cantidad}',`precio`='{$this->precio}',`estado`='{$this->estado}',`tipo`='{$this->tipo}',`usuario`='{$this->usuario}',`detalle`='{$this->detalle}',`fecha`='{$this->fecha}' WHERE `id`='{$this->id}'";
+        $query = $this->con->sql($sql);
+        return $query;
+    }
+
+    public function cambiar_estado()
+    {
+        $sql   = "UPDATE `pedidos` SET `estado`='{$this->estado}',`tipo`='{$this->tipo}',`usuario`='{$this->usuario}' WHERE `cod`='{$this->cod}'";
         $query = $this->con->sql($sql);
         return $query;
     }

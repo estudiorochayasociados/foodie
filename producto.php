@@ -159,6 +159,7 @@ $template->themeInit();
                                                    if($carroEnvio != '') {
                                                     $carrito->delete($carroEnvio);                                   
                                                 }                                               
+
                                                 $carrito->set("id",$productData['id']);
                                                 $carrito->set("cantidad",$_POST["cantidad"]);
                                                 $carrito->set("titulo",$productData['titulo']);
@@ -171,7 +172,7 @@ $template->themeInit();
                                                 $funciones->headerMove(CANONICAL."?success");
                                             }                                       
                                             if(strpos(CANONICAL, "success") == true) {
-                                                echo "<div class='alert alert-success'>Agregaste un producto a tu carrito, querés <a href='".URL."/pagar'>pasar por caja</a> o <a href='".URL."/productos'>seguir comprando</a></div>";
+                                                echo "<div class='alert alert-success'>Agregaste un producto a tu carrito, querés <a href='".URL."/carrito'>pasar por caja</a> o <a href='".URL."/productos'>seguir comprando</a></div>";
                                             }                                                      
                                             ?>
                                             <form method="post">

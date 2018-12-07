@@ -1,12 +1,11 @@
 <?php
 namespace config;
-
 class autoload
 {
     public static function runSitio()
     {
         session_start();
-        //$_SESSION["carrito"] = isset($_SESSION["carrito"]) ? $_SESSION["carrito"] : '';
+        $_SESSION["cod_pedido"] = isset($_SESSION["cod_pedido"]) ? $_SESSION["cod_pedido"] : substr(md5(uniqid(rand())), 0, 10);
         define('URL', "http://".$_SERVER['HTTP_HOST']."/cms-joa");
         define('CANONICAL', "http://".$_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"]);
         define('TITULO', "Pintureria Ariel");

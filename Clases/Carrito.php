@@ -4,7 +4,6 @@ namespace Clases;
 
 class Carrito
 {
-
     //Atributos
     public $id;
     public $titulo;
@@ -34,7 +33,7 @@ class Carrito
     {
         $condition = '';
 
-        $add = array('id'=> $this->id,'titulo'  => $this->titulo,'cantidad'=> $this->cantidad,'precio'  => $this->precio,'opciones'=> $this->opciones);
+        $add = array('id' => $this->id, 'titulo' => $this->titulo, 'cantidad' => $this->cantidad, 'precio' => $this->precio, 'opciones' => $this->opciones);
 
         if (count($_SESSION["carrito"]) == 0) {
             array_push($_SESSION["carrito"], $add);
@@ -55,49 +54,49 @@ class Carrito
 
     public function return()
     {
-       if(!isset($_SESSION["carrito"])) 
-       {
+        if (!isset($_SESSION["carrito"])) {
+            $_SESSION["carrito"] = array();
+            return $_SESSION["carrito"];
+        } else {
+            return $_SESSION["carrito"];
+        }
+    }
+
+    public function precioFinal()
+    {
+        $precio = 0;
+        for ($i = 0; $i < count($_SESSION["carrito"]); $i++) {
+            $precio += $_SESSION["carrito"][$i]["precio"];
+        }
+        return $precio;
+    }
+
+    public function delete($key)
+    {
+        unset($_SESSION["carrito"][$key]);
+        $_SESSION["carrito"] = array_values($_SESSION["carrito"]);
+    }
+
+    public function edit($key)
+    {
+        if (array_key_exists($key, $_SESSION["carrito"])) {
+            $_SESSION["carrito"][$key]["cantidad"] = $this->cantidad;
+        }
+    }
+
+    public function destroy()
+    {
+        unset($_SESSION["carrito"]);
         $_SESSION["carrito"] = array();
-        return $_SESSION["carrito"];
-    } else {        
-       return $_SESSION["carrito"];
-   } 
-}
-
-public function precioFinal()
-{
-    $precio = 0;
-    for ($i = 0; $i < count($_SESSION["carrito"]); $i++) {
-        $precio += $_SESSION["carrito"][$i]["precio"];
     }
-    return $precio;
-}
 
-public function delete($key)
-{
-    unset($_SESSION["carrito"][$key]);
-    $_SESSION["carrito"] = array_values($_SESSION["carrito"]);
-}
-
-public function edit($key)
-{
-    if (array_key_exists($key, $_SESSION["carrito"])) {
-        $_SESSION["carrito"][$key]["cantidad"] = $this->cantidad;
+    public function checkEnvio()
+    {
+        foreach ($_SESSION["carrito"] as $key => $val) {
+            if ($val['id'] === "Envio-Seleccion") {
+                return $key;
+            }
+        }
+        return null;
     }
-}
-
-public function destroy()
-{
-    unset($_SESSION["carrito"]);
-    $_SESSION["carrito"] = array();
-}
-
-public function checkEnvio() {
-  foreach ($_SESSION["carrito"] as $key => $val) {
-   if ($val['id'] === "Envio-Seleccion") {
-       return $key;
-   }
-}
-return null;
-}
 }

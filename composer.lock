@@ -4,8 +4,45 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c30911dd8bf444ec06995858a4c9a68a",
+    "content-hash": "536c1f663e0e4e5c0c86735863a8f5a6",
     "packages": [
+        {
+            "name": "mercadopago/sdk",
+            "version": "v0.5.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mercadopago/sdk-php.git",
+                "reference": "b9fd134a39ff483e1326028ee0b9bbaa16ec927e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mercadopago/sdk-php/zipball/b9fd134a39ff483e1326028ee0b9bbaa16ec927e",
+                "reference": "b9fd134a39ff483e1326028ee0b9bbaa16ec927e",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "lib/mercadopago.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Horacio Casatti",
+                    "email": "horacio.casatti@mercadolibre.com"
+                }
+            ],
+            "description": "MercadoPago SDK module for Payments integration.",
+            "keywords": [
+                "mercadopago",
+                "sdk"
+            ],
+            "time": "2018-10-30T17:21:08+00:00"
+        },
         {
             "name": "phpmailer/phpmailer",
             "version": "v6.0.5",

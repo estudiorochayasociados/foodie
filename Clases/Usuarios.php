@@ -73,22 +73,23 @@ class Usuarios
     public function invitado_sesion()
     {
         $_SESSION["usuarios"] = array(
-            'cod' => '{$this->cod}',
-            'nombre' => '{$this->nombre}',
-            'apellido' => '{$this->apellido}',
-            'doc' => '{$this->doc}',
-            'email' => '{$this->email}',
-            'password' => '{$this->password}',
-            'postal' => '{$this->postal}',
-            'localidad' => '{$this->localidad}',
-            'provincia' => '{$this->provincia}',
-            'pais' => '{$this->pais}',
-            'telefono' => '{$this->telefono}',
-            'celular' => '{$this->celular}',
-            'invitado' => '{$this->invitado}',
-            'descuento' => '{$this->descuento}',
-            'fecha' => '{$this->fecha}'
+            'cod' => $this->cod,
+            'nombre' => $this->nombre,
+            'apellido' => $this->apellido,
+            'doc' => $this->doc,
+            'email' => $this->email,
+            'password' => $this->password,
+            'postal' => $this->postal,
+            'localidad' => $this->localidad,
+            'provincia' => $this->provincia,
+            'pais' => $this->pais,
+            'telefono' => $this->telefono,
+            'celular' => $this->celular,
+            'invitado' => $this->invitado,
+            'descuento' => $this->descuento,
+            'fecha' => $this->fecha
         );        
+
     }
 
 

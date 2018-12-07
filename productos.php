@@ -15,26 +15,26 @@ $subcategoria = isset($_GET["subcategoria"]) ? $_GET["subcategoria"] : '';
 
 $filter = array();
 
-if($categoria != '') {
-    array_push($filter,"categoria = '$categoria'");
+if ($categoria != '') {
+    array_push($filter, "categoria = '$categoria'");
 }
 
-if($subcategoria != '') {
-    array_push($filter,"subcategoria = '$subcategoria'");
+if ($subcategoria != '') {
+    array_push($filter, "subcategoria = '$subcategoria'");
 }
 
 if ($pagina > 0) {
     $pagina = $pagina - 1;
 }
 
-if(@count($filter) == 0) {
+if (@count($filter) == 0) {
     $filter = '';
 }
 
-if(@count($_GET) == 0) {
+if (@count($_GET) == 0) {
     $anidador = "?";
 } else {
-    if($pagina >= 0) {        
+    if ($pagina >= 0) {
         $anidador = "&";
     } else {
         $anidador = "?";
@@ -68,9 +68,9 @@ $marcasParaProductos = $subcategorias->listForSearch('');
 $productData = $productos->listWithOps($filter, '', (24 * $pagina) . ',' . 24);
 $productDataSide = $productos->listWithOps($filter, '', '8');
 $productosPaginador = $productos->paginador($filter, 24);
-//
 ?>
-<body id="bd" class="cms-index-index2 header-style2 prd-detail cms-index-index  products-grid1 cms-simen-home-page-v2 default cmspage">
+    <body id="bd"
+          class="cms-index-index2 header-style2 prd-detail cms-index-index  products-grid1 cms-simen-home-page-v2 default cmspage">
     <div id="sns_wrapper">
         <?php $template->themeNav(); ?>
         <!-- BREADCRUMBS -->
@@ -84,7 +84,7 @@ $productosPaginador = $productos->paginador($filter, 24);
                                 <span class="icon-pointer "></span>
                                 <ul class="breadcrumbs">
                                     <li class="home">
-                                        <a  href="<?=URL . '/index' ?>">
+                                        <a href="<?= URL . '/index' ?>">
                                             <i class="fa fa-home"></i>
                                             <span>Inicio</span>
                                         </a>
@@ -105,7 +105,7 @@ $productosPaginador = $productos->paginador($filter, 24);
             <div class="container">
                 <div class="row">
                     <!-- sns_left -->
-                    <div  class="col-md-3">
+                    <div class="col-md-3">
                         <div class="wrap-in">
                             <div class="block block-layered-nav block-layered-nav--no-filters">
                                 <div class="block-title">
@@ -120,13 +120,13 @@ $productosPaginador = $productos->paginador($filter, 24);
                                             <dd class="odd categoriasList">
                                                 <ol>
                                                     <?php
-                                                    foreach ($marcasParaProductos as $marList) { 
+                                                    foreach ($marcasParaProductos as $marList) {
                                                         ?>
                                                         <li>
-                                                            <a href="<?= URL . "/productos.php?categoria=" . $marList['categoria']."&subcategoria=".$marList['cod'] ?>">
+                                                            <a href="<?= URL . "/productos.php?categoria=" . $marList['categoria'] . "&subcategoria=" . $marList['cod'] ?>">
                                                                 <?= $marList['titulo'] ?>
                                                             </a>
-                                                        </li>                                                        
+                                                        </li>
                                                         <?php
                                                     }
                                                     ?>
@@ -154,24 +154,23 @@ $productosPaginador = $productos->paginador($filter, 24);
                             </div>
                             <?php
                             if (count($banDataSide) != ''){
-                                $banRandSide = $banDataSide[array_rand($banDataSide)];
-                                $imagenes->set("cod", $banRandSide['cod']);
-                                $imgRandSide = $imagenes->view();
-                                $banners->set("id", $banRandSide['id']);
-                                $value = $banRandSide['vistas'] + 1;
-                                $banners->set("vistas", $value);
-                                $banners->increaseViews();
-                                ?>
-                                <div class="block block_cat visible-lg visible-md">
-                                    <a class="banner5" href="<?= $banRandSide['link'] ?>">
-                                        <img src="<?= URL . '/' . $imgRandSide['ruta'] ?>" alt="<?= $banRandSide['nombre'] ?>">
-                                    </a>
-                                    <?php
+                            $banRandSide = $banDataSide[array_rand($banDataSide)];
+                            $imagenes->set("cod", $banRandSide['cod']);
+                            $imgRandSide = $imagenes->view();
+                            $banners->set("id", $banRandSide['id']);
+                            $value = $banRandSide['vistas'] + 1;
+                            $banners->set("vistas", $value);
+                            $banners->increaseViews();
+                            ?>
+                            <div class="block block_cat visible-lg visible-md">
+                                <a class="banner5" href="<?= $banRandSide['link'] ?>">
+                                    <img src="<?= URL . '/' . $imgRandSide['ruta'] ?>"
+                                         alt="<?= $banRandSide['nombre'] ?>">
+                                </a>
+                                <?php
                                 }
-                                ?> 
+                                ?>
                             </div>
-
-
                         </div>
                     </div>
                     <!-- sns_left -->
@@ -191,7 +190,7 @@ $productosPaginador = $productos->paginador($filter, 24);
                                 <p class="category-image banner5">
                                     <a href="<?= $banRandPie['link'] ?>">
                                         <img src="<?= URL . '/' . $imgRandPie['ruta'] ?>"
-                                        alt="<?= $banRandPie['nombre'] ?>">
+                                             alt="<?= $banRandPie['nombre'] ?>">
                                     </a>
                                 </p>
                                 <?php
@@ -203,13 +202,14 @@ $productosPaginador = $productos->paginador($filter, 24);
                                 <!-- toolbar clearfix -->
 
                                 <div class="toolbar clearfix">
-                                    <div class="toolbar-inner"> 
+                                    <div class="toolbar-inner">
                                         <div class="sort-by">
                                             <label>Buscar por</label>
                                             <div class="select-new">
                                                 <div class="select-inner jqtransformdone">
-                                                    <div class="jqTransformSelectWrapper" style="z-index: 10; width: 118px;"> 
-                                                        <select class="form-control" >
+                                                    <div class="jqTransformSelectWrapper"
+                                                         style="z-index: 10; width: 118px;">
+                                                        <select class="form-control">
                                                             <option selected="selected"> Últimos</option>
                                                             <option> Mayor precio</option>
                                                             <option> Menor precio</option>
@@ -228,7 +228,7 @@ $productosPaginador = $productos->paginador($filter, 24);
                                                     <?php
                                                     if ($productosPaginador != 1 && $productosPaginador != 0) {
                                                         $links = '';
-                                                        $links .= "<li><a href='" . CANONICAL."".$anidador."pagina=1'>1</a></li>";
+                                                        $links .= "<li><a href='" . CANONICAL . "" . $anidador . "pagina=1'>1</a></li>";
                                                         $i = max(2, $pagina - 5);
 
                                                         if ($i > 2) {
@@ -236,12 +236,12 @@ $productosPaginador = $productos->paginador($filter, 24);
                                                         }
 
                                                         for (; $i < min($pagina + 6, $productosPaginador); $i++) {
-                                                            $links .= "<li><a href='" . CANONICAL."".$anidador."pagina=". $i . "'>" . $i . "</a></li>";
+                                                            $links .= "<li><a href='" . CANONICAL . "" . $anidador . "pagina=" . $i . "'>" . $i . "</a></li>";
                                                         }
 
                                                         if ($i != $productosPaginador) {
                                                             $links .= "<li><a href='#'>...</a></li>";
-                                                            $links .= "<li><a href='" . CANONICAL."".$anidador."pagina=". $productosPaginador . "'>" . $productosPaginador . "</a></li>";
+                                                            $links .= "<li><a href='" . CANONICAL . "" . $anidador . "pagina=" . $productosPaginador . "'>" . $productosPaginador . "</a></li>";
                                                         }
                                                         echo $links;
                                                         echo "";
@@ -278,22 +278,22 @@ $productosPaginador = $productos->paginador($filter, 24);
                                                                 ?>
                                                             </div>
                                                             <a class="product-image have-additional"
-                                                            href="<?php echo URL . '/producto/' . $funciones->normalizar_link($productos['titulo']) . "/" . $productos['id'] ?>">
+                                                               href="<?php echo URL . '/producto/' . $funciones->normalizar_link($productos['titulo']) . "/" . $productos['id'] ?>">
                                                             <span class="img-main">
                                                              <div style="height:200px;background:url(<?= URL . '/' . $imgProCenter1['ruta'] ?>)no-repeat center center/contain;">
                                                              </div>
                                                          </span>
-                                                     </a>
-                                                 </div>
-                                                 <div class="item-info">
-                                                    <div class="info-inner">
-                                                        <div class="item-title">
-                                                            <a
-                                                            href="<?php echo URL . '/producto/' . $funciones->normalizar_link($productos['titulo']) . "/" . $productos['id'] ?>">
-                                                            <?= $productos['titulo'] ?> </a>
+                                                            </a>
                                                         </div>
-                                                        <div class="item-price">
-                                                            <div class="price-box">
+                                                        <div class="item-info">
+                                                            <div class="info-inner">
+                                                                <div class="item-title">
+                                                                    <a
+                                                                            href="<?php echo URL . '/producto/' . $funciones->normalizar_link($productos['titulo']) . "/" . $productos['id'] ?>">
+                                                                        <?= $productos['titulo'] ?> </a>
+                                                                </div>
+                                                                <div class="item-price">
+                                                                    <div class="price-box">
                                                                 <span class="regular-price">
                                                                     <span class="price">
                                                                         <?php
@@ -310,65 +310,65 @@ $productosPaginador = $productos->paginador($filter, 24);
                                                                         ?>
                                                                     </span>
                                                                 </span>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <?php
-                                }
-                                ?>
-                            </div>
-                        </div>
-                        <!-- sns-products-container -->
-
-
-                        <!-- toolbar clearfix  bottom-->
-                        <div class="toolbar clearfix">
-                            <div class="toolbar-inner">
-                                <div class="pager">
-                                    <p class="amount">
-                                        <?= count($productData) ?> productos (s)
-                                    </p>
-                                    <div class="pages">
-                                        <strong>Páginas:</strong>
-                                        <ol>
                                             <?php
-                                            if ($productosPaginador != 1 && $productosPaginador != 0) {
-                                                $links = '';
-                                                $links .= "<li><a href='" . CANONICAL."".$anidador."pagina=1'>1</a></li>";
-                                                $i = max(2, $pagina - 5);
-
-                                                if ($i > 2) {
-                                                    $links .= "<li><a href='#'>...</a></li>";
-                                                }
-                                                for (; $i < min($pagina + 6, $productosPaginador); $i++) {
-                                                    $links .= "<li><a href='" . CANONICAL."".$anidador."pagina=". $i . "'>" . $i . "</a></li>";
-                                                }
-                                                if ($i != $productosPaginador) {
-                                                    $links .= "<li><a href='#'>...</a></li>";
-                                                    $links .= "<li><a href='" . CANONICAL."".$anidador."pagina=". $productosPaginador . "'>" . $productosPaginador . "</a></li>";
-                                                }
-                                                echo $links;
-                                                echo "";
-                                            }
-                                            ?>
-                                        </ol>
+                                        }
+                                        ?>
                                     </div>
                                 </div>
+                                <!-- sns-products-container -->
+
+
+                                <!-- toolbar clearfix  bottom-->
+                                <div class="toolbar clearfix">
+                                    <div class="toolbar-inner">
+                                        <div class="pager">
+                                            <p class="amount">
+                                                <?= count($productData) ?> productos (s)
+                                            </p>
+                                            <div class="pages">
+                                                <strong>Páginas:</strong>
+                                                <ol>
+                                                    <?php
+                                                    if ($productosPaginador != 1 && $productosPaginador != 0) {
+                                                        $links = '';
+                                                        $links .= "<li><a href='" . CANONICAL . "" . $anidador . "pagina=1'>1</a></li>";
+                                                        $i = max(2, $pagina - 5);
+
+                                                        if ($i > 2) {
+                                                            $links .= "<li><a href='#'>...</a></li>";
+                                                        }
+                                                        for (; $i < min($pagina + 6, $productosPaginador); $i++) {
+                                                            $links .= "<li><a href='" . CANONICAL . "" . $anidador . "pagina=" . $i . "'>" . $i . "</a></li>";
+                                                        }
+                                                        if ($i != $productosPaginador) {
+                                                            $links .= "<li><a href='#'>...</a></li>";
+                                                            $links .= "<li><a href='" . CANONICAL . "" . $anidador . "pagina=" . $productosPaginador . "'>" . $productosPaginador . "</a></li>";
+                                                        }
+                                                        echo $links;
+                                                        echo "";
+                                                    }
+                                                    ?>
+                                                </ol>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- toolbar clearfix bottom -->
                             </div>
                         </div>
-                        <!-- toolbar clearfix bottom -->
                     </div>
                 </div>
             </div>
+            <!-- AND CONTENT -->
         </div>
-    </div>
-    <!-- AND CONTENT -->
-</div>
-</body>
+    </body>
 <?php
 $template->themeEnd();
 ?>

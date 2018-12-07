@@ -11,6 +11,8 @@ $template->themeInit();
 $carrito    = new Clases\Carrito();
 $usuarios    = new Clases\Usuarios();
 $usuarioSesion = $usuarios->view_sesion();
+$cod_pedido   = $_SESSION["cod_pedido"];
+$tipo_pedido = $_POST["metodos-pago"];
 ?>
 <body id="bd" class="cms-index-index2 header-style2 prd-detail sns-products-detail1 cms-simen-home-page-v2 default cmspage">
     <div id="sns_wrapper">
@@ -19,13 +21,11 @@ $usuarioSesion = $usuarios->view_sesion();
             <h3><b>Compra N°: <?= $cod_pedido ?></b><br/>Llená el siguiente formulario para poder finalizar tu compra <span class="em em---1"></span></h3>
             <?php
             if(count($usuarioSesion) != 0) {
-                $funciones->headerMove(URL."/checkout");  
+                $funciones->headerMove(URL."/checkout/".$cod_pedido."/".$tipo_pedido);
             }
-
             if (isset($_POST["registrarmeBtn"])) {
                 $error = 0;
-
-                $cod = substr(md5(uniqid(rand())), 0, 10);        
+                $cod = substr(md5(uniqid(rand())), 0, 10);
                 $nombre = $funciones->antihack_mysqli(isset($_POST["nombre"]) ? $_POST["nombre"] : '');
                 $apellido = $funciones->antihack_mysqli(isset($_POST["apellido"]) ? $_POST["apellido"] : '');        
                 $doc = $funciones->antihack_mysqli(isset($_POST["doc"]) ? $_POST["doc"] : '');        
@@ -70,7 +70,9 @@ $usuarioSesion = $usuarios->view_sesion();
                     if($error == 0) {            
                         $usuarios->invitado_sesion();   
                     }            
-                }        
+                }
+
+                $funciones->headerMove(URL."/checkout/".$cod_pedido."/".$tipo_pedido);
             }        
             ?>
             <div class="col-md-12">
