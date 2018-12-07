@@ -100,7 +100,8 @@ switch ($tipo_pedido) {
             )
         );
         $preference = $mp->create_preference($preference_data);
-        $funciones->headerMove($preference["response"]["sandbox_init_point"]);
+        //$funciones->headerMove($preference["response"]["sandbox_init_point"]);
+        echo "<iframe src='".$preference["response"]["sandbox_init_point"]."' width='100%' height='400px'></iframe>";
         break;
 }
 $template->themeEnd();
