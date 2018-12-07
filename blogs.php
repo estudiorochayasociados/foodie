@@ -14,8 +14,6 @@ $novedadesData = $novedades->listWithOps('', '', (3 * $pagina) . ',' . 3);
 $novedadesPaginador = $novedades->paginador('', 3);
 $imagenes = new Clases\Imagenes();
 
-
-
 if(@count($_GET) == 0) {
     $anidador = "?";
 } else {
@@ -123,7 +121,7 @@ if(@count($_GET) == 0) {
                                                                 $links .= "<li><a href='#'>...</a></li>";
                                                             }
                                                             for (; $i < min($pagina + 6, $novedadesPaginador); $i++) {
-                                                                $links .= "<li><a href='" . CANONICAL."".$anidador."pagina=". $i . "'>" . $i . "</a></li>";
+                                                                $links .= "<li ><a href='" . CANONICAL."".$anidador."pagina=". $i . "'>" . $i . "</a></li>";
                                                             }
                                                             if ($i != $novedadesPaginador) {
                                                                 $links .= "<li><a href='#'>...</a></li>";

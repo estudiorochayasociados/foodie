@@ -99,7 +99,7 @@ $carro = $carrito->return();
                                         <span class="title">Inicio</span>
                                     </a>
                                 </li>
-                                <li class="level0 nav-2 no-group drop-submenu parent">
+                                <li class="level0 custom-item">
                                     <a class=" menu-title-lv0" href="<?=URL . '/productos' ?>">
                                         <span class="title">Todos los productos</span>
                                     </a> 
@@ -116,13 +116,10 @@ $carro = $carrito->return();
                                 </li>
                             </ul>
                         </div>
-                        <div id="sns_mommenu" class="menu-offcanvas hidden-md hidden-lg hidden-sm">
+
+                        <div id="sns_mommenu" class="menu-offcanvas hidden-md hidden-lg ">
                             <div id="sns_mommenu" class="menu-offcanvas hidden-md hidden-lg">
-                                <!--<span class="btn2 btn-navbar leftsidebar" style="display: inline-block;">
-                                        <i class="fa fa-align-left"></i>
-                                        <span class="overlay"></span>
-                                    </span>
-                                    -->
+
                                 <span class="btn2 btn-navbar offcanvas">
                                         <i class="fa fa-align-justify"></i>
                                         <span class="overlay"></span>
@@ -163,7 +160,6 @@ $carro = $carrito->return();
                                                 </a>
                                             </div>
                                         </li>
-
                                     </ul>
                                 </div>
                             </div>

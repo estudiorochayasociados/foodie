@@ -168,7 +168,7 @@ $template->themeInit();
                                                     $carrito->set("precio",$productData['precioDescuento']);
                                                 }
                                                 $carrito->add();
-                                                $funciones->headerMove(CANONICAL."/success");
+                                                $funciones->headerMove(CANONICAL."?success");
                                             }                                       
                                             if(strpos(CANONICAL, "success") == true) {
                                                 echo "<div class='alert alert-success'>Agregaste un producto a tu carrito, querés <a href='".URL."/pagar'>pasar por caja</a> o <a href='".URL."/productos'>seguir comprando</a></div>";
@@ -261,7 +261,7 @@ $template->themeInit();
             }
             ?>
         </div>
-        <div id="sns_mainm" class="col-md-9">
+        <div id="sns_mainm" class="col-md-9 mt-20">
             <div id="sns_description" class="description mt-15">
                 <div class="sns_producttaps_wraps1">
                     <h3 class="detail-none">Descripción

@@ -57,7 +57,6 @@ $productDataRel = $productos->listWithOps('', '', '');
                 <?php
                 $template->themeSideIndex();
                 ?>
-
                 <!-- sns_main -->
                 <div id="sns_main" class="col-md-9 col-main">
                     <div id="sns_mainmidle">
@@ -80,7 +79,6 @@ $productDataRel = $productos->listWithOps('', '', '');
                                                              alt="<?= $sli['titulo']; ?>">
                                                     </div>
                                                     <?php
-
                                                 }
                                                 ?>
                                             </div>
@@ -99,7 +97,6 @@ $productDataRel = $productos->listWithOps('', '', '');
                                                              alt="<?= $sli['titulo']; ?>">
                                                     </div>
                                                     <?php
-
                                                 }
                                                 ?>
                                             </div>
@@ -155,7 +152,6 @@ $productDataRel = $productos->listWithOps('', '', '');
                                     <!-- End Banner -->
                                 </div>
                             </div>
-
                         </div>
 
 
@@ -184,7 +180,6 @@ $productDataRel = $productos->listWithOps('', '', '');
                                                                         ?>
                                                                         <span class="ico-product ico-sale">Promo</span>
                                                                         <?php
-
                                                                     }
                                                                     ?>
                                                                 </div>
@@ -216,7 +211,6 @@ $productDataRel = $productos->listWithOps('', '', '');
                                                                                     ?>
                                                                                     <span class="precio1">$ <?= $productosCenter1['precio']; ?></span>
                                                                                     <?php
-
                                                                                 }
                                                                                 ?>
                                                                             </span>
@@ -257,7 +251,6 @@ $productDataRel = $productos->listWithOps('', '', '');
                                 </div>
                             </div>
                             <?php
-
                         }
                         ?>
 
@@ -288,7 +281,6 @@ $productDataRel = $productos->listWithOps('', '', '');
                                                                             ?>
                                                                             <span class="ico-product ico-sale">Promo</span>
                                                                             <?php
-
                                                                         }
                                                                         ?>
                                                                     </div>

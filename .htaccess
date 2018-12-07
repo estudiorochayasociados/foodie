@@ -6,15 +6,14 @@ RewriteCond %{SCRIPT_FILENAME} !-f
 RewriteRule ^(.*)$ $1.php
 
 RewriteRule ^producto/(.*)/(.*)$ ./producto.php?id=$2
-RewriteRule ^productos/(.*)/(.*)/(.*)/(.*)$ ./listing.php?$1=$2&$3=$4&$5=$6
-#RewriteRule ^productos/(.*)/(.*)/(.*)$ ./listing.php?pagina=$3&categoria=$3
-#RewriteRule ^productos/(.*)/(.*)$ ./listing.php?pagina=$2
-RewriteRule ^productos ./listing.php
+RewriteRule ^productos/(.*)/(.*)/(.*)/(.*)$ ./productos.php?$1=$2&$3=$4&$5=$6
+#RewriteRule ^productos/(.*)/(.*)/(.*)$ ./productos.php?pagina=$3&categoria=$3
+#RewriteRule ^productos/(.*)/(.*)$ ./productos.php?pagina=$2
 RewriteRule ^contacto ./contact.php
 RewriteRule ^inicio ./index.php
 RewriteRule ^blog/(.*)/(.*)$ ./blog.php?id=$2
 
-	
+
 #ErrorDocument 404 https://www.cordobapymes.com.ar/404
 #ErrorDocument 400 https://www.cordobapymes.com.ar/404
 #ErrorDocument 401 https://www.cordobapymes.com.ar/404
@@ -45,7 +44,7 @@ Header set X-XSS-Protection "1; mode=block"
 order allow,deny
 deny from all
 </files>
- 
+
 # No web server version and indexes
 ServerSignature Off
 Options -Indexes
@@ -69,15 +68,15 @@ RewriteRule .* - [F]
 <IfModule mod_rewrite.c>
 # Enable rewrite engine
 RewriteEngine On
- 
+
 # Block suspicious request methods
 RewriteCond %{REQUEST_METHOD} ^(HEAD|TRACE|DELETE|TRACK|DEBUG) [NC]
 RewriteRule ^(.*)$ - [F,L]
- 
+
 # Block WP timthumb hack
 RewriteCond %{REQUEST_URI} (timthumb\.php|phpthumb\.php|thumb\.php|thumbs\.php) [NC]
 RewriteRule . - [S=1]
- 
+
 # Block suspicious user agents and requests
 RewriteCond %{HTTP_USER_AGENT} (libwww-perl|wget|python|nikto|curl|scan|java|winhttp|clshttp|loader) [NC,OR]
 RewriteCond %{HTTP_USER_AGENT} (<|>|'|%0A|%0D|%27|%3C|%3E|%00) [NC,OR]
@@ -87,7 +86,7 @@ RewriteCond %{THE_REQUEST} \/\*\ HTTP/ [NC,OR]
 RewriteCond %{THE_REQUEST} etc/passwd [NC,OR]
 RewriteCond %{THE_REQUEST} cgi-bin [NC,OR]
 RewriteCond %{THE_REQUEST} (%0A|%0D) [NC,OR]
- 
+
 # Block MySQL injections, RFI, base64, etc.
 RewriteCond %{QUERY_STRING} [a-zA-Z0-9_]=http:// [OR]
 RewriteCond %{QUERY_STRING} [a-zA-Z0-9_]=http%3A%2F%2F [OR]
@@ -118,16 +117,16 @@ RewriteCond %{QUERY_STRING} concat[^\(]*\( [NC,OR]
 RewriteCond %{QUERY_STRING} union([^s]*s)+elect [NC,OR]
 RewriteCond %{QUERY_STRING} union([^a]*a)+ll([^s]*s)+elect [NC,OR]
 RewriteCond %{QUERY_STRING} (;|<|>|'|"|\)|%0A|%0D|%22|%27|%3C|%3E|%00).*(/\*|union|select|insert|drop|delete|update|cast|create|char|convert|alter|declare|order|script|set|md5|benchmark|encode) [NC,OR]
- 
+
 # PHP-CGI Vulnerability
 RewriteCond %{QUERY_STRING} ^(%2d|\-)[^=]+$ [NC,OR]
- 
+
 #proc/self/environ? no way!
 RewriteCond %{QUERY_STRING} proc\/self\/environ [NC,OR]
- 
+
 RewriteCond %{QUERY_STRING} (sp_executesql) [NC]
 RewriteRule ^(.*)$ - [F,L]
- 
+
 </IfModule>
 
 <IfModule mod_deflate.c>

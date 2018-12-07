@@ -37,11 +37,11 @@
     .menuNav {
         margin-top: -20px;
     }
-    .categoriasList{
+    .categoriasList {
         overflow-y: scroll;
         height: 400px;
     }
-    .marcasList{
+    .marcasList {
         overflow-y: scroll;
         height: 400px;
     }
@@ -308,4 +308,13 @@
     }
     .radioButtonPay {
         background: #e1e1e1;
+    }
+    #sns_menu {
+        background: #176bb3;
+    }
+    #sns_custommenu ul.mainnav li.level0>a, .mycart .tongle .summary span a, .mycart .tongle, .mycart .tongle .fa, .mycart .tongle .summary .amount span, #sns_menu .sns_menu_right .block_topsearch .icon-search {
+        color: #fff !important;
+    }
+    #sns_menu .sns_mainmenu, #sns_menu .sns_mainmenu:before {
+        background: none !important;
     }

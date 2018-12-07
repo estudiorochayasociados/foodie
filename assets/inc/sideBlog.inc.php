@@ -5,7 +5,7 @@ $novedadesSideData = $novedadesSide->listWithOps('','','6');
 $imagenesSide= new Clases\Imagenes();
 ?>
 
-<div id="sns_left" class="col-md-3">
+<div id="sns_left" class="col-md-3 visible-lg visible-md">
     <div class="wrap-in">
         <div class="block block-latestblog-v3" id="sns_latestblog_19454288391442904929">
             <div class="block-title">

@@ -133,7 +133,7 @@ class Categorias
         } else {
             $limitSql = '';
         }
-        $sql = " SELECT categorias.titulo,categorias.cod, count(categoria) FROM `productos`,`categorias` WHERE `categoria` = categorias.cod GROUP BY categoria ORDER BY `count(categoria)` DESC  $limitSql";
+        $sql = " SELECT `categorias`.`titulo`,`categorias`.`cod`, count(`productos`.`categoria`)  as cantidad  FROM `productos`,`categorias` WHERE `categoria` = `categorias`.`cod` GROUP BY categoria ORDER BY cantidad  DESC  $limitSql"; 
          $notas = $this->con->sqlReturn($sql);
         if ($notas) {
             while ($row = mysqli_fetch_assoc($notas)) {
