@@ -58,11 +58,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/checkout.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="748">
-              <caret line="103" column="117" lean-forward="true" selection-start-line="103" selection-start-column="117" selection-end-line="103" selection-end-column="117" />
+            <state relative-caret-position="1734">
+              <caret line="102" column="61" lean-forward="true" selection-start-line="102" selection-start-column="61" selection-end-line="102" selection-end-column="61" />
             </state>
           </provider>
         </entry>
@@ -94,10 +94,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/producto.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2040">
+            <state relative-caret-position="2958">
               <caret line="174" column="154" selection-start-line="174" selection-start-column="154" selection-end-line="174" selection-end-column="154" />
             </state>
           </provider>
@@ -293,16 +293,15 @@
       <workItem from="1544036407122" duration="14458000" />
       <workItem from="1544122942487" duration="14358000" />
       <workItem from="1544209241263" duration="80000" />
-      <workItem from="1544213776319" duration="9561000" />
+      <workItem from="1544213776319" duration="9638000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43812000" />
+    <option name="totallyTimeSpent" value="43889000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16364606" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -631,13 +630,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/producto.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2040">
-          <caret line="174" column="154" selection-start-line="174" selection-start-column="154" selection-end-line="174" selection-end-column="154" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pagar.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="127">
@@ -689,8 +681,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/checkout.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="748">
-          <caret line="103" column="117" lean-forward="true" selection-start-line="103" selection-start-column="117" selection-end-line="103" selection-end-column="117" />
+        <state relative-caret-position="1734">
+          <caret line="102" column="61" lean-forward="true" selection-start-line="102" selection-start-column="61" selection-end-line="102" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/producto.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2958">
+          <caret line="174" column="154" selection-start-line="174" selection-start-column="154" selection-end-line="174" selection-end-column="154" />
         </state>
       </provider>
     </entry>
