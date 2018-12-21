@@ -71,9 +71,9 @@ class Imagenes
         $row      = mysqli_fetch_assoc($imagenes);
         if ($row===NULL) {
             $row['ruta']      =  "assets/archivos/sin_imagen.jpg";
-        return $row;
+            return $row;
         }else {
-        return $row;
+            return $row;
         }
     }
 
@@ -90,46 +90,57 @@ class Imagenes
        // }
         if ($notas===NULL) {
             $row['ruta']      =  "assets/archivos/sin_imagen.jpg";
-        return $row;
+            return $row;
         }else {
             while ($row = mysqli_fetch_assoc($notas)) {
-                 $array[] = $row;
-             }
-             return $array;
-        }
-    }
-    
-    function list($filter) {
-        $array = array();
-        if (is_array($filter)) {
-            $filterSql = "WHERE ";
-            $filterSql .= implode(" AND ", $filter);
-        } else {
-            $filterSql = '';
-        }
+               $array[] = $row;
+           }
+           return $array;
+       }
+   }
 
-        $sql   = "SELECT * FROM `imagenes` $filterSql  ORDER BY id ASC";
-        $notas = $this->con->sqlReturn($sql);
-
-        if ($notas) {
-            while ($row = mysqli_fetch_assoc($notas)) {
-                $array[] = $row;
-            }
-            return $array;
-        }
+   function list($filter,$order,$limit) {
+    $array = array();
+    if (is_array($filter)) {
+        $filterSql = "WHERE ";
+        $filterSql .= implode(" AND ", $filter);
+    } else {
+        $filterSql = '';
     }
 
-    public function imagenesAdmin()
-    {
-        $sql      = "SELECT * FROM `imagenes` WHERE cod = '{$this->cod}' ORDER BY id DESC";
-        $imagenes = $this->con->sqlReturn($sql);
-        while ($row = mysqli_fetch_assoc($imagenes)) {
-            echo "<div class='col-md-2 mb-20 mt-20'>";
-            echo "<img src='../" . $row["ruta"] . "' width='100%'  class='mb-20' />";
-            echo "<a href='" . URL . "/index.php?op={$this->link}&cod=" . $row["cod"] . "&borrarImg=" . $row["id"] . "' class='btn btn-primary'>BORRAR IMAGEN</a>";
-            echo "<div class='clearfix'></div>";
-            echo "</div>";
-        };
+    if ($order != '') {
+        $orderSql = $order;
+    } else {
+        $orderSql = "id DESC";
     }
+
+    if ($limit != '') {
+        $limitSql = "LIMIT " . $limit;
+    } else {
+        $limitSql = '';
+    }
+
+    $sql = "SELECT * FROM `imagenes` $filterSql  ORDER BY $orderSql $limitSql";
+    $notas = $this->con->sqlReturn($sql); 
+    if ($notas) {
+        while ($row = mysqli_fetch_assoc($notas)) {
+            $array[] = $row;
+        }
+        return $array ;
+    } 
+}
+
+public function imagenesAdmin()
+{
+    $sql      = "SELECT * FROM `imagenes` WHERE cod = '{$this->cod}' ORDER BY id DESC";
+    $imagenes = $this->con->sqlReturn($sql);
+    while ($row = mysqli_fetch_assoc($imagenes)) {
+        echo "<div class='col-md-2 mb-20 mt-20'>";
+        echo "<img src='../" . $row["ruta"] . "' width='100%'  class='mb-20' />";
+        echo "<a href='" . URL . "/index.php?op={$this->link}&cod=" . $row["cod"] . "&borrarImg=" . $row["id"] . "' class='btn btn-primary'>BORRAR IMAGEN</a>";
+        echo "<div class='clearfix'></div>";
+        echo "</div>";
+    };
+}
 
 }

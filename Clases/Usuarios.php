@@ -140,7 +140,7 @@ class Usuarios
 
     public function validate()
     {
-        $sql     = "SELECT * FROM `usuarios`WHERE email = '{$this->email}'";
+        $sql     = "SELECT * FROM `usuarios` WHERE email = '{$this->email}'";
         $usuario = $this->con->sqlReturn($sql);
         $row     = mysqli_fetch_assoc($usuario);
         return $row;

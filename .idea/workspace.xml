@@ -2,139 +2,332 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d06e5cdf-69fd-40c2-9307-1de6517dce6d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/readme.me" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.htaccess" beforeDir="false" afterPath="$PROJECT_DIR$/.htaccess" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/cms-joa.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/cms-joa.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/404.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Clases/Carrito.php" beforeDir="false" afterPath="$PROJECT_DIR$/Clases/Carrito.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Clases/Conexion.php" beforeDir="false" afterPath="$PROJECT_DIR$/Clases/Conexion.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Clases/Pedidos.php" beforeDir="false" afterPath="$PROJECT_DIR$/Clases/Pedidos.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Clases/Productos.php" beforeDir="false" afterPath="$PROJECT_DIR$/Clases/Productos.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Clases/Usuarios.php" beforeDir="false" afterPath="$PROJECT_DIR$/Clases/Usuarios.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Config/Autoload.php" beforeDir="false" afterPath="$PROJECT_DIR$/Config/Autoload.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-detail.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blogsbk.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkout.php" beforeDir="false" afterPath="$PROJECT_DIR$/checkout.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/contact-us.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/detail.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/index2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/index4-404.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/index4-blog-detail.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/index4-blog.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/index4-contact-us.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/index4-detail.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/index4-listing-grid.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/index4-listing-list.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/index4-shoppingcart.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/listing-grid.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/listing-list.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pagar.php" beforeDir="false" afterPath="$PROJECT_DIR$/pagar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/producto.php" beforeDir="false" afterPath="$PROJECT_DIR$/producto.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/productos.php" beforeDir="false" afterPath="$PROJECT_DIR$/productos.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shoppingcart.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/autoload.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/autoload.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/ClassLoader.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/ClassLoader.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/LICENSE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_namespaces.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_namespaces.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_real.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_real.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.json" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.json" afterDir="false" />
+      <change afterPath="Z:/.idea/Foodie.iml" afterDir="false" />
+      <change afterPath="Z:/Clases/Secciones.php" afterDir="false" />
+      <change afterPath="Z:/assets/inc/header.inc.php" afterDir="false" />
+      <change afterPath="Z:/comercios.php" afterDir="false" />
+      <change afterPath="Z:/contenidos.php" afterDir="false" />
+      <change afterPath="Z:/modificar_menu.php" afterDir="false" />
+      <change afterPath="Z:/modificar_menu_2.php" afterDir="false" />
+      <change beforePath="Z:/.htaccess" beforeDir="false" afterPath="Z:/.htaccess" afterDir="false" />
+      <change beforePath="Z:/.idea/cms-joa.iml" beforeDir="false" />
+      <change beforePath="Z:/.idea/modules.xml" beforeDir="false" afterPath="Z:/.idea/modules.xml" afterDir="false" />
+      <change beforePath="Z:/.idea/php.xml" beforeDir="false" afterPath="Z:/.idea/php.xml" afterDir="false" />
+      <change beforePath="Z:/.idea/workspace.xml" beforeDir="false" afterPath="Z:/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="Z:/.phpintel/023beff90eeb2449fc53217ed3448a79" beforeDir="false" />
+      <change beforePath="Z:/.phpintel/09a08b51d68fdeaf335b7508a19b3695" beforeDir="false" />
+      <change beforePath="Z:/.phpintel/178fa8126758e5ccd00a6906ee42a6ac" beforeDir="false" />
+      <change beforePath="Z:/.phpintel/1e9685573dc91907ff4f31f1a6d24f39" beforeDir="false" />
+      <change beforePath="Z:/.phpintel/20bc5118f7335c1bec913885b96a8a60" beforeDir="false" />
+      <change beforePath="Z:/.phpintel/22507862eb8e1a179154251c97ce6bd2" beforeDir="false" />
+      <change beforePath="Z:/.phpintel/2673d4e545a62ca65374ff204a59b42a" beforeDir="false" />
+      <change beforePath="Z:/.phpintel/28f0ac9063da4ad36692b3b12a2e6dc8" beforeDir="false" />
+      <change beforePath="Z:/.phpintel/2a10f8df9eeab650d23a29f643230a3f" beforeDir="false" />
+      <change beforePath="Z:/.phpintel/2be728c0275a6ba67984d4f2621d53af" beforeDir="false" />
+      <change beforePath="Z:/.phpintel/30c37bbca61b6a5fefb882432b8a6fb5" beforeDir="false" />
+      <change beforePath="Z:/.phpintel/3cb918a8ad7cf4c8a91e333bbc9ba3dc" beforeDir="false" />
+      <change beforePath="Z:/.phpintel/41a2b44b9171f4c2cf30036561d8445a" beforeDir="false" />
+      <change beforePath="Z:/.phpintel/421eae1976eb317ff511b67b1bde0d09" beforeDir="false" />
+      <change beforePath="Z:/.phpintel/43be26272515e3aa08600d02d90dc6c3" beforeDir="false" />
+      <change beforePath="Z:/.phpintel/46a4b9473f9f1cbce39f282a1a52ddfb" beforeDir="false" />
+      <change beforePath="Z:/.phpintel/4b722a63a67aee79622db6b2bc70c64b" beforeDir="false" />
+      <change beforePath="Z:/.phpintel/4f3ee095555f12504a7244b55203ce36" beforeDir="false" />
+      <change beforePath="Z:/.phpintel/5630b0cd1cad78728c0a30645d2b5320" beforeDir="false" />
+      <change beforePath="Z:/.phpintel/5ab6803e678656c20932d63d187242d3" beforeDir="false" />
+      <change beforePath="Z:/.phpintel/5cf530d4ccf4e43f71c5e864e1c1fd10" beforeDir="false" />
+      <change beforePath="Z:/.phpintel/71a423ce751c8851287f8d03b3f04f34" beforeDir="false" />
+      <change beforePath="Z:/.phpintel/7270340959a94417eb1c282f1504563e" beforeDir="false" />
+      <change beforePath="Z:/.phpintel/7ad7bc47f019e1d15c989177deca8f3d" beforeDir="false" />
+      <change beforePath="Z:/.phpintel/7b7d84000256abc6f618fdd58288c7af" beforeDir="false" />
+      <change beforePath="Z:/.phpintel/823b823a9c829f559359bec4764dc8a0" beforeDir="false" />
+      <change beforePath="Z:/.phpintel/84c1849219e38ff578c6766ebec20a87" beforeDir="false" />
+      <change beforePath="Z:/.phpintel/88989ea78b1b0aa9c7d99f706f3a8921" beforeDir="false" />
+      <change beforePath="Z:/.phpintel/89a0e2f327fb2e40d2e5a0ccd6e4a679" beforeDir="false" />
+      <change beforePath="Z:/.phpintel/8fbfbac0a18fa1a86fc55108f75b8372" beforeDir="false" />
+      <change beforePath="Z:/.phpintel/9a4b4537e674c4e48eaeeca37d1d4e76" beforeDir="false" />
+      <change beforePath="Z:/.phpintel/9ab1bdf57142cc216b831261b3007264" beforeDir="false" />
+      <change beforePath="Z:/.phpintel/9eae996796a5139ab69d1e4403629d62" beforeDir="false" />
+      <change beforePath="Z:/.phpintel/aeaeec48a2a9d95362f8566ca37fd751" beforeDir="false" />
+      <change beforePath="Z:/.phpintel/b9c9abd0c9320979b6cdc6196fd035de" beforeDir="false" />
+      <change beforePath="Z:/.phpintel/bcbed1fc721ce14293258d643f0db094" beforeDir="false" />
+      <change beforePath="Z:/.phpintel/c7818a6a7ae8051d7917fc8f7163b9fa" beforeDir="false" />
+      <change beforePath="Z:/.phpintel/ca1d1b6312d33e205a00ae25e566249c" beforeDir="false" />
+      <change beforePath="Z:/.phpintel/cc1649c2d2da60a1ca45250d72f97f4d" beforeDir="false" />
+      <change beforePath="Z:/.phpintel/d75a3e5c63957f0a4d846ac93784d4e9" beforeDir="false" />
+      <change beforePath="Z:/.phpintel/ea2ca9929cbb8bb5e53ba480d9038223" beforeDir="false" />
+      <change beforePath="Z:/.phpintel/f5f8c9f7e5d63997d1f4e3c57eefec4c" beforeDir="false" />
+      <change beforePath="Z:/.phpintel/f68ebf3ca4e08efd64a29f4c7b5cbf59" beforeDir="false" />
+      <change beforePath="Z:/.phpintel/index" beforeDir="false" />
+      <change beforePath="Z:/404.php" beforeDir="false" />
+      <change beforePath="Z:/Clases/Categorias.php" beforeDir="false" afterPath="Z:/Clases/Categorias.php" afterDir="false" />
+      <change beforePath="Z:/Clases/Conexion.php" beforeDir="false" afterPath="Z:/Clases/Conexion.php" afterDir="false" />
+      <change beforePath="Z:/Clases/Contenidos.php" beforeDir="false" afterPath="Z:/Clases/Contenidos.php" afterDir="false" />
+      <change beforePath="Z:/Clases/Imagenes.php" beforeDir="false" afterPath="Z:/Clases/Imagenes.php" afterDir="false" />
+      <change beforePath="Z:/Clases/Productos.php" beforeDir="false" afterPath="Z:/Clases/Productos.php" afterDir="false" />
+      <change beforePath="Z:/Clases/PublicFunction.php" beforeDir="false" afterPath="Z:/Clases/PublicFunction.php" afterDir="false" />
+      <change beforePath="Z:/Clases/TemplateSite.php" beforeDir="false" afterPath="Z:/Clases/TemplateSite.php" afterDir="false" />
+      <change beforePath="Z:/Clases/Usuarios.php" beforeDir="false" afterPath="Z:/Clases/Usuarios.php" afterDir="false" />
+      <change beforePath="Z:/Config/Autoload.php" beforeDir="false" afterPath="Z:/Config/Autoload.php" afterDir="false" />
+      <change beforePath="Z:/Config/db-pintureriaariel.sql" beforeDir="false" />
+      <change beforePath="Z:/assets/css/___style.less" beforeDir="false" />
+      <change beforePath="Z:/assets/css/bootstrap.css" beforeDir="false" afterPath="Z:/assets/css/bootstrap.css" afterDir="false" />
+      <change beforePath="Z:/assets/css/bootstrap.min.css" beforeDir="false" afterPath="Z:/assets/css/bootstrap.min.css" afterDir="false" />
+      <change beforePath="Z:/assets/css/css/shopping-checkout.css" beforeDir="false" />
+      <change beforePath="Z:/assets/css/estilos.css" beforeDir="false" afterPath="Z:/assets/css/estilos.css" afterDir="false" />
+      <change beforePath="Z:/assets/css/style.css" beforeDir="false" afterPath="Z:/assets/css/style.css" afterDir="false" />
+      <change beforePath="Z:/assets/font/font-awesome/css/font-awesome.css" beforeDir="false" />
+      <change beforePath="Z:/assets/font/font-awesome/css/font-awesome.min.css" beforeDir="false" />
+      <change beforePath="Z:/assets/font/font-awesome/fonts/FontAwesome.otf" beforeDir="false" />
+      <change beforePath="Z:/assets/font/font-awesome/fonts/fontawesome-webfont.eot" beforeDir="false" />
+      <change beforePath="Z:/assets/font/font-awesome/fonts/fontawesome-webfont.svg" beforeDir="false" />
+      <change beforePath="Z:/assets/font/font-awesome/fonts/fontawesome-webfont.ttf" beforeDir="false" />
+      <change beforePath="Z:/assets/font/font-awesome/fonts/fontawesome-webfont.woff" beforeDir="false" />
+      <change beforePath="Z:/assets/font/font-awesome/fonts/fontawesome-webfont.woff2" beforeDir="false" />
+      <change beforePath="Z:/assets/font/font-awesome/less/animated.less" beforeDir="false" />
+      <change beforePath="Z:/assets/font/font-awesome/less/bordered-pulled.less" beforeDir="false" />
+      <change beforePath="Z:/assets/font/font-awesome/less/core.less" beforeDir="false" />
+      <change beforePath="Z:/assets/font/font-awesome/less/fixed-width.less" beforeDir="false" />
+      <change beforePath="Z:/assets/font/font-awesome/less/font-awesome.less" beforeDir="false" />
+      <change beforePath="Z:/assets/font/font-awesome/less/icons.less" beforeDir="false" />
+      <change beforePath="Z:/assets/font/font-awesome/less/larger.less" beforeDir="false" />
+      <change beforePath="Z:/assets/font/font-awesome/less/list.less" beforeDir="false" />
+      <change beforePath="Z:/assets/font/font-awesome/less/mixins.less" beforeDir="false" />
+      <change beforePath="Z:/assets/font/font-awesome/less/path.less" beforeDir="false" />
+      <change beforePath="Z:/assets/font/font-awesome/less/rotated-flipped.less" beforeDir="false" />
+      <change beforePath="Z:/assets/font/font-awesome/less/spinning.less" beforeDir="false" />
+      <change beforePath="Z:/assets/font/font-awesome/less/stacked.less" beforeDir="false" />
+      <change beforePath="Z:/assets/font/font-awesome/less/variables.less" beforeDir="false" />
+      <change beforePath="Z:/assets/fonts/glyphicons-halflings-regular.eot" beforeDir="false" afterPath="Z:/assets/fonts/glyphicons-halflings-regular.eot" afterDir="false" />
+      <change beforePath="Z:/assets/fonts/glyphicons-halflings-regular.svg" beforeDir="false" afterPath="Z:/assets/fonts/glyphicons-halflings-regular.svg" afterDir="false" />
+      <change beforePath="Z:/assets/fonts/glyphicons-halflings-regular.ttf" beforeDir="false" afterPath="Z:/assets/fonts/glyphicons-halflings-regular.ttf" afterDir="false" />
+      <change beforePath="Z:/assets/fonts/glyphicons-halflings-regular.woff" beforeDir="false" afterPath="Z:/assets/fonts/glyphicons-halflings-regular.woff" afterDir="false" />
+      <change beforePath="Z:/assets/images/Thumbs.db" beforeDir="false" />
+      <change beforePath="Z:/assets/images/banner-grid.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/banner.png" beforeDir="false" />
+      <change beforePath="Z:/assets/images/banner11.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/banner12.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/banner13.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/banner14.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/banner_right.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/bg_header.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/big-errow.png" beforeDir="false" />
+      <change beforePath="Z:/assets/images/blog-banner1.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/blog-img.png" beforeDir="false" />
+      <change beforePath="Z:/assets/images/blog/Thumbs.db" beforeDir="false" />
+      <change beforePath="Z:/assets/images/blog/blog1.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/blog/blog2.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/blog/blog3.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/blog/blog4.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/blog/blog5.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/blog/blog6.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/blog/blog7.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/border.png" beforeDir="false" />
+      <change beforePath="Z:/assets/images/brands/1.png" beforeDir="false" />
+      <change beforePath="Z:/assets/images/brands/2.png" beforeDir="false" />
+      <change beforePath="Z:/assets/images/brands/3.png" beforeDir="false" />
+      <change beforePath="Z:/assets/images/brands/4.png" beforeDir="false" />
+      <change beforePath="Z:/assets/images/brands/5.png" beforeDir="false" />
+      <change beforePath="Z:/assets/images/brands/6.png" beforeDir="false" />
+      <change beforePath="Z:/assets/images/categori/Thumbs.db" beforeDir="false" />
+      <change beforePath="Z:/assets/images/categori/categories1.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/categori/categories2.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/categori/categories3.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/categori/categories4.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/categori/categories5.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/categori/categories6.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/favicon.ico" beforeDir="false" />
+      <change beforePath="Z:/assets/images/flag/brazil.png" beforeDir="false" />
+      <change beforePath="Z:/assets/images/flag/english.png" beforeDir="false" />
+      <change beforePath="Z:/assets/images/flag/france.png" beforeDir="false" />
+      <change beforePath="Z:/assets/images/flag/russian.png" beforeDir="false" />
+      <change beforePath="Z:/assets/images/logo.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/logo.png" beforeDir="false" />
+      <change beforePath="Z:/assets/images/menu/Thumbs.db" beforeDir="false" />
+      <change beforePath="Z:/assets/images/menu/bmenug.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/menu/menu1.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/menu/menu2.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/menu/menu3.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/menu/menu4.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/menu/menu5.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/menu/menu6.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/nencategory.png" beforeDir="false" />
+      <change beforePath="Z:/assets/images/page2/Thumbs.db" beforeDir="false" />
+      <change beforePath="Z:/assets/images/page2/banner-left-page2.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/page2/banner1-page2.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/page2/banner2-page2.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/page2/banner3-page2.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/page2/banner4-page2.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/page2/banner5-page2.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/page2/banner6-page2.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/page2/banner6-page7.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/page2/blog-page2.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/page2/slideshow222.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/placehoder.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/price-filter.png" beforeDir="false" />
+      <change beforePath="Z:/assets/images/products/1.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/products/10.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/products/11.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/products/12.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/products/13.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/products/14.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/products/15.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/products/16.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/products/17.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/products/18.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/products/19.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/products/2.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/products/20.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/products/21.JPG" beforeDir="false" />
+      <change beforePath="Z:/assets/images/products/22.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/products/23.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/products/24.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/products/25.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/products/26.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/products/27.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/products/28.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/products/29.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/products/3.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/products/30.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/products/31.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/products/32.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/products/33.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/products/4.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/products/5.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/products/6.JPG" beforeDir="false" />
+      <change beforePath="Z:/assets/images/products/7.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/products/8.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/products/9.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/products/Thumbs.db" beforeDir="false" />
+      <change beforePath="Z:/assets/images/qty++.png" beforeDir="false" />
+      <change beforePath="Z:/assets/images/qty+.png" beforeDir="false" />
+      <change beforePath="Z:/assets/images/qty--.png" beforeDir="false" />
+      <change beforePath="Z:/assets/images/qty-.png" beforeDir="false" />
+      <change beforePath="Z:/assets/images/search.png" beforeDir="false" />
+      <change beforePath="Z:/assets/images/shopby/Thumbs.db" beforeDir="false" />
+      <change beforePath="Z:/assets/images/shopby/color1.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/shopby/color2.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/shopby/color3.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/shopby/color4.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/sildeshow/Thumbs.db" beforeDir="false" />
+      <change beforePath="Z:/assets/images/sildeshow/banner1.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/sildeshow/banner2.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/sildeshow/banner3.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/sildeshow/page3-1.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/sildeshow/page3-2.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/sildeshow/page3-3.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/sildeshow/slideshow1.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/sildeshow/slideshow2.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/sildeshow/slideshow3.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/sildeshow/slideshow4.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/sin_imagen.jpg" beforeDir="false" />
+      <change beforePath="Z:/assets/images/sns_paymal.png" beforeDir="false" />
+      <change beforePath="Z:/assets/images/sort-btn.png" beforeDir="false" />
+      <change beforePath="Z:/assets/images/sort-btn2.png" beforeDir="false" />
+      <change beforePath="Z:/assets/images/top-errow.png" beforeDir="false" />
+      <change beforePath="Z:/assets/inc/footer.inc.php" beforeDir="false" afterPath="Z:/assets/inc/footer.inc.php" afterDir="false" />
+      <change beforePath="Z:/assets/inc/nav.inc.php" beforeDir="false" afterPath="Z:/assets/inc/nav.inc.php" afterDir="false" />
+      <change beforePath="Z:/assets/inc/sideBlog.inc.php" beforeDir="false" />
+      <change beforePath="Z:/assets/inc/sideIndex.inc.php" beforeDir="false" />
+      <change beforePath="Z:/assets/js/bootstrap.js" beforeDir="false" afterPath="Z:/assets/js/bootstrap.js" afterDir="false" />
+      <change beforePath="Z:/assets/js/bootstrap.min.js" beforeDir="false" afterPath="Z:/assets/js/bootstrap.min.js" afterDir="false" />
+      <change beforePath="Z:/assets/js/custom.js" beforeDir="false" />
+      <change beforePath="Z:/assets/js/jquery-1.9.1.min.js" beforeDir="false" />
+      <change beforePath="Z:/assets/js/jquery-ui.js" beforeDir="false" />
+      <change beforePath="Z:/assets/js/less.min.js" beforeDir="false" />
+      <change beforePath="Z:/assets/js/list-grid.js" beforeDir="false" />
+      <change beforePath="Z:/assets/js/owl-carousel/AjaxLoader.gif" beforeDir="false" />
+      <change beforePath="Z:/assets/js/owl-carousel/grabbing.png" beforeDir="false" />
+      <change beforePath="Z:/assets/js/owl-carousel/owl.carousel.css" beforeDir="false" />
+      <change beforePath="Z:/assets/js/owl-carousel/owl.carousel.js" beforeDir="false" />
+      <change beforePath="Z:/assets/js/owl-carousel/owl.carousel.min.js" beforeDir="false" />
+      <change beforePath="Z:/assets/js/owl-carousel/owl.theme.css" beforeDir="false" />
+      <change beforePath="Z:/assets/js/owl-carousel/owl.transitions.css" beforeDir="false" />
+      <change beforePath="Z:/assets/js/sns-extend.js" beforeDir="false" />
+      <change beforePath="Z:/assets/less/alerts.less" beforeDir="false" />
+      <change beforePath="Z:/assets/less/badges.less" beforeDir="false" />
+      <change beforePath="Z:/assets/less/block.less" beforeDir="false" />
+      <change beforePath="Z:/assets/less/blog.less" beforeDir="false" />
+      <change beforePath="Z:/assets/less/bootstrap.less" beforeDir="false" />
+      <change beforePath="Z:/assets/less/breadcrumbs.less" beforeDir="false" />
+      <change beforePath="Z:/assets/less/button-groups.less" beforeDir="false" />
+      <change beforePath="Z:/assets/less/buttons.less" beforeDir="false" />
+      <change beforePath="Z:/assets/less/carousel.less" beforeDir="false" />
+      <change beforePath="Z:/assets/less/close.less" beforeDir="false" />
+      <change beforePath="Z:/assets/less/code.less" beforeDir="false" />
+      <change beforePath="Z:/assets/less/component-animations.less" beforeDir="false" />
+      <change beforePath="Z:/assets/less/content.less" beforeDir="false" />
+      <change beforePath="Z:/assets/less/custommenu.less" beforeDir="false" />
+      <change beforePath="Z:/assets/less/detail.less" beforeDir="false" />
+      <change beforePath="Z:/assets/less/dropdowns.less" beforeDir="false" />
+      <change beforePath="Z:/assets/less/forms.less" beforeDir="false" />
+      <change beforePath="Z:/assets/less/general.less" beforeDir="false" />
+      <change beforePath="Z:/assets/less/glyphicons.less" beforeDir="false" />
+      <change beforePath="Z:/assets/less/grid.less" beforeDir="false" />
+      <change beforePath="Z:/assets/less/home.less" beforeDir="false" />
+      <change beforePath="Z:/assets/less/input-groups.less" beforeDir="false" />
+      <change beforePath="Z:/assets/less/jumbotron.less" beforeDir="false" />
+      <change beforePath="Z:/assets/less/labels.less" beforeDir="false" />
+      <change beforePath="Z:/assets/less/list-group.less" beforeDir="false" />
+      <change beforePath="Z:/assets/less/listing.less" beforeDir="false" />
+      <change beforePath="Z:/assets/less/media.less" beforeDir="false" />
+      <change beforePath="Z:/assets/less/mixin.less" beforeDir="false" />
+      <change beforePath="Z:/assets/less/mixins.less" beforeDir="false" />
+      <change beforePath="Z:/assets/less/modals.less" beforeDir="false" />
+      <change beforePath="Z:/assets/less/navbar.less" beforeDir="false" />
+      <change beforePath="Z:/assets/less/navs.less" beforeDir="false" />
+      <change beforePath="Z:/assets/less/normalize.less" beforeDir="false" />
+      <change beforePath="Z:/assets/less/pager.less" beforeDir="false" />
+      <change beforePath="Z:/assets/less/pagination.less" beforeDir="false" />
+      <change beforePath="Z:/assets/less/panels.less" beforeDir="false" />
+      <change beforePath="Z:/assets/less/popovers.less" beforeDir="false" />
+      <change beforePath="Z:/assets/less/print.less" beforeDir="false" />
+      <change beforePath="Z:/assets/less/product-block.less" beforeDir="false" />
+      <change beforePath="Z:/assets/less/progress-bars.less" beforeDir="false" />
+      <change beforePath="Z:/assets/less/responsive-utilities.less" beforeDir="false" />
+      <change beforePath="Z:/assets/less/responsive.less" beforeDir="false" />
+      <change beforePath="Z:/assets/less/scaffolding.less" beforeDir="false" />
+      <change beforePath="Z:/assets/less/shopping-checkout.less" beforeDir="false" />
+      <change beforePath="Z:/assets/less/styleweb.less" beforeDir="false" />
+      <change beforePath="Z:/assets/less/tables.less" beforeDir="false" />
+      <change beforePath="Z:/assets/less/theme.less" beforeDir="false" />
+      <change beforePath="Z:/assets/less/thumbnails.less" beforeDir="false" />
+      <change beforePath="Z:/assets/less/toolbar.less" beforeDir="false" />
+      <change beforePath="Z:/assets/less/tooltip.less" beforeDir="false" />
+      <change beforePath="Z:/assets/less/type.less" beforeDir="false" />
+      <change beforePath="Z:/assets/less/utilities.less" beforeDir="false" />
+      <change beforePath="Z:/assets/less/variables.less" beforeDir="false" />
+      <change beforePath="Z:/assets/less/wells.less" beforeDir="false" />
+      <change beforePath="Z:/blog.php" beforeDir="false" afterPath="Z:/blog.php" afterDir="false" />
+      <change beforePath="Z:/blogs.php" beforeDir="false" />
+      <change beforePath="Z:/carrito.php" beforeDir="false" afterPath="Z:/carrito.php" afterDir="false" />
+      <change beforePath="Z:/categorias/agregar.php" beforeDir="false" />
+      <change beforePath="Z:/categorias/modificar.php" beforeDir="false" />
+      <change beforePath="Z:/categorias/ver.php" beforeDir="false" />
+      <change beforePath="Z:/checkout.php" beforeDir="false" />
+      <change beforePath="Z:/contact.php" beforeDir="false" />
+      <change beforePath="Z:/index.php" beforeDir="false" afterPath="Z:/index.php" afterDir="false" />
+      <change beforePath="Z:/pagar.php" beforeDir="false" />
+      <change beforePath="Z:/producto.php" beforeDir="false" />
+      <change beforePath="Z:/productos.php" beforeDir="false" />
+      <change beforePath="Z:/readme.me" beforeDir="false" afterPath="Z:/readme.me" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
-    <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
+    <pharConfigPath>Z:/composer.json</pharConfigPath>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/checkout.php">
+    <leaf>
+      <file leaf-file-name="modificar_menu.php" pinned="false" current-in-tab="true">
+        <entry file="file://Z:/modificar_menu.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1734">
-              <caret line="102" column="61" lean-forward="true" selection-start-line="102" selection-start-column="61" selection-end-line="102" selection-end-column="61" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Clases/Carrito.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="127">
-              <caret line="64" column="31" selection-start-line="64" selection-start-column="20" selection-end-line="64" selection-end-column="31" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/vendor/autoload.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Clases/Pedidos.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="15" lean-forward="true" selection-start-line="2" selection-end-line="3" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/producto.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2958">
-              <caret line="174" column="154" selection-start-line="174" selection-start-column="154" selection-end-line="174" selection-end-column="154" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pagar.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="127">
-              <caret line="13" column="39" selection-start-line="13" selection-start-column="39" selection-end-line="13" selection-end-column="39" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/readme.me">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="41" selection-start-line="5" selection-start-column="41" selection-end-line="5" selection-end-column="41" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/productos.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="637">
-              <caret line="56" selection-start-line="56" selection-end-line="56" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Clases/Productos.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="125" column="84" selection-start-line="125" selection-start-column="84" selection-end-line="125" selection-end-column="84" />
+            <state relative-caret-position="78">
+              <caret line="65" selection-start-line="65" selection-end-line="65" selection-end-column="37" />
             </state>
           </provider>
         </entry>
@@ -143,20 +336,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>03564</find>
-      <find>telefo</find>
-      <find>center2</find>
-      <find>sm</find>
-      <find>all</find>
-      <find>url</find>
-      <find>src=&quot;</find>
-      <find>jquer</find>
-      <find>src</find>
-      <find>inicio</find>
-      <find>norm</find>
-      <find>center</find>
-      <find>$productosPaginador</find>
-      <find>categoriasdata</find>
       <find>categorias</find>
       <find>block-</find>
       <find>block_cat</find>
@@ -168,66 +347,105 @@
       <find>descr</find>
       <find>'{$this-</find>
       <find>_session[&quot;carrito</find>
-      <find>view</find>
       <find>$carrito</find>
       <find>vendor</find>
       <find>client_id</find>
       <find>sandbox_init_point</find>
+      <find>include</find>
+      <find>78cfcf#85C99D</find>
+      <find>footer</find>
+      <find>#social_footer</find>
+      <find>raiti</find>
+      <find>grid</find>
+      <find>view</find>
+      <find>;</find>
+      <find>#85C99D</find>
+      <find>sumar</find>
+      <find>masSecc</find>
+      <find>ma</find>
+      <find>masSec</find>
+      <find>m</find>
+      <find>sección</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="Z:/" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/admin/inc/productos/importar.php" />
-        <option value="$PROJECT_DIR$/assets/css/style.css" />
-        <option value="$PROJECT_DIR$/index3-detail.html" />
-        <option value="$PROJECT_DIR$/index4-blog.html" />
-        <option value="$PROJECT_DIR$/Clases/Novedades.php" />
-        <option value="$PROJECT_DIR$/contact.php" />
-        <option value="$PROJECT_DIR$/Clases/Categorias.php" />
-        <option value="$PROJECT_DIR$/blog.php" />
-        <option value="$PROJECT_DIR$/assets/css/estilos.css" />
-        <option value="$PROJECT_DIR$/404.php" />
-        <option value="$PROJECT_DIR$/Clases/Subcategorias.php" />
-        <option value="$PROJECT_DIR$/assets/inc/footer.inc.php" />
-        <option value="$PROJECT_DIR$/index2.html" />
-        <option value="$PROJECT_DIR$/assets/inc/sideIndex.inc.php" />
-        <option value="$PROJECT_DIR$/assets/inc/nav.inc.php" />
-        <option value="$PROJECT_DIR$/listing.php" />
-        <option value="$PROJECT_DIR$/assets/inc/sideBlog.inc.php" />
-        <option value="$PROJECT_DIR$/index.php" />
-        <option value="$PROJECT_DIR$/blogs.php" />
-        <option value="$PROJECT_DIR$/Clases/TemplateSite.php" />
-        <option value="$PROJECT_DIR$/Clases/Usuarios.php" />
-        <option value="$PROJECT_DIR$/.htaccess" />
-        <option value="$PROJECT_DIR$/Clases/Conexion.php" />
-        <option value="$PROJECT_DIR$/pagar.php" />
-        <option value="$PROJECT_DIR$/Clases/Carrito.php" />
-        <option value="$PROJECT_DIR$/producto.php" />
-        <option value="$PROJECT_DIR$/readme.me" />
-        <option value="$PROJECT_DIR$/productos.php" />
-        <option value="$PROJECT_DIR$/Clases/Productos.php" />
-        <option value="$PROJECT_DIR$/Clases/Pedidos.php" />
-        <option value="$PROJECT_DIR$/Config/Autoload.php" />
-        <option value="$PROJECT_DIR$/Clases/Mercadopago.php" />
-        <option value="$PROJECT_DIR$/checkout.php" />
+        <option value="Z:/admin/inc/productos/importar.php" />
+        <option value="Z:/index3-detail.html" />
+        <option value="Z:/index4-blog.html" />
+        <option value="Z:/Clases/Novedades.php" />
+        <option value="Z:/contact.php" />
+        <option value="Z:/blog.php" />
+        <option value="Z:/404.php" />
+        <option value="Z:/Clases/Subcategorias.php" />
+        <option value="Z:/index2.html" />
+        <option value="Z:/assets/inc/sideIndex.inc.php" />
+        <option value="Z:/listing.php" />
+        <option value="Z:/assets/inc/sideBlog.inc.php" />
+        <option value="Z:/blogs.php" />
+        <option value="Z:/Clases/Usuarios.php" />
+        <option value="Z:/pagar.php" />
+        <option value="Z:/Clases/Carrito.php" />
+        <option value="Z:/producto.php" />
+        <option value="Z:/readme.me" />
+        <option value="Z:/productos.php" />
+        <option value="Z:/Clases/Pedidos.php" />
+        <option value="Z:/Clases/Mercadopago.php" />
+        <option value="Z:/checkout.php" />
+        <option value="Z:/Clases/Conexion.php" />
+        <option value="Z:/Config/Autoload.php" />
+        <option value="Z:/assets/inc/nav.inc.php" />
+        <option value="Z:/Clases/TemplateSite.php" />
+        <option value="Z:/assets/inc/footer.inc.php" />
+        <option value="Z:/contacto.php" />
+        <option value="Z:/Clases/Contenidos.php" />
+        <option value="Z:/contenidos.php" />
+        <option value="Z:/comercios.php" />
+        <option value="Z:/index.php" />
+        <option value="Z:/Clases/PublicFunction.php" />
+        <option value="Z:/Clases/Secciones.php" />
+        <option value="Z:/modificar_empresa.php" />
+        <option value="Z:/.htaccess" />
+        <option value="Z:/modificar_menu_2.php" />
+        <option value="Z:/crear_menu.php" />
+        <option value="Z:/modificar_menu.php" />
+        <option value="Z:/panel.php" />
+        <option value="Z:/Clases/Productos.php" />
+        <option value="Z:/Clases/Categorias.php" />
+        <option value="Z:/assets/css/style.css" />
+        <option value="Z:/assets/inc/header.inc.php" />
+        <option value="Z:/assets/css/estilos.css" />
+        <option value="Z:/restaurantes.php" />
       </list>
     </option>
   </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths />
+  </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
-      <path value="$PROJECT_DIR$/vendor/composer" />
-      <path value="$PROJECT_DIR$/vendor/phpoffice/phpexcel" />
-      <path value="$PROJECT_DIR$/vendor/phpmailer/phpmailer" />
-      <path value="$PROJECT_DIR$/vendor/mercadopago/sdk" />
+      <path value="Z:/vendor/composer" />
+      <path value="Z:/vendor/phpoffice/phpexcel" />
+      <path value="Z:/vendor/phpmailer/phpmailer" />
+      <path value="Z:/vendor/mercadopago/sdk" />
+      <path value="Z:/vendor/mercadopago/sdk" />
+      <path value="Z:/vendor/phpmailer/phpmailer" />
+      <path value="Z:/vendor/phpoffice/phpexcel" />
+      <path value="Z:/vendor/composer" />
     </include_path>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="10" />
-    <option name="y" value="20" />
+    <option name="x" value="1396" />
     <option name="width" value="1346" />
     <option name="height" value="688" />
   </component>
@@ -239,32 +457,69 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane">
-        <subPane>
+      <pane id="Scope">
+        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
           <expand>
             <path>
-              <item name="cms-joa" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cms-joa" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cms-joa" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="bcb0276e:PhpExternalLibrariesNodePatcher$PatchedExternalLibrariesNode" />
+              <item name="Foodie" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Z" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Z:" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Z" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Z:" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Z" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Z:" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Z" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Z:" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="inc" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Z" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Z:" type="462c0819:PsiDirectoryNode" />
+              <item name="Clases" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="Z:/assets/css" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="two.files.diff.last.used.folder" value="Z:/assets/css" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="Z:\Foodie\Clases" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Web\Foodie" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -294,35 +549,47 @@
       <workItem from="1544122942487" duration="14358000" />
       <workItem from="1544209241263" duration="80000" />
       <workItem from="1544213776319" duration="9638000" />
+      <workItem from="1544366931860" duration="1805000" />
+      <workItem from="1544538167565" duration="4226000" />
+      <workItem from="1544556490249" duration="9245000" />
+      <workItem from="1544614331188" duration="410000" />
+      <workItem from="1544700957956" duration="121000" />
+      <workItem from="1545169930064" duration="955000" />
+      <workItem from="1545170893809" duration="3585000" />
+      <workItem from="1545217430450" duration="31749000" />
+      <workItem from="1545304252964" duration="16139000" />
+      <workItem from="1545390750560" duration="309000" />
+      <workItem from="1545391065166" duration="12513000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43889000" />
+    <option name="totallyTimeSpent" value="124946000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="1358" y="-8" width="1376" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16364606" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Inspection Results" weight="0.32936078" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.11985294" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50075644" side_tool="true" visible="true" weight="0.0" />
+      <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.7168576" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49924356" weight="0.3289689" />
-      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50075644" side_tool="true" weight="0.3289689" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Inspection Results" order="12" weight="0.32936078" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -338,358 +605,138 @@
       </list>
     </option>
   </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/admin/inc/productos/importar.php">
+    <entry file="file:Z:/../..//Z:/Foodie/html/index_4.html" />
+    <entry file="file:Z:/../..//Z:/Foodie/html/index_8.html" />
+    <entry file="file:Z:/../..//Z:/Foodie/assets/inc/nav.inc.php" />
+    <entry file="file:Z:/../..//Z:/Foodie/assets/inc/footer.inc.php" />
+    <entry file="file:Z:/../..//Z:/Foodie/assets/js/video_header.js" />
+    <entry file="file:Z:/../..//Z:/Foodie/assets/inc/header.inc.php" />
+    <entry file="file:Z:/../..//Z:/Foodie/html/index.html" />
+    <entry file="file:Z:/../..//Z:/Foodie/assets/css/base.css" />
+    <entry file="file:Z:/../..//Z:/Foodie/index.php" />
+    <entry file="file:Z:/../..//Z:/Foodie/comercios.php" />
+    <entry file="file:Z:/../..//Z:/Foodie/comercios.html" />
+    <entry file="file:Z:/../..//Z:/Foodie/contacto.php" />
+    <entry file="file:Z:/../..//Z:/Foodie/contenidos.php" />
+    <entry file="file:Z:/../..//Z:/Foodie/Clases/Contenidos.php" />
+    <entry file="file:Z:/../..//Z:/Foodie/.htaccess" />
+    <entry file="file:Z:/../..//Z:/Foodie/Clases/TemplateSite.php" />
+    <entry file="file:Z:/../..//Z:/Foodie/assets/css/style.css" />
+    <entry file="file:Z:/../..//Z:/Foodie/panel.php" />
+    <entry file="file:Z:/../../..//Z:/contacto.php" />
+    <entry file="file:Z:/../../..//Z:/index.php" />
+    <entry file="file:Z:/../../..//Z:/Clases/Usuarios.php" />
+    <entry file="file:Z:/../../..//Z:/Clases/PublicFunction.php" />
+    <entry file="file:Z:/../../..//Z:/html/list_page.html" />
+    <entry file="file:Z:/../../..//Z:/Clases/Imagenes.php" />
+    <entry file="file:Z:/../../..//Z:/Clases/Categorias.php" />
+    <entry file="jar:Z:/../../..//C:/Program Files/JetBrains/PhpStorm 2018.1.6/lib/phpstorm.jar!/resources/html5-schema/html5/block.rnc" />
+    <entry file="file:Z:/../../..//Z:/modificar_empresa.php" />
+    <entry file="file:Z:/../../..//Z:/html/admin.html" />
+    <entry file="file:Z:/../../..//Z:/assets/css/style.css" />
+    <entry file="file:Z:/../../..//Z:/.htaccess" />
+    <entry file="file:Z:/../../..//Z:/Clases/Productos.php" />
+    <entry file="file:Z:/../../..//Z:/crear_menu.php" />
+    <entry file="file:Z:/../../..//Z:/Clases/Secciones.php" />
+    <entry file="file:Z:/../../..//Z:/panel.php" />
+    <entry file="file:Z:/../../..//Z:/modificar_menu_2.php" />
+    <entry file="file:Z:/../../..//Z:/crear_empresa.php" />
+    <entry file="file:Z:/../../..//Z:/modificar_menu.php" />
+    <entry file="file://Z:/crear_empresa.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1802">
-          <caret line="106" column="51" lean-forward="true" selection-start-line="106" selection-start-column="51" selection-end-line="106" selection-end-column="51" />
+        <state relative-caret-position="406">
+          <caret line="105" column="27" lean-forward="true" selection-start-line="105" selection-start-column="10" selection-end-line="105" selection-end-column="27" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/less/detail.less">
+    <entry file="file://Z:/crear_menu.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="726" column="1" selection-start-line="726" selection-start-column="1" selection-end-line="726" selection-end-column="1" />
+        <state relative-caret-position="901">
+          <caret line="166" column="52" lean-forward="true" selection-start-line="166" selection-start-column="52" selection-end-line="166" selection-end-column="52" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index3-detail.html" />
-    <entry file="file://$PROJECT_DIR$/assets/css/style.less">
+    <entry file="file://Z:/crear_empresa_paso3.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2295">
-          <caret line="135" column="49" selection-start-line="135" selection-start-column="49" selection-end-line="135" selection-end-column="49" />
+        <state relative-caret-position="221">
+          <caret line="13" selection-start-line="13" selection-end-line="13" selection-end-column="38" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index4-detail.html">
+    <entry file="file://Z:/html/list_page.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="458">
-          <caret line="1289" column="36" lean-forward="true" selection-start-line="1263" selection-start-column="12" selection-end-line="1289" selection-end-column="36" />
-          <folding>
-            <element signature="n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#ul#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-          </folding>
+        <state relative-caret-position="535">
+          <caret line="596" column="9" lean-forward="true" selection-start-line="573" selection-end-line="596" selection-end-column="9" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index4-contact-us.html">
+    <entry file="file://Z:/Clases/Empresas.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="1289" column="36" lean-forward="true" selection-start-line="1263" selection-start-column="11" selection-end-line="1289" selection-end-column="36" />
-          <folding>
-            <element signature="n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-          </folding>
+        <state relative-caret-position="-1845" />
+      </provider>
+    </entry>
+    <entry file="file://Z:/Clases/Productos.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="484">
+          <caret line="138" column="4" selection-start-line="138" selection-start-column="4" selection-end-line="138" selection-end-column="4" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index4-blog.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="19" selection-start-line="19" selection-end-line="20" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index4-blog-detail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="407">
-          <caret line="1295" column="36" lean-forward="true" selection-start-line="1266" selection-start-column="12" selection-end-line="1295" selection-end-column="36" />
-          <folding>
-            <element signature="n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blogsbk.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="89" column="26" lean-forward="true" selection-start-line="64" selection-start-column="24" selection-end-line="89" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Clases/Novedades.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="110" column="27" lean-forward="true" selection-start-line="110" selection-start-column="27" selection-end-line="110" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Clases/Banner.php">
+    <entry file="file://Z:/Clases/Categorias.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="243">
-          <caret line="81" column="13" selection-start-line="81" selection-start-column="13" selection-end-line="81" selection-end-column="13" />
+          <caret line="82" column="21" lean-forward="true" selection-start-line="82" selection-start-column="21" selection-end-line="82" selection-end-column="21" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index4-listing-grid.html">
+    <entry file="file://Z:/Clases/PublicFunction.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="2116" column="68" lean-forward="true" selection-start-line="2116" selection-start-column="68" selection-end-line="2116" selection-end-column="68" />
-        </state>
+        <state relative-caret-position="-816" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="4219" column="26" selection-start-line="4219" selection-start-column="26" selection-end-line="4219" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blog.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="376">
-          <caret line="97" column="78" lean-forward="true" selection-start-line="97" selection-start-column="78" selection-end-line="97" selection-end-column="78" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/css/estilos.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="45" column="22" selection-start-line="45" selection-start-column="22" selection-end-line="45" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/less/home.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="3432" column="16" selection-start-line="3432" selection-start-column="16" selection-end-line="3432" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index4-404.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="512">
-          <caret line="1316" column="18" lean-forward="true" selection-start-line="1292" selection-start-column="12" selection-end-line="1316" selection-end-column="18" />
-          <folding>
-            <element signature="n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/404.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="22" selection-start-line="20" selection-start-column="22" selection-end-line="20" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/less/responsive.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="1657" column="45" selection-start-line="1657" selection-start-column="45" selection-end-line="1657" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/shoppingcart.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Clases/Subcategorias.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="68" column="76" selection-start-line="68" selection-start-column="76" selection-end-line="68" selection-end-column="76" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/inc/footer.inc.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="41" column="49" lean-forward="true" selection-start-line="41" selection-start-column="49" selection-end-line="41" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/inc/sideIndex.inc.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="30" column="38" lean-forward="true" selection-start-line="30" selection-start-column="38" selection-end-line="30" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index2.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="769" column="43" lean-forward="true" selection-start-line="769" selection-start-column="43" selection-end-line="769" selection-end-column="43" />
-          <folding>
-            <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#0;n#li#1;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#style#0;n#span#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/inc/sideBlog.inc.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="56" selection-start-line="7" selection-start-column="56" selection-end-line="7" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Clases/Categorias.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="128" column="13" selection-start-line="128" selection-start-column="13" selection-end-line="128" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4794">
-          <caret line="282" column="81" selection-start-line="282" selection-start-column="81" selection-end-line="282" selection-end-column="81" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/listing.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2032">
-          <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="41" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blogs.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="680">
-          <caret line="118" lean-forward="true" selection-start-line="118" selection-end-line="118" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/contact.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="75" column="78" selection-start-line="75" selection-start-column="78" selection-end-line="75" selection-end-column="78" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/inc/nav.inc.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret lean-forward="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.htaccess">
+    <entry file="file://Z:/restaurantes.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
-          <caret line="12" column="80" selection-start-line="12" selection-start-column="80" selection-end-line="12" selection-end-column="80" />
+          <caret line="227" column="34" selection-start-line="227" selection-start-column="34" selection-end-line="227" selection-end-column="34" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/admin/inc/servicios/agregar.php">
+    <entry file="file://Z:/assets/css/estilos.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="21" lean-forward="true" selection-start-line="10" selection-end-line="11" />
+        <state relative-caret-position="153">
+          <caret line="66" column="21" selection-start-line="66" selection-start-column="21" selection-end-line="66" selection-end-column="21" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Clases/Conexion.php">
+    <entry file="file://Z:/assets/inc/header.inc.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-9">
-          <caret line="2" column="14" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="14" />
+        <state relative-caret-position="238">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Clases/Usuarios.php">
+    <entry file="file://Z:/assets/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1352">
-          <caret line="133" column="34" selection-start-line="133" selection-start-column="34" selection-end-line="133" selection-end-column="34" />
+        <state relative-caret-position="125">
+          <caret line="846" column="14" lean-forward="true" selection-start-line="846" selection-start-column="14" selection-end-line="846" selection-end-column="14" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Clases/TemplateSite.php">
+    <entry file="file://Z:/panel.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-196">
-          <caret line="72" column="10" selection-start-line="72" selection-start-column="10" selection-end-line="72" selection-end-column="10" />
+        <state relative-caret-position="259">
+          <caret line="462" column="20" selection-start-line="462" selection-start-column="20" selection-end-line="478" selection-end-column="26" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/carrito.php">
+    <entry file="file://Z:/modificar_menu.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="507">
-          <caret line="166" column="73" selection-start-line="165" selection-start-column="28" selection-end-line="166" selection-end-column="73" />
-          <caret line="170" column="73" selection-start-line="169" selection-start-column="28" selection-end-line="170" selection-end-column="73" />
-          <caret line="174" column="152" selection-start-line="173" selection-start-column="28" selection-end-line="174" selection-end-column="152" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/productos.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="637">
-          <caret line="56" selection-start-line="56" selection-end-line="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/readme.me">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="41" selection-start-line="5" selection-start-column="41" selection-end-line="5" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pagar.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="127">
-          <caret line="13" column="39" selection-start-line="13" selection-start-column="39" selection-end-line="13" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Config/Autoload.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Clases/Pedidos.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="15" lean-forward="true" selection-start-line="2" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Clases/Mercadopago.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Clases/Productos.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="125" column="84" selection-start-line="125" selection-start-column="84" selection-end-line="125" selection-end-column="84" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/autoload.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Clases/Carrito.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="127">
-          <caret line="64" column="31" selection-start-line="64" selection-start-column="20" selection-end-line="64" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/checkout.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1734">
-          <caret line="102" column="61" lean-forward="true" selection-start-line="102" selection-start-column="61" selection-end-line="102" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/producto.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2958">
-          <caret line="174" column="154" selection-start-line="174" selection-start-column="154" selection-end-line="174" selection-end-column="154" />
+        <state relative-caret-position="78">
+          <caret line="65" selection-start-line="65" selection-end-line="65" selection-end-column="37" />
         </state>
       </provider>
     </entry>
