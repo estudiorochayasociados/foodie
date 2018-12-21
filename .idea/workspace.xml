@@ -326,8 +326,8 @@
       <file leaf-file-name="modificar_menu.php" pinned="false" current-in-tab="true">
         <entry file="file://Z:/modificar_menu.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="78">
-              <caret line="65" selection-start-line="65" selection-end-line="65" selection-end-column="37" />
+            <state relative-caret-position="95">
+              <caret line="66" column="127" lean-forward="true" selection-start-line="66" selection-start-column="4" selection-end-line="66" selection-end-column="127" />
             </state>
           </provider>
         </entry>
@@ -559,12 +559,12 @@
       <workItem from="1545217430450" duration="31749000" />
       <workItem from="1545304252964" duration="16139000" />
       <workItem from="1545390750560" duration="309000" />
-      <workItem from="1545391065166" duration="12513000" />
+      <workItem from="1545391065166" duration="13996000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="124946000" />
+    <option name="totallyTimeSpent" value="126429000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1358" y="-8" width="1376" height="744" extended-state="6" />
@@ -728,15 +728,15 @@
     </entry>
     <entry file="file://Z:/panel.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="259">
-          <caret line="462" column="20" selection-start-line="462" selection-start-column="20" selection-end-line="478" selection-end-column="26" />
+        <state relative-caret-position="53">
+          <caret line="485" lean-forward="true" selection-start-line="485" selection-end-line="485" />
         </state>
       </provider>
     </entry>
     <entry file="file://Z:/modificar_menu.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="78">
-          <caret line="65" selection-start-line="65" selection-end-line="65" selection-end-column="37" />
+        <state relative-caret-position="95">
+          <caret line="66" column="127" lean-forward="true" selection-start-line="66" selection-start-column="4" selection-end-line="66" selection-end-column="127" />
         </state>
       </provider>
     </entry>
