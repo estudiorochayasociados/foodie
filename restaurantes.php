@@ -12,6 +12,49 @@ $template->themeInit();
 $empresa = new Clases\Empresas();
 $imagenesEmpresa = new Clases\Imagenes();
 $categorias = new Clases\Categorias();
+$productos = new Clases\Productos();
+
+$ubicacionUsuario = isset($_GET["ubicacion"]) ? $_GET["ubicacion"] : '';
+if ($ubicacionUsuario != ''):
+    $ubicacionUsuario = str_replace("-", "+", $funcion->normalizar_link($ubicacionUsuario));
+    $jsonUsuario = json_decode(file_get_contents('https://geocoder.api.here.com/6.2/geocode.json?app_id=Nkd7zJVtg6iaOyaQoEvK&app_code=HTkK8DlaV14bg6RDCA-pQA&searchtext=' . $ubicacionUsuario));
+    $usuarioLongitud = ($jsonUsuario->Response->View[0]->Result[0]->Location->DisplayPosition->Longitude);
+    $usuarioLatitud = ($jsonUsuario->Response->View[0]->Result[0]->Location->DisplayPosition->Latitude);
+endif;
+
+$categoriaGET = isset($_GET["categoria"]) ? $_GET["categoria"] : '0';
+$filterEmpresa = '';
+
+if ($categoriaGET != 0):
+    unset($filterEmpresa);
+    if (strpos($categoriaGET, ',') !== false):
+        foreach (explode(',', $categoriaGET) as $value):
+            $productosArrayTemp[] = $productos->list(array("categoria = '$value' GROUP BY cod_empresa"), "", "");
+        endforeach;
+        $cantidadCategorias = count($productosArrayTemp);
+        for ($i = 0; $i < $cantidadCategorias; $i++):
+            $cantidadProductos = count($productosArrayTemp[$i]);
+            for ($j = 0; $j < $cantidadProductos; $j++):
+                $arrayDeCodigos[] = "cod = '" . $productosArrayTemp[$i][$j]['cod_empresa'] . "'";
+            endfor;
+            if ($i == 0):
+                $arraySinRepeticiones = $arrayDeCodigos;
+            endif;
+            $arraySinRepeticiones = array_intersect($arrayDeCodigos, $arraySinRepeticiones);
+            unset($arrayDeCodigos);
+        endfor;
+        $filterEmpresa = array(implode(" OR ", $arraySinRepeticiones));
+    else:
+        $filterProductos = array("categoria = '$categoriaGET' GROUP BY cod_empresa");
+        $productosArray = $productos->list($filterProductos, "", "");
+        foreach ($productosArray as $key => $value):
+            $filterEmpresaTmp[] = "cod = '" . $value['cod_empresa'] . "'";
+        endforeach;
+        $filterEmpresa = array(implode(" OR ", $filterEmpresaTmp));
+    endif;
+endif;
+
+$categoriasArray = $categorias->list("", "titulo asc", "");
 
 $pagina = isset($_GET["pagina"]) ? $_GET["pagina"] : '0';
 $cantidad = 2;
@@ -20,20 +63,27 @@ if ($pagina > 0) {
     $pagina = $pagina - 1;
 }
 
-if(@count($_GET)>1){
+if (@count($_GET) >= 1) {
     $anidador = "&";
-}else{
+} else {
     $anidador = "?";
 }
 
-if(isset($_GET['pagina'])):
+if (isset($_GET['pagina'])):
     $url = $funcion->eliminar_get(CANONICAL, 'pagina');
 else:
     $url = CANONICAL;
 endif;
 
-$empresaArray = $empresa->list("","",$cantidad*$pagina.','.$cantidad);
-$numeroPaginas = $empresa->paginador("",$cantidad);
+if(isset($_SESSION['seed'])){
+    $seed = $_SESSION['seed'];
+}else{
+    $_SESSION['seed'] = mt_rand();
+    $seed = $_SESSION['seed'];
+}
+
+$empresaArray = $empresa->list($filterEmpresa, "rand($seed)", $cantidad * $pagina . ',' . $cantidad);
+$numeroPaginas = $empresa->paginador($filterEmpresa, $cantidad);
 ?>
 
 <!-- SubHeader =============================================== -->
@@ -41,32 +91,9 @@ $numeroPaginas = $empresa->paginador("",$cantidad);
          data-natural-width="1400" data-natural-height="350">
     <div id="subheader">
         <div id="sub_content">
-            <h1>Crea tu empresa en 3 simples pasos</h1>
-            <div class="bs-wizard">
-                <div class="col-xs-4 bs-wizard-step active">
-                    <div class="text-center bs-wizard-stepnum"><strong>1.</strong> Descripción</div>
-                    <div class="progress">
-                        <div class="progress-bar"></div>
-                    </div>
-                    <a href="#0" class="bs-wizard-dot"></a>
-                </div>
-
-                <div class="col-xs-4 bs-wizard-step disabled">
-                    <div class="text-center bs-wizard-stepnum"><strong>2.</strong> Ubicación</div>
-                    <div class="progress">
-                        <div class="progress-bar"></div>
-                    </div>
-                    <a href="cart_2.html" class="bs-wizard-dot"></a>
-                </div>
-
-                <div class="col-xs-4 bs-wizard-step disabled">
-                    <div class="text-center bs-wizard-stepnum"><strong>3.</strong> Logo y Creación</div>
-                    <div class="progress">
-                        <div class="progress-bar"></div>
-                    </div>
-                    <a href="cart_3.html" class="bs-wizard-dot"></a>
-                </div>
-            </div><!-- End bs-wizard -->
+            <h1>Restaurantes</h1>
+            <p>Elegí el restaurante más cerca de tu casa.</p>
+            <p></p>
         </div><!-- End sub_content -->
     </div><!-- End subheader -->
 </section><!-- End section -->
@@ -81,111 +108,40 @@ $numeroPaginas = $empresa->paginador("",$cantidad);
     </div>
 </div><!-- Position -->
 
-<?php
-if (isset($_POST["crear_empresa"])):
-    $titulo = $funcion->antihack_mysqli(isset($_POST["tituloEmpresa"]) ? $_POST["tituloEmpresa"] : '');
-    $telefono = $funcion->antihack_mysqli(isset($_POST["telefonoEmpresa"]) ? $_POST["telefonoEmpresa"] : '');
-    $email = $funcion->antihack_mysqli(isset($_POST["emailEmpresa"]) ? $_POST["emailEmpresa"] : '');
-    $desarrollo = $funcion->antihack_mysqli(isset($_POST["desarrolloEmpresa"]) ? $_POST["desarrolloEmpresa"] : '');
-
-    $cod = substr(md5(uniqid(rand())), 0, 10);
-    $cod_usuario = $_SESSION['usuarios']['cod'];
-
-    $fecha = getdate();
-    $fecha = $fecha['year'] . '-' . $fecha['mon'] . '-' . $fecha['mday'];
-
-    $empresa->set("cod", $cod);
-    $empresa->set("titulo", $titulo);
-    $empresa->set("telefono", $telefono);
-    $empresa->set("email", $email);
-    $empresa->set("desarrollo", $desarrollo);
-    $empresa->set("fecha", $fecha);
-    $empresa->set("cod_usuario", $cod_usuario);
-
-    $empresa->add();
-    $funcion->headerMove(URL . '/crear_empresa_paso2');
-endif;
-?>
-
 <!-- Content ================================================== -->
 <div class="container margin_60_35">
     <div class="row">
 
         <div class="col-md-3">
-            <p>
-                <a class="btn_map" data-toggle="collapse" href="#collapseMap" aria-expanded="false"
-                   aria-controls="collapseMap">View on map</a>
-            </p>
             <div id="filters_col">
                 <a data-toggle="collapse" href="#collapseFilters" aria-expanded="false" aria-controls="collapseFilters"
-                   id="filters_col_bt">Filters <i class="icon-plus-1 pull-right"></i></a>
+                   id="filters_col_bt">Filtros <i class="icon-plus-1 pull-right"></i></a>
                 <div class="collapse" id="collapseFilters">
                     <div class="filter_type">
-                        <h6>Distance</h6>
-                        <input type="text" id="range" value="" name="range">
-                        <h6>Type</h6>
-                        <ul>
-                            <li><label><input type="checkbox" checked class="icheck">All
-                                    <small>(49)</small>
-                                </label></li>
-                            <li><label><input type="checkbox" class="icheck">American
-                                    <small>(12)</small>
-                                </label><i class="color_1"></i></li>
-                            <li><label><input type="checkbox" class="icheck">Chinese
-                                    <small>(5)</small>
-                                </label><i class="color_2"></i></li>
-                            <li><label><input type="checkbox" class="icheck">Hamburger
-                                    <small>(7)</small>
-                                </label><i class="color_3"></i></li>
-                            <li><label><input type="checkbox" class="icheck">Fish
-                                    <small>(1)</small>
-                                </label><i class="color_4"></i></li>
-                            <li><label><input type="checkbox" class="icheck">Mexican
-                                    <small>(49)</small>
-                                </label><i class="color_5"></i></li>
-                            <li><label><input type="checkbox" class="icheck">Pizza
-                                    <small>(22)</small>
-                                </label><i class="color_6"></i></li>
-                            <li><label><input type="checkbox" class="icheck">Sushi
-                                    <small>(43)</small>
-                                </label><i class="color_7"></i></li>
-                        </ul>
-                    </div>
-                    <div class="filter_type">
-                        <h6>Rating</h6>
-                        <ul>
-                            <li><label><input type="checkbox" class="icheck"><span class="rating">
-							<i class="icon_star voted"></i><i class="icon_star voted"></i><i
-                                                class="icon_star voted"></i><i class="icon_star voted"></i><i
-                                                class="icon_star voted"></i>
-							</span></label></li>
-                            <li><label><input type="checkbox" class="icheck"><span class="rating">
-							<i class="icon_star voted"></i><i class="icon_star voted"></i><i
-                                                class="icon_star voted"></i><i class="icon_star voted"></i><i
-                                                class="icon_star"></i>
-							</span></label></li>
-                            <li><label><input type="checkbox" class="icheck"><span class="rating">
-							<i class="icon_star voted"></i><i class="icon_star voted"></i><i
-                                                class="icon_star voted"></i><i class="icon_star"></i><i
-                                                class="icon_star"></i>
-							</span></label></li>
-                            <li><label><input type="checkbox" class="icheck"><span class="rating">
-							<i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star"></i><i
-                                                class="icon_star"></i><i class="icon_star"></i>
-							</span></label></li>
-                            <li><label><input type="checkbox" class="icheck"><span class="rating">
-							<i class="icon_star voted"></i><i class="icon_star"></i><i class="icon_star"></i><i
-                                                class="icon_star"></i><i class="icon_star"></i>
-							</span></label></li>
-                        </ul>
-                    </div>
-                    <div class="filter_type">
-                        <h6>Options</h6>
+                        <h6><b>Opciones</b></h6>
                         <ul class="nomargin">
-                            <li><label><input type="checkbox" class="icheck">Delivery</label></li>
-                            <li><label><input type="checkbox" class="icheck">Take Away</label></li>
-                            <li><label><input type="checkbox" class="icheck">Distance 10Km</label></li>
-                            <li><label><input type="checkbox" class="icheck">Distance 5Km</label></li>
+                            <li><a class="categoriasLink"><i class="icon-credit-card"></i> Tarjeta</a></li>
+                            <li><a class="categoriasLink"><i class="icon-tag-7"></i> Descuentos</a></li>
+                        </ul>
+                    </div>
+                    <div class="filter_type">
+                        <h6><b>Categorías</b></h6>
+                        <ul>
+                            <?php foreach ($categoriasArray as $key => $value): ?>
+                                <?php if ($categoriaGET != 0): ?>
+                                    <?php $categoriaNueva = $categoriaGET . "," . $value['cod']; ?>
+                                    <?php $urlFiltro = $funcion->eliminar_get(CANONICAL, 'categoria'); ?>
+                                <?php else: ?>
+                                    <?php $categoriaNueva = $value['cod']; ?>
+                                    <?php $urlFiltro = CANONICAL; ?>
+                                <?php endif; ?>
+                                <li>
+                                    <a href="<?= $urlFiltro . $anidador ?>categoria=<?= $categoriaNueva ?>"
+                                       class="categoriasLink"><?= $value['titulo'] ?>
+                                        <small></small>
+                                    </a>
+                                </li>
+                            <?php endforeach; ?>
                         </ul>
                     </div>
                 </div><!--End collapse -->
@@ -211,8 +167,15 @@ endif;
                 </div>
             </div><!--End tools -->
             <?php foreach ($empresaArray as $key => $value): ?>
-            <?php $categorias->set("cod_empresa",$value['cod']); ?>
-            <?php $categoriasArray = $categorias->categoriasMasUsadas(); ?>
+
+                <?php if ($ubicacionUsuario != ''): ?>
+                    <?php $coordenadas = explode(',', $value['coordenadas']); ?>
+                    <?php $jsonDistancia = json_decode(file_get_contents('https://route.api.here.com/routing/7.2/calculateroute.json?app_id=Nkd7zJVtg6iaOyaQoEvK&app_code=HTkK8DlaV14bg6RDCA-pQA&waypoint0=geo!' . $usuarioLatitud . ',' . $usuarioLongitud . '&waypoint1=geo!' . $coordenadas[0] . ',' . $coordenadas[1] . '&mode=shortest;pedestrian')); ?>
+                    <?php $distancia = $jsonDistancia->response->route[0]->summary->distance; ?>
+                <?php endif; ?>
+
+                <?php $categorias->set("cod_empresa", $value['cod']); ?>
+                <?php $categoriasMasUsadas = $categorias->categoriasMasUsadas(); ?>
                 <div class="strip_list wow fadeIn" data-wow-delay="0.1s">
                     <!--<div class="ribbon_1">
                         Popular
@@ -234,23 +197,27 @@ endif;
                                 <h3><?= $value['titulo'] ?></h3>
                                 <div class="type">
                                     <i class="icon-food"></i>
-                                    <?php foreach ($categoriasArray as $keyC => $valueC): ?>
-                                    <?=$valueC['titulo']?> /
+                                    <?php foreach ($categoriasMasUsadas as $keyC => $valueC): ?>
+                                        <?= $valueC['titulo'] ?> /
                                     <?php endforeach; ?>
                                     ..
                                 </div>
                                 <div class="location">
-                                    <i class="icon-location"></i> <?= $value['direccion'] ?> • <?= $value['ciudad'] ?> • <?= $value['provincia'] ?>
+                                    <i class="icon-location"></i> <?= $value['direccion'] ?> • <?= $value['ciudad'] ?>
+                                    • <?= $value['provincia'] ?>
                                 </div>
+                                <?php if ($ubicacionUsuario != ''): ?>
                                 <div class="mt-5">
-                                    <span class="info">Distancia: </span>500 m
+                                    <span class="info">Distancia: </span>
+                                    <?= $distancia ?> m
                                 </div>
+                                <?php endif; ?>
                             </div>
                         </div>
                         <div class="col-md-3 col-sm-3">
                             <div class="go_to">
                                 <div>
-                                    <a href="#" class="btn_1">Ver Restaurante</a>
+                                    <a href="<?=URL;?>/restaurante/<?=str_replace(" ","-",$value['titulo']);?>/<?= $value['cod'] ?>" class="btn_1">Ver Restaurante</a>
                                 </div>
                             </div>
                         </div>
@@ -259,17 +226,22 @@ endif;
             <?php endforeach; ?>
             <div class="text_center">
                 <ul class="pagination">
-                    <?php if(($pagina+1) > 1): ?>
-                        <li class="page-item"><a class="page-link" href="<?=$url?><?=$anidador?>pagina=<?=$pagina?>"><span aria-hidden="true">&laquo;</span>
+                    <?php if (($pagina + 1) > 1): ?>
+                        <li class="page-item"><a class="page-link"
+                                                 href="<?= $url ?><?= $anidador ?>pagina=<?= $pagina ?>"><span
+                                        aria-hidden="true">&laquo;</span>
                                 <span class="sr-only">Anterior</span></a></li>
                     <?php endif; ?>
 
                     <?php for ($i = 1; $i <= $numeroPaginas; $i++): ?>
-                        <li class="page-item"><a class="page-link" href="<?=$url?><?=$anidador?>pagina=<?=$i?>"><?=$i?></a></li>
+                        <li class="page-item"><a class="page-link"
+                                                 href="<?= $url ?><?= $anidador ?>pagina=<?= $i ?>"><?= $i ?></a></li>
                     <?php endfor; ?>
 
-                    <?php if(($pagina+2) <= $numeroPaginas): ?>
-                        <li class="page-item"><a class="page-link" href="<?=$url?><?=$anidador?>pagina=<?=($pagina+2)?>"><span aria-hidden="true">&raquo;</span>
+                    <?php if (($pagina + 2) <= $numeroPaginas): ?>
+                        <li class="page-item"><a class="page-link"
+                                                 href="<?= $url ?><?= $anidador ?>pagina=<?= ($pagina + 2) ?>"><span
+                                        aria-hidden="true">&raquo;</span>
                                 <span class="sr-only">Next</span></a></li>
                     <?php endif; ?>
                 </ul>
@@ -285,24 +257,5 @@ endif;
 <!-- SPECIFIC SCRIPTS -->
 <script src="js/cat_nav_mobile.js"></script>
 <script>$('#cat_nav').mobileMenu();</script>
-<script src="http://maps.googleapis.com/maps/api/js"></script>
-<script src="js/map.js"></script>
 <script src="js/infobox.js"></script>
-<script src="js/ion.rangeSlider.js"></script>
-<script>
-    $(function () {
-        'use strict';
-        $("#range").ionRangeSlider({
-            hide_min_max: true,
-            keyboard: true,
-            min: 0,
-            max: 15,
-            from: 0,
-            to: 5,
-            type: 'double',
-            step: 1,
-            prefix: "Km ",
-            grid: true
-        });
-    });
-</script>
+

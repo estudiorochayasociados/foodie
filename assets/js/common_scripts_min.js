@@ -50,16 +50,16 @@ a(this),c=b.data("retinaReplace"),f=a.extend({},a.fn.retinaReplace.defaults,b.da
 /* Password strenght */
 $(document).ready(function(){var password1=$('#password1');var password2=$('#password2');var passwordsInfo=$('#pass-info');passwordStrengthCheck(password1,password2,passwordsInfo);});function passwordStrengthCheck(password1,password2,passwordsInfo)
 {var WeakPass=/(?=.{5,}).*/;var MediumPass=/^(?=\S*?[a-z])(?=\S*?[0-9])\S{5,}$/;var StrongPass=/^(?=\S*?[A-Z])(?=\S*?[a-z])(?=\S*?[0-9])\S{5,}$/;var VryStrongPass=/^(?=\S*?[A-Z])(?=\S*?[a-z])(?=\S*?[0-9])(?=\S*?[^\w\*])\S{5,}$/;$(password1).on('keyup',function(e){if(VryStrongPass.test(password1.val()))
-{passwordsInfo.removeClass().addClass('vrystrongpass').html("Very Strong! (Awesome, please don't forget your pass now!)");}
+{passwordsInfo.removeClass().addClass('vrystrongpass').html("Muy Segura!");}
 else if(StrongPass.test(password1.val()))
-{passwordsInfo.removeClass().addClass('strongpass').html("Strong! (Enter special chars to make even stronger");}
+{passwordsInfo.removeClass().addClass('strongpass').html("Segura!");}
 else if(MediumPass.test(password1.val()))
-{passwordsInfo.removeClass().addClass('goodpass').html("Good! (Enter uppercase letter to make strong)");}
+{passwordsInfo.removeClass().addClass('goodpass').html("Buena!");}
 else if(WeakPass.test(password1.val()))
-{passwordsInfo.removeClass().addClass('stillweakpass').html("Still Weak! (Enter digits to make good password)");}
+{passwordsInfo.removeClass().addClass('stillweakpass').html("La contraseña debe tener al menos 8 dígitos.");}
 else
-{passwordsInfo.removeClass().addClass('weakpass').html("Very Weak! (Must be 5 or more chars)");}});$(password2).on('keyup',function(e){if(password1.val()!==password2.val())
-{passwordsInfo.removeClass().addClass('weakpass').html("Passwords do not match!");}else{passwordsInfo.removeClass().addClass('goodpass').html("Passwords match!");}});}
+{passwordsInfo.removeClass().addClass('weakpass').html("La contraseña debe tener al menos 8 dígitos.");}});$(password2).on('keyup',function(e){if(password1.val()!==password2.val())
+{passwordsInfo.removeClass().addClass('weakpass').html("Las contraseñas no coinciden!");}else{passwordsInfo.removeClass().addClass('goodpass').html("Passwords match!");}});}
 
 /*! iCheck v1.0.2 by Damir Sultanov, http://git.io/arlzeA, MIT Licensed */
 (function(f){function A(a,b,d){var c=a[0],g=/er/.test(d)?_indeterminate:/bl/.test(d)?n:k,e=d==_update?{checked:c[k],disabled:c[n],indeterminate:"true"==a.attr(_indeterminate)||"false"==a.attr(_determinate)}:c[g];if(/^(ch|di|in)/.test(d)&&!e)x(a,g);else if(/^(un|en|de)/.test(d)&&e)q(a,g);else if(d==_update)for(var f in e)e[f]?x(a,f,!0):q(a,f,!0);else if(!b||"toggle"==d){if(!b)a[_callback]("ifClicked");e?c[_type]!==r&&q(a,g):x(a,g)}}function x(a,b,d){var c=a[0],g=a.parent(),e=b==k,u=b==_indeterminate,

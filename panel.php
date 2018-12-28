@@ -12,7 +12,7 @@ $template->themeInit();
 $usuario = new Clases\Usuarios();
 $imagenesEmpresa = new Clases\Imagenes();
 $imagenesMenu = new Clases\Imagenes();
-$zebra     = new Clases\Zebra_Image();
+$zebra = new Clases\Zebra_Image();
 $empresa = new Clases\Empresas();
 $menu = new Clases\Productos();
 $categoria = new Clases\Categorias();
@@ -34,25 +34,38 @@ if ($pagina > 0) {
     $pagina = $pagina - 1;
 }
 
-if(@count($_GET)>1){
+if (@count($_GET) > 1) {
     $anidador = "&";
-}else{
+} else {
     $anidador = "?";
 }
 
-if(isset($_GET['pagina'])):
+if (isset($_GET['pagina'])):
     $url = $funcion->eliminar_get(CANONICAL, 'pagina');
 else:
     $url = CANONICAL;
 endif;
 
-$menuArray = $menu->list("","",$cantidad*$pagina.','.$cantidad);
-$numeroPaginas = $menu->paginador("",$cantidad);
+$menuArray = $menu->list("", "", $cantidad * $pagina . ',' . $cantidad);
+$numeroPaginas = $menu->paginador("", $cantidad);
 
-if(isset($_GET['pagina'])):
-    $funcion->headerMove(CANONICAL.'#seccion-2');
+if (isset($_GET['pagina'])):
+    $funcion->headerMove(CANONICAL . '#seccion-2');
 endif;
 ?>
+
+<?php if ($_SESSION["usuarios"]["vendedor"] == 0): ?>
+    <?php $displaySeccion = "style=\"display: none\""; ?>
+    <?php $displayTab = "style=\"display: none\""; ?>
+    <?php $classSeccion = "class=\"content-current\""; ?>
+    <?php $classTab = "class=\"tab-current\""; ?>
+<?php else: ?>
+    <?php $displaySeccion = ""; ?>
+    <?php $displayTab = ""; ?>
+    <?php $classSeccion = ""; ?>
+    <?php $classTab = ""; ?>
+<?php endif; ?>
+
 <!-- SubHeader =============================================== -->
 <section class="parallax-window" id="short" data-parallax="scroll" data-image-src="img/sub_header_cart.jpg"
          data-natural-width="1400" data-natural-height="350">
@@ -81,16 +94,16 @@ endif;
     <div id="tabs" class="tabs">
         <nav>
             <ul>
-                <li id="tab1"><a href="<?=URL?>/panel#seccion-1" class="icon-profile"><span>Empresa</span></a>
-                </li>
-                <li id="tab2"><a href="#seccion-2" class="icon-menut-items"><span>Menús</span></a>
-                </li>
-                <li id="tab3"><a href="#seccion-3" class="icon-settings"><span>Perfil</span></a>
-                </li>
+                    <li id="tab1" <?=$displayTab;?>><a href="<?= URL ?>/panel#seccion-1" class="icon-profile"><span>Empresa</span></a>
+                    </li>
+                    <li id="tab2" <?=$displayTab;?>><a href="<?= URL ?>/panel#seccion-2" class="icon-menut-items"><span>Menús</span></a>
+                    </li>
+                    <li id="tab3" <?=$classTab?>><a href="<?= URL ?>/panel#seccion-3" class="icon-settings"><span>Perfil</span></a>
+                    </li>
             </ul>
         </nav>
-        <div class="content">
-            <section id="seccion-1">
+        <div class="content" >
+            <section id="seccion-1" <?=$displaySeccion?>>
                 <?php if (isset($_POST["modificarEmpresa"])):
 
                     $titulo = $funcion->antihack_mysqli(!empty($_POST["tituloEmpresa"]) ? $_POST["tituloEmpresa"] : $empresaData['titulo']);
@@ -102,6 +115,16 @@ endif;
                     $barrio = $funcion->antihack_mysqli(!empty($_POST["barrioEmpresa"]) ? $_POST["barrioEmpresa"] : $empresaData['barrio']);
                     $direccion = $funcion->antihack_mysqli(!empty($_POST["direccionEmpresa"]) ? $_POST["direccionEmpresa"] : $empresaData['direccion']);
                     $postal = $funcion->antihack_mysqli(!empty($_POST["postalEmpresa"]) ? $_POST["postalEmpresa"] : $empresaData['postal']);
+
+                    if ($direccion != $empresaData['direccion'] || $ciudad != $empresaData['ciudad'] || $provincia != $empresaData['provincia']):
+                        $ubicacionEmpresa = str_replace(' ', '+', $direccion . '+' . $ciudad . '+' . $provincia);
+                        $jsonEmpresa = json_decode(file_get_contents('https://geocoder.api.here.com/6.2/geocode.json?app_id=Nkd7zJVtg6iaOyaQoEvK&app_code=HTkK8DlaV14bg6RDCA-pQA&searchtext=' . $ubicacionEmpresa));
+                        $empresaLongitud = $jsonEmpresa->Response->View[0]->Result[0]->Location->DisplayPosition->Longitude;
+                        $empresaLatitud = $jsonEmpresa->Response->View[0]->Result[0]->Location->DisplayPosition->Latitude;
+                        $coordenadas = $empresaLatitud . ',' . $empresaLongitud;
+                    else:
+                        $coordenadas = $empresaData['coordenadas'];
+                    endif;
 
                     $empresa->set("id", $empresaData['id']);
                     $empresa->set("cod", $empresaData['cod']);
@@ -116,6 +139,7 @@ endif;
                     $empresa->set("barrio", $barrio);
                     $empresa->set("direccion", $direccion);
                     $empresa->set("postal", $postal);
+                    $empresa->set("coordenadas", $coordenadas);
 
                     if (!empty($_FILES["logoEmpresa"]["name"])):
                         //logo
@@ -402,7 +426,7 @@ endif;
                 </div><!-- End wrapper_indent -->
             </section><!-- End section 1 -->
 
-            <section id="seccion-2">
+            <section id="seccion-2" <?=$displaySeccion?>>
                 <div class="indent_title_in">
                     <i class="icon_document_alt"></i>
                     <h3>Modificar Menú</h3>
@@ -427,9 +451,9 @@ endif;
                     </div><!--End tools -->
 
                     <?php foreach ($menuArray as $key => $value): ?>
-                        <?php $imagenesMenu->set("cod",$value['cod']); ?>
+                        <?php $imagenesMenu->set("cod", $value['cod']); ?>
                         <?php $imagenMenuData = $imagenesMenu->view(); ?>
-                        <?php $categoria->set("cod",$value['categoria']); ?>
+                        <?php $categoria->set("cod", $value['categoria']); ?>
                         <?php $categoriaData = $categoria->view(); ?>
                         <?php $seccion->set("cod", $value['seccion']); ?>
                         <?php $seccionData = $seccion->view(); ?>
@@ -438,22 +462,24 @@ endif;
                                 <div class="col-md-9 col-sm-9">
                                     <div class="desc">
                                         <div class="thumb_strip">
-                                            <a href="<?=URL;?>/modificar-menu/<?=$value['cod']?>"><img src="<?=URL;?>/<?=$imagenMenuData['ruta']?>" alt=""></a>
+                                            <a href="<?= URL; ?>/modificar-menu/<?= $value['cod'] ?>"><img
+                                                        src="<?= URL; ?>/<?= $imagenMenuData['ruta'] ?>" alt=""></a>
                                         </div>
-                                        <h3><?=$value['titulo']?></h3>
+                                        <h3><?= $value['titulo'] ?></h3>
                                         <div class="type">
-                                            <?=$categoriaData['titulo'];?>
+                                            <?= $categoriaData['titulo']; ?>
                                         </div>
                                         <div class="location">
-                                            Stock: <?=$value['stock']?><br/>
-                                            Sección: <?=$seccionData['titulo']?>
+                                            Stock: <?= $value['stock'] ?><br/>
+                                            Sección: <?= $seccionData['titulo'] ?>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-3 col-sm-3">
                                     <div class="go_to">
                                         <div>
-                                            <a href="<?=URL;?>/modificar-menu/<?=$value['cod']?>" class="btn_1">Modificar menú</a>
+                                            <a href="<?= URL; ?>/modificar-menu/<?= $value['cod'] ?>" class="btn_1">Modificar
+                                                menú</a>
                                         </div>
                                     </div>
                                 </div>
@@ -462,17 +488,23 @@ endif;
                     <?php endforeach; ?>
                     <div class="text_center">
                         <ul class="pagination">
-                            <?php if(($pagina+1) > 1): ?>
-                                <li class="page-item"><a class="page-link" href="<?=$url?><?=$anidador?>pagina=<?=$pagina?>"><span aria-hidden="true">&laquo;</span>
+                            <?php if (($pagina + 1) > 1): ?>
+                                <li class="page-item"><a class="page-link"
+                                                         href="<?= $url ?><?= $anidador ?>pagina=<?= $pagina ?>"><span
+                                                aria-hidden="true">&laquo;</span>
                                         <span class="sr-only">Anterior</span></a></li>
                             <?php endif; ?>
 
                             <?php for ($i = 1; $i <= $numeroPaginas; $i++): ?>
-                                <li class="page-item"><a class="page-link" href="<?=$url?><?=$anidador?>pagina=<?=$i?>"><?=$i?></a></li>
+                                <li class="page-item"><a class="page-link"
+                                                         href="<?= $url ?><?= $anidador ?>pagina=<?= $i ?>"><?= $i ?></a>
+                                </li>
                             <?php endfor; ?>
 
-                            <?php if(($pagina+2) <= $numeroPaginas): ?>
-                                <li class="page-item"><a class="page-link" href="<?=$url?><?=$anidador?>pagina=<?=($pagina+2)?>"><span aria-hidden="true">&raquo;</span>
+                            <?php if (($pagina + 2) <= $numeroPaginas): ?>
+                                <li class="page-item"><a class="page-link"
+                                                         href="<?= $url ?><?= $anidador ?>pagina=<?= ($pagina + 2) ?>"><span
+                                                aria-hidden="true">&raquo;</span>
                                         <span class="sr-only">Next</span></a></li>
                             <?php endif; ?>
                         </ul>
@@ -480,13 +512,18 @@ endif;
                 </div>
             </section><!-- End section 2 -->
 
-            <section id="seccion-3">
+            <section id="seccion-3" <?=$classSeccion?>>
                 <?php
                 if (isset($_POST["modificarPerfil"])):
 
                     $nombre = $funcion->antihack_mysqli(!empty($_POST["nombrePerfil"]) ? $_POST["nombrePerfil"] : $usuarioData['nombre']);
                     $apellido = $funcion->antihack_mysqli(!empty($_POST["apellidoPerfil"]) ? $_POST["apellidoPerfil"] : $usuarioData['apellido']);
                     $email = $funcion->antihack_mysqli(!empty($_POST["emailPerfil"]) ? $_POST["emailPerfil"] : $usuarioData['email']);
+                    $provincia = $funcion->antihack_mysqli(!empty($_POST["provinciaPerfil"]) ? $_POST["provinciaPerfil"] : $usuarioData['provincia']);
+                    $localidad = $funcion->antihack_mysqli(!empty($_POST["localidadPerfil"]) ? $_POST["localidadPerfil"] : $usuarioData['localidad']);
+                    $direccion = $funcion->antihack_mysqli(!empty($_POST["direccionPerfil"]) ? $_POST["direccionPerfil"] : $usuarioData['direccion']);
+                    $telefono = $funcion->antihack_mysqli(!empty($_POST["telefonoPerfil"]) ? $_POST["telefonoPerfil"] : $usuarioData['telefono']);
+                    $postal = $funcion->antihack_mysqli(!empty($_POST["postalPerfil"]) ? $_POST["postalPerfil"] : $usuarioData['postal']);
 
                     if (!empty($_POST["new_passwordPerfil"]) && !empty($_POST["new_password2Perfil"]) && !empty($_POST["old_passwordPerfil"])):
                         if ($_POST["old_passwordPerfil"] == $usuarioData['password']):
@@ -508,11 +545,17 @@ endif;
                     $usuario->set("nombre", $nombre);
                     $usuario->set("apellido", $apellido);
                     $usuario->set("email", $email);
+                    $usuario->set("provincia", $provincia);
+                    $usuario->set("localidad", $localidad);
+                    $usuario->set("barrio", $barrio);
+                    $usuario->set("direccion", $direccion);
+                    $usuario->set("telefono", $telefono);
+                    $usuario->set("postal", $postal);
                     $usuario->set("password", $password);
                     $usuario->set("fecha", $usuarioData['fecha']);
 
                     $usuario->edit();
-                    $funcion->headerMove(URL .'/panel');
+                    $funcion->headerMove(URL . '/panel');
                 endif;
                 ?>
                 <div class="row">
@@ -526,24 +569,72 @@ endif;
                                 </p>
                             </div>
                             <div class="wrapper_indent">
-                                <div class="form-group">
-                                    <label>Nombre</label>
-                                    <input class="form-control" value="<?php if (!empty($usuarioData['nombre'])) {
-                                        echo $usuarioData['nombre'];
-                                    } ?>" name="nombrePerfil" id="nombrePerfil" type="text" placeholder="Ej. Jorge">
-                                </div>
-                                <div class="form-group">
-                                    <label>Apellido</label>
-                                    <input class="form-control" value="<?php if (!empty($usuarioData['apellido'])) {
-                                        echo $usuarioData['apellido'];
-                                    } ?>" name="apellidoPerfil" id="apellidoPerfil" type="text" placeholder="Ej. Pérez">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Nombre</label>
+                                            <input class="form-control" value="<?php if (!empty($usuarioData['nombre'])) {
+                                                echo $usuarioData['nombre'];
+                                            } ?>" name="nombrePerfil" id="nombrePerfil" type="text" placeholder="Ej. Jorge">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Apellido</label>
+                                            <input class="form-control" value="<?php if (!empty($usuarioData['apellido'])) {
+                                                echo $usuarioData['apellido'];
+                                            } ?>" name="apellidoPerfil" id="apellidoPerfil" type="text" placeholder="Ej. Pérez">
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <label>Email</label>
                                     <input class="form-control" value="<?php if (!empty($usuarioData['email'])) {
                                         echo $usuarioData['email'];
-                                    } ?>" name="emailPerfil" id="emailPerfil" type="text"
+                                    } ?>" name="emailPerfil" id="emailPerfil" type="email"
                                            placeholder="Ej. jorge@tumail.com">
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 col-xs-6">
+                                        <label>Provincia</label>
+                                        <select class="form-control" name="provinciaPerfil" id="provincia" required>
+                                            <option value="" selected disabled>Provincia</option>
+                                            <?php $funcion->provincias() ?>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6 col-xs-6">
+                                        <label>Localidad</label>
+                                        <select class="form-control" name="localidadPerfil" id="localidad" required>
+                                            <option value="" selected disabled>Localidad</option>
+                                        </select>
+                                    </div>
+                                </div><br/>
+                                <div class="form-group">
+                                    <label>Direccion</label>
+                                    <input class="form-control" value="<?php if (!empty($usuarioData['direccion'])) {
+                                        echo $usuarioData['direccion'];
+                                    } ?>" name="direccionPerfil" id="direccionPerfil" type="text"
+                                           placeholder="Ej. Av. Urquiza 369">
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 col-xs-6">
+                                        <label>Teléfono</label>
+                                        <div class="form-group">
+                                            <input class="form-control" value="<?php if (!empty($usuarioData['telefono'])) {
+                                                echo $usuarioData['telefono'];
+                                            } ?>" name="telefonoPerfil" id="telefonoPerfil" type="text"
+                                                   placeholder="Ej. 3564555555">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-xs-6">
+                                        <label>Postal</label>
+                                        <div class="form-group">
+                                            <input class="form-control" value="<?php if (!empty($usuarioData['postal'])) {
+                                                echo $usuarioData['postal'];
+                                            } ?>" name="postalPerfil" id="postalPerfil" type="text"
+                                                   placeholder="Ej. 2400">
+                                        </div>
+                                    </div>
                                 </div>
                                 <button type="submit" name="modificarPerfil" class="btn_1 green">Modificar Datos
                                 </button>
@@ -602,34 +693,34 @@ endif;
     var str = window.location.href;
     var n2 = str.search('#seccion-2');
     var n3 = str.search('#seccion-3');
-    if(n2 > -1){
+    if (n2 > -1) {
         $("#seccion-2").addClass("content-current");
         $("#seccion-1").removeClass("content-current");
         $("#tab2").addClass("tab-current");
         $("#tab1").removeClass("tab-current");
     }
-    if(n3 > -1){
+    if (n3 > -1) {
         $("#seccion-3").addClass("content-current");
         $("#seccion-1").removeClass("content-current");
         $("#tab3").addClass("tab-current");
         $("#tab1").removeClass("tab-current");
     }
 
-    document.getElementById('tab1').addEventListener('click',function(){
+    document.getElementById('tab1').addEventListener('click', function () {
         $("#tab2").removeClass("tab-current");
         $("#seccion-2").removeClass("content-current");
         $("#tab3").removeClass("tab-current");
         $("#seccion-3").removeClass("content-current");
     }, false);
 
-    document.getElementById('tab2').addEventListener('click',function(){
+    document.getElementById('tab2').addEventListener('click', function () {
         $("#tab1").removeClass("tab-current");
         $("#seccion-1").removeClass("content-current");
         $("#tab3").removeClass("tab-current");
         $("#seccion-3").removeClass("content-current");
     }, false);
 
-    document.getElementById('tab3').addEventListener('click',function(){
+    document.getElementById('tab3').addEventListener('click', function () {
         $("#tab1").removeClass("tab-current");
         $("#seccion-1").removeClass("content-current");
         $("#tab2").removeClass("tab-current");
@@ -638,11 +729,11 @@ endif;
 </script>
 
 <script>
-    document.getElementById('link1').addEventListener('click',function(){
+    document.getElementById('link1').addEventListener('click', function () {
         document.getElementById('ubicacionEmpresa').style.display = 'block';
         document.getElementById('link1').style.display = 'none';
     }, false);
-    document.getElementById('link2').addEventListener('click',function(){
+    document.getElementById('link2').addEventListener('click', function () {
         document.getElementById('imagenesEmpresa').style.display = 'block';
         document.getElementById('link2').style.display = 'none';
     }, false);

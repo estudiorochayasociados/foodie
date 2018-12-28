@@ -28,6 +28,17 @@ class autoload
         );
     }
 
+    public static function runSitio2()
+    {
+        spl_autoload_register(
+            function($clase)
+            {
+                $ruta = str_replace("\\", "/", $clase) . ".php";
+                include_once "../../".$ruta;
+            }
+        );
+    }
+
     public static function runAdmin()
     {
         session_start();

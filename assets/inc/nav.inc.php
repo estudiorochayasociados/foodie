@@ -20,7 +20,7 @@
                 <a href="index" id="logo">
                     <img src="<?= URL ?>/assets/img/logo.png" width="120" alt="" data-retina="true" class="hidden-xs">
                     <img src="<?= URL ?>/assets/img/logo_mobile.png" width="59" alt="" data-retina="true"
-                    class="hidden-lg hidden-md hidden-sm">
+                         class="hidden-lg hidden-md hidden-sm">
                 </a>
             </div>
             <nav class="col--md-8 col-sm-8 col-xs-8">
@@ -31,12 +31,28 @@
                     </div>
                     <a href="#" class="open_close" id="close_in"><i class="icon_close"></i></a>
                     <ul>
-                        <li><a href="about">Nosotros</a></li>
-                        <?php if(isset($_SESSION["usuarios"])): ?>
-                            <li><a href="#">Hola <?=$_SESSION["usuarios"]["nombre"]?></a></li>
+                        <li><a href="<?= URL ?>/c/nosotros"><i class="icon-users-outline"></i> Nosotros</a></li>
+                        <li><a href="<?= URL ?>/restaurantes"><i class="icon-shop-1"></i> Restaurantes</a></li>
+                        <?php if (isset($_SESSION["usuarios"])): ?>
+                            <li class="submenu">
+                                <a href="javascript:void(0);" class="show-submenu"> <i class="icon-cog-5"></i>Mi
+                                    Cuenta<i class="icon-down-open-mini"></i></a>
+                                <ul>
+                                    <?php if ($_SESSION["usuarios"]["vendedor"] == 1): ?>
+                                        <li><a href="<?= URL ?>/panel#seccion-1">Empresa</a></li>
+                                        <li><a href="<?= URL ?>/panel#seccion-2">Menús</a></li>
+                                        <li><a href="<?= URL ?>/panel#seccion-3">Perfil</a></li>
+                                        <li><a href="<?= URL ?>/logout">Salir</a></li>
+                                    <?php else: ?>
+                                        <li><a href="<?= URL ?>/panel#seccion-3">Perfil</a></li>
+                                        <li><a href="<?= URL ?>/logout">Salir</a></li>
+                                    <?php endif; ?>
+                                </ul>
+                            </li>
+                        <?php else: ?>
+                            <li><a href="#0" data-toggle="modal" data-target="#login_2">Login</a></li>
+                            <li><a href="#0" data-toggle="modal" data-target="#register">Registrarse</a></li>
                         <?php endif; ?>
-                        <li><a href="#0" data-toggle="modal" data-target="#login_2">Login</a></li>
-                        <li><a href="#0" data-toggle="modal" data-target="#register">Registrarse</a></li>
                     </ul>
                 </div><!-- End main-menu -->
             </nav>
@@ -44,26 +60,38 @@
     </div><!-- End container -->
 </header>
 
-<!-- Login modal --> 
-<?php 
+<!-- Login modal -->
+<?php
 if (isset($_POST["login"])):
-    $email    = $funcion->antihack_mysqli(isset($_POST["email"]) ? $_POST["email"] : '');
-    $password   = $funcion->antihack_mysqli(isset($_POST["password"]) ? $_POST["password"] : '');
+    $email = $funcion->antihack_mysqli(isset($_POST["email"]) ? $_POST["email"] : '');
+    $password = $funcion->antihack_mysqli(isset($_POST["password"]) ? $_POST["password"] : '');
 
-    $usuario->set("email",$email);
-    $usuario->set("password",$password);
+    $usuario->set("email", $email);
+    $usuario->set("password", $password);
 
-    $usuario->login();
+    if ($usuario->login() == 0):
+        ?>
+        <script>
+            $(document).ready(function () {
+                $("#errorLogin").html('<br/><div class="alert alert-warning" role="alert">Email o contraseña incorrecta.</div>');
+                $('#login_2').modal("show");
+            });
+        </script>
+    <?php
+    else:
+        $funcion->headerMove(URL);
+    endif;
 endif;
-?>  
+?>
 <div class="modal fade" id="login_2" tabindex="-1" role="dialog" aria-labelledby="myLogin" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content modal-popup">
             <a href="#" class="close-link"><i class="icon_close_alt2"></i></a>
+            <p id="errorLogin"></p>
             <form class="popup-form" id="myLogin" method="post">
                 <div class="login_icon"><i class="icon_lock_alt"></i></div>
-                <input type="text" class="form-control form-white" name="email" placeholder="Email">
-                <input type="text" class="form-control form-white" name="password" placeholder="Password">
+                <input type="email" class="form-control form-white" name="email" placeholder="Email">
+                <input type="password" class="form-control form-white" name="password" placeholder="Contraseña">
                 <div class="text-left">
                     <a href="#">¿Olvidaste tu contraseña?</a>
                 </div>
@@ -71,32 +99,62 @@ endif;
             </form>
         </div>
     </div>
-</div><!-- End modal -->   
+</div><!-- End modal -->
 
-<!-- REGISTRAR --> 
-<?php 
+<!-- REGISTRAR -->
+<?php
 if (isset($_POST["registrar"])):
-    if($_POST["password"] == $_POST["password2"]):
-        $nombre   = $funcion->antihack_mysqli(isset($_POST["nombre"]) ? $_POST["nombre"] : '');
-        $apellido   = $funcion->antihack_mysqli(isset($_POST["apellido"]) ? $_POST["apellido"] : '');
-        $email    = $funcion->antihack_mysqli(isset($_POST["email"]) ? $_POST["email"] : '');
-        $password   = $funcion->antihack_mysqli(isset($_POST["password"]) ? $_POST["password"] : '');
+    if ($_POST["password"] == $_POST["password2"]):
+        $nombre = $funcion->antihack_mysqli(isset($_POST["nombre"]) ? $_POST["nombre"] : '');
+        $apellido = $funcion->antihack_mysqli(isset($_POST["apellido"]) ? $_POST["apellido"] : '');
+        $email = $funcion->antihack_mysqli(isset($_POST["email"]) ? $_POST["email"] : '');
+        $password = $funcion->antihack_mysqli(isset($_POST["password"]) ? $_POST["password"] : '');
         $terminos = $funcion->antihack_mysqli(isset($_POST["terminos"]) ? $_POST["terminos"] : '');
-        $cod   = substr(md5(uniqid(rand())), 0, 10);
+        $senalVendedor = $funcion->antihack_mysqli(isset($_POST["senalVendedor"]) ? $_POST["senalVendedor"] : 0);
+        $cod = substr(md5(uniqid(rand())), 0, 10);
         $fecha = getdate();
-        $fecha = $fecha['year'].'-'.$fecha['mon'].'-'.$fecha['mday'];
-        
-        $usuario->set("cod",$cod);
-        $usuario->set("nombre",$nombre);
-        $usuario->set("apellido",$apellido);
-        $usuario->set("email",$email);
-        $usuario->set("password",$password);
-        $usuario->set("terminos",$terminos);
-        $usuario->set("fecha",$fecha);
+        $fecha = $fecha['year'] . '-' . $fecha['mon'] . '-' . $fecha['mday'];
 
-        $usuario->add();
+        $usuario->set("cod", $cod);
+        $usuario->set("nombre", $nombre);
+        $usuario->set("apellido", $apellido);
+        $usuario->set("email", $email);
+        $usuario->set("password", $password);
+        $usuario->set("terminos", $terminos);
+        $usuario->set("fecha", $fecha);
+
+        if ($usuario->add() == 0):
+            ?>
+            <script>
+                $(document).ready(function () {
+                    $("#errorRegistro").html('<br/><div class="alert alert-warning" role="alert">El email ya está registrado.</div>');
+                    $('#register').modal("show");
+                });
+            </script>
+        <?php
+        else:
+            $usuario->login();
+            if ($senalVendedor == 0):
+                $funcion->headerMove(URL);
+            else:
+                ?>
+                <script>
+                    $(document).ready(function () {
+                        $('#vendedor').modal("show");
+                    });
+                </script>
+            <?php
+            endif;
+        endif;
     else:
-        echo '<div class="alert alert-warning" role="alert">¡Las contraseñas no coinciden!</div>';
+        ?>
+        <script>
+            $(document).ready(function () {
+                $("#errorRegistro").html('<br/><div class="alert alert-warning" role="alert">Las contraseñas no coinciden.</div>');
+                $('#register').modal("show");
+            });
+        </script>
+    <?php
     endif;
 endif;
 ?>
@@ -104,17 +162,20 @@ endif;
     <div class="modal-dialog">
         <div class="modal-content modal-popup">
             <a href="#" class="close-link"><i class="icon_close_alt2"></i></a>
+            <p id="errorRegistro"></p>
             <form class="popup-form" id="myRegister" method="post">
                 <div class="login_icon"><i class="icon_lock_alt"></i></div>
-                <input type="text" class="form-control form-white" name="nombre" placeholder="Nombre">
-                <input type="text" class="form-control form-white" name="apellido" placeholder="Apellido">
-                <input type="email" class="form-control form-white" name="email" placeholder="Email">
-                <input type="text" class="form-control form-white" name="password" placeholder="Contraseña"  id="password1">
-                <input type="text" class="form-control form-white" name="password2" placeholder="Confirmar contraseña"  id="password2">
-                <div id="pass-info" class="clearfix"></div>
+                <input type="text" class="form-control form-white" name="nombre" placeholder="Nombre" required>
+                <input type="text" class="form-control form-white" name="apellido" placeholder="Apellido" required>
+                <input type="email" class="form-control form-white" name="email" placeholder="Email" required>
+                <p id="senalVendedor"></p>
+                <input type="text" class="form-control form-white" name="password" placeholder="Contraseña"
+                       id="password1" required>
+                <input type="text" class="form-control form-white" name="password2" placeholder="Confirmar contraseña"
+                       id="password2" required>
                 <div class="checkbox-holder text-left">
                     <div class="checkbox">
-                        <input type="checkbox" value="1" id="check_2" name="terminos" />
+                        <input type="checkbox" value="1" id="check_2" name="terminos" required>
                         <label for="check_2"><span>He leído y acepto los <strong>Términos &amp; Condiciones</strong></span></label>
                     </div>
                 </div>
