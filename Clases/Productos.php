@@ -72,6 +72,7 @@ class Productos
         `meli` = '{$this->meli}',
         `url` = '{$this->url}'
         WHERE `id`='{$this->id}' || `cod`='{$this->cod}'";
+        echo $sql;
         $query = $this->con->sql($sql);
         return $query;
     }

@@ -9,6 +9,7 @@ class Empresas
     public $id;
     public $cod;
     public $titulo;
+    public $costoEnvio;
     public $telefono;
     public $email;
     public $provincia;
@@ -47,7 +48,7 @@ class Empresas
 
     public function add()
     {
-        $sql   = "INSERT INTO `empresas`(`cod`, `titulo`, `telefono`, `email`, `provincia`, `ciudad`, `barrio`, `direccion`, `postal`, `coordenadas`, `desarrollo`, `redes`, `logo`, `categoria`, `subcategoria`, `keywords`, `description`, `fecha`, `cod_usuario`) VALUES ('{$this->cod}', '{$this->titulo}', '{$this->telefono}', '{$this->email}', '{$this->provincia}', '{$this->ciudad}', '{$this->barrio}', '{$this->direccion}', '{$this->postal}', '{$this->coordenadas}', '{$this->desarrollo}', '{$this->redes}','{$this->logo}', '{$this->categoria}', '{$this->subcategoria}', '{$this->keywords}', '{$this->description}', '{$this->fecha}', '{$this->cod_usuario}')";
+        $sql   = "INSERT INTO `empresas`(`cod`, `titulo`, `telefono`, `email`, `provincia`, `ciudad`, `barrio`, `direccion`, `postal`, `coordenadas`, `desarrollo`, `redes`, `logo`, `costoEnvio`, `categoria`, `subcategoria`, `keywords`, `description`, `fecha`, `cod_usuario`) VALUES ('{$this->cod}', '{$this->titulo}', '{$this->telefono}', '{$this->email}', '{$this->provincia}', '{$this->ciudad}', '{$this->barrio}', '{$this->direccion}', '{$this->postal}', '{$this->coordenadas}', '{$this->desarrollo}', '{$this->redes}','{$this->logo}','{$this->costoEnvio}', '{$this->categoria}', '{$this->subcategoria}', '{$this->keywords}', '{$this->description}', '{$this->fecha}', '{$this->cod_usuario}')";
         $query = $this->con->sql($sql);
         return $query;
     }
@@ -68,6 +69,7 @@ class Empresas
         `desarrollo` = '{$this->desarrollo}',
         `redes` = '{$this->redes}',
         `logo` = '{$this->logo}',
+        `costoEnvio` = '{$this->costoEnvio}',
         `categoria` = '{$this->categoria}',
         `subcategoria` = '{$this->subcategoria}',
         `keywords` = '{$this->keywords}',

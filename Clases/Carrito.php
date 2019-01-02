@@ -9,6 +9,7 @@ class Carrito
     public $titulo;
     public $cantidad;
     public $precio;
+    public $costoEnvio;
     public $precioAdicional;
     public $opciones;
     private $con;
@@ -33,7 +34,7 @@ class Carrito
     {
         $condition = '';
 
-        $add = array('id' => $this->id, 'titulo' => $this->titulo, 'cantidad' => $this->cantidad, 'precio' => $this->precio, 'precioAdicional' => $this->precioAdicional, 'opciones' => $this->opciones);
+        $add = array('id' => $this->id, 'titulo' => $this->titulo, 'cantidad' => $this->cantidad, 'precio' => $this->precio, 'costoEnvio' => $this->costoEnvio, 'precioAdicional' => $this->precioAdicional, 'opciones' => $this->opciones);
 
         if (count($_SESSION["carrito"]) == 0) {
             array_push($_SESSION["carrito"], $add);

@@ -106,51 +106,39 @@ endif;
                 <form method="post">
                     <h2 class="inner">Ubicación</h2>
                     <div class="row">
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label>Provincia</label>
-                                <select class="form-control" name="provinciaEmpresa" id="provinciaEmpresa">
-                                    <option value="" selected>Selecciona tu provincia</option>
-                                    <option value="Córdoba">Córdoba</option>
-                                    <option value="Buenos Aires">Buenos Aires</option>
-                                    <option value="Santa Fe">Santa Fe</option>
-                                </select>
-                            </div>
-                        </div>
+                        <input type="hidden" id="provinciaEmpresa" name="provinciaEmpresa" value="Córdoba" class="form-control">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Ciudad</label>
                                 <select class="form-control" name="ciudadEmpresa" id="ciudadEmpresa">
                                     <option value="" selected>Selecciona tu provincia</option>
                                     <option value="San Francisco">San Francisco</option>
-                                    <option value="Tandil">Tandil</option>
-                                    <option value="Rosario">Rosario</option>
+                                    <option value="La Francia">La Francia</option>
+                                    <option value="Devoto">Devoto</option>
                                 </select>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label>Barrio</label>
                                 <input type="text" id="barrioEmpresa" name="barrioEmpresa" class="form-control">
                             </div>
                         </div>
+                    </div>
+                    <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label>Dirección</label>
                                 <input type="text" id="direccionEmpresa" name="direccionEmpresa" class="form-control">
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-3">
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <label>Código Postal</label>
                                 <input type="text" id="postalEmpresa" name="postalEmpresa" class="form-control">
                             </div>
                         </div>
-                    </div><!--End row -->
+                    </div>
                     <hr>
                     <div class="row">
                         <div class="col-md-3">

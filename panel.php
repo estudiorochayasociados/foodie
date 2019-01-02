@@ -46,8 +46,9 @@ else:
     $url = CANONICAL;
 endif;
 
-$menuArray = $menu->list("", "", $cantidad * $pagina . ',' . $cantidad);
-$numeroPaginas = $menu->paginador("", $cantidad);
+$filterMenu = array("cod_empresa = '" . $empresaData['cod'] . "'");
+$menuArray = $menu->list($filterMenu, "", $cantidad * $pagina . ',' . $cantidad);
+$numeroPaginas = $menu->paginador($filterMenu, $cantidad);
 
 if (isset($_GET['pagina'])):
     $funcion->headerMove(CANONICAL . '#seccion-2');
@@ -94,96 +95,85 @@ endif;
     <div id="tabs" class="tabs">
         <nav>
             <ul>
-                    <li id="tab1" <?=$displayTab;?>><a href="<?= URL ?>/panel#seccion-1" class="icon-profile"><span>Empresa</span></a>
-                    </li>
-                    <li id="tab2" <?=$displayTab;?>><a href="<?= URL ?>/panel#seccion-2" class="icon-menut-items"><span>Menús</span></a>
-                    </li>
-                    <li id="tab3" <?=$classTab?>><a href="<?= URL ?>/panel#seccion-3" class="icon-settings"><span>Perfil</span></a>
-                    </li>
+                <li id="tab1" <?= $displayTab; ?>><a href="<?= URL ?>/panel#seccion-1" class="icon-profile"><span>Empresa</span></a>
+                </li>
+                <li id="tab2" <?= $displayTab; ?>><a href="<?= URL ?>/panel#seccion-2" class="icon-menut-items"><span>Menús</span></a>
+                </li>
+                <li id="tab3" <?= $classTab ?>><a href="<?= URL ?>/panel#seccion-3"
+                                                  class="icon-settings"><span>Perfil</span></a>
+                </li>
             </ul>
         </nav>
-        <div class="content" >
-            <section id="seccion-1" <?=$displaySeccion?>>
-                <?php if (isset($_POST["modificarEmpresa"])):
+        <div class="content">
+            <section id="seccion-1" <?= $displaySeccion ?>>
+                <?php $filterCrearEmpresa = array("cod_usuario = '" . $_SESSION['usuarios']['cod'] . "'"); ?>
+                <?php $existeEmpresa = $empresa->list($filterCrearEmpresa, "", ""); ?>
+                <?php if (!empty($existeEmpresa)): ?>
+                    <?php $mostrardivEmpresa = 'style = "display: none;"'; ?>
+                    <?php $mostrardivEmpresa2 = ''; ?>
+                <?php else: ?>
+                    <?php $mostrardivEmpresa = ''; ?>
+                    <?php $mostrardivEmpresa2 = 'style = "display: none;"'; ?>
+                <?php endif; ?>
+                <div class="col-md-offset-3 col-md-6" <?= $mostrardivEmpresa ?>>
+                    <div class="box_style_2">
+                        <div id="confirm">
+                            <i class="icon-shop-1"></i>
+                            <h3>¡Completá los datos de tu empresa y empezá a vender!</h3>
+                        </div>
+                        <a href="<?= URL ?>/crear_empresa" class="btn_full">Crear Empresa</a>
+                    </div>
+                </div>
 
-                    $titulo = $funcion->antihack_mysqli(!empty($_POST["tituloEmpresa"]) ? $_POST["tituloEmpresa"] : $empresaData['titulo']);
-                    $desarrollo = $funcion->antihack_mysqli(!empty($_POST["desarrolloEmpresa"]) ? $_POST["desarrolloEmpresa"] : $empresaData['desarrollo']);
-                    $telefono = $funcion->antihack_mysqli(!empty($_POST["telefonoEmpresa"]) ? $_POST["telefonoEmpresa"] : $empresaData['telefono']);
-                    $email = $funcion->antihack_mysqli(!empty($_POST["emailEmpresa"]) ? $_POST["emailEmpresa"] : $empresaData['email']);
-                    $provincia = $funcion->antihack_mysqli(!empty($_POST["provinciaEmpresa"]) ? $_POST["provinciaEmpresa"] : $empresaData['provincia']);
-                    $ciudad = $funcion->antihack_mysqli(!empty($_POST["ciudadEmpresa"]) ? $_POST["ciudadEmpresa"] : $empresaData['ciudad']);
-                    $barrio = $funcion->antihack_mysqli(!empty($_POST["barrioEmpresa"]) ? $_POST["barrioEmpresa"] : $empresaData['barrio']);
-                    $direccion = $funcion->antihack_mysqli(!empty($_POST["direccionEmpresa"]) ? $_POST["direccionEmpresa"] : $empresaData['direccion']);
-                    $postal = $funcion->antihack_mysqli(!empty($_POST["postalEmpresa"]) ? $_POST["postalEmpresa"] : $empresaData['postal']);
+                <div <?= $mostrardivEmpresa2 ?>>
+                    <?php if (isset($_POST["modificarEmpresa"])):
 
-                    if ($direccion != $empresaData['direccion'] || $ciudad != $empresaData['ciudad'] || $provincia != $empresaData['provincia']):
-                        $ubicacionEmpresa = str_replace(' ', '+', $direccion . '+' . $ciudad . '+' . $provincia);
-                        $jsonEmpresa = json_decode(file_get_contents('https://geocoder.api.here.com/6.2/geocode.json?app_id=Nkd7zJVtg6iaOyaQoEvK&app_code=HTkK8DlaV14bg6RDCA-pQA&searchtext=' . $ubicacionEmpresa));
-                        $empresaLongitud = $jsonEmpresa->Response->View[0]->Result[0]->Location->DisplayPosition->Longitude;
-                        $empresaLatitud = $jsonEmpresa->Response->View[0]->Result[0]->Location->DisplayPosition->Latitude;
-                        $coordenadas = $empresaLatitud . ',' . $empresaLongitud;
-                    else:
-                        $coordenadas = $empresaData['coordenadas'];
-                    endif;
+                        $titulo = $funcion->antihack_mysqli(!empty($_POST["tituloEmpresa"]) ? $_POST["tituloEmpresa"] : $empresaData['titulo']);
+                        $costoEnvio = $funcion->antihack_mysqli(!empty($_POST["costoEnvioEmpresa"]) ? $_POST["costoEnvioEmpresa"] : $empresaData['costoEnvio']);
+                        $desarrollo = $funcion->antihack_mysqli(!empty($_POST["desarrolloEmpresa"]) ? $_POST["desarrolloEmpresa"] : $empresaData['desarrollo']);
+                        $telefono = $funcion->antihack_mysqli(!empty($_POST["telefonoEmpresa"]) ? $_POST["telefonoEmpresa"] : $empresaData['telefono']);
+                        $email = $funcion->antihack_mysqli(!empty($_POST["emailEmpresa"]) ? $_POST["emailEmpresa"] : $empresaData['email']);
+                        $provincia = $funcion->antihack_mysqli(!empty($_POST["provinciaEmpresa"]) ? $_POST["provinciaEmpresa"] : $empresaData['provincia']);
+                        $ciudad = $funcion->antihack_mysqli(!empty($_POST["ciudadEmpresa"]) ? $_POST["ciudadEmpresa"] : $empresaData['ciudad']);
+                        $barrio = $funcion->antihack_mysqli(!empty($_POST["barrioEmpresa"]) ? $_POST["barrioEmpresa"] : $empresaData['barrio']);
+                        $direccion = $funcion->antihack_mysqli(!empty($_POST["direccionEmpresa"]) ? $_POST["direccionEmpresa"] : $empresaData['direccion']);
+                        $postal = $funcion->antihack_mysqli(!empty($_POST["postalEmpresa"]) ? $_POST["postalEmpresa"] : $empresaData['postal']);
 
-                    $empresa->set("id", $empresaData['id']);
-                    $empresa->set("cod", $empresaData['cod']);
-                    $empresa->set("fecha", $empresaData['fecha']);
-                    $empresa->set("cod_usuario", $empresaData['cod_usuario']);
-                    $empresa->set("titulo", $titulo);
-                    $empresa->set("desarrollo", $desarrollo);
-                    $empresa->set("telefono", $telefono);
-                    $empresa->set("email", $email);
-                    $empresa->set("provincia", $provincia);
-                    $empresa->set("ciudad", $ciudad);
-                    $empresa->set("barrio", $barrio);
-                    $empresa->set("direccion", $direccion);
-                    $empresa->set("postal", $postal);
-                    $empresa->set("coordenadas", $coordenadas);
-
-                    if (!empty($_FILES["logoEmpresa"]["name"])):
-                        //logo
-                        $imgInicio = $_FILES["logoEmpresa"]["tmp_name"];
-                        $tucadena = $_FILES["logoEmpresa"]["name"];
-                        $partes = explode(".", $tucadena);
-                        $dom = (count($partes) - 1);
-                        $dominio = $partes[$dom];
-                        $prefijo = substr(md5(uniqid(rand())), 0, 10);
-                        if ($dominio != ''):
-                            $destinoFinal = "assets/archivos/" . $prefijo . "." . $dominio;
-                            move_uploaded_file($imgInicio, $destinoFinal);
-                            chmod($destinoFinal, 0777);
-                            $destinoRecortado = "assets/archivos/recortadas/a_" . $prefijo . "." . $dominio;
-
-                            $zebra->source_path = $destinoFinal;
-                            $zebra->target_path = $destinoRecortado;
-                            $zebra->jpeg_quality = 80;
-                            $zebra->preserve_aspect_ratio = true;
-                            $zebra->enlarge_smaller_images = true;
-                            $zebra->preserve_time = true;
-
-                            if ($zebra->resize(800, 700, ZEBRA_IMAGE_NOT_BOXED)):
-                                unlink($destinoFinal);
-                            endif;
-
-                            $empresa->set("logo", str_replace("../", "", $destinoRecortado));
+                        if ($direccion != $empresaData['direccion'] || $ciudad != $empresaData['ciudad'] || $provincia != $empresaData['provincia']):
+                            $ubicacionEmpresa = str_replace(' ', '+', $direccion . '+' . $ciudad . '+' . $provincia);
+                            $jsonEmpresa = json_decode(file_get_contents('https://geocoder.api.here.com/6.2/geocode.json?app_id=Nkd7zJVtg6iaOyaQoEvK&app_code=HTkK8DlaV14bg6RDCA-pQA&searchtext=' . $ubicacionEmpresa));
+                            $empresaLongitud = $jsonEmpresa->Response->View[0]->Result[0]->Location->DisplayPosition->Longitude;
+                            $empresaLatitud = $jsonEmpresa->Response->View[0]->Result[0]->Location->DisplayPosition->Latitude;
+                            $coordenadas = $empresaLatitud . ',' . $empresaLongitud;
+                        else:
+                            $coordenadas = $empresaData['coordenadas'];
                         endif;
-                    //logo
-                    else:
-                        $empresa->set("logo", $empresaData['logo']);
-                    endif;
 
-                    if (!empty($_FILES["filesEmpresa"]["name"])):
-                        //galeria
-                        $count = 0;
-                        foreach ($_FILES['filesEmpresa']['name'] as $f => $name) {
-                            $imgInicio = $_FILES["filesEmpresa"]["tmp_name"][$f];
-                            $tucadena = $_FILES["filesEmpresa"]["name"][$f];
+                        $empresa->set("id", $empresaData['id']);
+                        $empresa->set("cod", $empresaData['cod']);
+                        $empresa->set("fecha", $empresaData['fecha']);
+                        $empresa->set("cod_usuario", $empresaData['cod_usuario']);
+                        $empresa->set("titulo", $titulo);
+                        $empresa->set("costoEnvio", $costoEnvio);
+                        $empresa->set("desarrollo", $desarrollo);
+                        $empresa->set("telefono", $telefono);
+                        $empresa->set("email", $email);
+                        $empresa->set("provincia", $provincia);
+                        $empresa->set("ciudad", $ciudad);
+                        $empresa->set("barrio", $barrio);
+                        $empresa->set("direccion", $direccion);
+                        $empresa->set("postal", $postal);
+                        $empresa->set("coordenadas", $coordenadas);
+
+                        if (!empty($_FILES["logoEmpresa"]["name"])):
+                            //logo
+                            $imgInicio = $_FILES["logoEmpresa"]["tmp_name"];
+                            $tucadena = $_FILES["logoEmpresa"]["name"];
                             $partes = explode(".", $tucadena);
                             $dom = (count($partes) - 1);
                             $dominio = $partes[$dom];
                             $prefijo = substr(md5(uniqid(rand())), 0, 10);
-                            if ($dominio != '') {
+                            if ($dominio != ''):
                                 $destinoFinal = "assets/archivos/" . $prefijo . "." . $dominio;
                                 move_uploaded_file($imgInicio, $destinoFinal);
                                 chmod($destinoFinal, 0777);
@@ -196,323 +186,405 @@ endif;
                                 $zebra->enlarge_smaller_images = true;
                                 $zebra->preserve_time = true;
 
-                                if ($zebra->resize(800, 700, ZEBRA_IMAGE_NOT_BOXED)) {
+                                if ($zebra->resize(800, 700, ZEBRA_IMAGE_NOT_BOXED)):
                                     unlink($destinoFinal);
+                                endif;
+
+                                $empresa->set("logo", str_replace("../", "", $destinoRecortado));
+                            endif;
+                        //logo
+                        else:
+                            $empresa->set("logo", $empresaData['logo']);
+                        endif;
+
+                        if (!empty($_FILES["filesEmpresa"]["name"])):
+                            //galeria
+                            $count = 0;
+                            foreach ($_FILES['filesEmpresa']['name'] as $f => $name) {
+                                $imgInicio = $_FILES["filesEmpresa"]["tmp_name"][$f];
+                                $tucadena = $_FILES["filesEmpresa"]["name"][$f];
+                                $partes = explode(".", $tucadena);
+                                $dom = (count($partes) - 1);
+                                $dominio = $partes[$dom];
+                                $prefijo = substr(md5(uniqid(rand())), 0, 10);
+                                if ($dominio != '') {
+                                    $destinoFinal = "assets/archivos/" . $prefijo . "." . $dominio;
+                                    move_uploaded_file($imgInicio, $destinoFinal);
+                                    chmod($destinoFinal, 0777);
+                                    $destinoRecortado = "assets/archivos/recortadas/a_" . $prefijo . "." . $dominio;
+
+                                    $zebra->source_path = $destinoFinal;
+                                    $zebra->target_path = $destinoRecortado;
+                                    $zebra->jpeg_quality = 80;
+                                    $zebra->preserve_aspect_ratio = true;
+                                    $zebra->enlarge_smaller_images = true;
+                                    $zebra->preserve_time = true;
+
+                                    if ($zebra->resize(800, 700, ZEBRA_IMAGE_NOT_BOXED)) {
+                                        unlink($destinoFinal);
+                                    }
+
+                                    $imagenesEmpresa->set("cod", $empresaData['cod']);
+                                    $imagenesEmpresa->set("ruta", str_replace("../", "", $destinoRecortado));
+                                    $imagenesEmpresa->add();
                                 }
 
-                                $imagenesEmpresa->set("cod", $empresaData['cod']);
-                                $imagenesEmpresa->set("ruta", str_replace("../", "", $destinoRecortado));
-                                $imagenesEmpresa->add();
+                                $count++;
                             }
+                            //galeria
+                        endif;
 
-                            $count++;
-                        }
-                        //galeria
+                        $empresa->edit();
+                        $funcion->headerMove(URL . '/panel');
                     endif;
+                    ?>
 
-                    $empresa->edit();
-                    $funcion->headerMove(URL . '/panel');
-                endif;
-                ?>
+                    <div class="indent_title_in">
+                        <i class="icon_house_alt"></i>
+                        <h3>Datos de la empresa</h3>
+                        <p>Completa los datos de tu empresa.</p>
+                    </div>
 
-                <div class="indent_title_in">
-                    <i class="icon_house_alt"></i>
-                    <h3>Datos de la empresa</h3>
-                    <p>Completa los datos de tu empresa.</p>
-                </div>
-
-                <div class="wrapper_indent">
-                    <form method="post">
-                        <div class="form-group">
-                            <label>Nombre de la empresa</label>
-                            <input class="form-control" value="<?php if (!empty($empresaData['titulo'])) {
-                                echo $empresaData['titulo'];
-                            } ?>" name="tituloEmpresa" id="tituloEmpresa" type="text"
-                                   placeholder="Ej. Restaurante Argentino">
-                        </div>
-                        <div class="form-group">
-                            <label>Descripción de la empresa</label>
-                            <textarea class="wysihtml5 form-control" name="desarrolloEmpresa"
-                                      placeholder="Breve descripción ..."
-                                      style="height: 200px;">
+                    <div class="wrapper_indent">
+                        <form method="post">
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <div class="form-group">
+                                        <label>Nombre de la empresa</label>
+                                        <input class="form-control" value="<?php if (!empty($empresaData['titulo'])) {
+                                            echo $empresaData['titulo'];
+                                        } ?>" name="tituloEmpresa" id="tituloEmpresa" type="text"
+                                               placeholder="Ej. Restaurante Argentino">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>Costo de envío</label>
+                                        <input class="form-control" value="<?php if (!empty($empresaData['costoEnvio'])) {
+                                            echo $empresaData['costoEnvio'];
+                                        } ?>" name="costoEnvioEmpresa" id="costoEnvioEmpresa" type="text"
+                                               placeholder="Ej. $25">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Descripción de la empresa</label>
+                                <textarea class="wysihtml5 form-control" name="desarrolloEmpresa"
+                                          placeholder="Breve descripción ..."
+                                          style="height: 200px;">
                         <?php if (!empty($empresaData['desarrollo'])) {
                             echo $empresaData['desarrollo'];
                         } ?>
 
                     </textarea>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label>Teléfono</label>
-                                    <input type="text" value="<?php if (!empty($empresaData['telefono'])) {
-                                        echo $empresaData['telefono'];
-                                    } ?>" id="telefonoEmpresa" name="telefonoEmpresa" class="form-control"
-                                           placeholder="Ej. 111 123456">
-                                </div>
                             </div>
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label>Email</label>
-                                    <input type="email" value="<?php if (!empty($empresaData['email'])) {
-                                        echo $empresaData['email'];
-                                    } ?>" id="emailEmpresa" name="emailEmpresa" class="form-control"
-                                           placeholder="Ej. ventas@mirestaurante.com">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-3">
-                                <button class="btn_full" name="modificarEmpresa" type="submit">Modificar Datos<i
-                                            class="icon-right-open-5"></i></button>
-                            </div>
-                        </div>
-                    </form>
-                </div><!-- End wrapper_indent -->
-
-                <hr class="styled_2">
-
-                <div class="indent_title_in">
-                    <i class="icon_pin_alt"></i>
-                    <h3>Datos de ubicación</h3>
-                    <p>
-                        Completa los datos sobre la ubicación de tu empresa.
-                    </p>
-                    <div class="row">
-                        <div class="col-md-3"><br/>
-                            <button class="btn_full" id="link1" href="#">Modificar</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="wrapper_indent" id="ubicacionEmpresa" style="display: none;">
-                    <form method="post">
-                        <h2 class="inner">Ubicación</h2>
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label>Provincia</label>
-                                    <select class="form-control" name="provinciaEmpresa" id="provinciaEmpresa">
-                                        <option value="<?php if (!empty($empresaData['provincia'])) {
-                                            echo $empresaData['provincia'];
-                                        } ?>" selected><?php if (!empty($empresaData['provincia'])) {
-                                                echo $empresaData['provincia'];
-                                            } else {
-                                                echo 'Seleccionar Provincia';
-                                            } ?></option>
-                                        <option value="Córdoba">Córdoba</option>
-                                        <option value="Buenos Aires">Buenos Aires</option>
-                                        <option value="Santa Fe">Santa Fe</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Ciudad</label>
-                                    <select class="form-control" name="ciudadEmpresa" id="ciudadEmpresa">
-                                        <option value="<?php if (!empty($empresaData['ciudad'])) {
-                                            echo $empresaData['ciudad'];
-                                        } ?>" selected><?php if (!empty($empresaData['ciudad'])) {
-                                                echo $empresaData['ciudad'];
-                                            } else {
-                                                echo 'Seleccionar Ciudad';
-                                            } ?></option>
-                                        <option value="San Francisco">San Francisco</option>
-                                        <option value="Tandil">Tandil</option>
-                                        <option value="Rosario">Rosario</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label>Barrio</label>
-                                    <input type="text" value="<?php if (!empty($empresaData['barrio'])) {
-                                        echo $empresaData['barrio'];
-                                    } ?>" id="barrioEmpresa" name="barrioEmpresa" class="form-control"
-                                           placeholder="Ej. Las Rosas">
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label>Dirección</label>
-                                    <input type="text" value="<?php if (!empty($empresaData['direccion'])) {
-                                        echo $empresaData['direccion'];
-                                    } ?>" id="direccionEmpresa" name="direccionEmpresa" class="form-control"
-                                           placeholder="Ej. Urquiza 555">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    <label>Código Postal</label>
-                                    <input type="text" value="<?php if (!empty($empresaData['postal'])) {
-                                        echo $empresaData['postal'];
-                                    } ?>" id="postalEmpresa" name="postalEmpresa" class="form-control"
-                                           placeholder="Ej. 2400">
-                                </div>
-                            </div>
-                        </div><!--End row -->
-                        <hr>
-                        <div class="row">
-                            <div class="col-md-3">
-                                <button class="btn_full" name="modificarEmpresa" type="submit">Modificar Datos<i
-                                            class="icon-right-open-5"></i></button>
-                            </div>
-                        </div>
-                    </form>
-                </div><!-- End wrapper_indent -->
-
-                <hr class="styled_2">
-                <div class="indent_title_in">
-                    <i class="icon_images"></i>
-                    <h3>Imágenes de tu empresa</h3>
-                    <p>
-                        Logo y demás imágenes de tu empresa.
-                    </p>
-                    <div class="row">
-                        <div class="col-md-3"><br/>
-                            <button class="btn_full" id="link2" href="#">Modificar</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="wrapper_indent add_bottom_45" id="imagenesEmpresa" style="display: none;">
-                    <form method="post" enctype="multipart/form-data">
-                        <div class="form-group">
-                            <h3>Logo</h3>
-                            <label>Logo de tu empresa</label><br/>
                             <div class="row">
-                                <div class="col-md-2">
-                                    <img src="<?= URL; ?>/<?= $empresaData['logo']; ?>" width="100%"/>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Teléfono</label>
+                                        <input type="text" value="<?php if (!empty($empresaData['telefono'])) {
+                                            echo $empresaData['telefono'];
+                                        } ?>" id="telefonoEmpresa" name="telefonoEmpresa" class="form-control"
+                                               placeholder="Ej. 111 123456">
+                                    </div>
                                 </div>
-                                <div class="clearfix"></div>
-                                <br/>
-                                <div class="col-md-12">
-                                    <input type="file" id="logoEmpresa" name="logoEmpresa"/>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Email</label>
+                                        <input type="email" value="<?php if (!empty($empresaData['email'])) {
+                                            echo $empresaData['email'];
+                                        } ?>" id="emailEmpresa" name="emailEmpresa" class="form-control"
+                                               placeholder="Ej. ventas@mirestaurante.com">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="clearfix"></div>
-                        <hr/>
-                        <h3>Galería</h3>
-                        <label>Galería de fotos de tu empresa</label><br/>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <button class="btn_full" name="modificarEmpresa" type="submit">Modificar Datos<i
+                                                class="icon-right-open-5"></i></button>
+                                </div>
+                            </div>
+                        </form>
+                    </div><!-- End wrapper_indent -->
+
+                    <hr class="styled_2">
+
+                    <div class="indent_title_in">
+                        <i class="icon_pin_alt"></i>
+                        <h3>Datos de ubicación</h3>
+                        <p>
+                            Completa los datos sobre la ubicación de tu empresa.
+                        </p>
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-3"><br/>
+                                <button class="btn_full" id="link1" href="#">Modificar</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wrapper_indent" id="ubicacionEmpresa" style="display: none;">
+                        <form method="post">
+                            <h2 class="inner">Ubicación</h2>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Provincia</label>
+                                        <select class="form-control" name="provinciaEmpresa" id="provinciaEmpresa">
+                                            <option value="<?php if (!empty($empresaData['provincia'])) {
+                                                echo $empresaData['provincia'];
+                                            } ?>" selected><?php if (!empty($empresaData['provincia'])) {
+                                                    echo $empresaData['provincia'];
+                                                } else {
+                                                    echo 'Seleccionar Provincia';
+                                                } ?></option>
+                                            <option value="Córdoba">Córdoba</option>
+                                            <option value="Buenos Aires">Buenos Aires</option>
+                                            <option value="Santa Fe">Santa Fe</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Ciudad</label>
+                                        <select class="form-control" name="ciudadEmpresa" id="ciudadEmpresa">
+                                            <option value="<?php if (!empty($empresaData['ciudad'])) {
+                                                echo $empresaData['ciudad'];
+                                            } ?>" selected><?php if (!empty($empresaData['ciudad'])) {
+                                                    echo $empresaData['ciudad'];
+                                                } else {
+                                                    echo 'Seleccionar Ciudad';
+                                                } ?></option>
+                                            <option value="San Francisco">San Francisco</option>
+                                            <option value="Tandil">Tandil</option>
+                                            <option value="Rosario">Rosario</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Barrio</label>
+                                        <input type="text" value="<?php if (!empty($empresaData['barrio'])) {
+                                            echo $empresaData['barrio'];
+                                        } ?>" id="barrioEmpresa" name="barrioEmpresa" class="form-control"
+                                               placeholder="Ej. Las Rosas">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Dirección</label>
+                                        <input type="text" value="<?php if (!empty($empresaData['direccion'])) {
+                                            echo $empresaData['direccion'];
+                                        } ?>" id="direccionEmpresa" name="direccionEmpresa" class="form-control"
+                                               placeholder="Ej. Urquiza 555">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>Código Postal</label>
+                                        <input type="text" value="<?php if (!empty($empresaData['postal'])) {
+                                            echo $empresaData['postal'];
+                                        } ?>" id="postalEmpresa" name="postalEmpresa" class="form-control"
+                                               placeholder="Ej. 2400">
+                                    </div>
+                                </div>
+                            </div><!--End row -->
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <button class="btn_full" name="modificarEmpresa" type="submit">Modificar Datos<i
+                                                class="icon-right-open-5"></i></button>
+                                </div>
+                            </div>
+                        </form>
+                    </div><!-- End wrapper_indent -->
+
+                    <hr class="styled_2">
+                    <div class="indent_title_in">
+                        <i class="icon_images"></i>
+                        <h3>Imágenes de tu empresa</h3>
+                        <p>
+                            Logo y demás imágenes de tu empresa.
+                        </p>
+                        <div class="row">
+                            <div class="col-md-3"><br/>
+                                <button class="btn_full" id="link2" href="#">Modificar</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="wrapper_indent add_bottom_45" id="imagenesEmpresa" style="display: none;">
+                        <form method="post" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <h3>Logo</h3>
+                                <label>Logo de tu empresa</label><br/>
                                 <div class="row">
-                                    <?php foreach ($imagenesArrayEmpresa as $key => $value): ?>
-                                        <div class="col-md-2">
-                                            <img src="<?= URL; ?>/<?= $value['ruta']; ?>" width="100%">
-                                        </div>
-                                    <?php endforeach; ?>
+                                    <div class="col-md-2">
+                                        <img src="<?= URL; ?>/<?= $empresaData['logo']; ?>" width="100%"/>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                    <br/>
+                                    <div class="col-md-12">
+                                        <input type="file" id="logoEmpresa" name="logoEmpresa"/>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="clearfix"></div>
-                        <br/>
-                        <div class="form-group">
-                            <input type="file" id="filesEmpresa" name="filesEmpresa[]" multiple="multiple"/>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-md-3">
-                                <button class="btn_full btn btn-primary" name="modificarEmpresa" type="submit">Modificar
-                                    Datos
-                                </button>
+                            <div class="clearfix"></div>
+                            <hr/>
+                            <h3>Galería</h3>
+                            <label>Galería de fotos de tu empresa</label><br/>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="row">
+                                        <?php foreach ($imagenesArrayEmpresa as $key => $value): ?>
+                                            <div class="col-md-2">
+                                                <img src="<?= URL; ?>/<?= $value['ruta']; ?>" width="100%">
+                                            </div>
+                                        <?php endforeach; ?>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </form>
-                </div><!-- End wrapper_indent -->
+                            <div class="clearfix"></div>
+                            <br/>
+                            <div class="form-group">
+                                <input type="file" id="filesEmpresa" name="filesEmpresa[]" multiple="multiple"/>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <button class="btn_full btn btn-primary" name="modificarEmpresa" type="submit">
+                                        Modificar
+                                        Datos
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div><!-- End wrapper_indent -->
+                </div>
             </section><!-- End section 1 -->
 
-            <section id="seccion-2" <?=$displaySeccion?>>
-                <div class="indent_title_in">
-                    <i class="icon_document_alt"></i>
-                    <h3>Modificar Menú</h3>
-                    <p>Especifique a continuación los detalles del menú.</p>
-                </div>
-                <div class="wrapper_indent">
-                    <div id="tools">
-                        <div class="row">
-                            <div class="col-md-3 col-sm-3 col-xs-6">
-                                <div class="styled-select">
-                                    <select name="sort_rating" id="sort_rating">
-                                        <option value="" selected>Sort by ranking</option>
-                                        <option value="lower">Lowest ranking</option>
-                                        <option value="higher">Highest ranking</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-9 col-sm-9 hidden-xs">
-                                <a href="grid_list.html" class="bt_filters"><i class="icon-th"></i></a>
-                            </div>
+            <section id="seccion-2" <?= $displaySeccion ?>>
+                <?php $filterCrearMenu = array("cod_empresa = '" . $empresaData['cod'] . "'"); ?>
+                <?php $existeMenu = $menu->list($filterCrearMenu, "", ""); ?>
+                <?php if (!empty($existeMenu)): ?>
+                    <?php $mostrardivMenu = 'style = "display: none;"'; ?>
+                    <?php $mostrardivMenu2 = ''; ?>
+                <?php else: ?>
+                    <?php $mostrardivMenu = ''; ?>
+                    <?php $mostrardivMenu2 = 'style = "display: none;"'; ?>
+                <?php endif; ?>
+
+                <div class="col-md-offset-3 col-md-6" <?= $mostrardivEmpresa ?>>
+                    <div class="box_style_2">
+                        <div id="confirm">
+                            <i class="icon-shop-1"></i>
+                            <h3>¡Antes de crear un menú, necesitamos que crees tu empresa!</h3>
                         </div>
-                    </div><!--End tools -->
+                        <a href="<?= URL ?>/crear_empresa" class="btn_full">Crear Empresa</a>
+                    </div>
+                </div>
 
-                    <?php foreach ($menuArray as $key => $value): ?>
-                        <?php $imagenesMenu->set("cod", $value['cod']); ?>
-                        <?php $imagenMenuData = $imagenesMenu->view(); ?>
-                        <?php $categoria->set("cod", $value['categoria']); ?>
-                        <?php $categoriaData = $categoria->view(); ?>
-                        <?php $seccion->set("cod", $value['seccion']); ?>
-                        <?php $seccionData = $seccion->view(); ?>
-                        <div class="strip_list wow fadeIn" data-wow-delay="0.1s">
+                <div class="col-md-offset-3 col-md-6" <?= $mostrardivEmpresa2 ?> <?= $mostrardivMenu ?>>
+                    <div class="box_style_2">
+                        <div id="confirm">
+                            <i class="icon-food"></i>
+                            <h3>¡Añadí los menús que ofrece tu restaurante / negocio y empezá a vender!</h3>
+                        </div>
+                        <a href="<?= URL ?>/crear-menu" class="btn_full">Crear Menú</a>
+                    </div>
+                </div>
+
+                <div <?= $mostrardivMenu2 ?>>
+                    <div class="indent_title_in">
+                        <i class="icon_document_alt"></i>
+                        <h3>Modificar Menús</h3>
+                        <p>Especifique a continuación los detalles del menú.</p>
+                    </div>
+                    <div class="wrapper_indent">
+                        <div id="tools">
                             <div class="row">
-                                <div class="col-md-9 col-sm-9">
-                                    <div class="desc">
-                                        <div class="thumb_strip">
-                                            <a href="<?= URL; ?>/modificar-menu/<?= $value['cod'] ?>"><img
-                                                        src="<?= URL; ?>/<?= $imagenMenuData['ruta'] ?>" alt=""></a>
-                                        </div>
-                                        <h3><?= $value['titulo'] ?></h3>
-                                        <div class="type">
-                                            <?= $categoriaData['titulo']; ?>
-                                        </div>
-                                        <div class="location">
-                                            Stock: <?= $value['stock'] ?><br/>
-                                            Sección: <?= $seccionData['titulo'] ?>
-                                        </div>
+                                <div class="col-md-3 col-sm-3 col-xs-6">
+                                    <div class="styled-select">
+                                        <select name="sort_rating" id="sort_rating">
+                                            <option value="" selected>Sort by ranking</option>
+                                            <option value="lower">Lowest ranking</option>
+                                            <option value="higher">Highest ranking</option>
+                                        </select>
                                     </div>
                                 </div>
-                                <div class="col-md-3 col-sm-3">
-                                    <div class="go_to">
-                                        <div>
-                                            <a href="<?= URL; ?>/modificar-menu/<?= $value['cod'] ?>" class="btn_1">Modificar
-                                                menú</a>
+                                <div class="col-md-9 col-sm-9 hidden-xs">
+                                    <a href="grid_list.html" class="bt_filters"><i class="icon-th"></i></a>
+                                </div>
+                            </div>
+                        </div><!--End tools -->
+
+                        <a href="<?= URL; ?>/crear-menu" class="btn_1"><i class="icon-plus"></i> Añadir menú</a><br/>
+                        <?php foreach ($menuArray as $key => $value): ?>
+                            <?php $imagenesMenu->set("cod", $value['cod']); ?>
+                            <?php $imagenMenuData = $imagenesMenu->view(); ?>
+                            <?php $categoria->set("cod", $value['categoria']); ?>
+                            <?php $categoriaData = $categoria->view(); ?>
+                            <?php $seccion->set("cod", $value['seccion']); ?>
+                            <?php $seccionData = $seccion->view(); ?>
+                            <div class="strip_list wow fadeIn" data-wow-delay="0.1s">
+                                <div class="row">
+                                    <div class="col-md-9 col-sm-9">
+                                        <div class="desc">
+                                            <div class="thumb_strip">
+                                                <a href="<?= URL; ?>/modificar-menu/<?= $value['cod'] ?>"><img
+                                                            src="<?= URL; ?>/<?= $imagenMenuData['ruta'] ?>" alt=""></a>
+                                            </div>
+                                            <h3><?= $value['titulo'] ?></h3>
+                                            <div class="type">
+                                                <?= $categoriaData['titulo']; ?>
+                                            </div>
+                                            <div class="location">
+                                                Stock: <?= $value['stock'] ?><br/>
+                                                Sección: <?= $seccionData['titulo'] ?>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div><!-- End row-->
-                        </div><!-- End strip_list-->
-                    <?php endforeach; ?>
-                    <div class="text_center">
-                        <ul class="pagination">
-                            <?php if (($pagina + 1) > 1): ?>
-                                <li class="page-item"><a class="page-link"
-                                                         href="<?= $url ?><?= $anidador ?>pagina=<?= $pagina ?>"><span
-                                                aria-hidden="true">&laquo;</span>
-                                        <span class="sr-only">Anterior</span></a></li>
-                            <?php endif; ?>
+                                    <div class="col-md-3 col-sm-3">
+                                        <div class="go_to">
+                                            <div>
+                                                <a href="<?= URL; ?>/modificar-menu/<?= $value['cod'] ?>" class="btn_1">Modificar
+                                                    menú</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><!-- End row-->
+                            </div><!-- End strip_list-->
+                        <?php endforeach; ?>
+                        <div class="text_center">
+                            <ul class="pagination">
+                                <?php if (($pagina + 1) > 1): ?>
+                                    <li class="page-item"><a class="page-link"
+                                                             href="<?= $url ?><?= $anidador ?>pagina=<?= $pagina ?>"><span
+                                                    aria-hidden="true">&laquo;</span>
+                                            <span class="sr-only">Anterior</span></a></li>
+                                <?php endif; ?>
 
-                            <?php for ($i = 1; $i <= $numeroPaginas; $i++): ?>
-                                <li class="page-item"><a class="page-link"
-                                                         href="<?= $url ?><?= $anidador ?>pagina=<?= $i ?>"><?= $i ?></a>
-                                </li>
-                            <?php endfor; ?>
+                                <?php for ($i = 1; $i <= $numeroPaginas; $i++): ?>
+                                    <li class="page-item"><a class="page-link"
+                                                             href="<?= $url ?><?= $anidador ?>pagina=<?= $i ?>"><?= $i ?></a>
+                                    </li>
+                                <?php endfor; ?>
 
-                            <?php if (($pagina + 2) <= $numeroPaginas): ?>
-                                <li class="page-item"><a class="page-link"
-                                                         href="<?= $url ?><?= $anidador ?>pagina=<?= ($pagina + 2) ?>"><span
-                                                aria-hidden="true">&raquo;</span>
-                                        <span class="sr-only">Next</span></a></li>
-                            <?php endif; ?>
-                        </ul>
+                                <?php if (($pagina + 2) <= $numeroPaginas): ?>
+                                    <li class="page-item"><a class="page-link"
+                                                             href="<?= $url ?><?= $anidador ?>pagina=<?= ($pagina + 2) ?>"><span
+                                                    aria-hidden="true">&raquo;</span>
+                                            <span class="sr-only">Next</span></a></li>
+                                <?php endif; ?>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </section><!-- End section 2 -->
 
-            <section id="seccion-3" <?=$classSeccion?>>
+            <section id="seccion-3" <?= $classSeccion ?>>
                 <?php
                 if (isset($_POST["modificarPerfil"])):
 
@@ -573,17 +645,21 @@ endif;
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Nombre</label>
-                                            <input class="form-control" value="<?php if (!empty($usuarioData['nombre'])) {
-                                                echo $usuarioData['nombre'];
-                                            } ?>" name="nombrePerfil" id="nombrePerfil" type="text" placeholder="Ej. Jorge">
+                                            <input class="form-control"
+                                                   value="<?php if (!empty($usuarioData['nombre'])) {
+                                                       echo $usuarioData['nombre'];
+                                                   } ?>" name="nombrePerfil" id="nombrePerfil" type="text"
+                                                   placeholder="Ej. Jorge">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Apellido</label>
-                                            <input class="form-control" value="<?php if (!empty($usuarioData['apellido'])) {
-                                                echo $usuarioData['apellido'];
-                                            } ?>" name="apellidoPerfil" id="apellidoPerfil" type="text" placeholder="Ej. Pérez">
+                                            <input class="form-control"
+                                                   value="<?php if (!empty($usuarioData['apellido'])) {
+                                                       echo $usuarioData['apellido'];
+                                                   } ?>" name="apellidoPerfil" id="apellidoPerfil" type="text"
+                                                   placeholder="Ej. Pérez">
                                         </div>
                                     </div>
                                 </div>
@@ -608,7 +684,8 @@ endif;
                                             <option value="" selected disabled>Localidad</option>
                                         </select>
                                     </div>
-                                </div><br/>
+                                </div>
+                                <br/>
                                 <div class="form-group">
                                     <label>Direccion</label>
                                     <input class="form-control" value="<?php if (!empty($usuarioData['direccion'])) {
@@ -620,18 +697,20 @@ endif;
                                     <div class="col-md-6 col-xs-6">
                                         <label>Teléfono</label>
                                         <div class="form-group">
-                                            <input class="form-control" value="<?php if (!empty($usuarioData['telefono'])) {
-                                                echo $usuarioData['telefono'];
-                                            } ?>" name="telefonoPerfil" id="telefonoPerfil" type="text"
+                                            <input class="form-control"
+                                                   value="<?php if (!empty($usuarioData['telefono'])) {
+                                                       echo $usuarioData['telefono'];
+                                                   } ?>" name="telefonoPerfil" id="telefonoPerfil" type="text"
                                                    placeholder="Ej. 3564555555">
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-xs-6">
                                         <label>Postal</label>
                                         <div class="form-group">
-                                            <input class="form-control" value="<?php if (!empty($usuarioData['postal'])) {
-                                                echo $usuarioData['postal'];
-                                            } ?>" name="postalPerfil" id="postalPerfil" type="text"
+                                            <input class="form-control"
+                                                   value="<?php if (!empty($usuarioData['postal'])) {
+                                                       echo $usuarioData['postal'];
+                                                   } ?>" name="postalPerfil" id="postalPerfil" type="text"
                                                    placeholder="Ej. 2400">
                                         </div>
                                     </div>

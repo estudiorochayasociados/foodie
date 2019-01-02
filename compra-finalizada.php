@@ -116,7 +116,7 @@ $carroEnvio = $carrito->checkEnvio();
                                             class="icon_question_alt"></i></a>
                             </td>
                             <td>
-                                <strong class="pull-right">$25</strong>
+                                <strong class="pull-right">$ <?=$carro[0]["costoEnvio"]?></strong>
                             </td>
                         </tr>
                         <tr>
@@ -124,7 +124,7 @@ $carroEnvio = $carrito->checkEnvio();
                                 TOTAL
                             </td>
                             <td class="total_confirm">
-                                <span class="pull-right">$<?= $precioTotal + 25; ?></span>
+                                <span class="pull-right">$<?= $precioTotal + $carro[0]["costoEnvio"]; ?></span>
                             </td>
                         </tr>
                         </tbody>

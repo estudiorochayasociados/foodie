@@ -60,6 +60,7 @@ $empresa = new Clases\Empresas();
 <?php
 if (isset($_POST["crear_empresa"])):
     $titulo = $funcion->antihack_mysqli(isset($_POST["tituloEmpresa"]) ? $_POST["tituloEmpresa"] : '');
+    $costoEnvio = $funcion->antihack_mysqli(isset($_POST["costoEnvioEmpresa"]) ? $_POST["costoEnvioEmpresa"] : '');
     $telefono = $funcion->antihack_mysqli(isset($_POST["telefonoEmpresa"]) ? $_POST["telefonoEmpresa"] : '');
     $email = $funcion->antihack_mysqli(isset($_POST["emailEmpresa"]) ? $_POST["emailEmpresa"] : '');
     $desarrollo = $funcion->antihack_mysqli(isset($_POST["desarrolloEmpresa"]) ? $_POST["desarrolloEmpresa"] : '');
@@ -72,6 +73,7 @@ if (isset($_POST["crear_empresa"])):
 
     $empresa->set("cod", $cod);
     $empresa->set("titulo", $titulo);
+    $empresa->set("costoEnvio", $costoEnvio);
     $empresa->set("telefono", $telefono);
     $empresa->set("email", $email);
     $empresa->set("desarrollo", $desarrollo);
@@ -90,10 +92,25 @@ endif;
             <div class="box_style_2" id="order_process">
                 <form method="post">
                     <h2 class="inner">Descripción</h2>
-                    <div class="form-group">
-                        <label>Nombre de tu empresa</label>
-                        <input type="text" class="form-control" id="tituloEmpresa" name="tituloEmpresa"
-                               placeholder="Nombre de tu empresa">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <label>Nombre de la empresa</label>
+                                <input class="form-control" value="<?php if (!empty($empresaData['titulo'])) {
+                                    echo $empresaData['titulo'];
+                                } ?>" name="tituloEmpresa" id="tituloEmpresa" type="text"
+                                       placeholder="Ej. Restaurante Argentino">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>Costo de envío</label>
+                                <input class="form-control" value="<?php if (!empty($empresaData['costoEnvio'])) {
+                                    echo $empresaData['costoEnvio'];
+                                } ?>" name="costoEnvioEmpresa" id="costoEnvioEmpresa" type="text"
+                                       placeholder="Ej. $25">
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label>Teléfono</label>

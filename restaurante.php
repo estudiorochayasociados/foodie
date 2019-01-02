@@ -40,11 +40,6 @@ $precioTotal = 0;
     <div id="subheader">
         <div id="sub_content">
             <div id="thumb"><img src="<?= URL ?>/<?= $empresaData['logo'] ?>" alt=""></div>
-            <div class="rating"><i class="icon_star voted"></i><i class="icon_star voted"></i><i
-                        class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star"></i> (
-                <small><a href="detail_page_2.html">Read 98 reviews</a></small>
-                )
-            </div>
             <h1><?= $empresaData['titulo'] ?></h1>
             <div><em>
                     <?php foreach ($productosArrayCategoria as $key => $value): ?>
@@ -87,10 +82,10 @@ $precioTotal = 0;
             </div><!-- End box_style_1 -->
 
             <div class="box_style_2 hidden-xs" id="help">
-                <i class="icon_lifesaver"></i>
-                <h4>Need <span>Help?</span></h4>
-                <a href="tel://004542344599" class="phone">+45 423 445 99</a>
-                <small>Monday to Friday 9.00am - 7.30pm</small>
+                <i class="icon-phone"></i>
+                <h4>Nuestro <span>Teléfono</span></h4>
+                <a href="tel://<?=$empresaData['telefono']?>" class="phone">+<?=$empresaData['telefono']?></a>
+                <small>Lunes a Viernes 9.00am - 7.30pm</small>
             </div>
         </div><!-- End col-md-3 -->
 
@@ -146,7 +141,7 @@ $precioTotal = 0;
                                                 </label>
                                             <?php endfor; ?>
                                             <h5>Adicionales</h5>
-                                            <?php for ($i = 0; $i < $countVariantes; $i++): ?>
+                                            <?php for ($i = 0; $i < $countAdicionales; $i++): ?>
                                                 <label>
                                                     <input type="checkbox"
                                                            value="<?= $adicionales1[$i] ?>,<?= $adicionales2[$i] ?>"
@@ -177,6 +172,7 @@ $precioTotal = 0;
                         $cantidad = $funcion->antihack_mysqli(isset($_POST['cantidad']) ? $_POST['cantidad'] : '');
                         $titulo = $funcion->antihack_mysqli(isset($value['titulo']) ? $value['titulo'] : '');
                         $precio = $funcion->antihack_mysqli(isset($value['precio']) ? $value['precio'] : '');
+                        $costoEnvio = $funcion->antihack_mysqli(isset($empresaData["costoEnvio"]) ? $empresaData["costoEnvio"] : 0);
                         $variantesPOST = $funcion->antihack_mysqli(isset($_POST['variantesPOST']) ? $_POST['variantesPOST'] : '');
                         $adicionalesPOST = implode("//", $_POST['adicionalesPOST']);
 
@@ -200,6 +196,7 @@ $precioTotal = 0;
                         $carrito->set("cantidad", $cantidad);
                         $carrito->set("titulo", $titulo);
                         $carrito->set("precio", $precio);
+                        $carrito->set("costoEnvio", $costoEnvio);
                         $carrito->set("precioAdicional", $precioAdicional);
                         $carrito->set("opciones", $variantesPOST . '|||' . $adicionalesPOST);
                         $carrito->add();
@@ -292,12 +289,12 @@ $precioTotal = 0;
                         </tr>
                         <tr>
                             <td>
-                                Delivery <span class="pull-right">$ 25</span>
+                                Delivery <span class="pull-right">$ <?=$empresaData['costoEnvio']?></span>
                             </td>
                         </tr>
                         <tr>
                             <td class="total">
-                                TOTAL <span class="pull-right">$<?= $precioTotal + 25; ?></span>
+                                TOTAL <span class="pull-right">$<?= $precioTotal + $empresaData['costoEnvio']; ?></span>
                             </td>
                         </tr>
                         </tbody>

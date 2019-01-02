@@ -71,17 +71,27 @@ if (isset($_POST["crear_menu"])):
     $variantes = $variante1 . '|||' . $variante2;
     $adicionales = $adicional1 . '|||' . $adicional2;
 
-    foreach ($seccionesArray as $key => $value):
-        $seccionValores[] = $value['cod'];
-    endforeach;
-    if (array_search($seccion, $seccionValores) === false):
+    if (empty($seccionesArray)):
         $seccionNueva = new Clases\Secciones();
         $cod_seccion = substr(md5(uniqid(rand())), 0, 10);
         $seccionNueva->set("cod", $cod_seccion);
         $seccionNueva->set("titulo", $seccion);
-        $seccionNueva->set("cod_empresa", $menuData['cod_empresa']);
+        $seccionNueva->set("cod_empresa", $empresaData['cod']);
         $seccionNueva->add();
         $seccion = $cod_seccion;
+    else:
+        foreach ($seccionesArray as $key => $value):
+            $seccionValores[] = $value['cod'];
+        endforeach;
+        if (array_search($seccion, $seccionValores) === false):
+            $seccionNueva = new Clases\Secciones();
+            $cod_seccion = substr(md5(uniqid(rand())), 0, 10);
+            $seccionNueva->set("cod", $cod_seccion);
+            $seccionNueva->set("titulo", $seccion);
+            $seccionNueva->set("cod_empresa", $empresaData['cod']);
+            $seccionNueva->add();
+            $seccion = $cod_seccion;
+        endif;
     endif;
 
     $cod = substr(md5(uniqid(rand())), 0, 10);
@@ -92,6 +102,7 @@ if (isset($_POST["crear_menu"])):
     $menu->set("cod", $cod);
     $menu->set("cod_empresa", $cod_empresa);
     $menu->set("categoria", $categoria);
+    $menu->set("seccion", $seccion);
     $menu->set("titulo", $nombre);
     $menu->set("precio", $precio);
     $menu->set("desarrollo", $desarrollo);
@@ -131,7 +142,7 @@ if (isset($_POST["crear_menu"])):
     //imagen
 
     $menu->add();
-    //$funcion->headerMove(URL.'/crear_empresa_paso3');
+    $funcion->headerMove(URL.'/crear_empresa_paso3');
 endif;
 ?>
 
@@ -143,7 +154,7 @@ endif;
                 <form method="post" enctype="multipart/form-data">
                     <div class="indent_title_in">
                         <i class="icon_document_alt"></i>
-                        <h3>Agregar menú</h3>
+                        <h3>Crear menú</h3>
                         <p>Especifique a continuación los detalles del menú.</p>
                     </div>
 
@@ -163,7 +174,7 @@ endif;
                             <select class="form-control" name="seccionMenu" id="seccionMenu">
                                 <option value="" disabled selected>Seleccionar Sección</option>
                                 <?php foreach ($seccionesArray as $key => $value): ?>
-                                        <option value="<?= $value['cod'] ?>"><?= $value['titulo'] ?></option>
+                                    <option value="<?= $value['cod'] ?>"><?= $value['titulo'] ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>

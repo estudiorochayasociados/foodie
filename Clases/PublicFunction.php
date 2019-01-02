@@ -79,7 +79,8 @@ class PublicFunction
         return $parsedUrl['scheme'] . '://' . $parsedUrl['host'] . $path . $query;
     }
 
-    public function localidades(){
+    public function localidades()
+    {
         $con = new Conexion();
         $palabra = ($_GET["elegido"]);
         $sql = "SELECT  distinct `_provincias`.`nombre`,`_localidades`.`nombre` FROM  `_localidades` , `_provincias` WHERE  `_localidades`.`provincia_id` =  `_provincias`.`id` AND `_provincias`.`nombre`  LIKE '%$palabra%' AND `_localidades`.`nombre` != '' ORDER BY `_localidades`.`nombre`";
@@ -89,13 +90,30 @@ class PublicFunction
         }
     }
 
-    public function provincias(){
+    public function provincias()
+    {
         $con = new Conexion();
-        $sql   = "SELECT `nombre` FROM  `_provincias` ORDER BY nombre";
+        $sql = "SELECT `nombre` FROM  `_provincias` ORDER BY nombre";
         $provincias = $con->sqlReturn($sql);
         while ($row = mysqli_fetch_assoc($provincias)) {
-            echo '<option value="'.$row['nombre'].'">'.mb_strtoupper($row['nombre']).'</option>';
+            echo '<option value="' . $row['nombre'] . '">' . mb_strtoupper($row['nombre']) . '</option>';
         }
     }
 
+    public function anidador($url, $get, $contador)
+    {
+        if ($contador > 1):
+            $anidador = "&";
+        elseif ($contador == 1):
+            if (strpos($url, $get)):
+                $anidador = "?";
+            else:
+                $anidador = "&";
+            endif;
+        elseif ($contador == 0):
+            $anidador = "?";
+        endif;
+
+        return $anidador;
+    }
 }

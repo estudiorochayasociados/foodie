@@ -22,7 +22,7 @@ if ($ubicacionUsuario != ''):
     $usuarioLatitud = ($jsonUsuario->Response->View[0]->Result[0]->Location->DisplayPosition->Latitude);
 endif;
 
-$categoriaGET = isset($_GET["categoria"]) ? $_GET["categoria"] : '0';
+$categoriaGET = isset($_GET["categoria"]) ? $_GET["categoria"] : 0;
 $filterEmpresa = '';
 
 if ($categoriaGET != 0):
@@ -61,12 +61,6 @@ $cantidad = 2;
 
 if ($pagina > 0) {
     $pagina = $pagina - 1;
-}
-
-if (@count($_GET) >= 1) {
-    $anidador = "&";
-} else {
-    $anidador = "?";
 }
 
 if (isset($_GET['pagina'])):
@@ -128,6 +122,7 @@ $numeroPaginas = $empresa->paginador($filterEmpresa, $cantidad);
                         <h6><b>Categorías</b></h6>
                         <ul>
                             <?php foreach ($categoriasArray as $key => $value): ?>
+                            <?php $anidador = $funcion->anidador(CANONICAL, "categoria", count($_GET)); ?>
                                 <?php if ($categoriaGET != 0): ?>
                                     <?php $categoriaNueva = $categoriaGET . "," . $value['cod']; ?>
                                     <?php $urlFiltro = $funcion->eliminar_get(CANONICAL, 'categoria'); ?>
@@ -188,11 +183,7 @@ $numeroPaginas = $empresa->paginador($filterEmpresa, $cantidad);
                                                      alt="<?= $value['titulo'] ?>"></a>
                                 </div>
                                 <div class="rating">
-                                    <i class="icon_star voted"></i><i class="icon_star voted"></i><i
-                                            class="icon_star voted"></i><i class="icon_star voted"></i><i
-                                            class="icon_star"></i> (
-                                    <small><a href="#0">98 reviews</a></small>
-                                    )
+
                                 </div>
                                 <h3><?= $value['titulo'] ?></h3>
                                 <div class="type">
@@ -226,6 +217,7 @@ $numeroPaginas = $empresa->paginador($filterEmpresa, $cantidad);
             <?php endforeach; ?>
             <div class="text_center">
                 <ul class="pagination">
+                    <?php $anidador = $funcion->anidador(CANONICAL, "pagina", count($_GET)); ?>
                     <?php if (($pagina + 1) > 1): ?>
                         <li class="page-item"><a class="page-link"
                                                  href="<?= $url ?><?= $anidador ?>pagina=<?= $pagina ?>"><span

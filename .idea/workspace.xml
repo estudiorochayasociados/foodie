@@ -2,26 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d06e5cdf-69fd-40c2-9307-1de6517dce6d" name="Default Changelist" comment="">
+      <change beforePath="Z:/.htaccess" beforeDir="false" afterPath="Z:/.htaccess" afterDir="false" />
       <change beforePath="Z:/.idea/workspace.xml" beforeDir="false" afterPath="Z:/.idea/workspace.xml" afterDir="false" />
       <change beforePath="Z:/Clases/Carrito.php" beforeDir="false" afterPath="Z:/Clases/Carrito.php" afterDir="false" />
-      <change beforePath="Z:/Clases/Pedidos.php" beforeDir="false" afterPath="Z:/Clases/Pedidos.php" afterDir="false" />
-      <change beforePath="Z:/admin/inc/banners/ver.php" beforeDir="false" afterPath="Z:/admin/inc/banners/ver.php" afterDir="false" />
-      <change beforePath="Z:/admin/inc/categorias/ver.php" beforeDir="false" afterPath="Z:/admin/inc/categorias/ver.php" afterDir="false" />
-      <change beforePath="Z:/admin/inc/contenidos/ver.php" beforeDir="false" afterPath="Z:/admin/inc/contenidos/ver.php" afterDir="false" />
-      <change beforePath="Z:/admin/inc/galerias/ver.php" beforeDir="false" afterPath="Z:/admin/inc/galerias/ver.php" afterDir="false" />
-      <change beforePath="Z:/admin/inc/nav.inc.php" beforeDir="false" afterPath="Z:/admin/inc/nav.inc.php" afterDir="false" />
-      <change beforePath="Z:/admin/inc/novedades/ver.php" beforeDir="false" afterPath="Z:/admin/inc/novedades/ver.php" afterDir="false" />
-      <change beforePath="Z:/admin/inc/pedidos/ver.php" beforeDir="false" afterPath="Z:/admin/inc/pedidos/ver.php" afterDir="false" />
-      <change beforePath="Z:/admin/inc/portfolio/ver.php" beforeDir="false" afterPath="Z:/admin/inc/portfolio/ver.php" afterDir="false" />
-      <change beforePath="Z:/admin/inc/productos/ver.php" beforeDir="false" afterPath="Z:/admin/inc/productos/ver.php" afterDir="false" />
-      <change beforePath="Z:/admin/inc/servicios/ver.php" beforeDir="false" afterPath="Z:/admin/inc/servicios/ver.php" afterDir="false" />
-      <change beforePath="Z:/admin/inc/sliders/ver.php" beforeDir="false" afterPath="Z:/admin/inc/sliders/ver.php" afterDir="false" />
-      <change beforePath="Z:/admin/inc/subcategorias/ver.php" beforeDir="false" afterPath="Z:/admin/inc/subcategorias/ver.php" afterDir="false" />
-      <change beforePath="Z:/admin/inc/usuarios/ver.php" beforeDir="false" afterPath="Z:/admin/inc/usuarios/ver.php" afterDir="false" />
-      <change beforePath="Z:/admin/inc/videos/ver.php" beforeDir="false" afterPath="Z:/admin/inc/videos/ver.php" afterDir="false" />
-      <change beforePath="Z:/checkout.php" beforeDir="false" afterPath="Z:/checkout.php" afterDir="false" />
+      <change beforePath="Z:/Clases/Empresas.php" beforeDir="false" afterPath="Z:/Clases/Empresas.php" afterDir="false" />
+      <change beforePath="Z:/Clases/Productos.php" beforeDir="false" afterPath="Z:/Clases/Productos.php" afterDir="false" />
+      <change beforePath="Z:/Clases/PublicFunction.php" beforeDir="false" afterPath="Z:/Clases/PublicFunction.php" afterDir="false" />
       <change beforePath="Z:/compra-finalizada.php" beforeDir="false" afterPath="Z:/compra-finalizada.php" afterDir="false" />
+      <change beforePath="Z:/crear_empresa.php" beforeDir="false" afterPath="Z:/crear_empresa.php" afterDir="false" />
+      <change beforePath="Z:/crear_empresa_paso2.php" beforeDir="false" afterPath="Z:/crear_empresa_paso2.php" afterDir="false" />
+      <change beforePath="Z:/crear_menu.php" beforeDir="false" afterPath="Z:/crear_menu.php" afterDir="false" />
+      <change beforePath="Z:/modificar_menu.php" beforeDir="false" afterPath="Z:/modificar_menu.php" afterDir="false" />
+      <change beforePath="Z:/panel.php" beforeDir="false" afterPath="Z:/panel.php" afterDir="false" />
       <change beforePath="Z:/restaurante.php" beforeDir="false" afterPath="Z:/restaurante.php" afterDir="false" />
+      <change beforePath="Z:/restaurantes.php" beforeDir="false" afterPath="Z:/restaurantes.php" afterDir="false" />
       <change beforePath="Z:/revisar.php" beforeDir="false" afterPath="Z:/revisar.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -36,29 +30,47 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="completarPerfil.php" pinned="false" current-in-tab="false">
-        <entry file="file://Z:/completarPerfil.php">
+      <file leaf-file-name="restaurantes.php" pinned="false" current-in-tab="false">
+        <entry file="file://Z:/restaurantes.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="543">
-              <caret line="79" column="24" selection-start-line="79" selection-start-column="24" selection-end-line="79" selection-end-column="24" />
+            <state relative-caret-position="85">
+              <caret line="41" column="10" selection-start-line="41" selection-start-column="10" selection-end-line="41" selection-end-column="10" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="compra-finalizada.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="compra-finalizada.php" pinned="false" current-in-tab="false">
         <entry file="file://Z:/compra-finalizada.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="80">
-              <caret line="125" column="54" lean-forward="true" selection-start-line="125" selection-start-column="54" selection-end-line="125" selection-end-column="54" />
+            <state relative-caret-position="30">
+              <caret line="98" column="40" lean-forward="true" selection-start-line="98" selection-start-column="40" selection-end-line="98" selection-end-column="40" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="restaurante.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="modificar_menu.php" pinned="false" current-in-tab="false">
+        <entry file="file://Z:/modificar_menu.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="258">
+              <caret line="79" column="10" lean-forward="true" selection-start-line="79" selection-start-column="10" selection-end-line="79" selection-end-column="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="restaurante.php" pinned="false" current-in-tab="true">
         <entry file="file://Z:/restaurante.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="232" column="113" selection-start-line="232" selection-start-column="89" selection-end-line="232" selection-end-column="113" />
+            <state relative-caret-position="131">
+              <caret line="176" column="72" lean-forward="true" selection-start-line="176" selection-start-column="72" selection-end-line="176" selection-end-column="72" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Empresas.php" pinned="false" current-in-tab="false">
+        <entry file="file://Z:/Clases/Empresas.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-102">
+              <caret line="73" column="30" lean-forward="true" selection-start-line="73" selection-start-column="30" selection-end-line="73" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -66,8 +78,8 @@
       <file leaf-file-name="revisar.php" pinned="false" current-in-tab="false">
         <entry file="file://Z:/revisar.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="232">
-              <caret line="116" column="44" lean-forward="true" selection-start-line="114" selection-start-column="24" selection-end-line="116" selection-end-column="44" />
+            <state relative-caret-position="409">
+              <caret line="129" column="37" selection-start-line="129" selection-start-column="37" selection-end-line="129" selection-end-column="37" />
             </state>
           </provider>
         </entry>
@@ -75,26 +87,9 @@
       <file leaf-file-name="Carrito.php" pinned="false" current-in-tab="false">
         <entry file="file://Z:/Clases/Carrito.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1139">
-              <caret line="67" column="45" selection-start-line="67" selection-start-column="45" selection-end-line="67" selection-end-column="45" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="checkout.php" pinned="false" current-in-tab="false">
-        <entry file="file://Z:/checkout.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="61" column="8" selection-start-line="61" selection-start-column="8" selection-end-line="61" selection-end-column="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Pedidos.php" pinned="false" current-in-tab="false">
-        <entry file="file://Z:/Clases/Pedidos.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret line="9" column="16" lean-forward="true" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
+            <state relative-caret-position="612">
+              <caret line="36" column="136" selection-start-line="36" selection-start-column="136" selection-end-line="36" selection-end-column="136" />
+              <caret line="36" column="158" selection-start-line="36" selection-start-column="158" selection-end-line="36" selection-end-column="158" />
             </state>
           </provider>
         </entry>
@@ -103,8 +98,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>posi</find>
-      <find>contact</find>
       <find>descr</find>
       <find>'{$this-</find>
       <find>_session[&quot;carrito</find>
@@ -133,7 +126,12 @@
       <find>list</find>
       <find>preciCa</find>
       <find>unset</find>
+      <find>agregar</find>
+      <find>var_d</find>
     </findStrings>
+    <replaceStrings>
+      <replace />
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="Z:/" />
@@ -141,13 +139,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="Z:/contenidos.php" />
-        <option value="Z:/comercios.php" />
         <option value="Z:/Clases/Secciones.php" />
         <option value="Z:/modificar_empresa.php" />
         <option value="Z:/modificar_menu_2.php" />
-        <option value="Z:/crear_menu.php" />
-        <option value="Z:/modificar_menu.php" />
         <option value="Z:/Clases/Categorias.php" />
         <option value="Z:/assets/css/estilos.css" />
         <option value="Z:/html/index.html" />
@@ -156,21 +150,15 @@
         <option value="Z:/assets/inc/localidades.inc.php" />
         <option value="Z:/assets/inc/footer.inc.php" />
         <option value="Z:/Config/Autoload.php" />
-        <option value="Z:/Clases/PublicFunction.php" />
         <option value="Z:/logout.php" />
         <option value="Z:/assets/js/common_scripts_min.js" />
-        <option value="Z:/.htaccess" />
         <option value="Z:/carrito.php" />
-        <option value="Z:/crear_empresa_paso2.php" />
         <option value="Z:/checkoutt.php" />
         <option value="Z:/invitado.php" />
         <option value="Z:/assets/inc/nav.inc.php" />
         <option value="Z:/assets/css/style.css" />
         <option value="Z:/index.php" />
         <option value="Z:/Clases/Usuarios.php" />
-        <option value="Z:/panel.php" />
-        <option value="Z:/Clases/Productos.php" />
-        <option value="Z:/restaurantes.php" />
         <option value="Z:/admin/inc/nav.inc.php" />
         <option value="Z:/admin/inc/categorias/ver.php" />
         <option value="Z:/admin/inc/contenidos/ver.php" />
@@ -186,12 +174,22 @@
         <option value="Z:/admin/inc/videos/ver.php" />
         <option value="Z:/admin/inc/usuarios/ver.php" />
         <option value="Z:/completarPerfil.php" />
-        <option value="Z:/Clases/Carrito.php" />
-        <option value="Z:/restaurante.php" />
-        <option value="Z:/revisar.php" />
         <option value="Z:/Clases/Pedidos.php" />
         <option value="Z:/checkout.php" />
+        <option value="Z:/crear_empresa_paso2.php" />
+        <option value="Z:/Clases/Productos.php" />
+        <option value="Z:/crear_menu.php" />
+        <option value="Z:/Clases/PublicFunction.php" />
+        <option value="Z:/restaurantes.php" />
+        <option value="Z:/modificar_menu.php" />
+        <option value="Z:/panel.php" />
+        <option value="Z:/crear_empresa.php" />
+        <option value="Z:/.htaccess" />
+        <option value="Z:/Clases/Empresas.php" />
+        <option value="Z:/Clases/Carrito.php" />
         <option value="Z:/compra-finalizada.php" />
+        <option value="Z:/revisar.php" />
+        <option value="Z:/restaurante.php" />
       </list>
     </option>
   </component>
@@ -235,6 +233,17 @@
             <path>
               <item name="Z" type="b2602c69:ProjectViewProjectNode" />
               <item name="Z:" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Z" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Z:" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Z" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Z:" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="inc" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Z" type="b2602c69:ProjectViewProjectNode" />
@@ -328,11 +337,12 @@
       <workItem from="1545920672623" duration="6484000" />
       <workItem from="1545995082973" duration="15414000" />
       <workItem from="1546427338244" duration="17418000" />
+      <workItem from="1546455638400" duration="14024000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="210008000" />
+    <option name="totallyTimeSpent" value="224032000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1358" y="-8" width="1376" height="744" extended-state="6" />
@@ -342,6 +352,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50075644" side_tool="true" visible="true" weight="0.08797654" />
       <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.7168576" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -356,7 +367,6 @@
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -386,14 +396,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file:Z:/../../..//Z:/crear_empresa_paso2.php" />
-    <entry file="file:Z:/../../..//Z:/restaurantes.php" />
-    <entry file="file:Z:/../../..//Z:/html/cart_3.html" />
-    <entry file="file:Z:/../../..//Z:/Clases/Usuarios.php" />
-    <entry file="file:Z:/../../..//D:/Web/Pintureria Ariel/checkout.php" />
-    <entry file="file:Z:/../../..//Z:/Clases/Carrito.php" />
-    <entry file="file:Z:/../../..//Z:/crear_empresa.php" />
-    <entry file="file:Z:/../../..//Z:/checkoutt.php" />
     <entry file="file:Z:/../../..//Z:/Config/Autoload.php" />
     <entry file="file:Z:/../../..//Z:/Clases/Pedidos.php" />
     <entry file="file:Z:/../../..//Z:/assets/inc/nav.inc.php" />
@@ -407,13 +409,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://Z:/Clases/Productos.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1938">
-          <caret line="114" column="84" selection-start-line="114" selection-start-column="84" selection-end-line="114" selection-end-column="84" />
         </state>
       </provider>
     </entry>
@@ -535,20 +530,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://Z:/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="387">
-          <caret line="183" column="18" selection-start-line="183" selection-start-column="18" selection-end-line="183" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://Z:/assets/inc/nav.inc.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="410">
-          <caret line="81" column="34" lean-forward="true" selection-start-line="81" selection-start-column="8" selection-end-line="81" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://Z:/admin/inc/usuarios/ver.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="254">
@@ -563,48 +544,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://Z:/panel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-8261">
-          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://Z:/restaurantes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1746">
-          <caret line="116" column="29" lean-forward="true" selection-start-line="116" selection-start-column="29" selection-end-line="116" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://Z:/completarPerfil.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="543">
-          <caret line="79" column="24" selection-start-line="79" selection-start-column="24" selection-end-line="79" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://Z:/restaurante.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="232" column="113" selection-start-line="232" selection-start-column="89" selection-end-line="232" selection-end-column="113" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://Z:/revisar.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="116" column="44" lean-forward="true" selection-start-line="114" selection-start-column="24" selection-end-line="116" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://Z:/Clases/Carrito.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1139">
-          <caret line="67" column="45" selection-start-line="67" selection-start-column="45" selection-end-line="67" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://Z:/Config/Autoload.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -614,22 +553,138 @@
     </entry>
     <entry file="file://Z:/Clases/Pedidos.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="9" column="16" lean-forward="true" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
+        <state relative-caret-position="153">
+          <caret line="9" column="16" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://Z:/checkout.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
+        <state relative-caret-position="1037">
           <caret line="61" column="8" selection-start-line="61" selection-start-column="8" selection-end-line="61" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://Z:/completarPerfil.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="79" column="24" selection-start-line="79" selection-start-column="24" selection-end-line="79" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://Z:/crear_empresa_paso2.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="205">
+          <caret line="139" column="30" lean-forward="true" selection-start-line="139" selection-start-column="30" selection-end-line="139" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://Z:/crear_menu.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="284">
+          <caret line="156" column="33" selection-start-line="156" selection-start-column="33" selection-end-line="156" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://Z:/Clases/Productos.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="274">
+          <caret line="52" column="18" lean-forward="true" selection-start-line="52" selection-start-column="18" selection-end-line="52" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://Z:/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1509">
+          <caret line="183" column="18" selection-start-line="183" selection-start-column="18" selection-end-line="183" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://Z:/assets/inc/nav.inc.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-610">
+          <caret line="81" column="34" lean-forward="true" selection-start-line="81" selection-start-column="8" selection-end-line="81" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://Z:/restaurantes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="41" column="10" selection-start-line="41" selection-start-column="10" selection-end-line="41" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://Z:/Clases/PublicFunction.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="455">
+          <caret line="116" column="25" selection-start-line="116" selection-start-column="25" selection-end-line="116" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://Z:/.htaccess">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="42" selection-start-line="11" selection-start-column="42" selection-end-line="11" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://Z:/crear_empresa.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="63" column="24" lean-forward="true" selection-start-line="63" selection-start-column="24" selection-end-line="63" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://Z:/panel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="219">
+          <caret line="249" column="28" selection-start-line="249" selection-start-column="28" selection-end-line="268" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://Z:/carrito.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://Z:/Clases/Carrito.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="36" column="136" selection-start-line="36" selection-start-column="136" selection-end-line="36" selection-end-column="136" />
+          <caret line="36" column="158" selection-start-line="36" selection-start-column="158" selection-end-line="36" selection-end-column="158" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://Z:/revisar.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="409">
+          <caret line="129" column="37" selection-start-line="129" selection-start-column="37" selection-end-line="129" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://Z:/Clases/Empresas.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-102">
+          <caret line="73" column="30" lean-forward="true" selection-start-line="73" selection-start-column="30" selection-end-line="73" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://Z:/modificar_menu.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="258">
+          <caret line="79" column="10" lean-forward="true" selection-start-line="79" selection-start-column="10" selection-end-line="79" selection-end-column="10" />
         </state>
       </provider>
     </entry>
     <entry file="file://Z:/compra-finalizada.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="125" column="54" lean-forward="true" selection-start-line="125" selection-start-column="54" selection-end-line="125" selection-end-column="54" />
+        <state relative-caret-position="30">
+          <caret line="98" column="40" lean-forward="true" selection-start-line="98" selection-start-column="40" selection-end-line="98" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://Z:/restaurante.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="131">
+          <caret line="176" column="72" lean-forward="true" selection-start-line="176" selection-start-column="72" selection-end-line="176" selection-end-column="72" />
         </state>
       </provider>
     </entry>

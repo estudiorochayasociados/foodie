@@ -70,10 +70,29 @@ if (isset($_POST["modificar_menu"])):
     $precio = $funcion->antihack_mysqli(!empty($_POST["precioMenu"]) ? $_POST["precioMenu"] : $menuData['precio']);
     $desarrollo = $funcion->antihack_mysqli(!empty($_POST["desarrolloMenu"]) ? $_POST["desarrolloMenu"] : $menuData['desarrollo']);
     $stock = $funcion->antihack_mysqli(!empty($_POST["stockMenu"]) ? $_POST["stockMenu"] : $menuData['stock']);
+
+    if (!empty($_POST["variante1"][1])):
+        $variante1 = implode(',', $_POST["variante1"]);
+        $variante2 = implode(',', $_POST["variante2"]);
+    else:
+        $variante1 = $_POST["variante1"][0];
+        $variante2 = $_POST["variante2"][0];
+    endif;
+    if (!empty($_POST["adicional1"][1])):
+        $adicional1 = implode(',', $_POST["adicional1"]);
+        $adicional2 = implode(',', $_POST["adicional2"]);
+    else:
+        $adicional1 = $_POST["adicional1"][0];
+        $adicional2 = $_POST["adicional2"][0];
+    endif;
+
     $variante1 = $funcion->antihack_mysqli(!empty($variante1) ? $variante1 : '');
     $variante2 = $funcion->antihack_mysqli(!empty($variante2) ? $variante2 : '');
     $adicional1 = $funcion->antihack_mysqli(!empty($adicional1) ? $adicional1 : '');
     $adicional2 = $funcion->antihack_mysqli(!empty($adicional2) ? $adicional2 : '');
+
+    $variantes = $variante1 . '|||' . $variante2;
+    $adicionales = $adicional1 . '|||' . $adicional2;
 
     foreach ($seccionesArray as $key => $value):
         $seccionValores[] = $value['cod'];
@@ -86,23 +105,6 @@ if (isset($_POST["modificar_menu"])):
         $seccionNueva->set("cod_empresa", $menuData['cod_empresa']);
         $seccionNueva->add();
         $seccion = $cod_seccion;
-    endif;
-
-
-    if ($variante1 == '' || $variante2 == ''):
-        $variantes = $menuData['variantes'];
-    else:
-        $variante1 = implode(',', $_POST["variante1"]);
-        $variante2 = implode(',', $_POST["variante2"]);
-        $variantes = $variante1 . '|||' . $variante2;
-    endif;
-
-    if ($adicional1 == '' || $adicional2 == ''):
-        $adicionales = $menuData['adicionales'];
-    else:
-        $adicional1 = implode(',', $_POST["adicional1"]);
-        $adicional2 = implode(',', $_POST["adicional2"]);
-        $adicionales = $adicional1 . '|||' . $adicional2;
     endif;
 
     $menu->set("cod", $menuData['cod']);
