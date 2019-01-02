@@ -9,9 +9,9 @@ class Carrito
     public $titulo;
     public $cantidad;
     public $precio;
+    public $precioAdicional;
     public $opciones;
     private $con;
-
 
     //Metodos
     public function __construct()
@@ -33,13 +33,13 @@ class Carrito
     {
         $condition = '';
 
-        $add = array('id' => $this->id, 'titulo' => $this->titulo, 'cantidad' => $this->cantidad, 'precio' => $this->precio, 'opciones' => $this->opciones);
+        $add = array('id' => $this->id, 'titulo' => $this->titulo, 'cantidad' => $this->cantidad, 'precio' => $this->precio, 'precioAdicional' => $this->precioAdicional, 'opciones' => $this->opciones);
 
         if (count($_SESSION["carrito"]) == 0) {
             array_push($_SESSION["carrito"], $add);
         } else {
             for ($i = 0; $i < count($_SESSION["carrito"]); $i++) {
-                if ($_SESSION["carrito"][$i]["id"] == $this->id) {
+                if ($_SESSION["carrito"][$i]["id"] == $this->id && $_SESSION["carrito"][$i]["opciones"] == $this->opciones) {
                     $condition = $i;
                 }
             }
@@ -80,7 +80,7 @@ class Carrito
     public function edit($key)
     {
         if (array_key_exists($key, $_SESSION["carrito"])) {
-            $_SESSION["carrito"][$key]["cantidad"] = $this->cantidad;
+            $_SESSION["carrito"][$key]["precio"] = $this->precio;
         }
     }
 

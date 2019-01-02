@@ -15,6 +15,8 @@ $usuario = new Clases\Usuarios();
 
 $cod_pedido = $_SESSION["cod_pedido"];
 
+$precioTotal = 0;
+
 $carro = $carrito->return();
 $carroEnvio = $carrito->checkEnvio();
 ?>
@@ -58,19 +60,54 @@ $carroEnvio = $carrito->checkEnvio();
                     <table class="table table-striped nomargin">
                         <tbody>
                         <?php foreach ($carro as $carroItem): ?>
+                            <?php $opcionesMostrar = explode("|||", $carroItem['opciones']); ?>
+                            <?php $varianteMostrar = explode(",", $opcionesMostrar[0]); ?>
+                            <?php $adicionalesMostrar = explode("//", $opcionesMostrar[1]); ?>
                             <tr>
                                 <td>
                                     <strong><?= $carroItem['cantidad']; ?>x</strong> <?= $carroItem['titulo']; ?>
                                 </td>
                                 <td>
-                                    <strong class="pull-right">$<?= $carroItem['precio']; ?></strong>
+                                    <strong class="pull-right">$<?= $carroItem['precio'] * $carroItem['cantidad']; ?></strong>
                                 </td>
                             </tr>
+                            <?php if (!empty($varianteMostrar[0])): ?>
+                                <tr>
+                                    <td>
+                                        - <?= $varianteMostrar[1]; ?>
+                                    </td>
+                                    <td>
+                                        <strong class="pull-right">$<?= $varianteMostrar[0] * $carroItem['cantidad']; ?></strong>
+                                    </td>
+                                </tr>
+                            <?php endif; ?>
+                            <?php if (count($adicionalesMostrar) > 1): ?>
+                                <?php foreach ($adicionalesMostrar as $value): ?>
+                                    <?php $value = explode(",", $value); ?>
+                                    <tr>
+                                        <td>
+                                            - <?= $value[1] ?>
+                                        </td>
+                                        <td>
+                                            <strong class="pull-right">$<?= $value[0] * $carroItem['cantidad'] ?></strong>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            <?php elseif (!empty($adicionalesMostrar[0])): ?>
+                                <?php $value = explode(",", $adicionalesMostrar[0]); ?>
+                                <tr>
+                                    <td>
+                                        - <?= $value[1] ?>
+                                    </td>
+                                    <td>
+                                        <strong class="pull-right">$<?= $value[0] * $carroItem['cantidad'] ?></strong>
+                                    </td>
+                                </tr>
+                            <?php endif; ?>
                         <?php endforeach; ?>
 
-                        <?php $subtotal = 0; ?>
                         <?php foreach ($carro as $carroItem): ?>
-                            <?php $subtotal = $subtotal + ($carroItem['precio'] * $carroItem['cantidad']); ?>
+                            <?php $precioTotal = $precioTotal + ($carroItem['precio'] + $carroItem['precioAdicional']) * $carroItem['cantidad']; ?>
                         <?php endforeach; ?>
                         <tr>
                             <td>
@@ -87,12 +124,13 @@ $carroEnvio = $carrito->checkEnvio();
                                 TOTAL
                             </td>
                             <td class="total_confirm">
-                                <span class="pull-right">$<?= $subtotal + 25; ?></span>
+                                <span class="pull-right">$<?= $precioTotal + 25; ?></span>
                             </td>
                         </tr>
                         </tbody>
                     </table>
                     <?php $carrito->destroy(); ?>
+                    <?php unset($_SESSION["cod_pedido"]); ?>
                     <?php
                     if (isset($_POST["crear_cuenta"])):
                         if ($_POST["password"] == $_POST["password2"]):

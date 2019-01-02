@@ -30,6 +30,8 @@ $carro = $carrito->return();
 $carroEnvio = $carrito->checkEnvio();
 $countCarrito = count($carro);
 
+$precioTotal = 0;
+
 ?>
 
 <!-- SubHeader =============================================== -->
@@ -178,13 +180,30 @@ $countCarrito = count($carro);
                         $variantesPOST = $funcion->antihack_mysqli(isset($_POST['variantesPOST']) ? $_POST['variantesPOST'] : '');
                         $adicionalesPOST = implode("//", $_POST['adicionalesPOST']);
 
+                        $precioAdicional = 0;
+                        if (!empty($variantesPOST)):
+                            $variantesPrecio = explode(",", $variantesPOST);
+                            $precioAdicional = $precioAdicional + $variantesPrecio[0];
+                        endif;
+
+                        if (!empty($adicionalesPOST)):
+                            $adicionalesPrecio = explode("//", $adicionalesPOST);
+                            if (!empty($adicionalesPrecio[0])):
+                                foreach ($adicionalesPrecio as $value):
+                                    $value = explode(",", $value);
+                                    $precioAdicional = $precioAdicional + $value[0];
+                                endforeach;
+                            endif;
+                        endif;
+
                         $carrito->set("id", $id);
                         $carrito->set("cantidad", $cantidad);
                         $carrito->set("titulo", $titulo);
                         $carrito->set("precio", $precio);
+                        $carrito->set("precioAdicional", $precioAdicional);
                         $carrito->set("opciones", $variantesPOST . '|||' . $adicionalesPOST);
                         $carrito->add();
-                        $funcion->headerMove(CANONICAL . "?success");
+                        $funcion->headerMove(CANONICAL);
                     }
                     if (strpos(CANONICAL, "success") == true) {
                         echo "<div class='alert alert-success'>Agregaste un producto a tu carrito, querés <a href='" . URL . "/carrito'>pasar por caja</a> o <a href='" . URL . "/productos'>seguir comprando</a></div>";
@@ -201,6 +220,9 @@ $countCarrito = count($carro);
                     <table class="table table_summary">
                         <tbody>
                         <?php for ($i = 0; $i < $countCarrito; $i++): ?>
+                            <?php $opcionesMostrar = explode("|||", $carro[$i]['opciones']); ?>
+                            <?php $varianteMostrar = explode(",", $opcionesMostrar[0]); ?>
+                            <?php $adicionalesMostrar = explode("//", $opcionesMostrar[1]); ?>
                             <tr>
                                 <td>
                                     <a href="#0" class="remove_item"><i class="icon_minus_alt"></i></a>
@@ -208,9 +230,42 @@ $countCarrito = count($carro);
                                     <?= $carro[$i]['titulo']; ?>
                                 </td>
                                 <td>
-                                    <strong class="pull-right">$<?= $carro[$i]['precio']; ?></strong>
+                                    <strong class="pull-right">$<?= $carro[$i]['precio'] * $carro[$i]['cantidad']; ?></strong>
                                 </td>
                             </tr>
+                            <?php if (!empty($varianteMostrar[0])): ?>
+                                <tr>
+                                    <td>
+                                        - <?= $varianteMostrar[1]; ?>
+                                    </td>
+                                    <td>
+                                        <strong class="pull-right">$<?= $varianteMostrar[0] * $carro[$i]['cantidad']; ?></strong>
+                                    </td>
+                                </tr>
+                            <?php endif; ?>
+                            <?php if (count($adicionalesMostrar) > 1): ?>
+                                <?php foreach ($adicionalesMostrar as $value): ?>
+                                    <?php $value = explode(",", $value); ?>
+                                    <tr>
+                                        <td>
+                                            - <?= $value[1] ?>
+                                        </td>
+                                        <td>
+                                            <strong class="pull-right">$<?= $value[0] * $carro[$i]['cantidad'] ?></strong>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            <?php elseif (!empty($adicionalesMostrar[0])): ?>
+                                <?php $value = explode(",", $adicionalesMostrar[0]); ?>
+                                <tr>
+                                    <td>
+                                        - <?= $value[1] ?>
+                                    </td>
+                                    <td>
+                                        <strong class="pull-right">$<?= $value[0] * $carro[$i]['cantidad'] ?></strong>
+                                    </td>
+                                </tr>
+                            <?php endif; ?>
                         <?php endfor; ?>
                         </tbody>
                     </table>
@@ -227,29 +282,28 @@ $countCarrito = count($carro);
                     <hr>
                     <table class="table table_summary">
                         <tbody>
+                        <?php foreach ($carro as $carroItem): ?>
+                            <?php $precioTotal = $precioTotal + ($carroItem['precio'] + $carroItem['precioAdicional'])*$carroItem['cantidad']; ?>
+                        <?php endforeach; ?>
                         <tr>
                             <td>
-                                <?php $subtotal = 0; ?>
-                                <?php for ($i = 0; $i < $countCarrito; $i++): ?>
-                                    <?php $subtotal = $subtotal + ($carro[$i]['precio']*$carro[$i]['cantidad']); ?>
-                                <?php endfor; ?>
-                                Subtotal <span class="pull-right">$<?=$subtotal;?></span>
+                                Subtotal <span class="pull-right">$<?= $precioTotal; ?></span>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                Delivery <span class="pull-right">$25</span>
+                                Delivery <span class="pull-right">$ 25</span>
                             </td>
                         </tr>
                         <tr>
                             <td class="total">
-                                TOTAL <span class="pull-right">$<?=$subtotal+25;?></span>
+                                TOTAL <span class="pull-right">$<?= $precioTotal + 25; ?></span>
                             </td>
                         </tr>
                         </tbody>
                     </table>
                     <hr>
-                    <a class="btn_full" href="<?=URL?>/revisar">Ordernar</a>
+                    <a class="btn_full" href="<?= URL ?>/revisar">Ordernar</a>
                 </div><!-- End cart_box -->
             </div><!-- End theiaStickySidebar -->
         </div><!-- End col-md-3 -->
