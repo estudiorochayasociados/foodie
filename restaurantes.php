@@ -81,8 +81,8 @@ $numeroPaginas = $empresa->paginador($filterEmpresa, $cantidad);
 ?>
 
 <!-- SubHeader =============================================== -->
-<section class="parallax-window" id="short" data-parallax="scroll" data-image-src="img/sub_header_cart.jpg"
-         data-natural-width="1400" data-natural-height="350">
+<section class="parallax-window" id="short" data-parallax="scroll" data-image-src="<?=URL?>/assets/img/restaurantes.jpg"
+         data-natural-width="1920" data-natural-height="1280">
     <div id="subheader">
         <div id="sub_content">
             <h1>Restaurantes</h1>
@@ -145,22 +145,6 @@ $numeroPaginas = $empresa->paginador($filterEmpresa, $cantidad);
 
         <div class="col-md-9">
 
-            <div id="tools">
-                <div class="row">
-                    <div class="col-md-3 col-sm-3 col-xs-6">
-                        <div class="styled-select">
-                            <select name="sort_rating" id="sort_rating">
-                                <option value="" selected>Sort by ranking</option>
-                                <option value="lower">Lowest ranking</option>
-                                <option value="higher">Highest ranking</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-md-9 col-sm-9 hidden-xs">
-                        <a href="grid_list.html" class="bt_filters"><i class="icon-th"></i></a>
-                    </div>
-                </div>
-            </div><!--End tools -->
             <?php foreach ($empresaArray as $key => $value): ?>
 
                 <?php if ($ubicacionUsuario != ''): ?>

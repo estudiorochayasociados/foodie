@@ -66,6 +66,8 @@ $usuario = new Clases\Usuarios();
                         $usuario->set("direccion", $direccion);
                         $usuario->set("invitado", 1);
                         $usuario->set("fecha", $fecha);
+                        $usuario->set("email", $cod."@emailTemporal.foodie");
+                        $usuario->set("password", $cod."passwordTemporal");
 
                         $usuario->add();
                         $usuario->login();

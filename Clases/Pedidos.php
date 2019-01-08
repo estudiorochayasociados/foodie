@@ -12,6 +12,7 @@ class Pedidos
     public $cantidad;
     public $precio;
     public $precioAdicional;
+    public $costoEnvio;
     public $estado;
     public $tipo;
     public $usuario;
@@ -38,14 +39,15 @@ class Pedidos
 
     public function add()
     {
-        $sql   = "INSERT INTO `pedidos`(`cod`, `producto`,`cantidad`,`precio`,`precioAdicional`, `estado`, `tipo`, `usuario`, `detalle`, `fecha`) VALUES ('{$this->cod}', '{$this->producto}','{$this->cantidad}','{$this->precio}','{$this->precioAdicional}', '{$this->estado}', '{$this->tipo}', '{$this->usuario}', '{$this->detalle}', '{$this->fecha}')";
+        $sql   = "INSERT INTO `pedidos`(`cod`, `producto`,`cantidad`,`precio`,`precioAdicional`,`costoEnvio`, `estado`, `tipo`, `usuario`, `detalle`, `fecha`) VALUES ('{$this->cod}', '{$this->producto}','{$this->cantidad}','{$this->precio}','{$this->precioAdicional}','{$this->costoEnvio}', '{$this->estado}', '{$this->tipo}', '{$this->usuario}', '{$this->detalle}', '{$this->fecha}')";
         $query = $this->con->sql($sql);
+        echo $query;
         return $query;
     }
 
     public function edit()
     {
-        $sql   = "UPDATE `pedidos` SET  `producto`='{$this->producto}',`cantidad`='{$this->cantidad}',`precio`='{$this->precio}',`preciAdicionalo`='{$this->precioAdicional}',`estado`='{$this->estado}',`tipo`='{$this->tipo}',`usuario`='{$this->usuario}',`detalle`='{$this->detalle}',`fecha`='{$this->fecha}' WHERE `id`='{$this->id}'";
+        $sql   = "UPDATE `pedidos` SET  `producto`='{$this->producto}',`cantidad`='{$this->cantidad}',`precio`='{$this->precio}',`precioAdicional`='{$this->precioAdicional}',`costoEnvio`='{$this->costoEnvio}',`estado`='{$this->estado}',`tipo`='{$this->tipo}',`usuario`='{$this->usuario}',`detalle`='{$this->detalle}',`fecha`='{$this->fecha}' WHERE `id`='{$this->id}'";
         $query = $this->con->sql($sql);
         return $query;
     }

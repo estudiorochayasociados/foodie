@@ -130,7 +130,7 @@ endif;
                                 TOTAL
                             </td>
                             <td class="total_confirm">
-                                <span class="pull-right">$<?= $precioTotal + $carro[0]["costoEnvio"]; ?></span>
+                                <span class="pull-right">$<?= $precioTotal+$carro[0]["costoEnvio"]; ?></span>
                             </td>
                         </tr>
                         </tbody>

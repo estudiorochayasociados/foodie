@@ -142,7 +142,7 @@ if (isset($_POST["crear_menu"])):
     //imagen
 
     $menu->add();
-    $funcion->headerMove(URL.'/crear_empresa_paso3');
+    $funcion->headerMove(URL.'/panel#seccion-2');
 endif;
 ?>
 

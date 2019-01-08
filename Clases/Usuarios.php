@@ -46,12 +46,13 @@ class Usuarios
     {
         $validar = $this->validate();
         if (!is_array($validar)) {
-            $sql = "INSERT INTO `usuarios` (`cod`, `nombre`, `apellido`, `doc`, `email`, `password`, `postal`, `direccion`, `barrio`, `localidad`, `provincia`, `pais`, `telefono`, `celular`, `invitado`, `descuento`, `fecha`) VALUES ('{$this->cod}', '{$this->nombre}', '{$this->apellido}', '{$this->doc}', '{$this->email}', '{$this->password}', '{$this->postal}', '{$this->direccion}', '{$this->localidad}', '{$this->provincia}', '{$this->pais}', '{$this->telefono}', '{$this->celular}', '{$this->invitado}', '{$this->descuento}', '{$this->fecha}')";
+            $sql = "INSERT INTO `usuarios` (`cod`, `nombre`, `apellido`, `doc`, `email`, `password`, `postal`, `direccion`, `barrio`, `localidad`, `provincia`, `pais`, `telefono`, `celular`, `invitado`, `descuento`, `fecha`) VALUES ('{$this->cod}', '{$this->nombre}', '{$this->apellido}', '{$this->doc}', '{$this->email}', '{$this->password}', '{$this->postal}', '{$this->direccion}', '{$this->localidad}', '{$this->barrio}', '{$this->provincia}', '{$this->pais}', '{$this->telefono}', '{$this->celular}', '{$this->invitado}', '{$this->descuento}', '{$this->fecha}')";
             $this->con->sql($sql);
             $r = 1;
-        }else{
+        } else {
             $r = 0;
         }
+        echo $r;
         return $r;
     }
 
@@ -76,7 +77,7 @@ class Usuarios
         return $r;
     }
 
-    public function editUnico($atributo,$valor)
+    public function editUnico($atributo, $valor)
     {
         $validar = $this->validate();
         $usuario = $this->view();
@@ -166,9 +167,14 @@ class Usuarios
 
     public function validate()
     {
-        $sql = "SELECT * FROM `usuarios` WHERE email = '{$this->email}'";
-        $usuario = $this->con->sqlReturn($sql);
-        $row = mysqli_fetch_assoc($usuario);
+        if (!empty($this->email)) {
+            $sql = "SELECT * FROM `usuarios` WHERE email = '{$this->email}'";
+            $usuario = $this->con->sqlReturn($sql);
+            $row = mysqli_fetch_assoc($usuario);
+        }else{
+            $row = 'string';
+        }
+
         return $row;
     }
 

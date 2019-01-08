@@ -28,7 +28,7 @@ $usuario->set("cod", $cod_usuario);
 $usuarioData = $usuario->view();
 
 $pagina = isset($_GET["pagina"]) ? $_GET["pagina"] : '0';
-$cantidad = 2;
+$cantidad = 10;
 
 if ($pagina > 0) {
     $pagina = $pagina - 1;
@@ -503,22 +503,6 @@ endif;
                         <p>Especifique a continuación los detalles del menú.</p>
                     </div>
                     <div class="wrapper_indent">
-                        <div id="tools">
-                            <div class="row">
-                                <div class="col-md-3 col-sm-3 col-xs-6">
-                                    <div class="styled-select">
-                                        <select name="sort_rating" id="sort_rating">
-                                            <option value="" selected>Sort by ranking</option>
-                                            <option value="lower">Lowest ranking</option>
-                                            <option value="higher">Highest ranking</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-9 col-sm-9 hidden-xs">
-                                    <a href="grid_list.html" class="bt_filters"><i class="icon-th"></i></a>
-                                </div>
-                            </div>
-                        </div><!--End tools -->
 
                         <a href="<?= URL; ?>/crear-menu" class="btn_1"><i class="icon-plus"></i> Añadir menú</a><br/>
                         <?php foreach ($menuArray as $key => $value): ?>

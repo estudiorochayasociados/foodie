@@ -38,6 +38,7 @@ foreach ($carro as $carroItem):
     $pedidos->set("cantidad", $carroItem["cantidad"]);
     $pedidos->set("precio", $carroItem["precio"]);
     $pedidos->set("precioAdicional", $carroItem["precioAdicional"]);
+    $pedidos->set("costoEnvio", $carroItem["costoEnvio"]);
     $pedidos->set("estado", 0);
     $pedidos->set("tipo", $tipo_pedido);
     $pedidos->set("usuario", $usuarioSesion["cod"]);

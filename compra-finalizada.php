@@ -116,7 +116,7 @@ $carroEnvio = $carrito->checkEnvio();
                                             class="icon_question_alt"></i></a>
                             </td>
                             <td>
-                                <strong class="pull-right">$ <?=$carro[0]["costoEnvio"]?></strong>
+                                <strong class="pull-right">$ <?= $carro[0]["costoEnvio"] ?></strong>
                             </td>
                         </tr>
                         <tr>
@@ -124,44 +124,34 @@ $carroEnvio = $carrito->checkEnvio();
                                 TOTAL
                             </td>
                             <td class="total_confirm">
-                                <span class="pull-right">$<?= $precioTotal + $carro[0]["costoEnvio"]; ?></span>
+                                <span class="pull-right">$<?= $precioTotal+$carro[0]["costoEnvio"]; ?></span>
                             </td>
                         </tr>
                         </tbody>
                     </table>
-                    <?php $carrito->destroy(); ?>
-                    <?php unset($_SESSION["cod_pedido"]); ?>
                     <?php
                     if (isset($_POST["crear_cuenta"])):
                         if ($_POST["password"] == $_POST["password2"]):
                             $email = $funcion->antihack_mysqli(isset($_POST["email"]) ? $_POST["email"] : '');
                             $password = $funcion->antihack_mysqli(isset($_POST["password"]) ? $_POST["password"] : '');
                             $terminos = $funcion->antihack_mysqli(isset($_POST["terminos"]) ? $_POST["terminos"] : '');
-                            $telefono = $funcion->antihack_mysqli(isset($_SESSION["usuarios"]["telefono"]) ? $_SESSION["usuarios"]["telefono"] : '');
-                            $nombre = $funcion->antihack_mysqli(isset($_SESSION["usuarios"]["nombre"]) ? $_SESSION["usuarios"]["nombre"] : '');
-                            $apellido = $funcion->antihack_mysqli(isset($_SESSION["usuarios"]["apellido"]) ? $_SESSION["usuarios"]["apellido"] : '');
-                            $provincia = $funcion->antihack_mysqli(isset($_SESSION["usuarios"]["provincia"]) ? $_SESSION["usuarios"]["provincia"] : '');
-                            $localidad = $funcion->antihack_mysqli(isset($_SESSION["usuarios"]["localidad"]) ? $_SESSION["usuarios"]["localidad"] : '');
-                            $barrio = $funcion->antihack_mysqli(isset($_SESSION["usuarios"]["barrio"]) ? $_SESSION["usuarios"]["barrio"] : '');
-                            $direccion = $funcion->antihack_mysqli(isset($_SESSION["usuarios"]["direccion"]) ? $_SESSION["usuarios"]["direccion"] : '');
-                            $cod = $funcion->antihack_mysqli(isset($_SESSION["usuarios"]["cod"]) ? $_SESSION["usuarios"]["cod"] : '');
-
-                            $fecha = getdate();
-                            $fecha = $fecha['year'] . '-' . $fecha['mon'] . '-' . $fecha['mday'];
+                            $cod = $funcion->antihack_mysqli(isset($_POST["cod"]) ? $_POST["cod"] : '');
 
                             $usuario->set("cod", $cod);
-                            $usuario->set("nombre", $nombre);
-                            $usuario->set("apellido", $apellido);
-                            $usuario->set("provincia", $provincia);
-                            $usuario->set("localidad", $localidad);
-                            $usuario->set("direccion", $direccion);
-                            $usuario->set("barrio", $barrio);
-                            $usuario->set("telefono", $telefono);
+                            $usuarioData = $usuario->view();
+
+                            $usuario->set("nombre", $usuarioData['nombre']);
+                            $usuario->set("apellido", $usuarioData['apellido']);
+                            $usuario->set("provincia", $usuarioData['provincia']);
+                            $usuario->set("localidad", $usuarioData['localidad']);
+                            $usuario->set("direccion", $usuarioData['direccion']);
+                            $usuario->set("barrio", $usuarioData['barrio']);
+                            $usuario->set("telefono", $usuarioData['telefono']);
                             $usuario->set("email", $email);
                             $usuario->set("password", $password);
                             $usuario->set("terminos", $terminos);
                             $usuario->set("invitado", 0);
-                            $usuario->set("fecha", $fecha);
+                            $usuario->set("fecha", $usuarioData['fecha']);
 
                             if ($usuario->edit() == 0):
                                 ?>
@@ -178,7 +168,7 @@ $carroEnvio = $carrito->checkEnvio();
                         endif;
                     endif;
                     ?>
-                    <?php if ($_SESSION["usuarios"]["invitado"] == 0): ?>
+                    <?php if ($_SESSION["usuarios"]["invitado"] == 1): ?>
                         <h3>¿Te gustaría crear una cuenta?</h3>
                         <p>
                             ¡Solo te tomará 1 minuto!.
@@ -214,6 +204,7 @@ $carroEnvio = $carrito->checkEnvio();
                                         <input type="checkbox" value="1" id="check_2" name="terminos" required>
                                         <span>He leído y acepto los <strong>Términos &amp; Condiciones</strong></span>
                                     </label><br/><br/>
+                                    <input type="hidden" name="cod" value="<?= $_SESSION['usuarios']['cod'] ?>">
                                     <div class="row">
                                         <div class="col-md-4">
                                             <button class="btn_full" name="crear_cuenta" type="submit">Confirmar <i
@@ -230,4 +221,9 @@ $carroEnvio = $carrito->checkEnvio();
     </div><!-- End container -->
     <!-- End Content =============================================== -->
 
+<?php if (!empty($carro)): ?>
+    <?php $carrito->destroy(); ?>
+    <?php unset($_SESSION["usuarios"]); ?>
+    <?php unset($_SESSION["cod_pedido"]); ?>
+<?php endif; ?>
 <?php $template->themeEnd() ?>

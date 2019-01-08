@@ -4,7 +4,7 @@ Config\Autoload::runSitio();
 $template = new Clases\TemplateSite();
 $funciones = new Clases\PublicFunction();
 $contenidos = new Clases\Contenidos();
-$template->set("title", "CES | Inicio");
+$template->set("title", "Foodie | Nosotros");
 $template->set("description", "");
 $template->set("keywords", "");
 $template->set("favicon", LOGO);
@@ -13,8 +13,8 @@ $id = isset($_GET["id"]) ? $_GET["id"] : '';
 $contenidos->set("cod", $id);
 $contenido = $contenidos->view();
 ?>
-    <section class="parallax-window" id="short" data-parallax="scroll" data-image-src="img/sub_header_short.jpg"
-             data-natural-width="1400" data-natural-height="350">
+    <section class="parallax-window" id="short" data-parallax="scroll" data-image-src="<?=URL?>/assets/img/nosotros.jpg"
+             data-natural-width="1600" data-natural-height="400">
         <div id="subheader">
             <div id="sub_content">
                 <h1><?= $contenido["cod"] ?></h1>

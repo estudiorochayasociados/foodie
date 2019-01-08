@@ -35,8 +35,9 @@ $precioTotal = 0;
 ?>
 
 <!-- SubHeader =============================================== -->
-<section class="parallax-window" data-parallax="scroll" data-image-src="img/sub_header_2.jpg" data-natural-width="1400"
-         data-natural-height="470">
+<section class="parallax-window" data-parallax="scroll" data-image-src="<?= URL ?>/assets/img/restaurantes.jpg"
+         data-natural-width="1920"
+         data-natural-height="1280">
     <div id="subheader">
         <div id="sub_content">
             <div id="thumb"><img src="<?= URL ?>/<?= $empresaData['logo'] ?>" alt=""></div>
@@ -84,7 +85,7 @@ $precioTotal = 0;
             <div class="box_style_2 hidden-xs" id="help">
                 <i class="icon-phone"></i>
                 <h4>Nuestro <span>Teléfono</span></h4>
-                <a href="tel://<?=$empresaData['telefono']?>" class="phone">+<?=$empresaData['telefono']?></a>
+                <a href="tel://<?= $empresaData['telefono'] ?>" class="phone">+<?= $empresaData['telefono'] ?></a>
                 <small>Lunes a Viernes 9.00am - 7.30pm</small>
             </div>
         </div><!-- End col-md-3 -->
@@ -92,20 +93,10 @@ $precioTotal = 0;
         <div class="col-md-6">
             <div class="box_style_2" id="main_menu">
                 <h2 class="inner">Menús</h2>
-                <?php foreach ($productosArraySecciones as $key => $value): ?>
-                    <?php $variantes = explode("|||", $value['variantes']); ?>
-                    <?php $variantes1 = explode(",", $variantes[0]); ?>
-                    <?php $variantes2 = explode(",", $variantes[1]); ?>
-                    <?php $countVariantes = count($variantes1); ?>
-                    <?php $adicionales = explode("|||", $value['adicionales']); ?>
-                    <?php $adicionales1 = explode(",", $adicionales[0]); ?>
-                    <?php $adicionales2 = explode(",", $adicionales[1]); ?>
-                    <?php $countAdicionales = count($adicionales); ?>
-                    <?php $secciones->set("cod", $value['seccion']); ?>
+                <?php foreach ($productosArraySecciones as $keyS => $valueS): ?>
+                    <?php $secciones->set("cod", $valueS['seccion']); ?>
                     <?php $seccionData = $secciones->view(); ?>
-                    <?php $imagen->set("cod", $value['cod']); ?>
-                    <?php $imagenData = $imagen->view(); ?>
-                    <h3 class="nomargin_top" id="<?= $value['seccion'] ?>"><?= $seccionData['titulo']; ?></h3>
+                    <h3 class="nomargin_top" id="<?= $valueS['seccion'] ?>"><?= $seccionData['titulo']; ?></h3>
                     <table class="table table-striped cart-list">
                         <thead>
                         <tr>
@@ -115,50 +106,69 @@ $precioTotal = 0;
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td width="50%">
-                                <figure class="thumb_menu_list"><img src="<?= URL ?>/<?= $imagenData['ruta'] ?>"
-                                                                     alt="thumb"></figure>
-                                <h5><?= $value['titulo'] ?></h5>
-                                <p><?= $value['desarrollo'] ?></p>
-                            </td>
-                            <td width="25%">
-                                <strong><?= $value['precio'] ?></strong>
-                            </td>
-                            <td class="options" width="25%">
-                                <div class="dropdown dropdown-options">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><i
-                                                class="icon_plus_alt2"></i></a>
-                                    <div class="dropdown-menu">
-                                        <form method="post">
-                                            <h5>Variantes</h5>
-                                            <?php for ($i = 0; $i < $countVariantes; $i++): ?>
-                                                <label>
-                                                    <input type="radio"
-                                                           value="<?= $variantes1[$i] ?>,<?= $variantes2[$i] ?>"
-                                                           name="variantesPOST"><?= $variantes2[$i] ?>
-                                                    <span>+ $<?= $variantes1[$i] ?></span>
-                                                </label>
-                                            <?php endfor; ?>
-                                            <h5>Adicionales</h5>
-                                            <?php for ($i = 0; $i < $countAdicionales; $i++): ?>
-                                                <label>
-                                                    <input type="checkbox"
-                                                           value="<?= $adicionales1[$i] ?>,<?= $adicionales2[$i] ?>"
-                                                           name="adicionalesPOST[]"><?= $adicionales2[$i] ?>
-                                                    <span>+ $<?= $adicionales1[$i] ?></span>
-                                                </label>
-                                            <?php endfor; ?>
-                                            <input class="form-control" name="cantidad" type="number" min="1" max="99"
-                                                   value="1"><br/>
-                                            <button type="submit" name="enviar_<?= $value['cod'] ?>"
-                                                    class="btn btn-danger">Agregar al carrito
-                                            </button>
-                                        </form>
+                        <?php $filterProductos = array("seccion = '" . $valueS['seccion'] . "'"); ?>
+                        <?php $productosArray = $productos->list($filterProductos, "", ""); ?>
+                        <?php foreach ($productosArray as $key => $value): ?>
+                            <?php $variantes = explode("|||", $value['variantes']); ?>
+                            <?php $variantes1 = explode(",", $variantes[0]); ?>
+                            <?php $variantes2 = explode(",", $variantes[1]); ?>
+                            <?php $countVariantes = count($variantes1); ?>
+                            <?php $adicionales = explode("|||", $value['adicionales']); ?>
+                            <?php $adicionales1 = explode(",", $adicionales[0]); ?>
+                            <?php $adicionales2 = explode(",", $adicionales[1]); ?>
+                            <?php $countAdicionales = count($adicionales); ?>
+                            <?php $imagen->set("cod", $value['cod']); ?>
+                            <?php $imagenData = $imagen->view(); ?>
+                            <tr>
+                                <td width="50%">
+                                    <figure class="thumb_menu_list"><img src="<?= URL ?>/<?= $imagenData['ruta'] ?>"
+                                                                         alt="thumb"></figure>
+                                    <h5><?= $value['titulo'] ?></h5>
+                                    <p><?= $value['desarrollo'] ?></p>
+                                </td>
+                                <td width="25%">
+                                    <strong><?= $value['precio'] ?></strong>
+                                </td>
+                                <td class="options" width="25%">
+                                    <div class="dropdown dropdown-options">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><i
+                                                    class="icon_plus_alt2"></i></a>
+                                        <div class="dropdown-menu">
+                                            <form method="post">
+                                                <?php if (!empty($variantes1[0])): ?>
+                                                    <h5>Variantes</h5>
+                                                    <?php for ($i = 0; $i < $countVariantes; $i++): ?>
+                                                        <label>
+                                                            <input type="radio"
+                                                                   value="<?= $variantes1[$i] ?>,<?= $variantes2[$i] ?>"
+                                                                   name="variantesPOST"><?= $variantes2[$i] ?>
+                                                            <span>+ $<?= $variantes1[$i] ?></span>
+                                                        </label>
+                                                    <?php endfor; ?>
+                                                <?php endif; ?>
+                                                <?php if (!empty($adicionales1[0])): ?>
+                                                    <h5>Adicionales</h5>
+                                                    <?php for ($i = 0; $i < $countAdicionales; $i++): ?>
+                                                        <label>
+                                                            <input type="checkbox"
+                                                                   value="<?= $adicionales1[$i] ?>,<?= $adicionales2[$i] ?>"
+                                                                   name="adicionalesPOST[]"><?= $adicionales2[$i] ?>
+                                                            <span>+ $<?= $adicionales1[$i] ?></span>
+                                                        </label>
+                                                    <?php endfor; ?>
+                                                <?php endif; ?>
+                                                <input class="form-control" name="cantidad" type="number" min="1"
+                                                       max="99"
+                                                       value="1"><br/>
+                                                <button type="submit" name="enviar_<?= $value['cod'] ?>"
+                                                        class="btn btn-danger">Agregar al carrito
+                                                </button>
+                                            </form>
+                                        </div>
                                     </div>
-                                </div>
-                            </td>
-                        </tr>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
                         </tbody>
                     </table>
                     <hr>
@@ -280,7 +290,7 @@ $precioTotal = 0;
                     <table class="table table_summary">
                         <tbody>
                         <?php foreach ($carro as $carroItem): ?>
-                            <?php $precioTotal = $precioTotal + ($carroItem['precio'] + $carroItem['precioAdicional'])*$carroItem['cantidad']; ?>
+                            <?php $precioTotal = $precioTotal + ($carroItem['precio'] + $carroItem['precioAdicional']) * $carroItem['cantidad']; ?>
                         <?php endforeach; ?>
                         <tr>
                             <td>
@@ -289,7 +299,7 @@ $precioTotal = 0;
                         </tr>
                         <tr>
                             <td>
-                                Delivery <span class="pull-right">$ <?=$empresaData['costoEnvio']?></span>
+                                Delivery <span class="pull-right">$ <?= $empresaData['costoEnvio'] ?></span>
                             </td>
                         </tr>
                         <tr>

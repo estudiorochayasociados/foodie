@@ -96,18 +96,14 @@ endif;
                         <div class="col-md-9">
                             <div class="form-group">
                                 <label>Nombre de la empresa</label>
-                                <input class="form-control" value="<?php if (!empty($empresaData['titulo'])) {
-                                    echo $empresaData['titulo'];
-                                } ?>" name="tituloEmpresa" id="tituloEmpresa" type="text"
+                                <input class="form-control" value="" name="tituloEmpresa" id="tituloEmpresa" type="text"
                                        placeholder="Ej. Restaurante Argentino">
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label>Costo de envío</label>
-                                <input class="form-control" value="<?php if (!empty($empresaData['costoEnvio'])) {
-                                    echo $empresaData['costoEnvio'];
-                                } ?>" name="costoEnvioEmpresa" id="costoEnvioEmpresa" type="text"
+                                <input class="form-control" value="" name="costoEnvioEmpresa" id="costoEnvioEmpresa" type="text"
                                        placeholder="Ej. $25">
                             </div>
                         </div>
