@@ -140,7 +140,9 @@ endif;
                         $postal = $funcion->antihack_mysqli(!empty($_POST["postalEmpresa"]) ? $_POST["postalEmpresa"] : $empresaData['postal']);
 
                         if ($direccion != $empresaData['direccion'] || $ciudad != $empresaData['ciudad'] || $provincia != $empresaData['provincia']):
-                            $ubicacionEmpresa = str_replace(' ', '+', $direccion . '+' . $ciudad . '+' . $provincia);
+                            $ubicacionEmpresa = $direccion . '+' . $ciudad . '+' . $provincia;
+                            $ubicacionEmpresa = str_replace("-", "+", $funcion->normalizar_link($ubicacionEmpresa));
+                            var_dump($ubicacionEmpresa);
                             $jsonEmpresa = json_decode(file_get_contents('https://geocoder.api.here.com/6.2/geocode.json?app_id=Nkd7zJVtg6iaOyaQoEvK&app_code=HTkK8DlaV14bg6RDCA-pQA&searchtext=' . $ubicacionEmpresa));
                             $empresaLongitud = $jsonEmpresa->Response->View[0]->Result[0]->Location->DisplayPosition->Longitude;
                             $empresaLatitud = $jsonEmpresa->Response->View[0]->Result[0]->Location->DisplayPosition->Latitude;
@@ -235,7 +237,7 @@ endif;
                         endif;
 
                         $empresa->edit();
-                        $funcion->headerMove(URL . '/panel');
+                        //$funcion->headerMove(URL . '/panel');
                     endif;
                     ?>
 

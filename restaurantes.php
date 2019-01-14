@@ -22,6 +22,7 @@ if ($ubicacionUsuario != ''):
     $usuarioLatitud = ($jsonUsuario->Response->View[0]->Result[0]->Location->DisplayPosition->Latitude);
 endif;
 
+
 $categoriaGET = isset($_GET["categoria"]) ? $_GET["categoria"] : 0;
 $filterEmpresa = '';
 
@@ -54,7 +55,12 @@ if ($categoriaGET != 0):
     endif;
 endif;
 
-$categoriasArray = $categorias->list("", "titulo asc", "");
+$productosCategorias = $productos->list(array("categoria != '' GROUP BY categoria"), "", "");
+foreach ($productosCategorias as $key => $value):
+    $categoriasQuery[] = "cod = '".$value['categoria']."'";
+endforeach;
+$filterCategorias = array(implode(" OR ",$categoriasQuery));
+$categoriasArray = $categorias->list($filterCategorias, "titulo asc", "");
 
 $pagina = isset($_GET["pagina"]) ? $_GET["pagina"] : '0';
 $cantidad = 2;
@@ -69,9 +75,9 @@ else:
     $url = CANONICAL;
 endif;
 
-if(isset($_SESSION['seed'])){
+if (isset($_SESSION['seed'])) {
     $seed = $_SESSION['seed'];
-}else{
+} else {
     $_SESSION['seed'] = mt_rand();
     $seed = $_SESSION['seed'];
 }
@@ -81,7 +87,8 @@ $numeroPaginas = $empresa->paginador($filterEmpresa, $cantidad);
 ?>
 
 <!-- SubHeader =============================================== -->
-<section class="parallax-window" id="short" data-parallax="scroll" data-image-src="<?=URL?>/assets/img/restaurantes.jpg"
+<section class="parallax-window" id="short" data-parallax="scroll"
+         data-image-src="<?= URL ?>/assets/img/restaurantes.jpg"
          data-natural-width="1920" data-natural-height="1280">
     <div id="subheader">
         <div id="sub_content">
@@ -122,7 +129,7 @@ $numeroPaginas = $empresa->paginador($filterEmpresa, $cantidad);
                         <h6><b>Categorías</b></h6>
                         <ul>
                             <?php foreach ($categoriasArray as $key => $value): ?>
-                            <?php $anidador = $funcion->anidador(CANONICAL, "categoria", count($_GET)); ?>
+                                <?php $anidador = $funcion->anidador(CANONICAL, "categoria", count($_GET)); ?>
                                 <?php if ($categoriaGET != 0): ?>
                                     <?php $categoriaNueva = $categoriaGET . "," . $value['cod']; ?>
                                     <?php $urlFiltro = $funcion->eliminar_get(CANONICAL, 'categoria'); ?>
@@ -182,17 +189,18 @@ $numeroPaginas = $empresa->paginador($filterEmpresa, $cantidad);
                                     • <?= $value['provincia'] ?>
                                 </div>
                                 <?php if ($ubicacionUsuario != ''): ?>
-                                <div class="mt-5">
-                                    <span class="info">Distancia: </span>
-                                    <?= $distancia ?> m
-                                </div>
+                                    <div class="mt-5">
+                                        <span class="info">Distancia: </span>
+                                        <?= $distancia ?> m
+                                    </div>
                                 <?php endif; ?>
                             </div>
                         </div>
                         <div class="col-md-3 col-sm-3">
                             <div class="go_to">
                                 <div>
-                                    <a href="<?=URL;?>/restaurante/<?=str_replace(" ","-",$value['titulo']);?>/<?= $value['cod'] ?>" class="btn_1">Ver Restaurante</a>
+                                    <a href="<?= URL; ?>/restaurante/<?= str_replace(" ", "-", $value['titulo']); ?>/<?= $value['cod'] ?>"
+                                       class="btn_1">Ver Restaurante</a>
                                 </div>
                             </div>
                         </div>
