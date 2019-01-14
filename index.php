@@ -36,19 +36,24 @@ endif;
             <form method="post">
                 <div id="custom-search-input">
                     <input type="hidden" name="provincia" value="Córdoba">
-                    <div class="form-group">
-                        <select class="form-control" name="ciudad" id="ciudad" required>
-                            <option value="" selected disabled>Seleccioná tu ciudad</option>
-                            <option value="San Francisco">San Francisco</option>
-                            <option value="Devoto">Devoto</option>
-                            <option value="La Francia">La Francia</option>
-                        </select>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <select class="form-control" name="ciudad" id="ciudad" required>
+                                <option value="" selected disabled>Ciudad</option>
+                                <option value="San Francisco">San Francisco</option>
+                                <option value="Devoto">Devoto</option>
+                                <option value="La Francia">La Francia</option>
+                            </select>
+                        </div>
                     </div>
-                    <div class="input-group">
-                        <input type="text" class=" search-query" name="direccion" placeholder="Escribí tu dirección">
-                        <span class="input-group-btn">
-                        <input type="submit" name="ubicacion" class="btn_search" value="submit">
-                        </span>
+                    <div class="col-md-7">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="direccion"
+                                   placeholder="Escribí tu dirección">
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <input type="submit" name="ubicacion" class="h40 btn_1" value="Buscar">
                     </div>
                 </div>
             </form>
