@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-01-2019 a las 19:28:27
+-- Tiempo de generación: 14-01-2019 a las 12:10:54
 -- Versión del servidor: 10.1.37-MariaDB
 -- Versión de PHP: 7.2.12
 
@@ -195,7 +195,7 @@ CREATE TABLE `empresas` (
 
 INSERT INTO `empresas` (`id`, `cod`, `titulo`, `telefono`, `email`, `provincia`, `ciudad`, `barrio`, `direccion`, `postal`, `coordenadas`, `desarrollo`, `redes`, `logo`, `costoEnvio`, `categoria`, `subcategoria`, `keywords`, `description`, `fecha`, `cod_usuario`) VALUES
 (8, '3d104b7afe', 'Lo de Jacinto', '3564555555', 'lodejacinto@gmail.com', 'Córdoba', 'San Francisco', 'Centro', 'Bv. 9 de Julio', '2400', '-31.42768,-62.10869', 'Empanadas caseras en san francisco', '', 'assets/archivos/recortadas/a_ea71e9b0d9.jpg', 45, '', '', '', '', '2019-01-08', '4de781975b'),
-(9, '95f70d1f48', 'Lomitos 2x1', '3564666666', 'lomitos@gmail.com', 'Córdoba', 'San Francisco', 'Centro', '25 de Mayo 1783', '2400', '', 'Los mejores lomitos de la zona', '', 'assets/archivos/recortadas/a_edcae06102.jpg', 40, '', '', '', '', '2019-01-08', '6b3c9b691c');
+(9, '95f70d1f48', 'Lomitos 2x1', '3564666666', 'lomitos@gmail.com', 'Córdoba', 'San Francisco', 'Centro', '25 de Mayo 1781', '2400', '-31.4295317,-62.0859787', 'Los mejores lomitos de la zona', '', 'assets/archivos/recortadas/a_edcae06102.jpg', 40, '', '', '', '', '2019-01-08', '6b3c9b691c');
 
 -- --------------------------------------------------------
 
@@ -457,7 +457,8 @@ CREATE TABLE `pedidos` (
 
 INSERT INTO `pedidos` (`id`, `cod`, `producto`, `cantidad`, `precio`, `precioAdicional`, `costoEnvio`, `estado`, `tipo`, `usuario`, `detalle`, `fecha`) VALUES
 (382, '135339bddf', 'Lomito de bolsillo con papas fritas | |||40,x1 Coca-cola 1L//15,x1 Extra mayonesa', 1, 160, 55, 0, 1, 1, '6b3c9b691c', 'Paga con: 1000', '2019-01-08 15:25:16'),
-(383, '237055fa20', 'Lomito de bolsillo con papas fritas | |||40,x1 Coca-cola 1L//15,x1 Extra mayonesa', 2, 160, 55, 40, 1, 1, 'babd0196c3', 'Paga con: 500', '2019-01-08 15:27:55');
+(383, '237055fa20', 'Lomito de bolsillo con papas fritas | |||40,x1 Coca-cola 1L//15,x1 Extra mayonesa', 2, 160, 55, 40, 1, 1, 'babd0196c3', 'Paga con: 500', '2019-01-08 15:27:55'),
+(384, 'ed018a6bbe', 'Empanda criolla dulce | |||', 1, 25, 0, 45, 1, 1, '201134bd61', 'Paga con: 500', '2019-01-10 22:53:08');
 
 -- --------------------------------------------------------
 
@@ -4349,8 +4350,9 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`id`, `cod`, `nombre`, `apellido`, `doc`, `email`, `password`, `postal`, `direccion`, `barrio`, `localidad`, `provincia`, `pais`, `telefono`, `celular`, `invitado`, `descuento`, `vendedor`, `fecha`) VALUES
 (16, '4de781975b', 'Lautaro', 'Gonzalez', '', 'web@estudiorochayasoc.com.ar', 'weAr2010', '', '', '', '', '', '', '', '', 0, 0, 1, '2019-01-08'),
-(17, '6b3c9b691c', 'Lautaro2', 'Gonzalez2', '', '', '', '', 'Lopez y planes 2060', 'Catedral', 'San Francisco', 'Córdoba', '', '356455555', '', 0, 0, 1, '2019-01-08'),
-(18, 'babd0196c3', 'Lautaro', 'Gonzalez', '', 'babd0196c3@emailTemporal.foodie', 'babd0196c3passwordTemporal', '', 'Lopez y planes 2060', 'San Francisco', 'Catedral', 'Córdoba', '', '35647864', '', 1, 0, 0, '2019-01-08');
+(17, '6b3c9b691c', 'Lautaro2', 'Gonzalez2', '', 'web@123.com', '1234', '', 'Lopez y planes 2060', 'Catedral', 'San Francisco', 'Córdoba', '', '356455555', '', 0, 0, 1, '2019-01-08'),
+(18, 'babd0196c3', 'Lautaro', 'Gonzalez', '', 'babd0196c3@emailTemporal.foodie', 'babd0196c3passwordTemporal', '', 'Lopez y planes 2060', 'San Francisco', 'Catedral', 'Córdoba', '', '35647864', '', 1, 0, 0, '2019-01-08'),
+(19, '201134bd61', 'adsadas', 'asdasd', '', '201134bd61@emailTemporal.foodie', '201134bd61passwordTemporal', '', 'asdasd', 'San Francisco', 'asdasd', 'Córdoba', '', '12313', '', 1, 0, 0, '2019-01-11');
 
 -- --------------------------------------------------------
 
@@ -4544,7 +4546,7 @@ ALTER TABLE `novedades`
 -- AUTO_INCREMENT de la tabla `pedidos`
 --
 ALTER TABLE `pedidos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=384;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=385;
 
 --
 -- AUTO_INCREMENT de la tabla `portfolio`
@@ -4592,7 +4594,7 @@ ALTER TABLE `subcategorias`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de la tabla `videos`

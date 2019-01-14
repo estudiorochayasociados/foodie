@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d06e5cdf-69fd-40c2-9307-1de6517dce6d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Clases/Categorias.php" beforeDir="false" afterPath="$PROJECT_DIR$/Clases/Categorias.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/panel.php" beforeDir="false" afterPath="$PROJECT_DIR$/panel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/restaurantes.php" beforeDir="false" afterPath="$PROJECT_DIR$/restaurantes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Config/foodie.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Config/foodie.sql" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -187,7 +184,7 @@
       <path value="Z:/vendor/mercadopago/sdk" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-10" />
     <option name="y" value="-10" />
     <option name="width" value="1940" />
@@ -305,12 +302,12 @@
       <workItem from="1546965694803" duration="6156000" />
       <workItem from="1547171844818" duration="794000" />
       <workItem from="1547312879973" duration="662000" />
-      <workItem from="1547430980640" duration="4396000" />
+      <workItem from="1547430980640" duration="4447000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="254021000" />
+    <option name="totallyTimeSpent" value="254072000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
