@@ -12,3 +12,6 @@ RewriteRule ^crear-menu ./crear_menu.php
 RewriteRule ^crear-empresa ./crear_empresa.php
 RewriteRule ^restaurante/(.*)/(.*)$ ./restaurante.php?id=$2
 RewriteRule ^c/(.*)/(.*)$ ./contenidos.php?id=$2
+
+SetOutputFilter DEFLATE
+
