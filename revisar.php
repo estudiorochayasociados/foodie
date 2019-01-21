@@ -66,9 +66,8 @@ endif;
                     <table class="table table-striped nomargin">
                         <tbody>
                         <?php foreach ($carro as $carroItem): ?>
-                            <?php $opcionesMostrar = explode("|||", $carroItem['opciones']); ?>
-                            <?php $varianteMostrar = explode(",", $opcionesMostrar[0]); ?>
-                            <?php $adicionalesMostrar = explode("//", $opcionesMostrar[1]); ?>
+                            <?php $variantesMostrarCarrito = $carroItem['opciones'][0]; ?>
+                            <?php $adicionalesMostrarCarrito = $carroItem['opciones'][1]; ?>
                             <tr>
                                 <td>
                                     <strong><?= $carroItem['cantidad']; ?>x</strong> <?= $carroItem['titulo']; ?>
@@ -77,18 +76,19 @@ endif;
                                     <strong class="pull-right">$<?= $carroItem['precio'] * $carroItem['cantidad']; ?></strong>
                                 </td>
                             </tr>
-                            <?php if (!empty($varianteMostrar[0])): ?>
+                            <?php if (!empty($variantesMostrarCarrito[0])): ?>
+                                <?php $valor = explode(",",$variantesMostrarCarrito); ?>
                                 <tr>
                                     <td>
-                                        - <?= $varianteMostrar[1]; ?>
+                                        - <?= $valor[1]; ?>
                                     </td>
                                     <td>
-                                        <strong class="pull-right">$<?= $varianteMostrar[0] * $carroItem['cantidad']; ?></strong>
+                                        <strong class="pull-right">$<?= $valor[0] * $carroItem['cantidad']; ?></strong>
                                     </td>
                                 </tr>
                             <?php endif; ?>
-                            <?php if (count($adicionalesMostrar) > 1): ?>
-                                <?php foreach ($adicionalesMostrar as $value): ?>
+                            <?php if (is_array($adicionalesMostrarCarrito) && count($adicionalesMostrarCarrito) > 1): ?>
+                                <?php foreach ($variantesMostrarCarrito as $value): ?>
                                     <?php $value = explode(",", $value); ?>
                                     <tr>
                                         <td>
@@ -99,14 +99,14 @@ endif;
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
-                            <?php elseif (!empty($adicionalesMostrar[0])): ?>
-                                <?php $value = explode(",", $adicionalesMostrar[0]); ?>
+                            <?php elseif (is_array($adicionalesMostrarCarrito) && count($adicionalesMostrarCarrito) == 1): ?>
+                                <?php $valor = explode(",", $adicionalesMostrarCarrito[0]); ?>
                                 <tr>
                                     <td>
-                                        - <?= $value[1] ?>
+                                        - <?= $valor[1] ?>
                                     </td>
                                     <td>
-                                        <strong class="pull-right">$<?= $value[0] * $carroItem['cantidad'] ?></strong>
+                                        <strong class="pull-right">$<?= $valor[0] * $carroItem['cantidad'] ?></strong>
                                     </td>
                                 </tr>
                             <?php endif; ?>

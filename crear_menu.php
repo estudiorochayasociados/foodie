@@ -59,7 +59,14 @@ if (isset($_POST["crear_menu"])):
     $precio = $funcion->antihack_mysqli(isset($_POST["precioMenu"]) ? $_POST["precioMenu"] : '');
     $desarrollo = $funcion->antihack_mysqli(isset($_POST["desarrolloMenu"]) ? $_POST["desarrolloMenu"] : '');
     $stock = $funcion->antihack_mysqli(isset($_POST["stockMenu"]) ? $_POST["stockMenu"] : '');
-    $variante1 = implode(',', $_POST["variante1"]);
+
+    for($i = 0; $i < count($_POST["variante1"]); $i++){
+        $variantes[] = $_POST["variante1"][$i].','.$_POST["variante2"][$i];
+    }
+    for($i = 0; $i < count($_POST["adicional1"]); $i++){
+        $adicionales[] = $_POST["adicional1"][$i].','.$_POST["adicional2"][$i];
+    }
+    /*$variante1 = implode(',', $_POST["variante1"]);
     $variante2 = implode(',', $_POST["variante2"]);
     $adicional1 = implode(',', $_POST["adicional1"]);
     $adicional2 = implode(',', $_POST["adicional2"]);
@@ -70,7 +77,7 @@ if (isset($_POST["crear_menu"])):
 
     $variantes = $variante1 . '|||' . $variante2;
     $adicionales = $adicional1 . '|||' . $adicional2;
-
+*/
     if (empty($seccionesArray)):
         $seccionNueva = new Clases\Secciones();
         $cod_seccion = substr(md5(uniqid(rand())), 0, 10);
@@ -107,8 +114,8 @@ if (isset($_POST["crear_menu"])):
     $menu->set("precio", $precio);
     $menu->set("desarrollo", $desarrollo);
     $menu->set("stock", $stock);
-    $menu->set("variantes", $variantes);
-    $menu->set("adicionales", $adicionales);
+    $menu->set("variantes", serialize($variantes));
+    $menu->set("adicionales", serialize($adicionales));
     $menu->set("fecha", $fecha);
 
     //imagen

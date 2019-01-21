@@ -31,13 +31,8 @@ $seccionData = $seccion->view();
 $imagenes->set("cod", $menuData['cod']);
 $imagenData = $imagenes->view();
 
-$variantesExplotadas = explode('|||', $menuData['variantes']);
-$variante1Explotada = explode(',', $variantesExplotadas[0]);
-$variante2Explotada = explode(',', $variantesExplotadas[1]);
-
-$adicionalesExplotadas = explode('|||', $menuData['adicionales']);
-$adicional1Explotada = explode(',', $adicionalesExplotadas[0]);
-$adicional2Explotada = explode(',', $adicionalesExplotadas[1]);
+$variantesMostrar = unserialize($menuData['variantes']);
+$adicionalesMostrar = unserialize($menuData['adicionales']);
 ?>
 
 <!-- SubHeader =============================================== -->
@@ -71,28 +66,15 @@ if (isset($_POST["modificar_menu"])):
     $desarrollo = $funcion->antihack_mysqli(!empty($_POST["desarrolloMenu"]) ? $_POST["desarrolloMenu"] : $menuData['desarrollo']);
     $stock = $funcion->antihack_mysqli(!empty($_POST["stockMenu"]) ? $_POST["stockMenu"] : $menuData['stock']);
 
-    if (!empty($_POST["variante1"][1])):
-        $variante1 = implode(',', $_POST["variante1"]);
-        $variante2 = implode(',', $_POST["variante2"]);
-    else:
-        $variante1 = $_POST["variante1"][0];
-        $variante2 = $_POST["variante2"][0];
-    endif;
-    if (!empty($_POST["adicional1"][1])):
-        $adicional1 = implode(',', $_POST["adicional1"]);
-        $adicional2 = implode(',', $_POST["adicional2"]);
-    else:
-        $adicional1 = $_POST["adicional1"][0];
-        $adicional2 = $_POST["adicional2"][0];
-    endif;
 
-    $variante1 = $funcion->antihack_mysqli(!empty($variante1) ? $variante1 : '');
-    $variante2 = $funcion->antihack_mysqli(!empty($variante2) ? $variante2 : '');
-    $adicional1 = $funcion->antihack_mysqli(!empty($adicional1) ? $adicional1 : '');
-    $adicional2 = $funcion->antihack_mysqli(!empty($adicional2) ? $adicional2 : '');
+        for($i = 0; $i < count($_POST["variante1"]); $i++){
+            $variantes[] = $_POST["variante1"][$i].','.$_POST["variante2"][$i];
+        }
 
-    $variantes = $variante1 . '|||' . $variante2;
-    $adicionales = $adicional1 . '|||' . $adicional2;
+        for($i = 0; $i < count($_POST["adicional1"]); $i++){
+            $adicionales[] = $_POST["adicional1"][$i].','.$_POST["adicional2"][$i];
+        }
+
 
     foreach ($seccionesArray as $key => $value):
         $seccionValores[] = $value['cod'];
@@ -115,8 +97,8 @@ if (isset($_POST["modificar_menu"])):
     $menu->set("precio", $precio);
     $menu->set("desarrollo", $desarrollo);
     $menu->set("stock", $stock);
-    $menu->set("variantes", $variantes);
-    $menu->set("adicionales", $adicionales);
+    $menu->set("variantes", serialize($variantes));
+    $menu->set("adicionales", serialize($adicionales));
     $menu->set("fecha", $menuData['fecha']);
 
     if (isset($_FILES["files"]["name"])):
@@ -254,44 +236,46 @@ endif;
                                 </div>
                                 <div class="row">
                                     <label class="col-md-12">Variantes</label>
-                                    <?php for ($i = 0; $i < count($variante1Explotada); $i++): ?>
+                                    <?php foreach($variantesMostrar as $key => $value): ?>
+                                    <?php $valor = explode(",",$value); ?>
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <input type="text" value="<?= $variante1Explotada[$i]; ?>"
+                                                <input type="text" value="<?= $valor[0]; ?>"
                                                        name="variante1[]" class="form-control"
                                                        placeholder="20.00">
                                             </div>
                                         </div>
                                         <div class="col-md-8">
                                             <div class="form-group">
-                                                <input type="text" value="<?= $variante2Explotada[$i]; ?>"
+                                                <input type="text" value="<?= $valor[1]; ?>"
                                                        name="variante2[]" class="form-control"
                                                        placeholder="Extra queso">
                                             </div>
                                         </div>
-                                    <?php endfor; ?>
+                                    <?php endforeach; ?>
                                     <a class="MasCampos col-md-12" href="#" id="mascamposVariante"><i
                                                 class="icon_plus_alt"></i> Agregar más campos</a>
                                 </div>
                                 <hr/>
                                 <div class="row">
                                     <label class="col-md-12">Adicionales</label>
-                                    <?php for ($i = 0; $i < count($adicional1Explotada); $i++): ?>
+                                    <?php foreach($adicionalesMostrar as $key => $value): ?>
+                                    <?php $valor = explode(",",$value); ?>
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <input type="text" value="<?= $adicional1Explotada[$i]; ?>"
+                                                <input type="text" value="<?= $valor[0]; ?>"
                                                        name="adicional1[]" class="form-control"
                                                        placeholder="40.00">
                                             </div>
                                         </div>
                                         <div class="col-md-8">
                                             <div class="form-group">
-                                                <input type="text" value="<?= $adicional2Explotada[$i]; ?>"
+                                                <input type="text" value="<?= $valor[1]; ?>"
                                                        name="adicional2[]" class="form-control"
                                                        placeholder="x1 Coca-cola 500cc">
                                             </div>
                                         </div>
-                                    <?php endfor; ?>
+                                    <?php endforeach; ?>
                                     <a class="MasCampos col-md-12" href="#" id="mascamposAdicional"><i
                                                 class="icon_plus_alt"></i> Agregar más campos</a>
                                 </div>

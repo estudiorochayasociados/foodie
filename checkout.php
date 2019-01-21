@@ -34,7 +34,7 @@ if (is_array($pedido)):
 endif;
 foreach ($carro as $carroItem):
     $pedidos->set("cod", $cod_pedido);
-    $pedidos->set("producto", $carroItem["titulo"].' | '.$carroItem["opciones"]);
+    $pedidos->set("producto", $carroItem["titulo"].'|||'.serialize($carroItem["opciones"]));
     $pedidos->set("cantidad", $carroItem["cantidad"]);
     $pedidos->set("precio", $carroItem["precio"]);
     $pedidos->set("precioAdicional", $carroItem["precioAdicional"]);
